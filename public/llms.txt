@@ -1,0 +1,19 @@
+# Perimeter
+
+> Perimeter runs small, fine-tuned document-AI models entirely inside a financial institution's own environment — on commodity CPUs, live in weeks — and proves, document by document, that inference never left the perimeter.
+
+Perimeter targets regulated BFSI document workflows: KYC and onboarding, lending and credit files, and insurance underwriting and claims. It deploys inside a customer's VPC or sovereign cloud with no outbound calls, runs ingest/classify/extract on-device, and attaches a provenance record (model version, timestamp, where inference ran, confidence) to every extracted field. Low-confidence fields route to a human reviewer.
+
+## Pages
+
+- [Home](https://proofperimeter.com/): Product overview — the problem (the "Sovereign-AI Gap"), how it works, differentiators, use cases, regulator coverage, personas, proof/economics, and FAQ.
+- [Book a demo](https://proofperimeter.com/book-demo): Request a free Sovereign-AI-Gap Audit and blind benchmark on your own documents.
+
+## Key facts
+
+- Runs on commodity CPU hardware — no GPUs required.
+- Deploys air-gapped inside a customer's VPC or sovereign cloud; no outbound network calls.
+- Typical time to production for a focused use case: 4–11 weeks.
+- Typical latency on commodity CPU hardware: under 100ms.
+- Designed for residency and AI-governance regimes including EU DORA/AI Act, Gulf SAMA/CBUAE, Singapore MAS, India RBI/DPDP, and ISO 42001/SOC 2.
+- Residency/data-storage rules govern where a document sits; Perimeter addresses the separate question of where the model that reads it runs.
