@@ -16,7 +16,7 @@
   --signal: #14467C;
   --signal-deep: #0E3460;
   --live: #1E9E6A;
-  --font-sans: var(--font-plex-sans);
+  --font-sans: var(--font-plex-serif);
   --font-mono: var(--font-plex-mono);
 }
 
@@ -31,7 +31,7 @@
   --color-signal: var(--signal);
   --color-signal-deep: var(--signal-deep);
   --color-live: var(--live);
-  --font-sans: var(--font-plex-sans);
+  --font-sans: var(--font-plex-serif);
   --font-mono: var(--font-plex-mono);
 }
 
@@ -42,7 +42,7 @@ html {
 body {
   background: var(--paper);
   color: var(--ink);
-  font-family: var(--font-plex-sans, system-ui, sans-serif);
+  font-family: var(--font-plex-serif), Georgia, serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

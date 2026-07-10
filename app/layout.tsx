@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { IBM_Plex_Sans, IBM_Plex_Mono } from "next/font/google";
+import { IBM_Plex_Serif, IBM_Plex_Mono } from "next/font/google";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import Script from "next/script";
 import { JsonLd } from "@/components/JsonLd";
@@ -9,8 +9,8 @@ import "./globals.css";
 const GA_MEASUREMENT_ID = "G-LX9SVDZ842";
 const HUBSPOT_PORTAL_ID = "246627877";
 
-const plexSans = IBM_Plex_Sans({
-  variable: "--font-plex-sans",
+const plexSerif = IBM_Plex_Serif({
+  variable: "--font-plex-serif",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
   display: "swap",
@@ -87,7 +87,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${plexSans.variable} ${plexMono.variable} h-full`}>
+    <html lang="en" className={`${plexSerif.variable} ${plexMono.variable} h-full`}>
       <body className="min-h-full flex flex-col bg-paper text-ink">
         <JsonLd data={organizationJsonLd} />
         <JsonLd data={websiteJsonLd} />
