@@ -8,6 +8,11 @@
   --ink-2: #52606A;
   --line: #DCE4E9;
   --line-2: #C6D1D8;
+  /* Brand blue. Used everywhere via the `signal`/`signal-deep` Tailwind
+     utilities below — change it here and it updates across the whole site.
+     next/og-generated assets (app/icon.tsx, app/opengraph-image.tsx) can't
+     read CSS variables, so they read the same value from lib/colors.ts —
+     keep that file in sync if you change this. */
   --signal: #14467C;
   --signal-deep: #0E3460;
   --live: #1E9E6A;

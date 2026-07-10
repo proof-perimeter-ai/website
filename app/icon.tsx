@@ -1,4 +1,5 @@
 import { ImageResponse } from "next/og";
+import { brandColors } from "@/lib/colors";
 
 export const size = {
   width: 32,
@@ -13,7 +14,7 @@ export default function Icon() {
         style={{
           fontSize: 20,
           fontWeight: 700,
-          background: "#14467C",
+          background: brandColors.signal,
           width: "100%",
           height: "100%",
           display: "flex",

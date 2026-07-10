@@ -7,7 +7,7 @@ export function SiteFooter() {
       <div className="mx-auto max-w-[1120px] px-7">
         <div className="flex flex-wrap justify-between gap-10">
           <div className="max-w-[34ch] text-[15px] text-ink-2">
-            <BrandMark className="mb-3.5" />
+            <BrandMark className="mb-3.5" /> <br></br>
             On-device AI for regulated BFSI document processing. The inference never leaves your perimeter.
           </div>
           <div className="font-mono text-[12.5px] leading-[1.9] text-ink-2">
@@ -26,7 +26,9 @@ export function SiteFooter() {
           <Link href="/#cases" className="hover:text-ink transition-colors">Use cases</Link>
           <Link href="/#regulators" className="hover:text-ink transition-colors">Security &amp; compliance</Link>
           <Link href="/book-demo" className="hover:text-ink transition-colors">Book an audit</Link>
-          <a href="mailto:hello@proofperimeter.com" className="hover:text-ink transition-colors">Contact</a>
+          <a href="mailto:gaurav@proofperimeter.com" className="hover:text-ink transition-colors">Contact</a>
+          <Link href="/terms-of-service" className="hover:text-ink transition-colors">Terms of Service</Link>
+          <Link href="/privacy-policy" className="hover:text-ink transition-colors">Privacy Policy</Link>
         </nav>
       </div>
     </footer>

@@ -12,13 +12,13 @@ export function SiteNav() {
           <Link href="/#how" className="hover:text-ink transition-colors">How it works</Link>
           <Link href="/#cases" className="hover:text-ink transition-colors">Use cases</Link>
           <Link href="/#regulators" className="hover:text-ink transition-colors">Regulators</Link>
-          <Link href="/#faq" className="hover:text-ink transition-colors">FAQ</Link>
+          <Link href="/document-ai" className="hover:text-ink transition-colors">Document AI</Link>
         </nav>
         <Link
           href="/book-demo"
           className="rounded-[5px] bg-signal px-4.5 py-2.5 text-[15px] font-semibold text-white hover:bg-signal-deep transition-colors"
         >
-          Run a free audit
+          Request a demo
         </Link>
       </div>
     </header>

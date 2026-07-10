@@ -4,9 +4,9 @@
 This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` before writing any code. Heed deprecation notices.
 <!-- END:nextjs-agent-rules -->
 
-# Perimeter — proofperimeter.com
+# Proof Perimeter — proofperimeter.com
 
-On-device document-processing AI inference platform for regulated BFSI (banking, financial services, insurance) institutions, targeted primarily at the EU and Asia. Perimeter runs small, fine-tuned models inside a customer's own VPC or sovereign cloud — on commodity CPUs — so document inference (KYC packs, loan files, claims) never leaves their perimeter, and ships per-document provenance evidence for regulators (EU DORA / AI Act, Gulf SAMA / CBUAE, Singapore MAS, India RBI / DPDP, ISO 42001 / SOC 2).
+On-device document-processing AI inference platform for regulated BFSI (banking, financial services, insurance) institutions, targeted primarily at the EU and Asia. Proof Perimeter runs small, fine-tuned models inside a customer's own VPC or sovereign cloud — on commodity CPUs — so document inference (KYC packs, loan files, claims) never leaves their perimeter, and ships per-document provenance evidence for regulators (EU DORA / AI Act, Gulf SAMA / CBUAE, Singapore MAS, India RBI / DPDP, ISO 42001 / SOC 2).
 
 This repo is the marketing site only — no product code lives here.
 
@@ -46,6 +46,8 @@ Do not switch the hero animation to JS-based.
 ### Design tokens
 
 `app/globals.css` defines the brand palette (`paper`, `ink`, `signal`, `live`, etc.) as CSS variables, mapped into Tailwind via `@theme inline` so they're available as utilities (`bg-signal`, `text-ink-2`, `border-line`, `font-mono`, ...). Don't hardcode hex colors in components — use these utilities so the palette stays centralized in one place.
+
+`next/og`-generated assets (`app/icon.tsx`, `app/opengraph-image.tsx`) can't read CSS custom properties (Satori, the renderer behind `ImageResponse`, has no access to the page's CSS), so they import the same values from `lib/colors.ts` instead. If you change the brand color palette, update both `app/globals.css` and `lib/colors.ts`.
 
 ### Site config
 

@@ -70,7 +70,7 @@ const diffs = [
   {
     vs: "vs · heavyweight on-prem suites",
     description:
-      "On-prem from the incumbents means multi-month, professional-services-heavy projects on expensive hardware — and they still don't hand you per-document proof of where inference ran. Perimeter deploys in weeks, runs CPU-first, and generates the evidence they don't.",
+      "On-prem from the incumbents means multi-month, professional-services-heavy projects on expensive hardware — and they still don't hand you per-document proof of where inference ran. Proof Perimeter deploys in weeks, runs CPU-first, and generates the evidence they don't.",
   },
   {
     vs: "vs · staying manual",
@@ -167,7 +167,7 @@ const faqs = [
   {
     question: "Do we need GPUs?",
     answer:
-      "No. Perimeter is designed to run on commodity CPU hardware, which is a large part of why deployment is fast and per-document cost is predictable.",
+      "No. Proof Perimeter is designed to run on commodity CPU hardware, which is a large part of why deployment is fast and per-document cost is predictable.",
   },
   {
     question: "Will it clear our accuracy bar on difficult documents?",
@@ -182,7 +182,7 @@ const faqs = [
   {
     question: "Isn't keeping data in-region already enough?",
     answer:
-      "Residency governs where the document sits, not where the model ran. Perimeter closes the second gap — and proves it per document. That's the part storage alone can't cover.",
+      "Residency governs where the document sits, not where the model ran. Proof Perimeter closes the second gap — and proves it per document. That's the part storage alone can't cover.",
   },
   {
     question: "How long until we're live?",
@@ -213,20 +213,19 @@ export default function Home() {
         <section className="pt-21 pb-19">
           <div className="mx-auto grid max-w-[1120px] grid-cols-1 items-center gap-13.5 px-7 md:grid-cols-[1.02fr_0.98fr]">
             <div>
-              <Eyebrow className="hero-animate-badge">On-device AI · KYC · lending · claims</Eyebrow>
+              {/* <Eyebrow className="hero-animate-badge">On-device AI · KYC · lending · claims</Eyebrow> */}
               <h1 className="hero-animate-h1 mt-5.5 max-w-[15ch] text-[clamp(34px,5vw,55px)] font-bold tracking-[-0.022em] text-ink">
                 When your regulator asks where your AI runs, have an answer.
               </h1>
               <p className="hero-animate-p mt-6 max-w-[54ch] text-[19px] text-ink-2">
-                Perimeter runs small, fine-tuned models on your most sensitive financial documents — entirely inside your environment, on commodity CPUs, live in weeks. It clears the accuracy gate on your worst documents and proves, document by document, that{" "}
-                <span className="font-semibold text-ink">the inference never left the perimeter.</span> Storing data in-region was never the hard part; this is.
+                Proof Perimeter runs small, fine-tuned models on your most sensitive financial documents — entirely inside your environment, on commodity CPUs, live in weeks. 
               </p>
               <div className="hero-animate-cta mt-8 flex flex-wrap gap-3.5">
-                <BtnSolid href="/book-demo">Run a free Sovereign-AI-Gap Audit</BtnSolid>
-                <BtnGhost href="#how">Free POC on your hardest documents</BtnGhost>
+                <BtnSolid href="/book-demo">Request a demo</BtnSolid>
+                {/* <BtnGhost href="#how">Free POC on your hardest documents</BtnGhost> */}
               </div>
-              <div className="hero-animate-trust mt-8.5 flex flex-wrap gap-x-5 gap-y-2.5 border-t border-line pt-6">
-                {["CPU-feasible", "Live in weeks", "Zero data egress", "VPC or sovereign cloud", "Supervisor-ready audit trail"].map((item) => (
+              <div className="hero-animate-trust mt-8.5 flex flex-wrap gap-x-5 gap-y-2.5 pt-6">
+                {["CPU-feasible", "Zero data egress", "Sovereign cloud"].map((item) => (
                   <span key={item} className="inline-flex items-center gap-2 font-mono text-[12.5px] text-ink-2">
                     <span className="h-[5px] w-[5px] rounded-[1px] bg-signal" />
                     {item}
@@ -286,41 +285,51 @@ export default function Home() {
 
         {/* Problem */}
         <section className="border-t border-line py-22">
-          <div className="mx-auto grid max-w-[1120px] grid-cols-1 items-start gap-12 px-7 md:grid-cols-[0.85fr_1.15fr]">
-            <div>
-              <Eyebrow>The problem</Eyebrow>
-              <h2 className="mt-4.5 max-w-[20ch] text-[clamp(28px,3.6vw,40px)] font-bold tracking-[-0.022em] text-ink">
-                Most teams can&rsquo;t say where their document AI actually runs.
-              </h2>
+          <div className="mx-auto max-w-[1120px] px-7">
+            <div className="grid grid-cols-1 items-start gap-12 md:grid-cols-[0.85fr_1.15fr]">
+              <div>
+                <Eyebrow>The problem</Eyebrow>
+                <h2 className="mt-4.5 max-w-[20ch] text-[clamp(28px,3.6vw,40px)] font-bold tracking-[-0.022em] text-ink">
+                  Most teams can&rsquo;t say where their document AI actually runs.
+                </h2>
+              </div>
+              <div className="pt-2 [&>p+p]:mt-4.5 text-[17px] leading-[1.62] text-ink-2">
+                <p>
+                  Your KYC packs, loan files and claims move through a chain of OCR, extraction and AI services. For a growing share of that work, the inference happens <strong className="font-semibold text-ink">outside</strong> your controlled perimeter — on a third-party API or a model you cannot audit. That share is your{" "}
+                  <span className="inline-block rounded-full border border-line-2 bg-paper-2 px-2.5 py-0.5 font-mono text-[13px] text-signal">Sovereign-AI Gap</span>, and almost no one can put a number on it.
+                </p>
+                <p>
+                  Proof Perimeter starts by making it visible: a per-workload map of where every model runs, what data each one touches, and what share of regulated inference leaves the perimeter — then it keeps that share at zero by running the inference on-device. You move from &ldquo;we think it&rsquo;s compliant&rdquo; to a figure you can take to the board.
+                </p>
+              </div>
             </div>
-            <div className="pt-2 [&>p+p]:mt-4.5 text-[17px] leading-[1.62] text-ink-2">
-              <p>
-                Your KYC packs, loan files and claims move through a chain of OCR, extraction and AI services. For a growing share of that work, the inference happens <strong className="font-semibold text-ink">outside</strong> your controlled perimeter — on a third-party API or a model you cannot audit. That share is your{" "}
-                <span className="inline-block rounded-full border border-line-2 bg-paper-2 px-2.5 py-0.5 font-mono text-[13px] text-signal">Sovereign-AI Gap</span>, and almost no one can put a number on it.
-              </p>
-              <p>
-                Perimeter starts by making it visible: a per-workload map of where every model runs, what data each one touches, and what share of regulated inference leaves the perimeter — then it keeps that share at zero by running the inference on-device. You move from &ldquo;we think it&rsquo;s compliant&rdquo; to a figure you can take to the board.
-              </p>
+            <div className="mt-10">
+              <BtnSolid href="/book-demo">Request a demo</BtnSolid>
             </div>
           </div>
         </section>
 
         {/* Why now */}
         <section className="border-t border-line py-22">
-          <div className="mx-auto grid max-w-[1120px] grid-cols-1 items-start gap-12 px-7 md:grid-cols-[0.85fr_1.15fr]">
-            <div>
-              <Eyebrow>Why now</Eyebrow>
-              <h2 className="mt-4.5 max-w-[20ch] text-[clamp(28px,3.6vw,40px)] font-bold tracking-[-0.022em] text-ink">
-                Residency tells you where the file is. It can&rsquo;t tell you where the model ran.
-              </h2>
+          <div className="mx-auto max-w-[1120px] px-7">
+            <div className="grid grid-cols-1 items-start gap-12 md:grid-cols-[0.85fr_1.15fr]">
+              <div>
+                <Eyebrow>Why now</Eyebrow>
+                <h2 className="mt-4.5 max-w-[20ch] text-[clamp(28px,3.6vw,40px)] font-bold tracking-[-0.022em] text-ink">
+                  Residency tells you where the file is. It can&rsquo;t tell you where the model ran.
+                </h2>
+              </div>
+              <div className="pt-2 [&>p+p]:mt-4.5 text-[17px] leading-[1.62] text-ink-2">
+                <p>
+                  Sovereign cloud and in-region hosting solve the storage half of the problem — and regulators now assume it. The unsolved half is inference: the moment a document is read by an external model, its contents and your decisioning leave your control, invisibly.
+                </p>
+                <p>
+                  Proof Perimeter runs the read inside your perimeter — small models on hardware you control — and turns &ldquo;the inference never left&rdquo; from a claim into a logged, exportable fact.
+                </p>
+              </div>
             </div>
-            <div className="pt-2 [&>p+p]:mt-4.5 text-[17px] leading-[1.62] text-ink-2">
-              <p>
-                Sovereign cloud and in-region hosting solve the storage half of the problem — and regulators now assume it. The unsolved half is inference: the moment a document is read by an external model, its contents and your decisioning leave your control, invisibly.
-              </p>
-              <p>
-                Perimeter runs the read inside your perimeter — small models on hardware you control — and turns &ldquo;the inference never left&rdquo; from a claim into a logged, exportable fact.
-              </p>
+            <div className="mt-10">
+              <BtnSolid href="/book-demo">Request a demo</BtnSolid>
             </div>
           </div>
         </section>
@@ -340,6 +349,9 @@ export default function Home() {
                   <p className="mt-2.5 text-sm text-ink-2">{step.description}</p>
                 </FadeIn>
               ))}
+            </div>
+            <div className="mt-10">
+              <BtnSolid href="/book-demo">Request a demo</BtnSolid>
             </div>
           </div>
         </section>
@@ -362,6 +374,9 @@ export default function Home() {
             <blockquote className="mt-10 max-w-[42ch] border-l-[3px] border-signal py-1.5 pl-6.5 text-[23px] font-semibold leading-[1.4] tracking-[-0.015em] text-ink">
               Extraction accuracy is the price of entry. Proving where the model ran is the reason to buy.
             </blockquote>
+            <div className="mt-10">
+              <BtnSolid href="/book-demo">Request a demo</BtnSolid>
+            </div>
           </div>
         </section>
 
@@ -387,6 +402,9 @@ export default function Home() {
                 </FadeIn>
               ))}
             </div>
+            <div className="mt-10">
+              <BtnSolid href="/book-demo">Request a demo</BtnSolid>
+            </div>
           </div>
         </section>
 
@@ -398,7 +416,7 @@ export default function Home() {
               One architecture, every supervisor&rsquo;s question answered.
             </h2>
             <p className="mt-5.5 max-w-[60ch] text-[19px] text-ink-2">
-              Wherever you&rsquo;re regulated, the question is the same — where does the model run, and can you prove it? Perimeter answers it once, for all of them.
+              Wherever you&rsquo;re regulated, the question is the same — where does the model run, and can you prove it? Proof Perimeter answers it once, for all of them.
             </p>
             <div className="mt-10 overflow-hidden rounded-md border border-line bg-panel">
               {regulators.map((row) => (
@@ -412,6 +430,9 @@ export default function Home() {
                   <div className="text-[15.5px] text-ink-2">{row.detail}</div>
                 </div>
               ))}
+            </div>
+            <div className="mt-10">
+              <BtnSolid href="/book-demo">Request a demo</BtnSolid>
             </div>
           </div>
         </section>
@@ -430,6 +451,9 @@ export default function Home() {
                   <p className="mt-2.25 text-[14.5px] text-ink-2">{persona.description}</p>
                 </FadeIn>
               ))}
+            </div>
+            <div className="mt-10">
+              <BtnSolid href="/book-demo">Request a demo</BtnSolid>
             </div>
           </div>
         </section>
@@ -450,7 +474,7 @@ export default function Home() {
               ))}
             </div>
             <p className="mt-6.5 rounded-[5px] border border-line-2 bg-paper-2 px-4 py-3 font-mono text-xs text-ink-2">
-              Reference benchmarks from comparable on-prem small-model deployments (incl. a third-party Fortune-500 case) — not Perimeter&rsquo;s own customer results. Replaced with design-partner figures as they land.
+              Reference benchmarks from comparable on-prem small-model deployments (incl. a third-party Fortune-500 case) — not Proof Perimeter&rsquo;s own customer results. Replaced with design-partner figures as they land.
             </p>
             <div className="mt-8.5 grid grid-cols-1 gap-x-10 gap-y-3.5 sm:grid-cols-2">
               <h3 className="col-span-full text-lg font-semibold text-ink">What we&rsquo;ll prove on your documents — before you commit</h3>
@@ -470,6 +494,9 @@ export default function Home() {
                   A per-account cost-at-volume comparison: projected cloud spend vs amortized on-prem.
                 </li>
               </ul>
+            </div>
+            <div className="mt-10">
+              <BtnSolid href="/book-demo">Request a demo</BtnSolid>
             </div>
           </div>
         </section>
@@ -491,7 +518,7 @@ export default function Home() {
                     href="/book-demo"
                     className="inline-flex items-center justify-center gap-2 rounded-[5px] bg-white px-4.5 py-2.75 text-[15px] font-semibold text-signal transition-colors hover:bg-[#E7F0F8]"
                   >
-                    Run the audit + blind benchmark
+                    Request a demo
                   </Link>
                 </div>
                 <p className="mt-4.5 font-mono text-xs text-[#A9C6E5]">
@@ -544,12 +571,12 @@ export default function Home() {
             <h2 className="mx-auto mt-4.5 max-w-[22ch] text-[clamp(28px,4vw,44px)] font-bold tracking-[-0.022em] text-ink">
               The cloud can&rsquo;t keep your inference in-perimeter. We can — and we&rsquo;ll prove it on your documents.
             </h2>
-            <p className="mx-auto mt-5.5 max-w-[56ch] text-lg text-ink-2">
+            {/* <p className="mx-auto mt-5.5 max-w-[56ch] text-lg text-ink-2">
               Run the Sovereign-AI-Gap Audit, see your number, and watch a blind benchmark clear the accuracy bar on your worst documents — all without a single file leaving your environment. Then keep the inference where it belongs: on-device, with proof per document.
-            </p>
+            </p> */}
             <div className="mt-8 flex flex-wrap justify-center gap-3.5">
-              <BtnSolid href="/book-demo">Run a free Sovereign-AI-Gap Audit</BtnSolid>
-              <BtnGhost href="#how">Free POC on your hardest documents</BtnGhost>
+              <BtnSolid href="/book-demo">Request a demo</BtnSolid>
+              {/* <BtnGhost href="#how">Free POC on your hardest documents</BtnGhost> */}
             </div>
           </div>
         </section>
