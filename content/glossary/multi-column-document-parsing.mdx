@@ -1,0 +1,18 @@
+---
+title: "Multi-Column Document Parsing"
+slug: "multi-column-document-parsing"
+letter: "M"
+tagline: "Read down, not across — parsing the layouts where naive left-to-right produces word salad."
+description: "Multi-column document parsing recovers correct text flow from columnar layouts — newspapers, journals, forms — where reading order is everything."
+category: "Document Understanding"
+tags: ["multi-column", "parsing", "reading order", "layouts"]
+publishedAt: "2026-07-11"
+relatedTerms: ["multi-column-reading-order", "reading-order-detection", "document-layout-analysis"]
+status: "published"
+---
+
+Multi-column document parsing is the correct handling of columnar layouts — academic papers, newspapers and newsletters, legal codes, brochures, statement designs — where text flows down one column before continuing at the top of the next, and where the naive left-to-right, top-to-bottom serialization that flat text extraction performs interleaves the columns into fluent-looking nonsense: half a sentence from column one spliced mid-thought into column two's content, every line. It is among the most common and most consequential parsing failures, because its output *looks* like text — downstream search, extraction, and RAG consume the scramble without complaint, and the errors surface as mysteries far from their cause.
+
+The parsing requires layout analysis to precede serialization: column detection (whitespace gutters, alignment consistency, ruling lines) segmenting the page into column regions; flow analysis determining their reading sequence — usually left-to-right across columns, but complicated by the real repertoire: full-width elements (titles, figures, tables) interrupting the columns, articles that jump ("continued on page 7"), sidebars and pull-quotes that belong outside the main flow entirely, and mixed layouts where column count changes mid-page. Modern layout models handle the standard cases well; the document-specific traps (the two-column contract with full-width recitals, the statement whose columns are actually a table) reward document-type awareness — and VLM-based parsers, reading the rendered page holistically, have made columnar reading order one of their clearest wins over coordinate-heuristic pipelines.
+
+Verification is cheap and worth automating: serialized text should be linguistically coherent (perplexity and sentence-integrity checks catch interleaving), and hyphenation should resolve at column breaks (the "docu-/ment" split rejoined). For PDF text-layer extraction the same discipline applies — the layer stores glyphs positionally, not logically, so column structure must still be *inferred*, and the born-digital document is no immunity against reading-order salad.

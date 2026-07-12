@@ -1,0 +1,18 @@
+---
+title: "F1 Score For Document Extraction"
+slug: "f1-score-for-document-extraction"
+letter: "F"
+tagline: "One number balancing two sins — missing what's there and inventing what isn't."
+description: "F1 score for document extraction balances precision and recall — a single metric for tasks where both false positives and misses matter."
+category: "Evaluation & Quality"
+tags: ["F1 score", "precision", "recall", "metrics"]
+publishedAt: "2026-07-11"
+relatedTerms: ["precision-and-recall-in-ocr", "field-level-accuracy", "extraction-accuracy-benchmarking"]
+status: "published"
+---
+
+The F1 score for document extraction is the harmonic mean of precision (of the values the system extracted, what fraction were correct?) and recall (of the values actually present in the documents, what fraction did the system find?) — a single number that punishes both failure modes: extracting wrong or spurious values, and missing real ones. It is the natural metric for extraction tasks framed as detection — find all the clauses of this type, all the entities, all the line items — where a simple accuracy percentage is ill-defined because the system's output set and the truth set can differ in size.
+
+The metric's document-specific subtleties live in the matching definition beneath it. A predicted value counts as a true positive only if it matches ground truth — but matches *how*? Exact string, normalized value, overlapping span, same bounding-box region? Each convention yields different scores from identical output, so F1 comparisons are meaningful only under a shared, stated matching rule. Partial credit questions recur (the line item with four of five columns right; the clause found but with boundaries off by a sentence), resolved either by strict binary matching or by span-level scoring — and for multi-field extraction, micro-averaged F1 (pooling all fields) versus macro-averaged (averaging per-field scores) answer different questions: overall throughput quality versus consistency across field types, where the rare-but-critical field's failures vanish in micro and shout in macro.
+
+The harmonic mean's property — dragged toward the worse of the two components — is the point: a system that extracts everything (perfect recall, dismal precision) or almost nothing (perfect precision, dismal recall) scores poorly, as it should. But business costs are rarely symmetric — a missed sanctions hit and a false one are not equal sins — so mature evaluation reports precision and recall separately alongside F1, letting the application weight them (or using the Fβ variant that encodes the asymmetry), and reserves the single number for what single numbers are for: trend lines and leaderboards, not deployment decisions.

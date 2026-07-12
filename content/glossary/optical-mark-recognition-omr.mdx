@@ -1,0 +1,18 @@
+---
+title: "Optical Mark Recognition (OMR)"
+slug: "optical-mark-recognition-omr"
+letter: "O"
+tagline: "Filled bubble or empty box — the humble mark, read at census scale."
+description: "Optical mark recognition (OMR) detects marks — bubbles, checkboxes, ticks — on structured forms: tests, surveys, ballots, and checklists."
+category: "OCR & Recognition"
+tags: ["OMR", "checkboxes", "bubbles", "forms"]
+publishedAt: "2026-07-11"
+relatedTerms: ["form-field-extraction", "intelligent-character-recognition-icr", "handwritten-form-digitization"]
+status: "published"
+---
+
+Optical mark recognition (OMR) is the detection of marks in designated positions — the filled bubble on the answer sheet, the ticked checkbox on the form, the shaded cell on the survey — as distinct from reading characters: the question is not *what* was written but *whether* a position was marked. It is document automation's oldest industrial success (standardized testing, censuses, lotteries, and ballots ran on dedicated OMR hardware for decades) and remains quietly everywhere modern forms have checkboxes — which is to say, everywhere.
+
+The classical discipline was constraint: forms printed with registration marks for precise alignment, mark positions known to the millimeter, and detection reduced to darkness thresholds in known zones — dedicated scanners achieving near-perfect accuracy at enormous throughput. Modern OMR relaxes the constraints with vision: camera-captured and ordinary-scanned forms aligned by template matching or learned registration, checkbox detection and state classification handled by object-detection models robust to skew and quality variation, and — the genuinely hard part — *state* semantics beyond binary: the checked box, the crossed-out check (marked then retracted?), the tick that strays outside its box, the ambiguous grazing mark, the "X" that means yes on one form culture and no on another. Production systems classify these states explicitly and route the ambiguous to review, because a misread checkbox is a misread answer — and on consent forms, medical intake, and certificates of insurance, the checkbox *is* the substance.
+
+The integration reality is that pure OMR rarely travels alone anymore: forms mix marks with handwriting and print, so mark recognition runs as one specialist within the form-extraction stack — its outputs validated by form logic (the mutually exclusive options both marked is a flag, the conditional section marked-but-empty is a completeness finding) and its confidence handled with the same per-field discipline as everything else this glossary routes to review.

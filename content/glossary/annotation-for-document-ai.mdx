@@ -1,0 +1,18 @@
+---
+title: "Annotation For Document AI"
+slug: "annotation-for-document-ai"
+letter: "A"
+tagline: "Drawing the boxes and typing the truths — the manual craft that every automated document system is built on."
+description: "Annotation for document AI is the labeling of pages — fields, regions, types, transcriptions — that creates training and evaluation data for document models."
+category: "Models & Training"
+tags: ["annotation", "labeling", "document AI", "training data"]
+publishedAt: "2026-07-11"
+relatedTerms: ["ai-data-annotation-document-processing", "annotation-guidelines-for-ocr", "labeled-dataset-creation"]
+status: "published"
+---
+
+Annotation for document AI is the hands-on work of labeling documents so models can learn from them and be measured against them: drawing bounding boxes around fields, tables, signatures, and stamps; transcribing text regions exactly as written; tagging each document with its type; linking labels to values in key-value pairs; and recording the correct structured output for end-to-end extraction tasks. The annotation defines the task — a model can only learn distinctions that the labels actually make.
+
+Different document AI capabilities need different annotation styles, and the choice has long consequences. Layout models need region boxes with types; OCR needs transcriptions aligned to image crops; extraction models need field labels tied to both a location and a normalized value ("11/03/74" on the page, "1974-03-11" as the value); classification needs a taxonomy that annotators can apply consistently. Ambiguity is the enemy: real documents are full of judgment calls — overlapping stamps, corrected values, fields that appear twice with different contents — and a dataset where annotators resolved these inconsistently teaches the model to be inconsistent too. Written guidelines, agreement measurement, and adjudication of disputes are what separate usable datasets from noise.
+
+The modern role of annotation has narrowed but sharpened. Pre-trained models eliminated the need to label everything from scratch; what remains valuable is annotation of the organization's specific documents, its failure cases, and above all its evaluation sets — the gold-standard samples that measure whether any model, bought or built, actually works on the documents that matter. For sensitive corpora, annotation is also a security surface: the people and tools doing the labeling see the raw documents, so the workforce and platform must sit inside the same confidentiality perimeter as production.

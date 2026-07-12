@@ -1,0 +1,18 @@
+---
+title: "Page Number Extraction"
+slug: "page-number-extraction"
+letter: "P"
+tagline: "'Page 3 of 17' is a promise — extracting the numbering that proves completeness and order."
+description: "Page number extraction reads pagination from documents — validating completeness, order, and structure in multi-page processing."
+category: "Document Understanding"
+tags: ["page numbers", "pagination", "completeness", "validation"]
+publishedAt: "2026-07-11"
+relatedTerms: ["footer-detection", "multi-page-document-processing", "document-splitting-ai"]
+status: "published"
+---
+
+Page number extraction is the reading of pagination from document pages — the "3", the "Page 3 of 17", the "iii", the "2-14" of sectioned manuals — and its conversion into structural knowledge the pipeline can act on. Pagination is the document's own integrity metadata: "Page 3 of 17" asserts sixteen siblings, their order, and this page's place among them — assertions a pipeline can verify, making page numbers one of the cheapest and most powerful validation signals multi-page processing has.
+
+Extraction is a furniture-reading task with parsing attached: locating the pagination element (headers and footers, per those entries' repetition-and-position analysis — distinguished from dates, section numbers, and the other numerics that share the furniture zones by pattern and cross-page increment behavior), then parsing its scheme: plain sequence, X-of-Y, roman-numeraled front matter switching to arabic body, per-section numbering (2-1, 2-2…), and the Bates numbering of legal productions — a parallel numbering layer with its own semantics, prefix conventions, and evidentiary weight. Scheme inference across pages beats per-page reading: the sequence's pattern disambiguates individual OCR wobbles (the page reading "l7" between 16 and 18 is 17), and deviations from the inferred pattern are the findings.
+
+The findings are what justify the entry: gaps (page 12 missing from the scanned pack — caught at intake, when the source can still supply it, rather than at decision time), disorder (the shuffled rescan detected and re-sequenced by numbering rather than guesswork), duplication (page 7 twice — a scanning double-feed or a substituted page, each worth different attention), and boundary evidence (numbering restarting at 1 announcing a new document to the bundle-splitting machinery). In legal and compliance productions the stakes formalize: completeness certifications lean on pagination audits, and Bates continuity is checked as a matter of course — the humble page number doing chain-of-custody work.

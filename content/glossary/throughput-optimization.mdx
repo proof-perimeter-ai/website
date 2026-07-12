@@ -1,0 +1,18 @@
+---
+title: "Throughput Optimization"
+slug: "throughput-optimization"
+letter: "T"
+tagline: "Not how fast one document processes, but how many process per hour — the metric that governs cost at volume."
+description: "Throughput optimization maximizes documents processed per unit time — batching, parallelism, and resource efficiency for high-volume pipelines."
+category: "Workflow & Automation"
+tags: ["throughput", "performance", "optimization", "scale"]
+publishedAt: "2026-07-11"
+relatedTerms: ["latency-in-document-processing", "batch-document-processing", "real-time-document-processing"]
+status: "published"
+---
+
+Throughput optimization is the engineering discipline of maximizing the volume of documents a pipeline can process per unit of time — documents per hour, per day, per dollar of compute — as distinct from the latency-in-document-processing entry's concern with how quickly any single document completes. The distinction matters because these two goals sometimes align and sometimes trade off directly against each other: a system optimized purely for single-document latency (process this one document as fast as possible) can be a poor choice for aggregate throughput if it doesn't efficiently utilize available compute across many concurrent documents, while a system optimized purely for throughput might introduce queuing delays that make any individual document's completion time unacceptable for interactive use.
+
+The optimization techniques cluster around resource utilization efficiency. Batching groups multiple documents or pages for joint processing where the underlying hardware benefits from parallel work — GPU inference in particular often achieves dramatically better documents-per-second when processing a batch simultaneously rather than one at a time, since the hardware's parallel compute capacity goes underutilized on single-item requests. Model and pipeline parallelism distributes work across available compute resources — multiple pages of a document processed concurrently, multiple documents processed concurrently across worker instances — turning available hardware into aggregate capacity rather than a single serial bottleneck. Caching avoids redundant work: repeated document templates, previously-seen layouts, or common preprocessing operations cached and reused rather than recomputed identically for every instance. And right-sizing models to task — using the smallest, fastest model that meets accuracy requirements for the bulk of routine traffic, reserving larger and slower models for the harder tail this glossary's tiered-architecture pattern describes — directly multiplies throughput because compact models simply process more documents per unit of compute than large ones do.
+
+The economic stakes of throughput optimization scale directly with volume: at low document volumes, throughput differences are a rounding error in operational cost; at the volumes many production document AI deployments actually reach — hundreds of thousands to millions of documents monthly — a two- or three-times throughput improvement translates directly into proportionally lower infrastructure cost or proportionally faster processing of the same workload, making throughput engineering a genuine cost-optimization lever rather than a purely technical concern, and one that teams scaling a document AI pipeline from pilot to production volume typically have to revisit deliberately rather than assuming pilot-scale architecture choices will simply scale linearly.

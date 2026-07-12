@@ -1,0 +1,18 @@
+---
+title: "Optical Character Recognition"
+slug: "optical-character-recognition"
+letter: "O"
+tagline: "Teaching machines to read — turning pixels on a page into characters a computer can work with."
+description: "Optical Character Recognition (OCR) converts images of text — scans, photos, PDFs — into machine-readable characters, the foundation of document AI."
+category: "OCR & Recognition"
+tags: ["OCR", "optical character recognition", "text recognition", "document digitization"]
+publishedAt: "2026-07-11"
+relatedTerms: ["intelligent-document-processing", "handwritten-text-recognition", "ocr-accuracy-rate"]
+status: "published"
+---
+
+Optical Character Recognition (OCR) is the technology that converts images of text into machine-readable characters. When a document arrives as a scan, a photograph, or an image-only PDF, a computer sees nothing but pixels — OCR analyzes those pixels, identifies the shapes that form letters and digits, and outputs actual text that software can search, index, extract from, and process. It is the entry point for almost every document workflow: before a system can extract a policy number or validate a date of birth, it first has to read the page.
+
+Modern OCR has moved far beyond the template-and-font matching of early systems. Deep learning models — convolutional networks and, increasingly, transformer-based architectures — recognize text across thousands of fonts, degraded scans, skewed photos, and mixed languages. Accuracy is typically measured by character error rate and word error rate, and production systems attach a confidence score to each recognized word so that downstream workflows can route uncertain results to a human reviewer instead of silently passing errors into a system of record.
+
+The practical distinction that matters is between raw OCR and everything built on top of it. OCR gives you the text; it does not tell you which string is the invoice total or whether a signature is present. That is the job of the broader document AI stack — layout analysis, entity extraction, and validation. In regulated settings such as banking and insurance, where OCR output feeds KYC checks and claims decisions, institutions increasingly also care *where* OCR runs: on-device or in-perimeter processing keeps sensitive documents from ever leaving their environment.

@@ -1,0 +1,18 @@
+---
+title: "Document Workflow Agents"
+slug: "document-workflow-agents"
+letter: "D"
+tagline: "Agents stationed inside the process — each owning a stage of the document's journey and the judgment it needs."
+description: "Document workflow agents are AI agents embedded at workflow stages — intake, verification, exception handling — executing bounded roles with judgment."
+category: "AI Agents"
+tags: ["workflow agents", "AI agents", "process automation", "orchestration"]
+publishedAt: "2026-07-11"
+relatedTerms: ["agentic-document-workflows", "document-workflow-automation", "autonomous-document-agents"]
+status: "published"
+---
+
+Document workflow agents are AI agents deployed as named participants in a document process — each owning a bounded role the way a human specialist would: an intake agent that receives, sorts, and completeness-checks arriving packs; a verification agent that cross-checks extracted facts against systems of record; an exception agent that investigates and resolves the documents that fail validation; a correspondence agent that drafts and sends the requests for missing items. Where a monolithic autonomous agent owns an outcome end-to-end, workflow agents partition the process — a division that trades some flexibility for legibility, testability, and control.
+
+The pattern's appeal is organizational as much as technical. Bounded roles mean bounded permissions (the intake agent cannot approve payments; the correspondence agent sends only templated requests), per-role performance measurement (the verification agent's precision tracked like an employee's quality score), and graduated trust per station — one agent can run fully autonomous while its neighbor still proposes for human approval, letting automation deepen unevenly as evidence accumulates. Handoffs between agents run through the same workflow state and audit trail humans use, so a case's history reads coherently: what each agent saw, did, and passed along — and a human can be substituted at any station without redesigning the process.
+
+Engineering the pattern well means resisting its failure modes: role fragmentation so fine that context is lost at every handoff (the exception agent re-deriving what intake already knew), and orchestration logic that quietly becomes the monolith the pattern was meant to avoid. Shared case memory, typed handoff contracts, and an orchestrator that routes rather than reasons keep the ensemble coherent. Done well, the result resembles a well-run operations team — specialists with clear lanes, evidence at every step, escalation paths that work — running at machine speed and volume.

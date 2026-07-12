@@ -1,0 +1,18 @@
+---
+title: "Highlighted Text Extraction"
+slug: "highlighted-text-extraction"
+letter: "H"
+tagline: "Someone marked that passage for a reason — capturing the highlights and what they highlight."
+description: "Highlighted text extraction detects marker and digital highlights in documents — recovering both the emphasized text and its significance."
+category: "Data Extraction"
+tags: ["highlights", "annotations", "emphasis", "markup"]
+publishedAt: "2026-07-11"
+relatedTerms: ["bold-and-italic-detection", "strikethrough-detection", "logo-and-stamp-detection"]
+status: "published"
+---
+
+Highlighted text extraction is the detection of highlighting in documents — the fluorescent marker swipe on paper, the digital highlight annotation in a PDF — and the recovery of both the emphasized text and the fact of its emphasis. Highlights are human attention made visible: the clause the reviewing lawyer flagged, the value the auditor questioned, the passage the researcher will cite. In workflows where marked-up documents circulate (contract review rounds, medical record review, diligence, litigation), the highlighting *is* data, and pipelines that read only the text discard the layer a person deliberately added.
+
+The two forms need different machinery. Digital highlights in PDFs are annotation objects — extractable losslessly with their geometry, color, author, and timestamp when present, requiring only that the parser read the annotation layer (many don't) and map each highlight to the text beneath it. Physical highlights on scanned paper are an image problem: color segmentation detecting the characteristic translucent bands (robust versions handling faded markers, overlapping colors, and the yellow highlight that grayscale scanning destroyed — a capture-channel argument for color scanning where markup matters), with the highlighted spans then aligned to the OCR text they cover. Recognition robustness matters beneath the marker: highlighting shifts contrast and hue over the text, and recognizers not trained for it lose accuracy exactly on the passages someone cared most about.
+
+Downstream uses map to who highlighted and why: review workflows aggregate highlights across reviewers into heatmaps of attention and disagreement; knowledge extraction treats highlights as human-curated importance labels (excellent training signal for summarization and clause-importance models); and compliance contexts preserve markup as part of the record — who flagged what, when — where the annotation layer's authorship metadata joins the audit trail. Color semantics, where a team uses them consistently (yellow for facts, red for risks), turn extraction into structured tagging for free.

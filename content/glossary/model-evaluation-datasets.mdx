@@ -1,0 +1,18 @@
+---
+title: "Model Evaluation Datasets"
+slug: "model-evaluation-datasets"
+letter: "M"
+tagline: "The sealed exam — the document sets that measure models without teaching them."
+description: "Model evaluation datasets are held-out document collections with ground truth — the sealed benchmarks that measure real capability."
+category: "Evaluation & Quality"
+tags: ["evaluation datasets", "benchmarks", "test sets", "measurement"]
+publishedAt: "2026-07-11"
+relatedTerms: ["ground-truth-data", "extraction-accuracy-benchmarking", "labeled-dataset-creation"]
+status: "published"
+---
+
+Model evaluation datasets are the document collections, with verified ground truth, that exist to measure models rather than train them: the sealed exam against which candidate systems, version upgrades, prompt changes, and vendor claims are scored. Their defining property is separation — never used for training, tuning, prompt iteration, or few-shot examples — because any leakage converts the measurement into memorization and the score into fiction. In an era when foundation models train on much of the public internet, that property has teeth: public benchmarks are increasingly *in* the models, which is a large part of why serious document AI programs maintain private evaluation sets built from their own documents.
+
+Construction quality determines what the scores mean. Representativeness: the set mirrors the production population — document types, capture channels, quality tiers, languages, time periods — in known proportions, with the difficult tail present rather than curated away; stratification preserved into reporting so per-segment truths survive. Ground truth rigor: independently annotated under written conventions, adjudicated, and versioned (the ground-truth entry's disciplines apply doubly here). Freshness: populations drift, so evaluation sets refresh on a cadence — with the subtlety that *changing* the set breaks metric comparability, managed by versioning and overlap periods where old and new sets run in parallel. Size: calculated from the decision precision needed (the confidence-intervals entry's arithmetic), not from convenience.
+
+Operationally, evaluation datasets function as regression infrastructure: every model change scored against them before promotion, per-segment deltas gating deployment, trend lines anchoring the program's accuracy narrative. Their governance matters accordingly — access-controlled (an evaluation set that engineers can casually inspect becomes tuning data through human eyes), documented (what it contains, how it was built, what its scores do and don't represent), and secured to the source documents' sensitivity, since the exam is made of the same confidential material as the coursework.

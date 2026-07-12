@@ -1,0 +1,18 @@
+---
+title: "GDPR Data Extraction Compliance"
+slug: "gdpr-data-extraction-compliance"
+letter: "G"
+tagline: "The document contains personal data; the extraction is processing — GDPR follows both, everywhere they go."
+description: "GDPR data extraction compliance governs how document AI handles personal data — lawful basis, minimization, residency, and data-subject rights."
+category: "Compliance & Security"
+tags: ["GDPR", "privacy", "personal data", "compliance"]
+publishedAt: "2026-07-11"
+relatedTerms: ["pii-detection-in-documents", "data-residency-in-document-ai", "document-redaction-automation"]
+status: "published"
+---
+
+GDPR data extraction compliance is the application of European data protection law to document AI: when documents contain personal data — and most business documents do — every extraction, classification, embedding, and model inference over them is "processing" under the GDPR, requiring a lawful basis, bounded purposes, minimization, security, and the ability to honor data subjects' rights. The regulation doesn't mention OCR or language models; it doesn't need to — its definitions capture them, and European regulators have made clear that AI pipelines are processing like any other.
+
+The obligations map concretely onto pipeline design. Lawful basis and purpose limitation: the KYC pack processed for onboarding cannot be quietly repurposed as model training data without a basis for that too — training-data governance is a GDPR question, not just an ML one. Minimization: extract the fields the purpose needs, not everything readable; retention limits reach derived data — the extracted values, embeddings, caches, and logs that carry personal data must expire with their purpose, and a deletion request must find them all (data lineage as privacy infrastructure). Cross-border transfer rules make inference location material: documents sent to a third-country model API are transfers, needing valid mechanisms — a major driver of in-perimeter and EU-resident processing architectures. And data-subject rights become engineering requirements: access and portability need the ability to find everything held on a person (PII detection across the document estate), rectification and erasure need it actionable.
+
+Automated decision-making adds Article 22's layer: decisions with legal or similar effect based solely on automated processing — the credit decline computed from extracted documents — trigger rights to human intervention and explanation, aligning with the human-in-the-loop and provenance patterns this glossary treats as good practice anyway. That convergence is the practical takeaway: the architecture GDPR compels — minimal, resident, traceable, human-supervised where it matters — is largely the architecture careful document AI builds regardless.

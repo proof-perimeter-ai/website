@@ -1,0 +1,18 @@
+---
+title: "Annotation Interfaces"
+slug: "annotation-interfaces"
+letter: "A"
+tagline: "The workbench where humans teach machines to read — and where tooling quality silently sets data quality."
+description: "Annotation interfaces are the tools annotators use to label documents — region drawing, transcription, review — whose design drives dataset quality and cost."
+category: "Models & Training"
+tags: ["annotation tools", "labeling interface", "data labeling", "tooling"]
+publishedAt: "2026-07-11"
+relatedTerms: ["annotation-for-document-ai", "annotation-guidelines-for-ocr", "human-validation-pipelines"]
+status: "published"
+---
+
+Annotation interfaces are the software tools in which humans label documents for AI: viewers that render pages at zoomable fidelity, drawing tools for bounding boxes and polygons, transcription editors aligned to image regions, taxonomies for classification, and linking tools that connect keys to values or table cells to structure. They also carry the workflow around the labeling — task assignment, guideline display, quality sampling, disagreement adjudication, and export into training formats. Unglamorous as tooling sounds, interface quality is a first-order driver of both dataset quality and labeling cost.
+
+The design decisions that matter are concrete. Keyboard-first flows and sensible defaults can double throughput on repetitive field labeling. Model-assisted pre-annotation — the current model proposes boxes and transcriptions, the human corrects — multiplies speed but must be designed against automation bias, or annotators start approving model errors into the ground truth. Rendering fidelity matters more than it seems: an interface that downsamples a dense table or renders a PDF's text layer instead of its true appearance produces labels subtly detached from what the model will actually see. And integrated quality mechanics — gold-standard tasks, agreement dashboards, targeted re-review — turn quality from an afterthought into an ambient property of the process.
+
+For document AI in regulated industries, the interface is also part of the security perimeter: annotators see raw customer files, so access control, redaction options, watermarking, on-premises or in-VPC deployment, and audit logs of who viewed what are requirements, not features. The same interface DNA reappears in production human-in-the-loop review tools — which is why mature platforms unify them: the reviewer correcting a live extraction and the annotator building next quarter's training set are, functionally, doing the same work in the same workbench.

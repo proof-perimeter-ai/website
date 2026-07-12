@@ -1,0 +1,18 @@
+---
+title: "Document Parsing Semantic Search"
+slug: "document-parsing-semantic-search"
+letter: "D"
+tagline: "Search is only as smart as the parse beneath it — structure-aware parsing is what makes semantic search actually semantic."
+description: "Document parsing for semantic search prepares content — structure, tables, sections — so embedding-based retrieval finds meaning, not fragments."
+category: "RAG & Search"
+tags: ["parsing", "semantic search", "RAG preparation", "retrieval quality"]
+publishedAt: "2026-07-11"
+relatedTerms: ["semantic-search-over-documents", "document-chunking-strategies", "document-understanding-for-rag"]
+status: "published"
+---
+
+Document parsing for semantic search is the preparation layer that determines whether meaning-based retrieval works: converting documents into faithfully structured text — sections intact, tables coherent, reading order correct, boilerplate separated from content — before anything is chunked, embedded, and indexed. The compound term names a dependency that teams discover empirically: semantic search quality is bounded by parsing quality, because embeddings faithfully encode whatever they're given — including the garbage. A two-column page read straight across embeds as word salad; a table flattened into a character stream embeds as nothing findable; and the query that should have matched them returns silence or noise.
+
+The parsing requirements are specific to retrieval's needs. Structural recovery gives chunking its cut points — sections and headings that keep retrieval units coherent — and gives results their citation anchors (section path, page number). Table handling decides whether numeric content is searchable at all: kept intact, rendered with headers repeated, or paired with generated descriptions that embed well while the raw table remains retrievable. Reading order and de-hyphenation determine sentence integrity; header/footer stripping keeps every chunk from matching queries about the company name in the running footer; and metadata extraction (document type, date, parties) powers the filtered retrieval that narrows semantic search to the right subset before geometry ranks it.
+
+The diagnostic habit worth adopting: when semantic search misses, inspect the chunks before blaming the embedding model. Retrieval evaluation sets — queries with known correct passages — run against variant parsing configurations reveal how much recall lives in the preparation layer; practitioners routinely find that upgrading the parser (or just fixing table and column handling) outperforms upgrading the embedding model at a fraction of the cost. Parsing is where semantic search is won; embeddings just keep the score.

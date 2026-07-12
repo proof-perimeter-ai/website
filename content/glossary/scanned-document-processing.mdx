@@ -1,0 +1,18 @@
+---
+title: "Scanned Document Processing"
+slug: "scanned-document-processing"
+letter: "S"
+tagline: "The image-only file that carries no native text — where the whole OCR-and-understanding stack begins."
+description: "Scanned document processing handles image-only files — the full pipeline from preprocessing through OCR to structured understanding."
+category: "OCR & Recognition"
+tags: ["scanned documents", "OCR pipeline", "image processing", "digitization"]
+publishedAt: "2026-07-11"
+relatedTerms: ["optical-character-recognition", "image-preprocessing", "document-text-extraction"]
+status: "published"
+---
+
+Scanned document processing is the umbrella term for the full pipeline applied to documents that exist only as images — no embedded text layer, no structured source, just pixels captured from a physical page — as distinct from born-digital files that carry extractable text natively. It's a useful term precisely because it names the *category* of documents requiring the complete stack this glossary describes piece by piece: preprocessing to correct capture defects, OCR to recognize the text, layout analysis to recover structure, and understanding or extraction layered on top — every stage necessary, because nothing about the file offers a shortcut.
+
+The category spans a wider quality range than "scanned" might suggest at first: flatbed scanner output at controlled resolution and lighting sits at one end, genuinely clean and predictable; phone photographs, faxes, and photocopies-of-photocopies sit at the degraded end, each with characteristic artifacts this glossary's preprocessing and quality entries address individually. What unifies the category operationally is that every document in it must pass through recognition before any downstream capability — search, extraction, classification — becomes possible, meaning the processing pipeline's overall accuracy ceiling is set by whatever the weakest stage in that chain produces, and a pipeline architected around scanned document processing has to treat the whole chain as one system rather than optimizing any single stage in isolation.
+
+The practical significance for organizations digitizing paper archives, or processing ongoing scanned intake, is that "scanned document processing" as a capability claim deserves the same scrutiny this glossary applies to accuracy claims generally: a vendor or system that handles clean flatbed scans well may perform very differently on the degraded end of the same category, and evaluating "can this system process scanned documents" requires testing across the actual quality distribution an organization's documents represent — not just the easiest examples. The category's persistence, even as born-digital document creation grows, reflects a durable reality: physical paper continues to enter organizational workflows through mail, fax, legacy archives, and countertop transactions, and scanned document processing remains the entry point that converts that paper into anything a computer can use.

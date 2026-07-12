@@ -1,0 +1,18 @@
+---
+title: "SOC 2 Document Controls"
+slug: "soc-2-document-controls"
+letter: "S"
+tagline: "Prove the control operates, not just that it exists — the evidence discipline SOC 2 audits demand of document handling."
+description: "SOC 2 document controls are the security and privacy safeguards around document processing that SOC 2 audits examine — access, encryption, and evidence."
+category: "Compliance & Security"
+tags: ["SOC 2", "security controls", "audit", "compliance"]
+publishedAt: "2026-07-11"
+relatedTerms: ["compliance-audit-documentation", "data-loss-prevention-dlp-for-documents", "document-audit-trail"]
+status: "published"
+---
+
+SOC 2 document controls are the specific security, availability, confidentiality, and privacy safeguards around document handling that a SOC 2 audit — the widely required third-party attestation for technology vendors handling customer data — examines and tests. Where SOC 2 broadly covers an organization's systems and processes, the document-handling slice matters distinctly for any document AI platform or service, because documents are frequently the most sensitive content such systems process, and auditors scrutinize document-specific controls with particular attention: who can access uploaded documents, how they're encrypted at rest and in transit, how long they're retained, and what happens to them after processing completes.
+
+The controls a document AI system needs to satisfy map closely onto themes this glossary treats throughout its compliance entries, but SOC 2's distinguishing requirement is evidentiary: it's not enough for a control to exist in policy — an auditor must be able to observe it *operating* over a sustained period, typically six to twelve months, through logs, samples, and demonstrable enforcement. This means access controls need audit logs showing who actually accessed which documents and when, not just a stated access policy; encryption needs to be verifiably applied and key-managed appropriately, not merely claimed in a security whitepaper; retention and deletion need to be demonstrably enforced on schedule, with evidence that expired documents were actually purged rather than merely scheduled for purging; and incident response needs a track record showing the process was actually exercised, if any incidents occurred during the audit period.
+
+For organizations evaluating a document AI vendor, a SOC 2 Type II report (the operating-effectiveness variant, as distinct from the point-in-time Type I) is the standard artifact reviewed before entrusting sensitive documents to a third-party processing service — and the report's value lies specifically in its independence and evidentiary rigor, which is why it carries weight that a vendor's own security claims don't. For organizations building or operating their own document AI infrastructure, the same control categories apply internally: the discipline of demonstrable, evidence-backed controls rather than policy-only compliance is the practical throughline connecting SOC 2 to the broader audit-readiness and compliance-automation themes this glossary treats as foundational to trustworthy document processing at any scale.

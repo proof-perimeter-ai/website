@@ -1,0 +1,18 @@
+---
+title: "Driver's License Extraction"
+slug: "drivers-license-extraction"
+letter: "D"
+tagline: "Fifty states, hundreds of designs, one task: read the license, verify the person."
+description: "Driver's license extraction reads identity fields from license images — name, number, dates, address — with format validation and fraud checks for KYC."
+category: "Financial Services"
+tags: ["driver's license", "ID extraction", "identity verification", "KYC"]
+publishedAt: "2026-07-11"
+relatedTerms: ["government-id-parsing", "passport-ocr", "kyc-know-your-customer"]
+status: "published"
+---
+
+Driver's license extraction is the automated reading of identity fields from license images: name, address, date of birth, license number, issue and expiry dates, class and restrictions — captured at onboarding, age verification, car rental, or any KYC checkpoint where the license serves as primary identity evidence. The document's difficulty is its diversity: in the US alone, each state issues its own designs and revises them on independent cycles, so production systems face hundreds of active layouts, plus international licenses for good measure — a template-per-format approach loses before it starts.
+
+Extraction leans on the document's machine-readable ally where present: most modern North American licenses carry a PDF417 barcode encoding the identity fields in standardized (AAMVA) format, so the strongest pipelines read both — barcode for reliable data, visual OCR for the front — and *compare* them, because front/barcode mismatch is a first-order fraud signal (novelty and altered licenses routinely update the printed face and neglect or corrupt the barcode). Visual extraction itself must handle the security-feature clutter deliberately designed into licenses (guilloche patterns, ghost images, holographic overlays crossing the text), photographic capture conditions, and the field-label variation across jurisdictions. Validation stacks beyond format checks: expiry against the current date, license number patterns per issuing state, age arithmetic against date of birth.
+
+In identity flows, extraction is one layer of a verification stack: authenticity checks (template conformance for the claimed state and version, security-feature presence, spoofing detection on the capture), biometric comparison of the portrait against a live selfie, and cross-checks against issuing-authority records where available. The data's sensitivity is regulated in its own right (driver's-license data carries specific statutory protection in many jurisdictions), which shapes retention, access, and — increasingly — where the extraction models themselves run.

@@ -1,0 +1,18 @@
+---
+title: "Merged Cell Extraction"
+slug: "merged-cell-extraction"
+letter: "M"
+tagline: "One cell spanning four columns — the table feature that breaks naive grids and the parsers that handle it."
+description: "Merged cell extraction handles spanning cells in tables — recovering the true row-column structure that merged headers and groups encode."
+category: "Data Extraction"
+tags: ["merged cells", "table structure", "spanning cells", "extraction"]
+publishedAt: "2026-07-11"
+relatedTerms: ["spanning-cell-recognition", "table-reconstruction", "table-extraction-from-documents"]
+status: "published"
+---
+
+Merged cell extraction is the handling of table cells that span multiple rows or columns — the merged header sitting over four quarters' columns, the category label spanning its group's rows, the total row consolidating across the grid — during table structure recovery. Merges are how tables express hierarchy and grouping, they are ubiquitous in exactly the documents that matter (financial statements, statements of account, rate tables, specifications), and they are where naive grid assumptions fail: a parser that models tables as uniform rows-times-columns either fractures the merged cell into duplicates and blanks or mis-assigns everything beneath it.
+
+The structural task is recovering each cell's true extent — its row span and column span — so the logical grid reconstructs correctly: the value under "Q3" inherits both "Q3" and the "Revenue (EUR thousands)" super-header merged above it; the rows beside the spanning "Northern Region" label all belong to that region. Detection combines visual evidence (ruling lines that don't subdivide, whitespace extents, alignment) with semantic evidence (the header text that only makes sense spanning), and modern table-structure models (the transformer-based lineage benchmarked with structure-aware metrics like TEDS) predict spans as first-class outputs. Serialization then preserves them: HTML expresses spans natively; markdown cannot — the conversion choice (HTML fallback, value duplication into covered cells, or flattened headers like "Revenue — Q3") is a real decision whose downstream consumers should be considered, since a RAG system and a database loader want different resolutions.
+
+The stakes are semantic: merged headers define what every value underneath *means*, so a span error is a units-or-period error wearing a formatting costume — the Q3 figure attributed to Q4, the subtotal read as a line item. Validation exploits the arithmetic where it exists (groups summing to their spanned totals), and extraction pipelines flag low-confidence spans for the same review economics as any consequential ambiguity.

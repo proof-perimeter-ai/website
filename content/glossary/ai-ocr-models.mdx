@@ -1,0 +1,18 @@
+---
+title: "AI OCR Models"
+slug: "ai-ocr-models"
+letter: "A"
+tagline: "From convolutional stacks to page-reading transformers — the model families that turned OCR from brittle to robust."
+description: "AI OCR models are deep-learning systems for reading text in images — CNN, sequence, and transformer architectures that far outperform classical OCR."
+category: "OCR & Recognition"
+tags: ["AI OCR", "deep learning OCR", "recognition models", "text recognition"]
+publishedAt: "2026-07-11"
+relatedTerms: ["deep-learning-ocr", "transformer-based-ocr", "vision-language-model-vlm"]
+status: "published"
+---
+
+AI OCR models are the deep-learning systems that perform modern text recognition, replacing the hand-engineered feature extraction and per-character classification of classical OCR engines. The family spans several generations: convolutional networks that detect and classify text regions; sequence models (CRNNs trained with CTC loss) that read a text line as a whole, letting context resolve ambiguous characters; attention-based encoder-decoders; and transformer models that treat recognition as image-to-sequence generation. The latest step folds OCR into vision-language models, where reading is one capability of a general document-understanding model rather than a standalone stage.
+
+What the learning-based approach bought is robustness. Classical engines performed well on clean printed pages and collapsed on everything else; neural models trained on millions of varied samples handle fonts they've never seen, curved and rotated text, low-resolution photographs, noisy backgrounds, and — most notably — handwriting, which rule-based systems never cracked. Context is the quiet superpower: a sequence model reading "Inv0ice" knows from surrounding characters that the zero is an "o", the way a human does, instead of classifying each glyph in isolation.
+
+Choosing among AI OCR models is an engineering trade-off across accuracy, speed, and deployment footprint. Large vision-language models read almost anything but cost more per page and often live behind external APIs; compact specialized models — trained or fine-tuned for the document types an institution actually processes — can match them on that distribution while running fast on commodity CPUs inside the institution's own perimeter. Production systems increasingly route between tiers: a small model for the bulk of traffic, escalation to a larger one for the pages that resist.

@@ -1,0 +1,18 @@
+---
+title: "Multilingual OCR"
+slug: "multilingual-ocr"
+letter: "M"
+tagline: "One engine, many scripts — recognition across the world's writing systems, measured per language."
+description: "Multilingual OCR recognizes text across languages and scripts — Latin, Arabic, CJK, Indic — with per-language accuracy as the honest metric."
+category: "OCR & Recognition"
+tags: ["multilingual", "OCR", "scripts", "languages"]
+publishedAt: "2026-07-11"
+relatedTerms: ["cross-language-document-processing", "right-to-left-text-recognition", "vertical-text-recognition"]
+status: "published"
+---
+
+Multilingual OCR is text recognition across languages and writing systems: Latin scripts with their diacritic families, Cyrillic and Greek, Arabic's connected right-to-left forms, the CJK languages' vast character inventories, Indic scripts' conjuncts and matras, Thai's absent word spacing — each a distinct recognition regime, and real document streams mixing them freely: the invoice with English and Arabic, the ID bilingual by law, the contract whose party names cross three scripts. Engine capability here is a coverage *matrix*, not a checkbox: which scripts, at what accuracy, with what handling of mixing.
+
+The technical dimensions layer. Script identification routes regions (or lines, or words — mixing happens at every granularity) to appropriate recognition; character-set scale shapes architecture (a CJK recognizer's output space is tens of thousands of classes; Latin's dozens — with consequences for model size and confusion structure); script-specific rendering demands specific handling (Arabic's contextual letterforms, Indic conjunct stacking, vertical CJK layouts, right-to-left and bidirectional text flow — the sibling entries cover the directional cases); and language models within the recognizer must match the language, since the linguistic priors that rescue ambiguous strokes in English corrupt them in Vietnamese if misapplied. Modern multilingual models — and the VLM generation especially — cover breadth impressively, with the persistent caveat that accuracy is uneven: strongest where training data is abundant, weakest exactly on the lower-resource languages and scripts where users have fewest alternatives.
+
+The operational discipline is per-language honesty: accuracy benchmarked per script and language on your own documents (aggregate multilingual scores hide the weak cells of the matrix), confidence calibrated per language (a score's meaning does not transfer across scripts), review queues staffed for the languages routed to them, and the long tail explicitly handled — a defined fallback for the language the pipeline doesn't support, rather than silent garbage. For global institutions, the matrix *is* the requirement: the pipeline serves the document stream the business actually has, in the languages it actually arrives.

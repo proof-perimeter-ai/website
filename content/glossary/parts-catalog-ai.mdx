@@ -1,0 +1,18 @@
+---
+title: "Parts Catalog AI"
+slug: "parts-catalog-ai"
+letter: "P"
+tagline: "Ten thousand pages of part numbers, diagrams, and supersessions — the catalog as a queryable database."
+description: "Parts catalog AI structures manufacturer catalogs — part numbers, specs, diagrams, supersessions — for search, ordering, and maintenance."
+category: "Data Extraction"
+tags: ["parts catalogs", "manufacturing", "extraction", "aftermarket"]
+publishedAt: "2026-07-11"
+relatedTerms: ["bill-of-materials-extraction", "technical-manual-parsing", "service-manual-extraction"]
+status: "published"
+---
+
+Parts catalog AI is the structuring of manufacturer and distributor catalogs — the dense volumes of part numbers, descriptions, specifications, applicability tables, exploded diagrams, and supersession chains through which industrial equipment gets maintained and repaired — into queryable data. Catalogs are the aftermarket's reference layer: the technician finding the right seal for a fifteen-year-old pump, the procurement system matching a requisition to a supplier's numbering, the dealer network answering "does this fit?" — and they arrive as PDFs, scans of legacy print, and per-manufacturer formats that were designed for human browsing, not machine query.
+
+The extraction stack meets the catalog's characteristic structures. Part tables: the identifier-dense grids where OCR precision on alphanumerics is everything (the part-number character confusion that ships the wrong component), extracted with the table machinery and validated against numbering schemes and check patterns where manufacturers use them. Applicability and fitment: the model/year/variant matrices declaring what fits what — the catalog's most valuable and most format-idiosyncratic content, normalized into fitment records that ordering systems can filter on. Exploded diagrams: the illustrated assemblies whose callout numbers key into the adjacent parts list — diagram understanding linking each balloon to its row, so the visual index becomes a clickable one. Supersession chains: the "replaced by" trails through which decades of part evolution thread — extracted and resolved so a query on the obsolete number reaches the current one.
+
+The consuming systems define the value: parts search that answers by equipment rather than by number, e-commerce and dealer platforms populated from manufacturer publications without re-keying, maintenance systems whose BOMs reconcile against catalog truth, and cross-referencing across manufacturers (the interchange problem — this maker's bearing under that maker's number) built on the normalized whole. The maintenance reality matches the technical-manual entries: catalogs revise continuously, and the pipeline that structured last year's edition earns its keep by diffing and re-extracting this year's.

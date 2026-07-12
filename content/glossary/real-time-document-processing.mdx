@@ -1,0 +1,18 @@
+---
+title: "Real-Time Document Processing"
+slug: "real-time-document-processing"
+letter: "R"
+tagline: "The architecture for moments that can't wait — capture, read, and respond while the user is still there."
+description: "Real-time document processing architects the full pipeline — capture through response — for interactive-speed use cases, not just fast models."
+category: "Workflow & Automation"
+tags: ["real-time processing", "architecture", "latency", "interactive"]
+publishedAt: "2026-07-11"
+relatedTerms: ["real-time-data-extraction-apis", "real-time-capture-feedback", "latency-in-document-processing"]
+status: "published"
+---
+
+Real-time document processing is the end-to-end architectural pattern for use cases where a document must be captured, read, and acted on within an interactive session — as distinct from any single fast API call, this is a whole-pipeline commitment: capture feedback at the camera, recognition and extraction within a synchronous budget, validation and any necessary business logic, and a response delivered while the user is still present and waiting. The distinction from batch processing isn't merely speed but design philosophy — every component in the chain has to honor the latency budget, because a pipeline that's fast everywhere except one stage is, from the user's perspective, exactly as slow as its slowest stage.
+
+Architecting for this end-to-end constraint means applying this glossary's performance-related entries in combination rather than isolation: capture-time quality gating (catching bad input before it enters the pipeline at all, since a retake is cheaper than a failed real-time extraction), model tiering toward compact fast models for the synchronous path with escalation reserved for asynchronous follow-up, page-level parallelism where documents span multiple pages, aggressive caching of repeated layouts and templates, and — often decisively — placing inference physically close to the user, whether on-device or in-region, to eliminate network round-trip time from the budget entirely. The architecture also needs an honest fallback: not every document will meet the real-time bar (the genuinely degraded scan, the unusually complex multi-page file), and a well-designed real-time system degrades gracefully into an asynchronous path with clear user communication rather than either hanging indefinitely or silently failing.
+
+The use cases that justify this investment share a common shape: a human is actively waiting, and the alternative to real-time processing is either an abandoned interaction (the onboarding applicant who won't wait) or an inferior fallback (manual review that could have been automated). Identity verification during onboarding, point-of-sale document capture, live customer-service document lookups, and field-service verification are the recurring examples — each one where the business case for real-time architecture isn't marginal latency improvement but the difference between a completed and an abandoned transaction.

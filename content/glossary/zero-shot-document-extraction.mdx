@@ -1,0 +1,18 @@
+---
+title: "Zero-Shot Document Extraction"
+slug: "zero-shot-document-extraction"
+letter: "Z"
+tagline: "No examples, no training — extraction from a document type the model has never explicitly seen."
+description: "Zero-shot document extraction pulls fields from unfamiliar document types with no task-specific examples — relying entirely on general pretrained capability."
+category: "Data Extraction"
+tags: ["zero-shot", "extraction", "generalization", "AI models"]
+publishedAt: "2026-07-11"
+relatedTerms: ["few-shot-learning-for-ocr", "template-free-document-extraction", "cross-domain-generalization"]
+status: "published"
+---
+
+Zero-shot document extraction is the capability of extracting specified fields from a document type without any task-specific training examples or fine-tuning — providing only a schema or instruction describing what to extract, and relying entirely on a model's general pretrained capability to locate and extract matching content from a document it has never explicitly been trained on. It represents the far end of the spectrum this glossary's few-shot-learning entry describes as a continuum: zero-shot requires no examples at all, few-shot requires a handful, and full fine-tuning requires substantial labeled data — with each step down that spectrum trading required data investment against expected accuracy on the specific target task.
+
+The capability's practical emergence tracks directly with the rise of large, broadly-pretrained vision-language models this glossary describes throughout its model entries: a model trained on an enormous, diverse corpus of documents during pretraining has implicitly learned general patterns — what invoices tend to look like, how forms typically organize labels and values, common table conventions — extensively enough that it can often apply this general knowledge to a genuinely new document type on first encounter, extracting reasonably accurate results purely from a natural-language description of the desired fields. This is what makes rapid deployment against new document types operationally practical in a way that would have required a dedicated training project in the template-based extraction era this glossary describes as the field's earlier default.
+
+The honest limitation, consistent with this glossary's cross-domain-generalization entry, is that zero-shot performance is inherently variable and generally lower than what fine-tuning on task-specific examples would achieve, with the gap widening for document types, domains, or field types that diverge more substantially from what broad pretraining exposed the model to extensively. This is precisely why zero-shot extraction functions best as a starting point rather than an endpoint in most production deployments: it enables immediate capability against a new document type with zero setup investment, letting a team assess real-world performance and decide — based on measured accuracy against the specific documents that matter — whether that zero-shot baseline is sufficient as-is, or whether the gap to production-required accuracy justifies moving toward few-shot prompting, targeted fine-tuning, or the fuller domain-adaptation investment this glossary's model-tuning entries describe as the path to accuracy zero-shot capability alone typically can't reach on its own.

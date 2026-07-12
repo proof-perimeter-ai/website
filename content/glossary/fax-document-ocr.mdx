@@ -1,0 +1,18 @@
+---
+title: "Fax Document OCR"
+slug: "fax-document-ocr"
+letter: "F"
+tagline: "Still arriving in 2026 — low-resolution, noise-streaked, and legally binding: the fax must be read."
+description: "Fax document OCR handles the format's harsh realities — 200 DPI, compression artifacts, noise — still critical in healthcare, legal, and insurance."
+category: "OCR & Recognition"
+tags: ["fax OCR", "low resolution", "healthcare documents", "legacy formats"]
+publishedAt: "2026-07-11"
+relatedTerms: ["low-quality-scan-processing", "tiff-document-ocr", "low-resolution-image-ocr"]
+status: "published"
+---
+
+Fax document OCR is text recognition tuned to a format that refuses to die: healthcare (where fax remains a dominant channel for referrals, prior authorizations, and records exchange), legal service, insurance claims, and government filings still move meaningful volume through fax machines and fax-to-email gateways. The format's constraints are brutal by modern standards — typically 200×100 or 200×200 DPI, one-bit black-and-white, Group 3/4 compression — and its degradations are layered: transmission noise as streaks and dropped lines, generational loss from documents faxed multiple times, headers overprinting content, and the sender's own scanner quality compounding underneath.
+
+Recognition at fax quality demands specific adaptation. Characters at 200 DPI occupy a fraction of the pixels models see in training scans, so recognizers benefit from fax-realistic training data — real fax corpora or augmentation pipelines that simulate the resolution, binarization, and noise signature. Preprocessing carries heavier load: despeckling tuned to fax noise patterns, line-removal for the transmission streaks, and careful handling of the already-binarized input (many enhancement techniques assume grayscale that no longer exists). Layout hazards are characteristic too: fax headers and footers injected onto every page (to be stripped, but not along with content), cover sheets to be recognized and separated, and the multi-generation blur that turns tight table lines into merged smears.
+
+The operational reality is that fax channels usually carry high-stakes, time-sensitive content — the prior authorization holding up treatment, the legal notice starting a clock — so pipelines treat fax as a distinct capture channel with its own tuned models, its own confidence calibration (scores from clean-scan calibration are fiction at fax quality), and honest routing: lower automation thresholds, more human review, and upstream advocacy where possible — because every fax channel converted to digital intake is a permanent accuracy upgrade no model can match.

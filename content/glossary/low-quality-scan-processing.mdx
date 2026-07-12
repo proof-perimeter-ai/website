@@ -1,0 +1,18 @@
+---
+title: "Low-Quality Scan Processing"
+slug: "low-quality-scan-processing"
+letter: "L"
+tagline: "The worst files in the pile — faded, skewed, third-generation copies — and the pipeline that reads them anyway."
+description: "Low-quality scan processing recovers usable data from degraded document images — layered enhancement, robust models, and honest confidence."
+category: "Image Preprocessing"
+tags: ["low quality scans", "degraded documents", "robustness", "enhancement"]
+publishedAt: "2026-07-11"
+relatedTerms: ["fax-document-ocr", "blurred-text-recognition", "archival-document-restoration"]
+status: "published"
+---
+
+Low-quality scan processing is the discipline of extracting usable data from the document population's worst tier: the third-generation photocopy, the faded thermal receipt scanned five years later, the crooked fax of a fax, the phone photo of a crumpled page taken in a dim warehouse. Every real document stream has this tail — typically a small share of volume producing an outsized share of failures, exceptions, and manual work — and how a pipeline handles it determines the gap between benchmark accuracy and production experience.
+
+The processing strategy is layered and channel-aware. Quality assessment first: automated scoring (resolution, contrast, blur, noise, skew) that grades each page and selects treatment — the clean scan skipping enhancement entirely, the degraded one routed through the applicable repairs (deskew, denoise, contrast stretch, learned restoration) covered in this glossary's preprocessing entries. Robust recognition second: models trained with degradation-matched augmentation, and escalation tiers — the compact fast model attempting first, the stronger VLM taking the pages that resist, with the arithmetic favoring escalation since hard pages are few and their failure costs concentrate. Constraint exploitation third: field formats, checksums, cross-document corroboration, and arithmetic doing disproportionate work exactly where pixels underdetermine characters.
+
+The honesty layer matters most at the bottom of the quality range: confidence calibrated *per quality tier* (scores learned on clean scans are fiction on degraded ones), reconstructive enhancement never laundering uncertainty (the model's inpainted stroke is a hypothesis, not an observation), and a defined floor — some pages are genuinely unreadable, and the correct output is "unprocessable: request re-capture" with the reason, not a maximally plausible guess. Upstream, the same telemetry that grades pages indicts channels: the branch scanner producing the degradation, the fax route worth migrating — because the cheapest way to process a bad scan remains not receiving it.

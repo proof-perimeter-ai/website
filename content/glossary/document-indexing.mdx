@@ -1,0 +1,18 @@
+---
+title: "Document Indexing"
+slug: "document-indexing"
+letter: "D"
+tagline: "Findable is a feature — the metadata, text, and vectors that let a million documents answer to a query."
+description: "Document indexing organizes documents for retrieval — metadata fields, full-text indexes, and embeddings — making repositories searchable at scale."
+category: "RAG & Search"
+tags: ["indexing", "search", "metadata", "retrieval"]
+publishedAt: "2026-07-11"
+relatedTerms: ["full-text-search-indexing", "document-retrieval-systems", "metadata-extraction"]
+status: "published"
+---
+
+Document indexing is the work of making documents findable: extracting and organizing the information — metadata fields, searchable text, embeddings — that lets a repository answer queries instead of being a pile of files. An unindexed archive contains its contents in only the weakest sense; indexing is what converts possession into access. The classic operational version predates AI: capture operators keying an account number, date, and document type per file so it could be retrieved later. Document AI industrialized exactly that: classification assigns the type, extraction populates the metadata fields, OCR yields the full text, and embedding models add semantic vectors — the whole indexing pass automatic per document at ingestion.
+
+The index layers correspond to query styles. Structured metadata (type, parties, dates, amounts, case IDs) answers filtered lookups — every document for this customer, all invoices over threshold from Q3 — and enforces access control cheaply. Full-text indexes answer keyword and phrase search with the mature machinery of inverted indexes, stemming, and relevance ranking. Vector indexes answer meaning-based queries and power RAG retrieval. Production search blends them — hybrid retrieval with metadata pre-filters, lexical and semantic scores fused — because each layer catches what the others miss: exact identifiers defeat embeddings; paraphrased concepts defeat keywords.
+
+Index quality is inherited quality: OCR errors make text unfindable ("Smlth" won't match Smith), misclassification hides documents behind wrong filters, and extraction mistakes corrupt the metadata that queries trust — which is why indexing pipelines carry confidence discipline too, flagging low-confidence index fields rather than silently filing documents where they'll never be found. Maintenance is the other half: indexes rebuilt as models improve, re-embedded on model upgrades, synchronized with retention actions (a deleted document must leave every index), and audited for the coverage question that determines whether search can be trusted for compliance and legal purposes: is everything actually in here?

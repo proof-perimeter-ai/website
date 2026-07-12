@@ -1,0 +1,18 @@
+---
+title: "Bounding Box"
+slug: "bounding-box"
+letter: "B"
+tagline: "Four numbers that say 'right here' — the coordinate rectangle that anchors every extraction to its place on the page."
+description: "A bounding box is the rectangle of coordinates locating an element — word, field, table — on a document page, anchoring extractions to their source."
+category: "Document Understanding"
+tags: ["bounding box", "coordinates", "localization", "document AI"]
+publishedAt: "2026-07-11"
+relatedTerms: ["visual-grounding", "document-layout-analysis", "annotation-for-document-ai"]
+status: "published"
+---
+
+A bounding box is the rectangle — typically four coordinates: left, top, width, height (or two corner points) — that locates an element within a document image: a word, a text line, a field value, a table, a signature, a stamp. It is the fundamental unit of spatial information in document AI, appearing everywhere: OCR engines emit a box per recognized word; layout models emit boxes per region; extraction systems attach a box to each field value; and annotation for training consists largely of humans drawing them. Coordinates may be absolute pixels or normalized to page dimensions, the latter surviving resizing and rendering differences.
+
+Boxes do two jobs beyond mere location. As model inputs, they carry the spatial signals that document understanding depends on — layout-aware models consume each token's box alongside its text, which is how they learn that a number's meaning depends on which column header sits above it. As provenance, they anchor outputs to evidence: an extracted "Total: 4,860.00" with a bounding box is a claim you can verify by looking exactly where the system looked. That anchoring powers the review interfaces where humans confirm low-confidence values in seconds, the audit trails that trace database records back to source pixels, and the highlighted citations in document Q&A.
+
+The rectangle is an approximation, and its limits matter at the edges: rotated or curved text overflows an axis-aligned box (quadrilaterals or oriented boxes handle this), tightly packed content produces overlapping boxes, and a box says where but not what — pairing geometry with semantics is the rest of the pipeline's job. Practical systems also navigate coordinate-space pitfalls: PDF points versus rendered pixels, page rotation metadata, and resolution mismatches between the image a model saw and the one a viewer displays, any of which can silently shift a "verified" highlight onto the wrong text.

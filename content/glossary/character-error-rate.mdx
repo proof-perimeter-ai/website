@@ -1,0 +1,18 @@
+---
+title: "Character Error Rate"
+slug: "character-error-rate"
+letter: "C"
+tagline: "The OCR world's batting average — how many characters the model got wrong, per hundred it should have read."
+description: "Character error rate (CER) measures OCR accuracy as the proportion of character-level errors — insertions, deletions, substitutions — against ground truth."
+category: "Evaluation & Quality"
+tags: ["character error rate", "CER", "OCR accuracy", "evaluation metrics"]
+publishedAt: "2026-07-11"
+relatedTerms: ["word-error-rate", "ocr-accuracy-rate", "extraction-accuracy-benchmarking"]
+status: "published"
+---
+
+Character error rate (CER) is the standard metric for OCR accuracy at the finest granularity: the number of character-level mistakes — substitutions (reading "8" as "3"), insertions (adding a character that isn't there), and deletions (dropping one that is) — divided by the total characters in the ground-truth text. Computed via edit distance between the recognized text and the reference transcription, a CER of 0.02 means two errors per hundred characters. Its sibling, word error rate, applies the same arithmetic at word level, punishing any word containing at least one wrong character.
+
+CER's virtues are comparability and diagnostic sharpness: it is layout-independent, cheap to compute against transcribed test sets, and sensitive enough to distinguish models that word-level or field-level metrics would tie. Its limitations are equally important. CER weights all characters equally, but errors are not equal in consequence — a misread character in a company name is cosmetic; the same error in an IBAN is a misdirected payment. It also depends heavily on normalization decisions (case, whitespace, punctuation, unicode forms) that must be fixed and disclosed for numbers to be comparable, and it says nothing about whether the right text was read from the right place — a system can achieve low CER while attributing values to the wrong fields.
+
+Mature evaluation therefore uses CER as one layer in a stack: CER for raw recognition quality, word error rate for readability-sensitive uses, and field-level accuracy — was the extracted, normalized value exactly correct? — for the business outcome. The layering is diagnostic: high field accuracy with mediocre CER suggests robust extraction atop noisy reading; the reverse pattern points at layout or key-value association failures. And because averages conceal, CER is most useful reported by document type, capture channel, and script — the aggregate number flatters every system by drowning its weakest segment in its strongest.

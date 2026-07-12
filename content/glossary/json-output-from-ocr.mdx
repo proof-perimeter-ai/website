@@ -1,0 +1,18 @@
+---
+title: "JSON Output From OCR"
+slug: "json-output-from-ocr"
+letter: "J"
+tagline: "Not a wall of text — words with positions, confidences, and structure, in the format pipelines actually consume."
+description: "JSON output from OCR structures recognition results — text, coordinates, confidence, hierarchy — for programmatic consumption in pipelines."
+category: "Data Extraction"
+tags: ["JSON", "OCR output", "structured output", "integration"]
+publishedAt: "2026-07-11"
+relatedTerms: ["structured-data-output", "json-schema-extraction", "api-first-document-processing"]
+status: "published"
+---
+
+JSON output from OCR is the structured form in which recognition results become programmatically useful: not a flat text dump but a hierarchy — pages containing blocks containing lines containing words — where each element carries its text, its bounding-box coordinates, and its confidence score, with document-level metadata (dimensions, rotation applied, language detected, engine version) alongside. Every serious OCR engine and document API emits some dialect of this; the JSON *is* the interface between recognition and everything downstream.
+
+The schema's elements each serve consumers. Geometry (per-word boxes, normalized or pixel coordinates) powers layout analysis, key-value pairing, review-interface highlighting, and redaction placement — the spatial layer that flat text amputates. Confidence per word and aggregated per element powers routing, review prioritization, and calibration measurement. Hierarchy encodes reading structure — and its quality varies by engine, with line and paragraph grouping being where cheap OCR quietly costs you later. Beyond raw recognition, document AI APIs extend the same JSON pattern upward: detected tables with cell structure, key-value pairs, entities, and — in the VLM era — schema-shaped extraction results, all following the same principle of value-plus-position-plus-confidence.
+
+The engineering practicalities are the usual API hygiene with document flavor. Dialects differ (Tesseract's TSV/ALTO lineage, each cloud API's schema, each parser's document model), so pipelines normalize to an internal representation early rather than coupling to a vendor's shape. Coordinate conventions bite (origin corner, normalized versus absolute, PDF points versus rendered pixels — mismatches silently shift every highlight). Volume matters (per-word JSON for a 500-page file is large; streaming and per-page processing keep memory sane). And versioning discipline applies: engine upgrades change outputs subtly — text same, geometry shifted, confidence rescaled — which downstream thresholds and parsers feel unless the schema and its semantics are pinned and tested like any dependency.

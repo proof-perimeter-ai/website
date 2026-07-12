@@ -1,0 +1,18 @@
+---
+title: "Continual Model Training"
+slug: "continual-model-training"
+letter: "C"
+tagline: "Documents evolve; models that don't retrain quietly fall behind them."
+description: "Continual model training updates document AI models on new data over time — keeping accuracy as document types, formats, and volumes shift."
+category: "Models & Training"
+tags: ["continual training", "retraining", "model updates", "lifecycle"]
+publishedAt: "2026-07-11"
+relatedTerms: ["continuous-learning-systems", "model-drift-in-ocr-systems", "active-review-learning-loops"]
+status: "published"
+---
+
+Continual model training is the practice of updating document AI models on new data throughout their production life, rather than training once and deploying forever. The document world a model serves does not stand still: vendors redesign invoices, regulators mandate new form versions, business expansion brings new languages and document types, capture channels shift from scanner to phone, and fraudsters adapt to whatever the current model catches. A model frozen at deployment experiences all of this as accumulating drift — accuracy eroding not because the model changed but because the world did.
+
+The training data for continual updates comes largely from the system's own operation: human review corrections (labels for exactly the cases the model found hard), newly annotated samples of emerging document types, and periodically refreshed slices of representative traffic to prevent the update data from skewing entirely toward failures. The engineering challenge that gives the field its name is catastrophic forgetting — naively fine-tuning on new data can degrade performance on older document types the new batch underrepresents — managed with rehearsal (mixing historical data into updates), regularization approaches, and comprehensive regression evaluation across all document types before any updated model ships.
+
+Operationally, continual training runs as a governed release cycle, not an always-on drip: candidate models trained on schedule or triggered by drift signals, evaluated against fixed benchmarks plus fresh holdouts, compared to the incumbent per document type, and promoted only on evidence — with rollback ready. In regulated deployments each cycle also produces its governance artifacts: what data went in, what changed, how performance shifted, who approved. Institutions that operationalize this loop hold accuracy flat or rising against a moving document population; those that don't typically rediscover their model's decay through a quarter of deteriorating exception rates.

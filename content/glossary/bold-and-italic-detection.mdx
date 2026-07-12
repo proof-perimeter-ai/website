@@ -1,0 +1,18 @@
+---
+title: "Bold And Italic Detection"
+slug: "bold-and-italic-detection"
+letter: "B"
+tagline: "The formatting is the message — bold and italics carry meaning that plain-text OCR throws away."
+description: "Bold and italic detection identifies font styling in document text, preserving emphasis that signals structure, defined terms, and meaning."
+category: "OCR & Recognition"
+tags: ["font style detection", "bold", "italic", "text attributes"]
+publishedAt: "2026-07-11"
+relatedTerms: ["document-layout-analysis", "header-detection", "markdown-document-conversion"]
+status: "published"
+---
+
+Bold and italic detection is the recognition of font styling alongside the text itself — identifying which words on a page are bold, italic, underlined, or otherwise emphasized. Plain OCR output flattens a document into an undifferentiated character stream, but styling is rarely decorative: bold marks headings, field labels, and defined terms; italics mark case names in legal citations, foreign phrases, and titles; and in contracts, the distinction between a bolded warranty disclaimer and body text can carry legal significance. Discarding style discards meaning.
+
+Technically, style detection operates on the visual properties of recognized text: stroke weight relative to the document's baseline font for bold, glyph slant for italics, with classifiers working per word or text line. The subtleties are real — a heavier font family is not bold, a scanned document's ink spread thickens all strokes, and low-quality captures blur the distinctions — so robust systems calibrate against the document's own typography rather than absolute thresholds. Modern layout and vision-language models increasingly emit styling as attributes of extracted text spans, and document-to-markdown converters express it directly as `**bold**` and `*italic*` markers.
+
+The applications ripple through the pipeline. Structure recovery uses bold as a heading and label signal, improving layout analysis and key-value pairing (bold "Account Number:" followed by regular text is a classic label-value pattern). Faithful format conversion — PDF to markdown or HTML for RAG systems and copilots — preserves emphasis so downstream language models see what the author stressed. And in domains like legal and regulatory documents, style-aware extraction lets rules target exactly the text the formatting singles out: the bolded exclusions, the italicized definitions, the underlined amendments.

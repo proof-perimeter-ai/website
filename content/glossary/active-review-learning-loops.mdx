@@ -1,0 +1,18 @@
+---
+title: "Active Review Learning Loops"
+slug: "active-review-learning-loops"
+letter: "A"
+tagline: "Every correction a reviewer makes teaches the model — turning quality control into a training pipeline."
+description: "Active review learning loops feed human corrections from document review queues back into model training, so extraction accuracy improves with use."
+category: "Models & Training"
+tags: ["learning loops", "human feedback", "model improvement", "review queues"]
+publishedAt: "2026-07-11"
+relatedTerms: ["active-learning-for-ocr", "feedback-loops-in-ai-extraction", "human-in-the-loop-verification"]
+status: "published"
+---
+
+An active review learning loop is the closed circuit between a document AI system's human review process and its training pipeline: low-confidence extractions route to reviewers, reviewers correct them, and those corrections flow back as labeled training data that improves the next model version. The system's weakest predictions generate exactly the labels needed to strengthen them — quality control and model improvement become the same activity rather than separate budgets.
+
+Making the loop work takes more engineering than the concept suggests. Corrections must be captured in a training-usable form — the field, the corrected value, and the source region on the page, not just an edited database record. The data needs curation before training: reviewer errors and inconsistencies exist too, so high-impact corrections are often double-checked or adjudicated. And because reviewed documents are a biased sample (they're the hard ones, by construction), retraining pipelines balance them against representative traffic to avoid skewing the model. Finally, each retrained version must clear an evaluation gate on a held-out benchmark before it replaces the incumbent — a loop without an evaluation gate can drift downward as easily as upward.
+
+The strategic effect compounds: an institution running an active review loop is continuously manufacturing a proprietary labeled dataset of its own document types, in its own languages, with its own quirks — an asset no off-the-shelf model or competitor can replicate. In regulated environments, the loop also has to be governed: model updates documented, training data lineage traceable, and performance changes evidenced, so the regulator can see not just that the model changed, but why and with what effect.

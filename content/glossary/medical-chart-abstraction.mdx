@@ -1,0 +1,18 @@
+---
+title: "Medical Chart Abstraction"
+slug: "medical-chart-abstraction"
+letter: "M"
+tagline: "The chart read for what the registry, the measure, or the study needs — abstraction as clinical data work."
+description: "Medical chart abstraction extracts defined clinical data elements from patient records — for registries, quality measures, and research — with AI assistance."
+category: "Healthcare"
+tags: ["chart abstraction", "clinical data", "registries", "quality measures"]
+publishedAt: "2026-07-11"
+relatedTerms: ["clinical-notes-analysis", "ehr-data-extraction", "medical-records-review-for-insurance"]
+status: "published"
+---
+
+Medical chart abstraction is the extraction of defined clinical data elements from patient records against a specification: the registry's case-report form, the quality measure's numerator and denominator criteria, the study protocol's variables, the risk-adjustment model's condition list. Unlike open-ended record extraction, abstraction has an answer key's structure — each element with a definition, permissible sources, and coding rules — and a professional tradition: trained abstractors reading charts and applying the specifications, at costs that limited how much abstraction healthcare could afford to do.
+
+AI-assisted abstraction restructures the work without changing its standards. The models do the locating and proposing: clinical NLP and document AI finding the candidate evidence across the chart's notes, reports, and scanned documents (the ejection fraction in the echo report, the medication at discharge, the staging in the pathology note), mapping it to the specification's elements, and presenting each proposed value with its source passages. Human abstractors verify and decide — the specification's judgment calls (does this documentation *meet* the measure's definition?) remaining theirs — at throughput multiples of unassisted reading. The design mirrors this glossary's review patterns: evidence-linked proposals, confidence-ranked attention, and every accepted element carrying its citation into the abstracted record.
+
+The applications ration by value: quality reporting (the measure sets health systems must submit, historically sampled because full abstraction was unaffordable — automation moves toward full-population measurement), registries (oncology, cardiac, trauma — the disease databases research and quality improvement run on), risk adjustment (condition capture that payment models require, with its compliance sensitivities — over-capture is fraud exposure, under-capture is revenue loss, and the audit trail must support every code), and research cohorts. Throughout, PHI governance and clinical accountability frame the automation: the processing stays within covered infrastructure, and the abstracted datum is only as good as the source documentation it cites.

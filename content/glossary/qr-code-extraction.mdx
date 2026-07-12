@@ -1,0 +1,18 @@
+---
+title: "QR Code Extraction"
+slug: "qr-code-extraction"
+letter: "Q"
+tagline: "A two-dimensional shortcut — dense data recovered reliably from a small square."
+description: "QR code extraction detects and decodes QR codes in documents — dense structured data recovered with built-in error correction."
+category: "OCR & Recognition"
+tags: ["QR codes", "2D barcodes", "recognition", "document capture"]
+publishedAt: "2026-07-11"
+relatedTerms: ["barcode-recognition", "optical-mark-recognition-omr", "document-routing-automation"]
+status: "published"
+---
+
+QR code extraction is the detection and decoding of QR (Quick Response) codes embedded in documents: the two-dimensional matrix barcode that packs far more data than its linear 1D cousins into the same footprint, with built-in Reed-Solomon error correction robust enough to decode correctly even when a meaningful portion of the code is damaged, obscured, or poorly printed. In document workflows, QR codes appear as payment references on invoices, verification links on certificates, case identifiers on forms, and increasingly as a deliberate design choice — issuers embedding a QR code specifically so downstream systems can skip OCR entirely for the fields that matter most.
+
+The decoding pipeline mirrors linear barcode recognition with 2D-specific detection: locating the code's three distinctive corner-alignment patterns (which anchor the code regardless of rotation), correcting for perspective and rotation using those anchors, and decoding through the standard QR algorithm — a well-solved problem where the remaining engineering challenge is almost entirely about *finding* the code reliably in a full-page document image (small, sometimes low-contrast, occasionally printed at the edge of legibility) rather than decoding it once found. Detection models trained for document contexts handle this location step at the resolution and scale documents actually present, distinct from the close-range, high-contrast conditions consumer QR-scanning apps assume.
+
+The strategic value in document pipelines runs parallel to the barcode entry's: QR codes carry more data than 1D barcodes (making them suited to encoding structured payloads — a full reference number, a URL, sometimes a small JSON blob) while retaining the same reliability advantage — a successful decode is essentially certain to be correct, immune to the character-level ambiguity that plagues even confident OCR. Document designers who control their own forms increasingly exploit this deliberately: embedding a QR-encoded summary of a form's key fields alongside the human-readable content, so the machine-readable channel and the human-readable one both exist on the same page, and the pipeline reads whichever it trusts more.

@@ -1,0 +1,18 @@
+---
+title: "Visual Grounding"
+slug: "visual-grounding"
+letter: "V"
+tagline: "Point to the pixels — the mechanism that lets an AI answer show exactly where it looked."
+description: "Visual grounding links AI outputs to specific image regions — the mechanism behind highlighted evidence, verifiable extraction, and fast review."
+category: "Document Understanding"
+tags: ["visual grounding", "evidence linking", "verification", "review"]
+publishedAt: "2026-07-11"
+relatedTerms: ["document-grounding", "bounding-box", "citation-grounded-extraction"]
+status: "published"
+---
+
+Visual grounding is the specific mechanism of linking an AI system's output to the exact region of a document image that supports it — a model asserting "the total is $4,860.00" while also indicating the precise bounding box on the page where that value appears, rather than making the claim without any pointer back to its visual evidence. Where the document-grounding entry covers the broader principle of tethering AI outputs to source content, visual grounding names the specific pixel-level implementation of that principle for image-based documents, and it's the mechanism that makes the highlighted-region review interfaces this glossary's human-in-the-loop entries describe technically possible in the first place.
+
+The technical implementation varies by model architecture but shares a common requirement: the model needs to maintain some form of spatial correspondence between its internal processing and the original image coordinates, so that when it produces an output, it can also produce (or have extracted from its internal attention patterns) the specific region that output derives from. Detection and layout models produce this naturally, since bounding boxes are already their native output format. Vision-language models require more deliberate architectural or training choices to produce reliable grounding — some are trained explicitly to output coordinates alongside their text responses, while others' grounding is inferred post-hoc from attention patterns, an approach that's informative but generally less precise and less reliable than models trained to ground explicitly as part of their core task.
+
+The practical value of visual grounding compounds across nearly every downstream use case this glossary describes: review interfaces that highlight exactly where an extracted value came from turn verification from a document search into a glance, audit trails gain pixel-level evidence rather than just asserted values, and — perhaps most importantly for trust in AI-generated document analysis — visual grounding provides a genuine, checkable correctness signal distinct from the model's own confidence score: a human (or an automated check comparing the grounded region's actual content against the claimed value) can verify whether the model actually looked at the right place, which is a meaningfully different and often more reliable trust signal than confidence alone, since a model can be confidently wrong about content but rarely produces a grounding box that points at genuinely irrelevant image content while still getting the value coincidentally right — making visual grounding one of the more powerful, underused tools for building genuinely verifiable document AI systems rather than ones that merely sound confident.

@@ -1,0 +1,18 @@
+---
+title: "Few-Shot Learning For OCR"
+slug: "few-shot-learning-for-ocr"
+letter: "F"
+tagline: "Five examples, not five thousand — adapting recognition to new documents from a handful of samples."
+description: "Few-shot learning for OCR adapts recognition to new scripts, fonts, and document types from a handful of examples instead of large labeled datasets."
+category: "Models & Training"
+tags: ["few-shot learning", "OCR adaptation", "low-resource", "sample efficiency"]
+publishedAt: "2026-07-11"
+relatedTerms: ["zero-shot-document-extraction", "active-learning-for-ocr", "transfer-learning-for-document-ai"]
+status: "published"
+---
+
+Few-shot learning for OCR is the adaptation of recognition systems to new targets — an unusual font, a new form layout, a low-resource script, a domain's peculiar notation — from a handful of labeled examples rather than the thousands that conventional training assumes. The economics are the motivation: labeled document data is expensive precisely where it's scarcest (the rare script, the archaic typeface, the niche document type), and the long tail of document variety guarantees that every production system eventually meets content its training never covered — with too little of it to justify a training project.
+
+The mechanisms vary by layer. At the recognition-model level, meta-learning and metric-learning approaches train models to adapt quickly — learning representations where a few examples of a new character class or font suffice to recognize it. At the vision-language-model level, few-shot arrives as in-context learning: examples placed in the prompt — here are three of this vendor's invoices with correct extractions; now process the fourth — steering the model without touching weights, the most operationally accessible version of the idea and often the first tool teams reach for on a new document type. Parameter-efficient fine-tuning sits between: a LoRA adapter trained on dozens of samples, cheap enough to justify per-document-type.
+
+The realistic framing is triage. Few-shot methods excel at closing small gaps — the known-good model meeting a new variant of familiar content — and disappoint on genuine distribution leaps (a new script's full complexity does not compress into five examples). Practice therefore sequences: zero-shot first (modern VLMs handle more than expected), few-shot prompting for the gap that remains, adapters when the volume recurs, and full fine-tuning only where a document population's scale and stakes demand it — with each step's accuracy measured on held-out samples, since few-shot gains are exactly the kind that anecdotes overstate.

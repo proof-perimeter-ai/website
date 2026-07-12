@@ -1,0 +1,18 @@
+---
+title: "Document Binarization"
+slug: "document-binarization"
+letter: "D"
+tagline: "Every pixel votes: ink or paper — the oldest preprocessing step in OCR, still deciding what survives to be read."
+description: "Document binarization converts document images to black-and-white — separating ink from paper — as a foundational OCR preprocessing step."
+category: "Image Preprocessing"
+tags: ["binarization", "thresholding", "preprocessing", "OCR"]
+publishedAt: "2026-07-11"
+relatedTerms: ["adaptive-thresholding", "image-preprocessing", "contrast-enhancement"]
+status: "published"
+---
+
+Document binarization is the conversion of a grayscale or color document image into pure black and white — every pixel classified as ink (foreground) or paper (background). It is among the oldest operations in document image processing, foundational to classical OCR engines that operate on binary input, and still relevant wherever downstream algorithms benefit from a clean two-class image: skeletonization for handwriting analysis, connected-component analysis for layout, compression for archival formats, and the many recognition models whose accuracy improves when the ink/paper decision has already been made well.
+
+The method space runs from global to local to learned. Global thresholding (Otsu's method being the classic) picks one cutoff for the whole image — fast and adequate for evenly lit, clean scans. Local and adaptive methods (Niblack, Sauvola, and successors) compute per-region thresholds from neighborhood statistics, surviving the uneven illumination, stains, and faded ink that break global cutoffs. Learned binarization — neural models trained on degraded/clean pairs, benchmarked in the long-running DIBCO competition series — handles the hardest material: historical documents, bleed-through, severe degradation, where the ink/paper decision requires something closer to understanding than statistics. The perennial trade-off is preservation versus cleanliness: aggressive settings that suppress noise also erode thin strokes and fine punctuation; conservative settings preserve strokes and admit speckle.
+
+Its modern role has shifted rather than disappeared. Deep recognition models increasingly consume grayscale or color input directly, learning their own robustness — so pipelines built on modern OCR often skip explicit binarization or apply it selectively per capture channel. But it remains load-bearing in classical-engine pipelines (Tesseract-based systems), archival mass digitization, and as a diagnostic: comparing binarized output across parameter settings is a fast way to see exactly what image quality problems a troublesome document actually has.

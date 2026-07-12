@@ -1,0 +1,18 @@
+---
+title: "Document Similarity Matching"
+slug: "document-similarity-matching"
+letter: "D"
+tagline: "Which documents are like this one? — the primitive behind dedup, precedent search, and fraud rings."
+description: "Document similarity matching measures how alike documents are — by content, structure, or template — powering dedup, clustering, and precedent retrieval."
+category: "RAG & Search"
+tags: ["similarity", "matching", "clustering", "near-duplicates"]
+publishedAt: "2026-07-11"
+relatedTerms: ["document-deduplication", "document-embeddings", "document-version-comparison"]
+status: "published"
+---
+
+Document similarity matching is the measurement of how alike documents are — a primitive that, pointed in different directions, becomes a dozen capabilities: deduplication (are these the same?), version detection (is this a revision of that?), template identification (do these share a form?), precedent retrieval (which past contracts resemble this draft?), clustering (what natural groups does this corpus contain?), and fraud analytics (which "independent" submissions share a suspicious family resemblance?). The question "similar *how*?" is the design decision: content similarity, structural similarity, and visual similarity are different measurements that different applications need.
+
+The measurement toolkit maps to those senses. Lexical methods (shingling, MinHash, TF-IDF cosine) capture verbatim and near-verbatim overlap — the right tool for duplicates and revisions, robust and explainable. Embedding similarity captures semantic likeness independent of wording — the tool for precedent search and topical clustering, where two contracts can be siblings without sharing sentences. Visual and layout similarity (perceptual hashes, layout fingerprints) captures template kinship — the same form filled differently, which content measures score as dissimilar and template analytics need scored as nearly identical. Production systems often compute several and let the application weight them; fraud detection in particular reads the *disagreement* between measures (visually near-identical, content-different: a template reused across applicants).
+
+Scale is the engineering constraint — pairwise comparison across millions of documents is quadratic — so similarity systems lean on indexing: locality-sensitive hashing and approximate nearest-neighbor search retrieve candidates cheaply, with precise scoring reserved for the shortlist. Thresholds, as ever, are application-relative and empirically set: the similarity that means "duplicate, merge silently" is far above the one that means "possibly related, show a human," and conflating those two numbers is how similarity systems either miss their targets or bury their users.

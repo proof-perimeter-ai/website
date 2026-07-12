@@ -1,0 +1,18 @@
+---
+title: "Document Capture UX"
+slug: "document-capture-ux"
+letter: "D"
+tagline: "The cheapest accuracy gain in document AI: help the user take a better photo."
+description: "Document capture UX is the design of scanning and photo-capture experiences — guidance, feedback, quality gates — that determine input quality upstream."
+category: "Workflow & Automation"
+tags: ["capture UX", "mobile capture", "user experience", "input quality"]
+publishedAt: "2026-07-11"
+relatedTerms: ["mobile-document-capture", "real-time-capture-feedback", "auto-cropping-documents"]
+status: "published"
+---
+
+Document capture UX is the design of the moment a document becomes an image: the mobile camera flow, the upload interface, the branch scanner procedure — everything that shapes what quality of input the processing pipeline receives. It is the highest-leverage, least glamorous layer of document AI: every downstream model inherits the capture's blur, glare, crop, and resolution, and no amount of preprocessing fully recovers what a bad capture destroyed. The economic asymmetry is stark — a retake costs the user two seconds at capture time; the same defect discovered in the back office costs a callback, a delay, or an abandoned application.
+
+The design toolkit centers on real-time guidance and immediate verification. Live overlays frame the document and prompt positioning; on-device models score focus, lighting, glare, and edge visibility continuously, gating the shutter or prompting adjustment ("move away from the light"); auto-capture fires when quality thresholds pass, removing the timing burden entirely; and post-capture, an instant readback ("we read your ID as…") converts the user into the first verification step. Multi-document flows add checklist structure — which documents are needed, which are captured, which came back unreadable — so completeness problems surface during the session, not days later. Accessibility matters doubly here: capture flows must work for users with unsteady hands, low vision, and unfamiliar devices, or the process silently excludes them.
+
+The metrics that prove capture UX are pipeline metrics read upstream: first-capture acceptance rate, retake counts, downstream low-confidence rates by capture channel, and funnel completion — onboarding flows routinely lose meaningful percentages of applicants at the document step, and capture friction is a leading cause. Teams that treat capture as part of the AI system — instrumented, A/B tested, tuned against downstream accuracy — consistently buy more accuracy per engineering hour there than anywhere else in the stack.

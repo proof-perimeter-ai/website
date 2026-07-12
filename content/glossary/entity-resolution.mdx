@@ -1,0 +1,18 @@
+---
+title: "Entity Resolution"
+slug: "entity-resolution"
+letter: "E"
+tagline: "Same person? Same company? — deciding when different records and mentions are one real thing."
+description: "Entity resolution determines when records and mentions across documents refer to the same real-world entity — despite variation, error, and disguise."
+category: "Data Extraction"
+tags: ["entity resolution", "record matching", "deduplication", "identity"]
+publishedAt: "2026-07-11"
+relatedTerms: ["entity-linking", "cross-document-reasoning", "synthetic-identity-detection"]
+status: "published"
+---
+
+Entity resolution is the discipline of deciding when different records, mentions, or documents refer to the same real-world entity: is "Jonathan A. Okafor" on the application the "J. Okafor" on the statement and the "OKAFOR JONATHAN" on the passport? Is "Acme GmbH" the counterparty already in the system as "ACME Gesellschaft mbH"? The question sounds clerical and is foundational — every cross-document check, exposure rollup, KYC file, fraud investigation, and master-data record depends on getting sameness right, against name variation, transliteration, abbreviation, error, and sometimes deliberate disguise.
+
+The machinery pairs candidate blocking with match scoring. Blocking narrows the comparison space (records sharing a date of birth, a postcode, a phonetic name key) so resolution scales past the quadratic wall; scoring then weighs the evidence per candidate pair — name similarity metrics tuned to the culture-specific structure of names, date and address proximity with format tolerance, shared identifiers where they exist, and increasingly learned matchers and language models that judge holistically ("these two address strings describe the same building"). Output is a match decision with confidence: confident matches merge or link; confident non-matches separate; and the honest middle — possible matches — routes to human adjudication, because both error directions are expensive: false merges contaminate records (one customer's risk history attached to another), false splits fragment them (the sanctioned entity onboarded fresh under a name variant).
+
+Documents are both entity resolution's input and its stress test. Extracted fields arrive with OCR noise and format diversity, layering extraction uncertainty under matching uncertainty — confidence should compound, not reset. And the adversarial cases concentrate in documents: synthetic identities assembled from real fragments, sanctions evasion via transliteration shopping, fraud rings reusing addresses and phones across "unrelated" applications — the patterns that network-level resolution (entities connected through shared attributes) exists to surface, and that make resolution quality a financial-crime control rather than a data-quality nicety.

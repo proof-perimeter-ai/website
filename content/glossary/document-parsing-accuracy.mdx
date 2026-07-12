@@ -1,0 +1,18 @@
+---
+title: "Document Parsing Accuracy"
+slug: "document-parsing-accuracy"
+letter: "D"
+tagline: "How faithfully did the parse preserve the document — text, tables, order, structure — and how would you know?"
+description: "Document parsing accuracy measures how faithfully parsers recover text, structure, tables, and reading order — with metrics beyond raw OCR rates."
+category: "Evaluation & Quality"
+tags: ["parsing accuracy", "evaluation", "structure metrics", "quality"]
+publishedAt: "2026-07-11"
+relatedTerms: ["ai-document-parser-benchmark", "character-error-rate", "extraction-accuracy-benchmarking"]
+status: "published"
+---
+
+Document parsing accuracy is the measure of how faithfully a parser converts a document into its structured representation — not just whether the characters were read correctly, but whether the tables came out as tables with the right cells in the right places, whether multi-column text assembled in the right reading order, whether headings, lists, and footnotes landed in their structural roles, and whether nothing was silently dropped or duplicated. It is a broader and harder question than OCR accuracy, and the gap between them is where document pipelines quietly fail: perfect character recognition arranged in the wrong structure produces confidently wrong data.
+
+Measuring it requires structure-aware metrics matched to each fidelity dimension. Text fidelity uses character and word error rates. Table structure uses tree-edit-distance-based scores (TEDS and variants) that compare the full row-column-cell structure, or cell-level precision/recall — a table with one merged-cell error can be 95% right or catastrophically misaligned, and the metric should tell you which. Reading order has sequence-comparison metrics; layout detection uses standard detection scores (mAP over region classes); and end-to-end fidelity is often assessed by downstream proxy — does RAG retrieval or field extraction built on this parse perform better? — which is frequently the measurement that actually matters.
+
+The evaluation craft mirrors extraction benchmarking: test sets that represent the real corpus (including its degraded, complex tail), ground truth built with clear conventions (what *is* the correct reading order for a pull-quote?), and results reported by document type and difficulty segment rather than as a single flattering aggregate. For teams choosing parsers — classical pipelines, specialized model stacks, or vision-language models — parsing accuracy on *their* documents, measured this way, is the decision variable; public leaderboard numbers transfer poorly across corpus characters, and the failure modes that matter (dropped rows, hallucinated cells under degradation) hide inside averaged scores.

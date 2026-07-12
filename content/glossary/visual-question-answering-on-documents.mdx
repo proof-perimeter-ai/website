@@ -1,0 +1,18 @@
+---
+title: "Visual Question Answering On Documents"
+slug: "visual-question-answering-on-documents"
+letter: "V"
+tagline: "Ask about the page as an image — questions that reference layout, appearance, and visual content directly."
+description: "Visual question answering on documents answers questions requiring visual reasoning about a page — layout, charts, and appearance, not just text."
+category: "Document Understanding"
+tags: ["VQA", "document QA", "visual reasoning", "benchmarks"]
+publishedAt: "2026-07-11"
+relatedTerms: ["document-question-answering-docqa", "chart-and-graph-parsing", "visual-document-understanding"]
+status: "published"
+---
+
+Visual question answering on documents (document VQA) is the specific subset of the broader document-question-answering entry's territory where a question's answer genuinely requires visual reasoning about the page — not just locating and reading text, but understanding layout, appearance, spatial relationships, or visual content like charts and diagrams that pure text extraction wouldn't capture at all. "What is the value of the blue bar in the chart on page 3?" or "Which section has the longest paragraph?" or "Is the signature on this form in blue or black ink?" are document VQA questions in the strict sense: answering them requires actually looking at the document visually, not merely reading text that was extracted from it, which distinguishes this category from the large share of document Q&A that's genuinely answerable from well-extracted text alone.
+
+This distinction matters for evaluation and system design because it isolates the specific capability that separates a strong vision-language model from a text-extraction-plus-language-model pipeline: a system that first runs OCR and then answers questions purely from the extracted text will handle text-based document questions adequately but will systematically fail genuine visual-reasoning questions, since the information those questions need was never captured in the text-extraction step at all — the chart's bar heights, the layout's visual structure, the ink color, none of which "OCR the page" was ever going to produce. Document VQA benchmarks (DocVQA and related academic benchmark suites this glossary's document-question-answering entry references) deliberately include this category of question specifically to test whether a system has genuine visual document understanding or is merely a competent text pipeline wearing a document-AI label.
+
+The practical significance for anyone selecting or building document AI systems is diagnostic: testing a candidate system specifically with visual-reasoning questions — not just fact-lookup questions a text pipeline would handle fine — reveals whether it has the multimodal document understanding this glossary describes as increasingly standard in current-generation models, or whether it's a text-extraction pipeline whose apparent document understanding is actually just competent OCR plus a capable language model reasoning over the extracted text alone. For document types where visual content genuinely carries meaning — financial reports with embedded charts, technical documents with diagrams, forms with visual formatting cues, anything where "what does this look like" matters as much as "what does this say" — this distinction determines whether a system can actually answer the questions users will realistically ask.

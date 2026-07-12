@@ -1,0 +1,18 @@
+---
+title: "Figure And Diagram Extraction"
+slug: "figure-and-diagram-extraction"
+letter: "F"
+tagline: "Finding the figures, keeping their captions, and knowing what they show — the visual content OCR walks past."
+description: "Figure and diagram extraction locates visual elements in documents — figures, captions, references — preserving them for search, RAG, and analysis."
+category: "Data Extraction"
+tags: ["figure extraction", "diagrams", "captions", "visual content"]
+publishedAt: "2026-07-11"
+relatedTerms: ["diagram-understanding", "chart-and-graph-parsing", "document-layout-analysis"]
+status: "published"
+---
+
+Figure and diagram extraction is the identification and preservation of a document's visual elements as first-class content: locating figures, charts, diagrams, photos, and illustrations; binding each to its caption and label ("Figure 3: Failure modes by component"); resolving the in-text references that point at it ("as shown in Figure 3"); and carrying the assembled unit — image, caption, context — into whatever downstream representation the pipeline builds. Text-centric processing historically treated figures as holes in the page; extraction treats them as content with structure and address.
+
+The component tasks are distinct. Detection is layout analysis's job: figure regions distinguished from text, tables, and decoration — with boundary precision mattering, since a crop that clips the legend or absorbs adjacent text degrades everything after. Caption association pairs each figure with its describing text, usually adjacent but not reliably so (captions above, below, beside, or on facing pages in book layouts), with numbering-scheme parsing (Figure 2.3b) supporting both association and reference resolution. Content understanding then grades by need: for search and RAG, a vision-language model's generated description makes the figure findable and usable as context ("photograph of corrosion on pipe flange" beats an unsearchable image block); for analytical extraction, chart parsing and diagram understanding take over with their structure-recovering machinery.
+
+The consuming applications set the fidelity bar. Scientific and technical corpora lose their substance without figures — a methods paper's figures often *are* the results — so RAG over such content indexes figure descriptions alongside prose and returns the actual image with answers. Compliance and claims contexts extract photos as evidence items with provenance. And document conversion (PDF to markdown or HTML) preserves figures in place with captions and alt text — where figure extraction quietly doubles as accessibility work, the same description serving the retrieval system and the screen reader alike.

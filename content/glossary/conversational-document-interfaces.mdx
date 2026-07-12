@@ -1,0 +1,18 @@
+---
+title: "Conversational Document Interfaces"
+slug: "conversational-document-interfaces"
+letter: "C"
+tagline: "Stop searching the document — ask it. Chat as the front door to what your files contain."
+description: "Conversational document interfaces let users query documents in natural language — asking questions and getting cited answers instead of reading and searching."
+category: "AI Agents"
+tags: ["chat with documents", "conversational AI", "document Q&A", "interfaces"]
+publishedAt: "2026-07-11"
+relatedTerms: ["natural-language-document-querying", "document-question-answering-docqa", "ai-document-copilots"]
+status: "published"
+---
+
+Conversational document interfaces let people interact with documents through dialogue: upload a file or point at a repository and ask — "what's the termination notice period?", "summarize the changes from last year's policy", "which invoices from this vendor exceeded the PO?" — receiving answers grounded in the content, with citations to the supporting passages, and refining through follow-up questions the way one would with a knowledgeable colleague. The interface pattern matters because it removes the two traditional prerequisites for getting value from documents: knowing where to look, and having time to read.
+
+The stack beneath the chat box is the full document AI pipeline with conversation state on top. Parsing must be faithful (a mis-extracted table produces confidently wrong answers about numbers); retrieval selects the passages each question needs, across one document or thousands; the language model composes answers under grounding constraints; and dialogue management carries context so "what about for early termination?" resolves against the previous exchange. Citations are the trust mechanism — every answer linked to highlighted source regions, so verification is a glance — and honest refusal is the safety mechanism: the interface must say "the document doesn't address this" rather than improvise from general knowledge.
+
+Design maturity shows in the failure handling. Good interfaces disclose scope (which documents are in play), expose their uncertainty, distinguish quoting from summarizing from inferring, and resist the user's natural drift toward treating the chat as an oracle — the answer is the document's, not the model's. Access control must thread through retrieval (the interface answers only from documents this user may see), and in sensitive deployments the whole stack — parsing, embeddings, inference, chat logs — runs inside the institution's perimeter, since a conversation about documents is, informationally, the documents themselves.

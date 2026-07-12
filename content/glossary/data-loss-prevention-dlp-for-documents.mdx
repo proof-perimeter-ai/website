@@ -1,0 +1,18 @@
+---
+title: "Data Loss Prevention (DLP) For Documents"
+slug: "data-loss-prevention-dlp-for-documents"
+letter: "D"
+tagline: "Stopping the sensitive file at the door — before it leaves in an email, an upload, or a copy-paste."
+description: "DLP for documents detects and blocks sensitive content — PII, PHI, financial data — from leaving controlled environments, with AI reading files as content, not just patterns."
+category: "Compliance & Security"
+tags: ["DLP", "data loss prevention", "sensitive data", "security"]
+publishedAt: "2026-07-11"
+relatedTerms: ["pii-detection-in-documents", "document-redaction-automation", "data-residency-in-document-ai"]
+status: "published"
+---
+
+Data loss prevention (DLP) for documents is the control layer that detects sensitive content in files and prevents it from leaving controlled environments — inspecting documents as they move (email attachments, uploads, transfers to removable media, prints, cloud-app syncs) and enforcing policy: block, quarantine, encrypt, redact, warn, or log. Where network DLP watches data flows generally, document DLP contends with the reality that an organization's most sensitive information lives in files — and files fight inspection: scanned images without a text layer, PDFs with content in tables and stamps, screenshots of records, archives inside archives.
+
+Classical DLP relied on patterns and fingerprints: regexes for card numbers and national IDs, checksums, exact and partial document fingerprinting against known-sensitive repositories. The pattern approach misses what document AI catches: OCR brings image-only documents into scope; classification recognizes sensitive document *types* (a medical report, a term sheet, a customer statement) regardless of whether any single regex fires; entity detection finds names, health conditions, and account details expressed in prose; and contextual models cut the false-positive burden — distinguishing a customer's card number in a statement from a test fixture in documentation — which matters because DLP programs die operationally by alert fatigue before they die technically.
+
+Deployment is a balance of coverage, latency, and privacy of the inspection itself. Inline enforcement (blocking the email as it sends) demands fast models; discovery scanning (finding sensitive documents at rest across shares and repositories) tolerates depth. And the inspection layer sees everything by design — making its own placement a security decision: institutions increasingly require content inspection models to run within their own perimeter rather than routing every candidate document through an external service. Tuned well, document DLP converts policy documents' aspirations ("customer data shall not leave the environment") into a control that actually operates — with an audit trail of what tried to leave, what was stopped, and why.

@@ -1,0 +1,18 @@
+---
+title: "Synthetic Document Generation"
+slug: "synthetic-document-generation"
+letter: "S"
+tagline: "Building realistic fake documents on purpose — for testing, training, and the demos that shouldn't use real customer data."
+description: "Synthetic document generation creates realistic artificial documents for testing, training, and demonstration — without exposing real sensitive content."
+category: "Models & Training"
+tags: ["synthetic documents", "test data", "generation", "privacy-safe testing"]
+publishedAt: "2026-07-11"
+relatedTerms: ["synthetic-data-for-document-training", "data-augmentation-for-documents", "model-evaluation-datasets"]
+status: "published"
+---
+
+Synthetic document generation is the deliberate creation of realistic artificial documents — invoices, statements, forms, identity documents — that look and behave like genuine examples of their type without containing any real person's or organization's actual sensitive data, serving purposes distinct from (though overlapping with) the training-focused synthetic-data entry: testing pipelines end-to-end without exposing real customer documents to test environments, building demonstrations and sales materials that show realistic document processing without a privacy or confidentiality concern, and creating evaluation sets with deliberately controlled characteristics that real document collections can't guarantee.
+
+The generation approaches range from template-driven composition (populating a realistic document layout with algorithmically generated but plausible-looking content — a synthetic name, a synthetic but properly-formatted account number, realistic-looking but entirely fabricated transaction histories) to more sophisticated generative techniques that can introduce controlled variation and realistic imperfection — synthetic documents deliberately rendered with specific degradation profiles, skew angles, or noise characteristics to test how a pipeline handles known quality conditions systematically, which real document collections can rarely provide with the same precision since real-world quality issues arrive however they happen to arrive rather than as a controlled test matrix.
+
+The testing and evaluation use case deserves particular emphasis because it solves a genuine tension this glossary's model-evaluation-datasets entry raises: rigorous evaluation requires representative test data, but using real customer documents for testing (particularly in shared test environments, CI pipelines, or vendor demonstrations) can itself be a privacy or confidentiality problem, especially for the sensitive document types — identity documents, financial statements, medical records — where this glossary's compliance entries impose the strictest handling requirements. Well-constructed synthetic documents let teams build and run comprehensive test suites, demonstrate capability to prospective customers, and develop against realistic document shapes without that exposure — with the caveat, consistent throughout this glossary's synthetic-data coverage, that synthetic test performance should be validated against real document performance periodically, since a pipeline that handles synthetic edge cases gracefully hasn't proven it handles the real, messier versions equally well until that's actually measured.

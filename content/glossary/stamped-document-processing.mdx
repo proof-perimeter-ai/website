@@ -1,0 +1,18 @@
+---
+title: "Stamped Document Processing"
+slug: "stamped-document-processing"
+letter: "S"
+tagline: "The workflow-state marker printed right on the page — reading stamps as both content and process signal."
+description: "Stamped document processing detects, reads, and interprets rubber-stamp marks — treating them as both recognition targets and workflow-state data."
+category: "Document Understanding"
+tags: ["stamps", "workflow markers", "processing", "recognition"]
+publishedAt: "2026-07-11"
+relatedTerms: ["logo-and-stamp-detection", "overlapping-text-detection", "document-workflow-automation"]
+status: "published"
+---
+
+Stamped document processing is the handling of the rubber-stamp marks that appear throughout operational paperwork — "RECEIVED," "APPROVED," "PAID," date stamps, routing stamps — treating them not merely as a recognition obstacle (the overlapping-content problem the occluded-text and overlapping-text-detection entries address) but as a distinct category of *meaningful workflow data* that a document carries on its own surface. Where the logo-and-stamp-detection entry covers the general detection and recognition of stamps as a visual element, this entry emphasizes the processing consequence: a correctly read stamp is often a fact about the document's own history that a workflow needs to act on, not just text to transcribe.
+
+The processing pipeline treats stamps as a two-part extraction: presence and location (is a stamp there, and where on the document, which frequently indicates *what stage* of a process the document has passed through — a receiving stamp near the top typically means intake occurred, an approval stamp near a signature block typically means sign-off occurred), and content when the stamp carries variable information (a date stamp's specific date, a routing stamp's destination code, an approval stamp's approver initials where handwritten into a stamped template). This second part often combines stamp detection with the recognition techniques for whatever content sits within or beside the stamp's fixed template — frequently a date or set of initials filled in by hand at the moment the stamp was applied, meaning stamped-document processing regularly intersects with handwriting recognition even though the stamp's outer shape and boilerplate text are print-consistent.
+
+The workflow-integration value is what distinguishes this from pure recognition: a document AI pipeline that recognizes "this document bears a RECEIVED stamp dated March 3rd" has extracted a fact usable for process automation directly — confirming intake occurred, establishing a timestamp for SLA calculation, or validating that a required approval step actually happened before the document proceeds further. This makes stamp reading, in workflows where physical stamping remains part of an organization's process (common in government, legal, and any operation with a paper-and-approval-stamp legacy), a meaningful complement to the digital audit-trail entries this glossary describes — the stamp being, in effect, a low-tech but real record of process state that document AI can bring into a digital workflow's structured understanding of where a document actually stands.

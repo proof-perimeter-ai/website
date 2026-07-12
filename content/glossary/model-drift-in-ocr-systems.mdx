@@ -1,0 +1,18 @@
+---
+title: "Model Drift In OCR Systems"
+slug: "model-drift-in-ocr-systems"
+letter: "M"
+tagline: "The model didn't change; the world did — accuracy eroding as documents wander from the training set."
+description: "Model drift in OCR systems is accuracy decay as document populations shift — detection via monitoring and correction via retraining."
+category: "Models & Training"
+tags: ["model drift", "monitoring", "distribution shift", "maintenance"]
+publishedAt: "2026-07-11"
+relatedTerms: ["continual-model-training", "confidence-scoring-models", "document-analytics-dashboards"]
+status: "published"
+---
+
+Model drift in OCR systems is the erosion of recognition and extraction accuracy as the document population shifts away from what the models were trained and calibrated on: vendors redesign invoices, agencies revise forms, a business expansion brings new languages, a scanner fleet gets replaced (changing every image's noise signature), customers migrate from scans to phone photos, and fraudsters adapt to detection. The models' weights are unchanged; their world isn't — "drift" naming the widening gap between training distribution and production distribution, experienced operationally as a slow bleed: exception rates creeping, corrections rising, downstream complaints accumulating quarters before anyone declares an incident.
+
+Detection is a monitoring design problem, because ground truth is scarce in production. Leading indicators come free: confidence-score distributions shifting downward (the earliest signal — the model reporting its own growing unfamiliarity), validation-failure and review-routing rates rising, correction rates climbing per field and document type, and input-side statistics (image quality metrics, layout fingerprints, document-type mix) moving. Lagging confirmation comes from sampled audit: periodic human-labeled slices of production traffic measuring true accuracy against the benchmark's claim. The diagnostic craft is segmentation — drift is almost never uniform, and the aggregate dashboards that average a stable majority with a collapsing segment (the one redesigned form) hide exactly what matters; per-type, per-channel, per-field views find it.
+
+Correction closes the loop this glossary's training entries describe: the drifted segment's documents flow into annotation (review-queue corrections are pre-targeted at them), retraining or fine-tuning incorporates them, benchmark-gated deployment confirms the fix without regressing the rest, and calibration refreshes so confidence means what routing assumes. The governance frame treats drift as expected lifecycle, not failure: drift monitoring documented as a control (AI governance regimes increasingly expect it), thresholds that trigger review defined in advance, and the retraining cadence budgeted — because a document AI system without a drift plan is a depreciating asset with no maintenance schedule.

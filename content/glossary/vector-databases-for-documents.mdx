@@ -1,0 +1,18 @@
+---
+title: "Vector Databases For Documents"
+slug: "vector-databases-for-documents"
+letter: "V"
+tagline: "Where the embeddings actually live — the storage and index layer that makes semantic search fast at scale."
+description: "Vector databases store and index document embeddings for fast similarity search — the infrastructure layer beneath semantic search and RAG."
+category: "RAG & Search"
+tags: ["vector databases", "embeddings", "infrastructure", "RAG"]
+publishedAt: "2026-07-11"
+relatedTerms: ["document-embeddings", "vector-search-for-documents", "document-chunking-strategies"]
+status: "published"
+---
+
+Vector databases for documents are the storage and indexing infrastructure purpose-built to hold document embeddings — the vector representations the document-embeddings entry describes — and to serve fast similarity search over them at scale, which is a meaningfully different infrastructure problem than storing and querying traditional structured data. A standard relational database can technically store vectors as data, but efficiently finding "the nearest hundred vectors to this query vector" among millions or billions of stored embeddings requires specialized indexing structures (approximate nearest-neighbor algorithms like HNSW or IVF) that general-purpose databases weren't built around, which is why vector databases emerged as a distinct infrastructure category as embedding-based semantic search and RAG became mainstream document AI patterns.
+
+The practical decision space spans dedicated vector database products (built from the ground up around vector search as the primary use case), vector search extensions added to established databases (PostgreSQL with pgvector being a common example, letting teams add vector search to infrastructure they already operate rather than introducing an entirely new system), and vector capabilities built into broader search platforms. The selection criteria that matter for document-heavy workloads specifically include metadata filtering performance (since document retrieval, per this glossary's retrieval-systems entry, almost always needs to combine vector similarity with structured filters — document type, date range, permission scope — and a vector database's ability to apply those filters efficiently alongside the similarity search matters as much as raw vector search speed), update and deletion handling (document corpora change — new documents arrive, old ones are superseded or deleted, and the vector index needs to reflect this promptly, particularly where the document-lifecycle entries' retention and deletion obligations apply), and scale characteristics matching the actual corpus size and query volume rather than over- or under-provisioning for a theoretical future.
+
+The operational considerations that document AI teams specifically need to plan for include the re-embedding migration this glossary's embeddings entry flags — an embedding model upgrade requires regenerating and re-indexing the entire corpus's vectors, a non-trivial operation at scale that needs planning rather than being treated as a routine deploy — and the security posture point that recurs throughout this glossary's sensitive-document entries: because embeddings can substantially reconstruct source content through inversion techniques, a vector database holding embeddings of confidential documents inherits those documents' confidentiality classification and residency requirements, meaning "we only store the vectors, not the original documents" is not the isolation argument it might intuitively seem to be.

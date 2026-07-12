@@ -1,0 +1,18 @@
+---
+title: "Confidence Threshold"
+slug: "confidence-threshold"
+letter: "C"
+tagline: "The line in the sand: above it, automation proceeds; below it, a human takes a look."
+description: "A confidence threshold is the score cutoff that decides whether an AI extraction is accepted automatically or routed to human review."
+category: "Evaluation & Quality"
+tags: ["confidence threshold", "confidence score", "routing", "automation rate"]
+publishedAt: "2026-07-11"
+relatedTerms: ["confidence-scoring-models", "human-in-the-loop-verification", "straight-through-processing"]
+status: "published"
+---
+
+A confidence threshold is the cutoff score that determines what happens to an AI system's output: results scoring above the threshold flow through automatically, while results below it are flagged for human review, retried with a different model, or rejected. In document processing, thresholds are the mechanism that converts a model's self-reported uncertainty into an operational decision — they are where statistics meets workflow.
+
+Setting the threshold is a business decision disguised as a technical one, because it trades off automation rate against error rate. A high threshold means fewer mistakes slip through but more documents queue for human review; a low threshold means higher straight-through processing but more errors reaching downstream systems. The right answer differs by field, not just by document: a misread invoice line description may be tolerable at 85% confidence, while a misread account number or date of birth on a KYC document is not tolerable at 99%. Mature systems therefore set thresholds per field, calibrated against measured accuracy on labeled evaluation data rather than chosen by intuition.
+
+One caveat matters in practice: raw model confidence is not the same as probability of being correct. Models can be systematically overconfident, particularly on inputs unlike their training data — a degraded fax, an unusual layout, a new language. Calibration techniques align scores with observed accuracy, and ongoing monitoring detects drift, so that "0.97 confidence" continues to mean what the threshold assumes it means. Without that discipline, a threshold provides a false sense of control rather than a real one.

@@ -1,0 +1,18 @@
+---
+title: "Goal-Driven Document Agents"
+slug: "goal-driven-document-agents"
+letter: "G"
+tagline: "Told the destination, not the route — agents that plan their own path through the documents."
+description: "Goal-driven document agents pursue outcomes — 'verify this file,' 'assemble this case' — planning their own document-processing steps."
+category: "AI Agents"
+tags: ["goal-driven agents", "planning", "AI agents", "autonomy"]
+publishedAt: "2026-07-11"
+relatedTerms: ["autonomous-document-agents", "agentic-document-processing", "multi-step-document-reasoning"]
+status: "published"
+---
+
+Goal-driven document agents are AI systems specified by outcome rather than procedure: given "verify this applicant's income," "assemble the closing binder," or "determine whether this claim is covered," the agent derives its own plan — which documents to read in what order, which extractions and cross-checks the goal requires, what's missing and how to obtain it, when the goal is achieved and when it's blocked. The framing is the practical payoff of language-model planning: the institution states *what* (and the constraints), the agent works out *how*, and the how adapts per case instead of being enumerated in advance for every variation.
+
+The goal decomposition is where the intelligence shows. "Verify income" unfolds into: identify the income evidence in the file (payslips, statements, tax documents), extract and normalize the figures, check internal consistency (payslip net matching statement deposits), assess sufficiency against the verification standard, and either conclude or identify the specific gap ("three months of statements required; two provided"). A procedural pipeline encodes one such decomposition; the goal-driven agent re-derives it against what the case actually contains — the applicant paid irregularly, the statements in another currency, the payslip contradicting the employer letter — handling by reasoning what pipelines handle by exception queue.
+
+The control framework is the familiar agentic bargain made explicit at the goal level: goals come with constraints (budgets of time, compute, and external actions; boundaries the plan may not cross; confidence standards the conclusion must meet), progress is observable (the agent's current plan and status legible mid-flight, not just its final answer), and the trajectory is logged as the audit narrative — goal, plan, actions, evidence, conclusion. Verification of goal *achievement* is its own discipline: the agent asserting "income verified" is a claim, and mature deployments check it — validation rules, sampled human review, and outcome tracking — the same way they'd check a junior employee who's confident.

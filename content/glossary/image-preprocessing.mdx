@@ -1,0 +1,18 @@
+---
+title: "Image Preprocessing"
+slug: "image-preprocessing"
+letter: "I"
+tagline: "Before the model reads, the image gets ready — the corrections that decide what recognition has to work with."
+description: "Image preprocessing prepares document images for recognition — deskewing, denoising, binarization, enhancement — matched to each capture channel."
+category: "Image Preprocessing"
+tags: ["preprocessing", "image enhancement", "pipeline", "OCR preparation"]
+publishedAt: "2026-07-11"
+relatedTerms: ["document-deskewing", "document-denoising", "document-binarization"]
+status: "published"
+---
+
+Image preprocessing is the preparation stage between capture and recognition: the sequence of corrections — orientation and skew fixes, cropping and perspective correction, denoising, contrast enhancement, binarization where pipelines need it, resolution normalization — that converts what a scanner, camera, or fax gateway actually produced into what recognition models perform best on. It is the least glamorous layer of document AI and among the most consequential: recognition inherits every defect preprocessing leaves and benefits from every one it removes, and the difference between a tuned and an absent preprocessing stage routinely exceeds the difference between competing recognition models.
+
+The operations form a rough canonical order, each treated in its own entry: geometric first (orientation detection, deskewing for rotation, dewarping and perspective correction for photographed pages, auto-cropping to the document boundary), then photometric (denoising matched to the channel's noise signature, contrast enhancement for faded content, background removal), then format normalization (resolution scaling to the recognizer's sweet spot, color-space decisions — with binarization now selective rather than universal, since modern deep recognizers often prefer grayscale). The craft is channel-awareness: a fax, a flatbed scan, and a phone photo are different degradation regimes deserving different treatment, so mature pipelines profile per intake channel and apply matched recipes rather than one universal scrub.
+
+Two disciplines keep preprocessing honest. Measure by recognition, not appearance: the validating metric is downstream accuracy on real documents per channel, before and after — images that look better to humans do not reliably read better to models, and aggressive cleanup can erase thin strokes and decimal points. And preserve the original: preprocessing outputs are derived artifacts; the raw capture stays authoritative, both for reprocessing when techniques improve and for the evidentiary contexts where what was actually received matters.

@@ -1,0 +1,18 @@
+---
+title: "Layout-Aware Extraction"
+slug: "layout-aware-extraction"
+letter: "L"
+tagline: "Where the value sits is half its meaning — extraction that reads geometry alongside words."
+description: "Layout-aware extraction uses spatial structure — positions, columns, proximity — alongside text to extract fields accurately from visually organized documents."
+category: "Data Extraction"
+tags: ["layout-aware", "extraction", "spatial", "document structure"]
+publishedAt: "2026-07-11"
+relatedTerms: ["layout-aware-models", "key-value-pair-extraction", "context-aware-extraction"]
+status: "published"
+---
+
+Layout-aware extraction is field extraction that treats a document's geometry as evidence: the label's position relative to its value, the column a number sits under, the section a clause belongs to, the box a form answer occupies. Documents encode meaning spatially by design — the same string is a subtotal in one row and a grand total in another, an invoice date on the left and a due date on the right — and extraction that consumes only the text stream, in whatever order it was serialized, discards precisely the signal that disambiguates. Layout awareness is what separates document extraction from text extraction.
+
+The mechanics fuse modalities. Each token arrives with its bounding box; models embed the geometry alongside the text (and often the visual appearance — the layout-aware transformer lineage of LayoutLM and successors made this fusion standard), learning spatial relationships as features: proximity and alignment for label-value pairing, column membership from x-coordinate consistency under headers, reading-order structure from the two-dimensional arrangement. Vision-language models internalize the same awareness by consuming the rendered page directly — layout arriving through pixels rather than coordinates — which is why both families dominate benchmarks over text-only extraction, most decisively on forms, tables, invoices, statements, and anything whose meaning is arranged rather than narrated.
+
+The failure modes layout awareness prevents are the plausible-but-wrong ones: the value pulled from the adjacent column, the prior-year figure filling the current-year field, the shipping address extracted as billing because both look like addresses and only position distinguishes them. Its dependencies flow upstream — geometry quality comes from OCR and parsing (skew and mis-ordered serialization corrupt the spatial signal), which is why preprocessing and layout analysis sit beneath extraction in every serious stack. And its evidence flows downstream: the same coordinates that informed the extraction become its provenance — the highlighted region a reviewer verifies in a glance.

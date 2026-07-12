@@ -1,0 +1,18 @@
+---
+title: "Document Classification"
+slug: "document-classification"
+letter: "D"
+tagline: "The mailroom clerk of document AI — before anything can be extracted, something has to say 'this is a bank statement.'"
+description: "Document classification automatically identifies what type each document is — invoice, ID, contract, statement — so it can be routed to the right workflow."
+category: "Document Understanding"
+tags: ["document classification", "document types", "routing", "machine learning"]
+publishedAt: "2026-07-11"
+relatedTerms: ["document-routing-automation", "document-splitting-ai", "document-layout-analysis"]
+status: "published"
+---
+
+Document classification is the task of automatically identifying what kind of document a file is — invoice, passport, bank statement, employment contract, discharge summary — so the right processing can be applied to it. It is usually the first intelligent step in any document pipeline: the classifier's answer determines which extraction schema runs, which validation rules apply, which team's queue an exception lands in, and which retention policy governs the file's lifecycle.
+
+Classifiers draw on three complementary signals. Visual models recognize a document by its appearance — the layout of a driver's license or the grid of a tax form is distinctive before a single word is read. Text-based models classify by content and vocabulary, which handles documents whose layouts vary but whose language is characteristic. Modern vision-language models combine both, and can classify zero-shot from a plain-language description of the categories — useful when new document types appear faster than training data can be labeled.
+
+Real-world flows add two complications. First, files rarely arrive one-document-per-file: a scanned loan pack or claims submission is often a single 80-page PDF containing a dozen distinct documents, so classification works hand-in-hand with document splitting to find the boundaries. Second, the taxonomy itself is a design decision — too coarse and downstream extraction gets the wrong schema, too fine and the classifier starves for training examples per class. As with extraction, production classifiers report confidence and route uncertain documents to a human rather than guessing, because a misclassified document fails silently in every step that follows.

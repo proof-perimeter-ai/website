@@ -1,0 +1,18 @@
+---
+title: "Self-Healing Extraction Models"
+slug: "self-healing-extraction-models"
+letter: "S"
+tagline: "Systems that notice their own drift and correct course — the aspiration behind autonomous model maintenance."
+description: "Self-healing extraction models detect their own performance degradation and trigger corrective retraining automatically, reducing manual maintenance."
+category: "Models & Training"
+tags: ["self-healing", "model maintenance", "automation", "drift correction"]
+publishedAt: "2026-07-11"
+relatedTerms: ["model-drift-in-ocr-systems", "continuous-learning-systems", "active-review-learning-loops"]
+status: "published"
+---
+
+Self-healing extraction models describe the aspiration — and an increasingly real engineering pattern — of extraction systems that detect their own performance degradation and trigger corrective action automatically, reducing the manual intervention this glossary's model-drift entry describes as the traditional response to accuracy erosion. The term is used loosely across the industry and worth reading with some skepticism about how "automatic" the healing actually is in any given system; the honest version of the capability is closer to automated *detection and escalation* than fully autonomous self-correction, and understanding that distinction matters for evaluating any system that claims the term.
+
+The mechanisms that make partial self-healing real rather than aspirational draw directly on the feedback-loop and continuous-learning architectures this glossary describes elsewhere: automated monitoring continuously tracking confidence distributions, validation failure rates, and other drift indicators without waiting for a human to notice a problem; automated triggering of retraining or fine-tuning when drift indicators cross defined thresholds, rather than requiring a human to decide it's time; and automated evaluation of the resulting candidate model against a benchmark before it's promoted — the self-healing loop closing itself from detection through correction to verified deployment, with human involvement concentrated at the governance checkpoints (approving the retraining trigger's threshold, reviewing before promotion) rather than at every step of execution.
+
+The honest limits matter as much as the capability: fully autonomous model updates without any human checkpoint are rare and generally inadvisable in regulated document AI specifically, because a self-triggered retraining cycle that goes wrong — trained on a biased slice of recent corrections, say — can degrade a system in ways that are harder to catch precisely because the "healing" mechanism removed the human review that would normally catch it. The mature version of this pattern retains human governance at the decision points that matter (does this candidate model actually outperform the incumbent, should this drift threshold trigger action) while automating the detection, data preparation, and evaluation labor around those decisions — self-healing in the sense of dramatically reducing the manual toil of maintenance, not in the sense of removing oversight from a system whose errors carry real consequences.

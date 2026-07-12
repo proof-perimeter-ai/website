@@ -1,0 +1,18 @@
+---
+title: "Edge OCR Processing"
+slug: "edge-ocr-processing"
+letter: "E"
+tagline: "Text recognition without the round trip — OCR running on the device that holds the document."
+description: "Edge OCR processing performs text recognition locally on devices — instant capture feedback, offline capability, and documents that never leave."
+category: "Tools & Platforms"
+tags: ["edge OCR", "on-device OCR", "local recognition", "mobile"]
+publishedAt: "2026-07-11"
+relatedTerms: ["edge-device-document-processing", "offline-ocr-capabilities", "mobile-document-capture-sdk"]
+status: "published"
+---
+
+Edge OCR processing is text recognition executed locally on the device holding the document image — the phone that photographed it, the scanner that digitized it, the kiosk or terminal serving the customer — with no round trip to a cloud service. It is the recognition-specific case of edge document processing, and the case with the tightest latency coupling: capture-time experiences (live field reading, instant document verification, real-time quality feedback) only work when recognition returns in tens of milliseconds, a budget no network hop reliably meets.
+
+The engineering is efficiency under constraint. Mobile-class OCR models use compact detection-plus-recognition stacks — quantized to integer precision, pruned, and compiled for the device's accelerator (NPU, GPU, or plain CPU) — trading some accuracy ceiling for footprint and speed; language and script packs load selectively; and the pipeline is streamlined for the use case (a license reader needs its fields, not general-purpose page transcription). Platform toolkits (on-device ML runtimes and vision APIs) supply baseline capability, with specialized SDKs and custom-trained compact models where the baseline's accuracy or field logic falls short. The characteristic architecture is tiered: edge OCR handles the immediate read and quality gate; ambiguous or high-stakes documents escalate to a stronger model on in-perimeter infrastructure.
+
+The use cases cluster where immediacy or isolation rules: onboarding flows reading IDs as the customer holds them (with feedback to retake *now*, not after submission), field service and logistics reading labels and meters offline, kiosks and POS verifying documents without exposing them to a network, and — the sovereign motivation — regulated capture where the raw document image is not permitted to leave the device or site unprocessed. As on-device compute keeps improving, the boundary of what edge OCR can own keeps expanding — but the design principle stays: recognize as close to the capture as the task's accuracy allows, escalate the rest.

@@ -1,0 +1,18 @@
+---
+title: "Data Enrichment"
+slug: "data-enrichment"
+letter: "D"
+tagline: "The document said 'Acme GmbH' — enrichment adds who they are, where they're registered, and whether they're sanctioned."
+description: "Data enrichment augments extracted document data with external sources — registries, reference data, histories — turning raw values into decision-ready records."
+category: "Data Extraction"
+tags: ["data enrichment", "reference data", "augmentation", "entity data"]
+publishedAt: "2026-07-11"
+relatedTerms: ["entity-resolution", "data-normalization", "kyb-know-your-business"]
+status: "published"
+---
+
+Data enrichment is the step that augments what a document says with what the world knows: an extracted company name resolved against corporate registries to add its registration number, status, officers, and ownership; an address validated and geocoded; a security identifier expanded with instrument reference data; a medical code joined to its description and category; a counterparty checked against sanctions lists and adverse media. Extraction produces values; enrichment produces context — and most document-driven decisions actually run on the enriched record, not the raw extraction.
+
+In pipelines, enrichment sits between extraction and decisioning, and its mechanics are joins with judgment. Matching is the hard half: the document's rendering of an entity ("Acme Gmbh," "ACME GmbH & Co. KG") must be resolved against the reference source's canonical form, tolerating abbreviation, transliteration, and error while avoiding false merges — entity resolution techniques with match-confidence scoring, and human review on ambiguous matches where the downstream decision is consequential. Source management is the other half: registries and reference feeds have their own update cadences, licensing, and reliability; enriched records should carry the source and as-of date of each added attribute, because "sanctioned: no" is a statement about a list on a date.
+
+Enrichment is where document processing connects to the institution's broader data estate, and it inherits obligations from both sides. From the document side: provenance — an enriched record should distinguish what the document stated from what enrichment added, or downstream users will treat inferences as facts. From the data side: quality and governance — a stale registry snapshot or a mismatched join contaminates every decision built on it. Done well, the effect is decisive: the loan file that arrives as fifteen PDFs leaves as a structured, validated, externally-corroborated case record — the difference between reading documents and knowing things.

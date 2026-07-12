@@ -1,0 +1,18 @@
+---
+title: "Key-Value Pair Extraction"
+slug: "key-value-pair-extraction"
+letter: "K"
+tagline: "Finding the answer next to the label — 'Invoice No: 4471' becomes a field a database can hold."
+description: "Key-value pair extraction locates labeled fields in documents — invoice numbers, dates, names — and outputs them as structured data ready for downstream systems."
+category: "Data Extraction"
+tags: ["key-value extraction", "field extraction", "structured data", "forms"]
+publishedAt: "2026-07-11"
+relatedTerms: ["form-field-extraction", "schema-based-extraction", "structured-data-output"]
+status: "published"
+---
+
+Key-value pair extraction is the task of finding labeled fields in a document and returning them as structured data: the key is the label ("Invoice Number", "Date of Birth", "Policy Holder"), and the value is the content associated with it ("INV-4471", "11 March 1974", "A. Okafor"). It is the workhorse of document automation, because most business documents — forms, invoices, certificates, statements — are fundamentally collections of key-value pairs arranged on a page.
+
+The difficulty is that documents express the key-value relationship visually, not grammatically. A value might sit to the right of its label, below it, inside a box, or across a dotted line; the same field might be called "Total", "Amount Due", or "Balance Payable" on three different vendors' invoices; and some values (a stamp, a checkbox, a signature) aren't text at all. Modern extractors handle this with layout-aware models that consider position, typography, and semantics together, or with schema-based approaches where a vision-language model is given the list of target fields and asked to find them regardless of how the document phrases the labels.
+
+Production systems rarely stop at extraction. Each pair typically carries a confidence score and a bounding box pointing back to its exact location on the page — so a human reviewer can verify a low-confidence value in seconds, and an auditor can trace any number in a database back to the pixels it came from. Combined with validation rules (dates must parse, totals must reconcile, checksums must pass), this turns raw extraction into data that downstream systems can actually trust.

@@ -1,0 +1,18 @@
+---
+title: "Ground Truth Data"
+slug: "ground-truth-data"
+letter: "G"
+tagline: "The answer key — the verified correct outputs that training learns from and evaluation is judged against."
+description: "Ground truth data is the verified correct answer set for document AI — the foundation of training, evaluation, and every accuracy claim."
+category: "Models & Training"
+tags: ["ground truth", "labels", "evaluation data", "data quality"]
+publishedAt: "2026-07-11"
+relatedTerms: ["annotation-for-document-ai", "model-evaluation-datasets", "labeled-dataset-creation"]
+status: "published"
+---
+
+Ground truth data is the set of verified correct answers against which document AI is trained and judged: the human-confirmed transcription of each test page, the true value of every field, the correct class of each document, the actual table structure. Every accuracy number in this glossary — character error rate, field-level accuracy, F1 — is a comparison against ground truth, which makes ground truth the epistemological foundation of the whole enterprise: a system's measured quality can never be more trustworthy than the answer key it was measured against.
+
+Producing it is harder than the name implies, because documents contain genuine ambiguity that "truth" must resolve by convention: the illegible character, the field filled twice with different values, the date whose format is undecidable from the page, the table whose structure two reasonable readers draw differently. Rigorous ground truth therefore comes with written conventions (the annotation guidelines that resolve ambiguity consistently), independent multi-annotator production with agreement measurement (disagreement rates are the honest bound on how well-defined the task is — a system cannot meaningfully exceed human agreement), and adjudication of disputes by a defined authority rather than averaging. Provenance matters too: ground truth derived by correcting a model's output inherits that model's blind spots — the errors it made confidently sail through correction — so evaluation sets in particular warrant from-scratch annotation.
+
+Management disciplines protect its value: strict separation between training labels and evaluation ground truth (contamination converts measurement into memorization), versioning as conventions evolve (a guideline change re-defines "correct" and breaks metric comparability unless tracked), refresh cycles as document populations drift (ground truth of yesterday's documents measures yesterday's problem), and security matching the source documents' sensitivity — the answer key to a corpus of loan files is itself a corpus of loan-file data. Institutions that treat ground truth as owned infrastructure — curated, versioned, refreshed — hold the one asset every model decision quietly depends on.

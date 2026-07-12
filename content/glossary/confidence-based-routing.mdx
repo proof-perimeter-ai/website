@@ -1,0 +1,18 @@
+---
+title: "Confidence-Based Routing"
+slug: "confidence-based-routing"
+letter: "C"
+tagline: "Traffic control by certainty — sure things go straight through, doubtful ones detour past a human or a bigger model."
+description: "Confidence-based routing directs each document or field by its confidence score — automation, escalation to stronger models, or human review."
+category: "Workflow & Automation"
+tags: ["confidence routing", "workflow", "escalation", "automation"]
+publishedAt: "2026-07-11"
+relatedTerms: ["confidence-threshold", "confidence-scoring-models", "exception-handling-workflows"]
+status: "published"
+---
+
+Confidence-based routing is the workflow pattern that turns confidence scores into paths: each document — or each field within one — is directed according to how certain the system is about it. High-confidence results flow into downstream systems automatically; mid-range results escalate to a stronger (slower, costlier) model or additional validation; low-confidence results land in human review queues; and hopeless inputs (unreadable scans, unknown document types) route to recapture or specialist handling. The pattern converts a single-quality pipeline into a tiered system that spends effort where uncertainty actually lives.
+
+Field-level routing is the refinement that changes the economics. Routing whole documents wastes attention — one doubtful field among thirty confident ones sends the entire document to a person. Per-field routing lets the twenty-nine flow through while the reviewer sees exactly one highlighted value with its source region; the document's overall path becomes the composition of its fields' paths. Similarly, model-tier routing exploits the cost asymmetry of modern model families: a compact fast model handles the bulk of traffic, with escalation to a large vision-language model only for the regions and fields that resist — often cutting per-document cost severalfold at equal or better accuracy.
+
+The routing fabric needs the same operational care as the models it orchestrates. Thresholds per field and tier are set from measured accuracy-versus-volume trade-offs, not intuition, and revisited as models and document mixes change. Queues need capacity management — a threshold tightened without staffing the resulting review volume just converts silent errors into missed SLAs. And the routing decisions themselves belong in the audit trail: for any processed document, the record should show which path each value took and why, because "how do you decide when a human looks?" is among the first questions any auditor of an automated document process asks.

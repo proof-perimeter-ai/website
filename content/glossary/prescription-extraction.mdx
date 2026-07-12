@@ -1,0 +1,18 @@
+---
+title: "Prescription Extraction"
+slug: "prescription-extraction"
+letter: "P"
+tagline: "Drug, dose, route, frequency — read correctly, because prescription errors are the ones that reach patients."
+description: "Prescription extraction reads medication orders — drug names, doses, and instructions — from handwritten and printed scripts, with pharmacy-grade validation."
+category: "Healthcare"
+tags: ["prescriptions", "medication", "pharmacy", "clinical extraction"]
+publishedAt: "2026-07-11"
+relatedTerms: ["handwritten-text-recognition", "clinical-notes-analysis", "prior-authorization-automation"]
+status: "published"
+---
+
+Prescription extraction is the reading of medication orders — drug name, strength, dosage form, quantity, directions for use (the sig), refills, and prescriber information — from prescriptions arriving as faxes, scans, e-prescribing exports, and the historically notorious handwritten script. The task's reputation precedes it: illegible handwritten prescriptions are a well-documented patient-safety issue, and even where e-prescribing has reduced the handwriting problem, the extraction task persists across faxed orders, discharge medication lists, and the enormous installed base of documents pharmacies and payers still process by reading rather than by structured feed.
+
+The recognition difficulty compounds domain vocabulary onto handwriting's usual challenges: drug names are numerous, phonetically and visually similar in dangerous pairs (look-alike, sound-alike medications are a named patient-safety category — hydralazine and hydroxyzine, clonidine and Klonopin), dosages use abbreviations with strict but easily confused conventions (mg versus mcg is a thousand-fold error), and the sig line compresses instructions into shorthand ("1 tab po bid prn pain") that a general handwriting model has no prior for parsing correctly. Purpose-built extraction pairs handwriting and print recognition with pharmaceutical reference data — matching candidate readings against actual drug databases, validating dose ranges against the specific medication's normal bounds, and flagging combinations or doses that fall outside plausible clinical ranges as requiring pharmacist verification rather than silent acceptance.
+
+Given the stakes, prescription extraction operates under conservative automation defaults even by healthcare document AI's already-cautious standards: extracted prescriptions typically route through pharmacist verification as standard practice rather than exception handling, confidence thresholds sit high, and any ambiguity in drug identity, dose, or instructions defaults to holding for human confirmation rather than best-guess processing. The value proposition is accordingly about safety and throughput together — surfacing look-alike/sound-alike risks and dose anomalies that a rushed manual read might miss, while accelerating the volume of clean, unambiguous orders that make up the majority of the queue.

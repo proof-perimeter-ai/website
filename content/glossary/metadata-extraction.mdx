@@ -1,0 +1,18 @@
+---
+title: "Metadata Extraction"
+slug: "metadata-extraction"
+letter: "M"
+tagline: "The facts about the document — type, parties, dates, origin — that make repositories navigable and records governable."
+description: "Metadata extraction captures document properties — embedded file metadata and content-derived fields — powering search, governance, and workflow."
+category: "Data Extraction"
+tags: ["metadata", "document properties", "indexing", "governance"]
+publishedAt: "2026-07-11"
+relatedTerms: ["document-indexing", "document-classification", "document-lifecycle-management"]
+status: "published"
+---
+
+Metadata extraction is the capture of facts *about* a document — as distinct from its full contents: what type it is, who its parties are, its dates (created, effective, received), its origin and author, its language, its case or customer association, its sensitivity class. Metadata is what makes a repository navigable (search filters, facets), records governable (retention and access rules attach to metadata), and workflows routable — and its extraction is usually the first intelligence applied to every arriving document, feeding everything downstream.
+
+The sources are two, with different trust profiles. Embedded metadata comes free inside files: PDF and Office properties (author, creation tool, timestamps), EXIF in images, email headers — cheap to read and forensically interesting (the creation tool that contradicts the document's claimed origin, the timestamp that predates the purported signing) but unreliable as description: frequently blank, template-inherited ("author: jsmith" from a 2014 template), or stale. Content-derived metadata is extracted from the document itself — classification for type, entity extraction for parties, date extraction with role disambiguation (the invoice date, not the printed-on date), language detection — and is what actually describes the document, with model confidence attached like any extraction. Robust pipelines use both and reconcile: embedded metadata as weak evidence and forensic signal, content-derived as the operational record.
+
+The schema is the governance connection: organizations define metadata models (often per document class — the contract's parties and effective date, the invoice's vendor and amount, the record category everything needs) and extraction populates them at ingestion, replacing the manual profiling that document management systems historically demanded and users historically skipped. Quality discipline follows the metadata's consumers: search tolerates some error; retention and access control tolerate less — the sensitivity misclassification that under-protects a document being a security event — so high-stakes metadata fields get the confidence-and-review treatment any consequential extraction earns.

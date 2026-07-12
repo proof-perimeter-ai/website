@@ -1,0 +1,18 @@
+---
+title: "Schema Inference From Documents"
+slug: "schema-inference-from-documents"
+letter: "S"
+tagline: "Before you can extract by schema, someone has to figure out what the schema should be."
+description: "Schema inference from documents proposes extraction structures automatically — discovering fields and types from a sample set before formal extraction begins."
+category: "Data Extraction"
+tags: ["schema inference", "field discovery", "extraction setup", "automation"]
+publishedAt: "2026-07-11"
+relatedTerms: ["json-schema-extraction", "schema-based-extraction", "template-free-document-extraction"]
+status: "published"
+---
+
+Schema inference from documents is the task of automatically proposing an extraction structure — what fields exist, what type each should be, which are required versus optional — by analyzing a sample of documents, rather than requiring a human to define the schema by hand before extraction can begin. It answers the question that precedes the json-schema-extraction entry's territory: given a new, unfamiliar document type, what *should* the extraction schema even contain, before anyone has decided what fields matter?
+
+The technical approach typically works by having a model analyze representative samples and identify recurring structural and semantic patterns: consistent key-value pairs appearing across the sample set become candidate fields, table structures suggest repeating-group schemas (line items, multiple parties, recurring entries), and value-type patterns across instances suggest appropriate data types (a field whose values are consistently date-shaped proposes as a date field, one with consistent currency formatting proposes as an amount). Language-model-based inference has made this substantially more capable than earlier statistical approaches — a model can be shown several examples of a new document type and asked to propose a sensible schema in natural language or structured form, drawing on its general understanding of what fields tend to matter for that kind of document, rather than relying purely on pattern frequency across the sample.
+
+The practical value is speed to first extraction on unfamiliar document types: instead of a human analyst manually reviewing samples and hand-authoring a schema — a process that can take days for a complex document type — inference produces a draft schema in minutes that a human then reviews, refines, and approves, inverting the typical ratio of effort from "design then verify" to "propose then confirm." The output is always treated as a draft rather than a final answer: inferred schemas reflect what's statistically present in the sample, not necessarily what's *needed* for the business purpose (a field may be common in the documents but irrelevant to the task, or a rare-but-critical field may be underrepresented in a small sample), so human review before the schema goes into production remains standard practice — schema inference accelerates the setup phase; it doesn't replace the judgment of what the extraction is actually for.

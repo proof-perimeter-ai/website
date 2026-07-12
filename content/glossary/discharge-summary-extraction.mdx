@@ -1,0 +1,18 @@
+---
+title: "Discharge Summary Extraction"
+slug: "discharge-summary-extraction"
+letter: "D"
+tagline: "The hospital stay, condensed to a few pages — extracted into the data that drives follow-up care, coding, and claims."
+description: "Discharge summary extraction structures hospital discharge documents — diagnoses, procedures, medications, follow-up plans — for care transitions and billing."
+category: "Healthcare"
+tags: ["discharge summaries", "medical records", "care transitions", "healthcare extraction"]
+publishedAt: "2026-07-11"
+relatedTerms: ["clinical-notes-analysis", "ehr-data-extraction", "medical-records-review-for-insurance"]
+status: "published"
+---
+
+Discharge summary extraction is the structuring of the document that closes a hospital stay: admission and discharge dates, admitting and final diagnoses, procedures performed, hospital course narrative, discharge medications (with the changes from admission — the reconciliation that prevents dangerous carryover errors), pending results, follow-up appointments and instructions, and disposition. The discharge summary is healthcare's canonical handoff document — the primary information vehicle between hospital and everything after — and its contents drive follow-up care, quality measures, risk adjustment, coding and billing, and insurance review.
+
+The documents blend structure and narrative in ways that demand both extraction styles. Header fields and medication lists are semi-structured (though formats vary by institution and EHR, and summaries frequently arrive at their consumers as faxes or scanned PDFs, resurrecting OCR challenges the originating EHR never had). The hospital course — what actually happened, complications, clinical reasoning — is prose requiring clinical language understanding: abbreviation expansion, negation handling ("ruled out for MI" is not an MI), temporality (the condition resolved before discharge versus ongoing), and mapping to standard vocabularies (ICD-10, SNOMED, RxNorm) so extracted facts interoperate. Medication reconciliation extraction is particularly consequential: continued, changed, discontinued, and new medications each carry different downstream actions.
+
+The use cases shape the accuracy bar. Care transitions consume extracted follow-ups and pending results — where a missed item is a patient-safety issue, arguing for conservative confidence thresholds and human verification in the loop. Payers extract diagnoses and procedures for claims adjudication and utilization review at volume. Quality and population-health programs abstract measures from summaries at registry scale. Across all of it, PHI status governs the processing architecture — inside covered-entity infrastructure or business-associate boundaries, encrypted, access-logged — and every extracted fact keeps its pointer back to the summary text supporting it.

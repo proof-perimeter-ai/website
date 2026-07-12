@@ -1,0 +1,18 @@
+---
+title: "Strikethrough Detection"
+slug: "strikethrough-detection"
+letter: "S"
+tagline: "The line through the word means 'ignore this' — recognition that respects an author's own correction."
+description: "Strikethrough detection identifies crossed-out content in documents, distinguishing it from active text so extraction respects the author's correction."
+category: "OCR & Recognition"
+tags: ["strikethrough", "corrections", "text markup", "recognition"]
+publishedAt: "2026-07-11"
+relatedTerms: ["bold-and-italic-detection", "highlighted-text-extraction", "document-version-comparison"]
+status: "published"
+---
+
+Strikethrough detection is the identification of text marked with a line through it — a correction, a retraction, a deliberate deletion in a marked-up or negotiated document — distinguished from active, intended text so that extraction correctly excludes it rather than treating struck-through content as if it were still operative. It matters because a document's meaning can genuinely invert if strikethrough goes unrecognized: a redlined contract where a party crossed out "shall" and wrote "shall not" above it communicates the opposite of what naive text extraction, blind to the strikethrough, would report.
+
+The detection task shares technical territory with bold-and-italic detection — both are about recognizing a visual attribute applied to text rather than reading different characters — but strikethrough carries a distinctive challenge the other formatting attributes don't: the struck-through content is usually still legible beneath the line, meaning a naive OCR pass reads it as ordinary text, and the strikethrough signal (a horizontal line crossing the character glyphs) must be detected as a separate visual layer overlaid on otherwise-normal text. Detection approaches look for this specific pattern — a roughly horizontal line at mid-character-height crossing a run of text — distinguishing it from underlines (which sit below text and typically indicate emphasis or a different meaning entirely) and from other markup like highlighting or circling that modify text's status differently. Handwritten strikethrough, common in manually corrected forms and reviewed drafts, adds recognition difficulty similar to any handwriting-adjacent task, since the line itself may be uneven or incomplete.
+
+Once detected, the processing decision depends on task: for straightforward text extraction, struck-through content is typically excluded from the "current" reading of the document, since it represents deleted or superseded text the author no longer intends; but for change-tracking, redlining analysis, and the document-version-comparison entry's territory, the strikethrough is itself the signal of interest — what was struck out and what replaced it constitutes exactly the edit history an automated redline analysis wants to capture, meaning the correct handling isn't simply "ignore struck-through text" but "recognize it as a distinct category, then apply the extraction logic appropriate to whether the task cares about current state or edit history."

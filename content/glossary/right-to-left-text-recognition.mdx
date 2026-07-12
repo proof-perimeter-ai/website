@@ -1,0 +1,18 @@
+---
+title: "Right-To-Left Text Recognition"
+slug: "right-to-left-text-recognition"
+letter: "R"
+tagline: "Arabic, Hebrew, and the documents where reading order runs the other way."
+description: "Right-to-left text recognition handles Arabic, Hebrew, and other RTL scripts — directional flow, connected letterforms, and bidirectional mixing."
+category: "OCR & Recognition"
+tags: ["right-to-left", "RTL", "Arabic script", "Hebrew script"]
+publishedAt: "2026-07-11"
+relatedTerms: ["multilingual-ocr", "cross-language-document-processing", "reading-order-detection"]
+status: "published"
+---
+
+Right-to-left (RTL) text recognition is OCR and document understanding adapted for scripts that read right-to-left — principally Arabic and Hebrew, along with several less widely digitized scripts — where the directional assumption baked into most OCR tooling (built first and most thoroughly for left-to-right Latin script) needs explicit correction at multiple pipeline stages, not just a flag flipped at the end. Getting RTL wrong doesn't just misorder words; for Arabic specifically, it can misrender them entirely, because Arabic letterforms change shape depending on their position within a word (initial, medial, final, or isolated) and depending on which adjacent letters they connect to — a cursive-by-design script where character segmentation itself requires script-aware handling that Latin-tuned recognizers simply don't have.
+
+The recognition and layout challenges compound at each stage. Detection and segmentation must respect the script's connected letterforms rather than assuming character-by-character separability the way Latin block letters allow. Recognition models need training specifically on Arabic or Hebrew script rather than adaptation of a Latin-trained model, since the visual vocabulary of connected, contextual letterforms is different enough that transfer learning alone rarely closes the gap to purpose-trained accuracy. Layout and reading-order detection must flow right-to-left at the line level while often still flowing top-to-bottom at the paragraph level, and — critically — must handle bidirectional text correctly: an Arabic or Hebrew document containing embedded Latin script (a company name, a number, an English phrase) requires the recognizer and the layout engine to switch directional context mid-line without breaking either script's internal ordering, a genuinely tricky rendering and recognition problem that shows up constantly in real bilingual documents like ID cards, contracts, and government forms across the Middle East and beyond.
+
+Document AI serving Middle Eastern, and broader Arabic- and Hebrew-speaking markets treats RTL capability as a first-class requirement rather than an afterthought, because the alternative — bolting RTL support onto a Latin-first pipeline — reliably produces the subtle errors this glossary's multilingual entries warn about: text that displays plausibly but reads scrambled, or fields extracted with reversed digit sequences (numerals within RTL text are conventionally written left-to-right even mid-RTL-flow, a further wrinkle recognition and normalization must both get right). As with all script-specific capability, the honest evaluation is per-script accuracy on real documents, not an assumption that "multilingual support" implies RTL was tested with the same rigor as the scripts that came first.

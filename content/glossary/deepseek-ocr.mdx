@@ -1,0 +1,18 @@
+---
+title: "DeepSeek OCR"
+slug: "deepseek-ocr"
+letter: "D"
+tagline: "Compressing pages into vision tokens — an open-source take on document reading as context compression."
+description: "DeepSeek OCR is an open-source vision-language OCR model noted for compressing document pages into compact vision tokens for efficient text recovery."
+category: "Tools & Platforms"
+tags: ["DeepSeek OCR", "open source", "vision-language model", "document parsing"]
+publishedAt: "2026-07-11"
+relatedTerms: ["open-source-ocr-model", "qwen-vl", "vision-language-model-vlm"]
+status: "published"
+---
+
+DeepSeek OCR is an open-source document reading model from DeepSeek, released in late 2025, that attracted attention for reframing OCR as a *context compression* problem: its architecture encodes a document page into a remarkably small number of vision tokens — far fewer than the text tokens the page's content would occupy — and decodes text, structure, and markdown from that compressed representation. The research framing (optical compression of long context) positioned documents-as-images as an efficient memory format for language models, with the practical corollary of fast, cheap page processing at claimed throughputs of hundreds of thousands of pages per day on modest GPU hardware.
+
+Architecturally it pairs a compact vision encoder (combining windowed local attention with global attention stages, downsampling aggressively before the expensive computation) with a mixture-of-experts decoder, so active parameters per token stay small. It emits structured output — plain text, markdown with tables, grounding boxes — and handles the standard document-parsing menu: multi-column layouts, tables, formulas, multilingual text. As an open-weights release, it joined a wave of open-source document VLMs (alongside Qwen-VL derivatives and specialized parsers like Docling's models) that made self-hosted, high-quality document parsing realistic for teams unwilling or unable to route documents through commercial APIs.
+
+Its significance for practitioners is twofold. Economically, aggressive token compression attacks the cost term that makes VLM-based parsing expensive at volume — fewer vision tokens means cheaper inference, whoever runs it. Architecturally, open weights mean deployment freedom: inside a VPC, air-gapped, fine-tuned on domain documents — the deployment properties regulated institutions need. The standard due diligence applies as with any model: benchmark on your own document distribution rather than trusting reported numbers, verify license terms for the intended use, and evaluate the failure modes (hallucination under degradation, table-structure errors) that headline benchmarks tend not to feature.

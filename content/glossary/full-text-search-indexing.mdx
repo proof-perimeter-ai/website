@@ -1,0 +1,18 @@
+---
+title: "Full-Text Search Indexing"
+slug: "full-text-search-indexing"
+letter: "F"
+tagline: "Every word, findable — the inverted index that turns a document pile into a searchable archive."
+description: "Full-text search indexing makes every word of a document corpus searchable — inverted indexes, analyzers, and ranking for keyword retrieval."
+category: "RAG & Search"
+tags: ["full-text search", "inverted index", "keyword search", "indexing"]
+publishedAt: "2026-07-11"
+relatedTerms: ["document-indexing", "searchable-document-archives", "vector-search-for-documents"]
+status: "published"
+---
+
+Full-text search indexing is the machinery that makes every word of a document corpus findable: text extracted from each document, analyzed (tokenized, lowercased, stemmed or lemmatized, stop-words handled), and posted into an inverted index — the data structure mapping each term to the documents and positions containing it — so that keyword queries resolve in milliseconds across millions of files. It is the mature core of document search, powering everything from the archive's search box to the eDiscovery platform's culling queries, and it remains indispensable alongside semantic search: exact identifiers, names, codes, and phrases are lexical search's home turf, where embeddings blur.
+
+Document corpora stress the standard machinery in specific ways. The text must first exist — OCR brings scanned content into the index, and its errors become search's silent failures (the misread "Smlth" unfindable as "Smith"; fuzzy matching and character-confusion-aware expansion partially compensate). Analyzers need language awareness across multilingual corpora (stemming rules, CJK tokenization, transliteration variants); domain tokens need protection from well-meaning analysis (part numbers, case citations, and IBANs should not be stemmed into oblivion); and fielded indexing — title, body, extracted metadata as separately weighted zones — lets ranking respect document structure. Position-aware indexing supports the phrase and proximity queries that legal and compliance search live on ("within five words of").
+
+Operationally, the index is a derived store with synchronization duties: new documents indexed at ingestion, deletions and permission changes propagated promptly (a document findable after its deletion is a compliance failure), and re-indexing planned for analyzer or schema changes. In modern stacks, full-text indexing pairs with vector indexes under a hybrid retrieval layer — the practical recognition that "contains these words" and "means this thing" are different questions, both of which real users ask.

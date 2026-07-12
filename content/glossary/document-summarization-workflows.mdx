@@ -1,0 +1,18 @@
+---
+title: "Document Summarization Workflows"
+slug: "document-summarization-workflows"
+letter: "D"
+tagline: "Two hundred pages in, one page out — summaries produced systematically, grounded, and fit for the decision they serve."
+description: "Document summarization workflows generate purpose-built summaries — case files, reports, packs — with grounding, consistency, and review built in."
+category: "Workflow & Automation"
+tags: ["summarization", "workflows", "LLM", "condensation"]
+publishedAt: "2026-07-11"
+relatedTerms: ["multi-document-summarization", "content-faithfulness", "ai-document-copilots"]
+status: "published"
+---
+
+Document summarization workflows are the systematic production of summaries as part of business processes — not a chat feature but a pipeline stage: every incoming claim pack condensed into an adjuster's briefing, every credit file into an underwriting memo's factual core, every discovery batch into a review roadmap, every lengthy contract into a term abstract, produced consistently, at volume, in a defined format. The workflow framing changes the requirements: summaries must be uniform (the same fields and structure every time, so consumers know where to look), grounded (claims traceable to source pages), and integrated (delivered into the case system, not a separate destination).
+
+The engineering runs deeper than "ask the model to summarize." Purpose determines content: a summary is a selection function, and what an adjuster, an underwriter, and a fraud analyst each need from the same claim pack differs — so production summarization is template-driven, with the schema of required elements (parties, dates, amounts, red flags, gaps) explicit per use case. Long inputs need decomposition strategies (hierarchical summarization, map-reduce over sections, or retrieval-targeted summarization of just the relevant material); multi-document cases need the cross-document layer — reconciling versions, resolving entities, noting contradictions rather than averaging them away. And faithfulness machinery is non-negotiable at volume: citation links per claim, automated entailment checks against sources, and calibrated hedging — a summary that states the disputed as settled, or omits the exclusion clause, is worse than none.
+
+The quality loop mirrors extraction's: sampled human evaluation against rubrics (coverage of the mandatory elements, absence of unsupported claims), consumer feedback instrumented (what did adjusters click through to verify or correct?), and the errors taxonomized into prompt, retrieval, and parsing fixes. Deployed with that discipline, summarization workflows attack the least automated cost in document-heavy work: not the data entry, but the reading.

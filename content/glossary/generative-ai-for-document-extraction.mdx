@@ -1,0 +1,18 @@
+---
+title: "Generative AI For Document Extraction"
+slug: "generative-ai-for-document-extraction"
+letter: "G"
+tagline: "The model that writes the answer instead of pointing at it — power and peril in the same architecture."
+description: "Generative AI for document extraction uses LLMs and VLMs to produce structured outputs from documents — flexible, schema-driven, and needing grounding."
+category: "Models & Training"
+tags: ["generative AI", "LLM extraction", "structured output", "VLM"]
+publishedAt: "2026-07-11"
+relatedTerms: ["vision-language-model-vlm", "schema-based-extraction", "content-faithfulness"]
+status: "published"
+---
+
+Generative AI for document extraction is the use of large language and vision-language models to *produce* extraction outputs — the model reads the document (as text, image, or both) and generates the structured result: the JSON of fields, the normalized values, the classified clauses. It inverts the classical paradigm, where extraction meant locating and copying spans; the generative model writes the answer, which is simultaneously the source of its power (normalization, inference, and formatting happen in the same pass — "extract the term in months" from a contract that says "expires two years from the Effective Date" just works) and its characteristic risk (a model that writes answers can write wrong ones fluently).
+
+The capability shift is real and measured: schema-driven extraction from document types never trained on, instruction-following that replaces per-field engineering with per-field description, tolerance of layout and phrasing variety that broke template and even learned-extractor generations, and unified handling of text, tables, and visual content through VLMs. The engineering that makes it production-grade addresses the generative failure modes head-on: constrained decoding and structured-output modes enforce schema validity; grounding requirements attach evidence spans or regions to each value, mechanically verified; validation rules catch the plausible fabrications (the checksum, the arithmetic, the cross-field consistency); confidence estimation compensates for generative models' unreliable self-assessment (verifier models, consistency sampling); and human review holds the line where the stakes demand it.
+
+The economics complete the picture: generative extraction is compute-heavy per page, so production architectures tier — compact or classical extractors for the high-volume routine, generative models for the complex, the novel, and the escalated — with fine-tuned smaller generative models increasingly claiming the middle: schema-faithful, domain-accurate, and cheap enough to run everywhere, including inside the perimeter where the documents live.

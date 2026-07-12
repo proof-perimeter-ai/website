@@ -1,0 +1,18 @@
+---
+title: "LaTeX Extraction From PDF"
+slug: "latex-extraction-from-pdf"
+letter: "L"
+tagline: "Recovering the source from the render — math and structure back into markup a compiler would accept."
+description: "LaTeX extraction from PDF recovers mathematical and structural markup from rendered documents — formulas, sections, and references as compilable source."
+category: "Data Extraction"
+tags: ["LaTeX", "math extraction", "scientific documents", "markup recovery"]
+publishedAt: "2026-07-11"
+relatedTerms: ["equation-extraction", "code-block-extraction", "markdown-document-conversion"]
+status: "published"
+---
+
+LaTeX extraction from PDF is the recovery of source-level markup from rendered documents: converting a PDF's typeset mathematics back into LaTeX expressions, and — in the fuller version of the task — its sections, theorems, citations, tables, and cross-references into structured markup approximating the source that produced it. The task exists because the scientific record lives largely as PDFs whose sources are unavailable, while every modern use of that record — search, RAG, accessibility, dataset construction, re-publication — wants the structure and semantics the PDF flattened into glyph positions.
+
+Mathematics is the core challenge, covered in this glossary's equation-extraction entry from the recognition side; the LaTeX framing adds the output discipline: the recovered markup should compile, and render to something visually equivalent to the original — a testable property (render-and-compare) that serious pipelines exploit as validation. Beyond math, structural recovery maps the document's typography back to semantics: numbered headings to sectioning commands, italicized theorem blocks to environments, bracketed numbers to citations linked against the bibliography, "Figure 3" references bound to their targets. Model lineage runs from specialized academic-document parsers through the transformer-based PDF-to-markup models (Nougat and successors) trained on the enormous paired corpus that arXiv's source-plus-PDF archive uniquely provides — a data advantage that makes scientific-document parsing unusually well served.
+
+The consumers define the fidelity bar. Dataset builders (training math-capable models on paired render/source) need scale with tolerable noise; accessibility pipelines (MathML for screen readers, derived from the LaTeX) need semantic correctness; RAG over technical corpora needs formulas preserved as searchable, renderable units rather than OCR debris; and human re-use (the researcher recovering their own decade-old paper's source) needs something worth editing. Across all of them the honest caveat holds: extraction recovers *a* source that renders like the original, not *the* source — macros, spacing hacks, and authorial structure are gone — which is exactly enough for every use except archaeology.

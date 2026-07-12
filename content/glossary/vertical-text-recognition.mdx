@@ -1,0 +1,18 @@
+---
+title: "Vertical Text Recognition"
+slug: "vertical-text-recognition"
+letter: "V"
+tagline: "Top to bottom, column by column — the orientation traditional CJK typesetting still uses, and recognition must respect."
+description: "Vertical text recognition reads top-to-bottom, column-oriented text — traditional CJK typesetting and any content set in vertical orientation."
+category: "OCR & Recognition"
+tags: ["vertical text", "CJK", "recognition", "orientation"]
+publishedAt: "2026-07-11"
+relatedTerms: ["multilingual-ocr", "rotated-text-recognition", "reading-order-detection"]
+status: "published"
+---
+
+Vertical text recognition addresses text set in top-to-bottom, column-oriented layout — most prominently traditional Chinese, Japanese, and to a lesser extent Korean typesetting, where characters read downward within a column and columns themselves typically progress right to left across the page, a layout convention still used in literary publishing, traditional documents, some signage, and culturally significant contexts even though horizontal typesetting now dominates everyday digital content in these languages. It's distinct from the rotated-text-recognition entry's coverage of arbitrarily-angled text: vertical CJK typesetting isn't rotated horizontal text but a genuinely different, conventional reading direction with its own typographic rules.
+
+The recognition and layout challenges compound in ways specific to this orientation. Character recognition itself is generally less affected, since CJK characters are typically designed to be legible in either orientation and character-level recognition models trained on sufficient vertical-text examples handle the visual recognition adequately. The harder challenges concentrate in layout and reading-order detection: a page mixing vertical and horizontal text (common in real documents — a vertically-set main text with horizontally-set captions, footnotes, or embedded Latin-script terms) requires orientation detection at the region level before recognition can proceed correctly, and the column-to-column reading order (right to left, in the traditional convention) needs explicit handling rather than the default left-to-right assumption most layout-analysis pipelines carry from their Latin-script-first origins — precisely the kind of assumption this glossary's right-to-left and multilingual-OCR entries warn against baking into pipelines that will encounter genuinely diverse scripts and orientations.
+
+Document AI pipelines serving markets or content types where vertical typesetting genuinely appears — historical document digitization, literary and cultural archives, certain legal and traditional business documents in East Asian markets — need this capability tested explicitly rather than assumed from general CJK support, since a system's horizontal-CJK accuracy provides little guarantee about its vertical-text handling, given how different the layout and reading-order requirements are between the two conventions despite sharing the same underlying character set and visual recognition challenge.

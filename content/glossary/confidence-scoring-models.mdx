@@ -1,0 +1,18 @@
+---
+title: "Confidence Scoring Models"
+slug: "confidence-scoring-models"
+letter: "C"
+tagline: "Knowing what you don't know — the models that estimate how likely each extraction is to be right."
+description: "Confidence scoring models estimate the reliability of each AI output — calibrated scores that drive routing between automation and human review."
+category: "Evaluation & Quality"
+tags: ["confidence scoring", "calibration", "uncertainty", "model reliability"]
+publishedAt: "2026-07-11"
+relatedTerms: ["confidence-threshold", "confidence-based-routing", "low-confidence-flagging"]
+status: "published"
+---
+
+Confidence scoring models produce the number attached to every AI output that estimates how likely it is to be correct — the 0.97 beside an extracted invoice total, the 0.62 beside a smudged handwritten date. In document processing, these scores are not decoration; they are the control signal the entire operating model runs on: they decide which fields flow straight through, which route to human review, which documents escalate to stronger models, and how much residual error the institution is accepting at any given automation rate.
+
+The naive source of confidence — the model's own output probabilities — is a starting point with known pathologies: modern neural networks are systematically overconfident, especially on inputs unlike their training distribution, which is precisely when correctness drops. Confidence scoring as a discipline therefore adds layers: calibration methods (temperature scaling and successors) that align scores with observed accuracy on held-out data; ensemble and consistency signals (do multiple models, or multiple reads, agree?); input-quality features (blur, resolution, skew) that predict difficulty; and validation outcomes (did the checksum pass, does the format match?) fused into a final score. Some systems train a dedicated verifier model whose only job is predicting whether the extractor's output is right.
+
+What makes a confidence system trustworthy is measurement, not architecture: calibration curves checked against production ground truth (of the fields scored 0.95, are 95% actually correct?), tracked separately by document type, field, and capture channel — because a score can be well-calibrated on printed invoices and delusional on faxes. Drift monitoring matters equally, since calibration decays as the document population shifts. The institutions that get durable value treat confidence as a maintained product: recalibrated on review-queue outcomes, audited like any control, and honest enough that "0.97" means the same thing next quarter as it does today.

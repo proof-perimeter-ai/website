@@ -1,0 +1,18 @@
+---
+title: "Document Image Segmentation"
+slug: "document-image-segmentation"
+letter: "D"
+tagline: "Pixel by pixel: this is text, that's a table, there's a stamp — the map beneath layout analysis."
+description: "Document image segmentation partitions page pixels into regions — text, tables, figures, background — the foundation for layout-aware processing."
+category: "Document Understanding"
+tags: ["segmentation", "pixel classification", "layout", "computer vision"]
+publishedAt: "2026-07-11"
+relatedTerms: ["image-segmentation", "document-layout-analysis", "document-segmentation"]
+status: "published"
+---
+
+Document image segmentation is the partitioning of a page image into labeled regions at pixel or fine-grained level: which pixels are text, which belong to tables, figures, formulas, stamps, signatures, handwriting, and which are background. Where layout analysis often works in bounding boxes, segmentation produces the underlying map — masks that follow actual content contours — which matters when regions are irregular, rotated, or overlapping: the stamp across a paragraph, the handwritten note wrapping around printed text, the seal that intersects the signature it authenticates.
+
+The technical framing is semantic segmentation from computer vision, adapted to documents' peculiarities: extreme resolution (fine strokes carry meaning), class imbalance (background dominates), and dense spatial structure. Encoder-decoder networks and, increasingly, transformer-based segmentation models train on annotated page corpora; instance segmentation separates touching objects of the same class (two overlapping stamps); and specialized variants target specific separations — printed versus handwritten text (routing each to its appropriate recognizer), foreground content versus form template (isolating what was filled in from what was pre-printed), and page-versus-background in photographed captures (the segmentation behind auto-cropping).
+
+Segmentation quality propagates in ways worth appreciating: a recognizer fed a clean mask of just the handwriting outperforms the same model fed the mixed region; signature and stamp detection with precise masks supports the verification and forensic tasks that boxes serve crudely; redaction based on masks removes exactly the sensitive content rather than rectangles around it. The trade-off is cost — pixel-level annotation is expensive to produce and pixel-level inference heavier to run — so pipelines deploy segmentation selectively: where region geometry is genuinely irregular, where overlap is the problem to solve, and where downstream precision justifies the resolution.

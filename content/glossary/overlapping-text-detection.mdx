@@ -1,0 +1,18 @@
+---
+title: "Overlapping Text Detection"
+slug: "overlapping-text-detection"
+letter: "O"
+tagline: "Two layers of ink in one place — finding where content collides before recognition mangles both."
+description: "Overlapping text detection finds colliding content — stamps on print, show-through, double impressions — enabling separation and honest recognition."
+category: "OCR & Recognition"
+tags: ["overlapping text", "collision detection", "layers", "recognition"]
+publishedAt: "2026-07-11"
+relatedTerms: ["occluded-text-extraction", "stamped-document-processing", "document-image-segmentation"]
+status: "published"
+---
+
+Overlapping text detection is the identification of places where content collides: the stamp's letters across the printed paragraph, the signature through the name beneath it, the show-through of the reverse page's text bleeding into this one, the double-fed scan's ghost impression, the watermark under everything. Detection is the prerequisite step — before separation or recovery can run, the pipeline must know *that* a region carries layered content and *what kinds* — because unrecognized overlap is where recognizers produce their worst confident output: interleaved characters from two sources fused into plausible garbage, scored as if clean.
+
+The detection signals are layer differences: color separation (the blue stamp, the graphite signature, the red seal against black print — channel analysis isolates layers cheaply when color survives capture), stroke morphology (handwriting's variable strokes versus print's regularity, the stamp's uniform impression), density anomalies (regions where ink coverage exceeds any single text layer's plausibility), and — for show-through — the mirror-correlation with the reverse page when both sides were scanned. Learned detectors trained on composited overlaps generalize across the taxonomy, emitting overlap masks with layer-type hypotheses that route the region to appropriate handling: segmentation-based separation where layers are distinguishable, occlusion recovery where one layer must be read beneath another, or simple flagging where the pipeline's job is honesty rather than heroics.
+
+The operational placement mirrors quality gating generally: overlap detection runs early and cheap across all pages, its findings shaping downstream behavior — recognition confidence discounted in flagged regions, extraction fields intersecting overlaps routed to review, and the overlap events themselves logged as document features (the stamp's presence and position being workflow data in its own right, per the stamp-detection entry). Training-side, synthetic overlap augmentation — stamps, signatures, and show-through composited onto clean pages — is the standard hardening that keeps recognizers from being surprised by paper's oldest habit: ink landing on ink.

@@ -1,0 +1,18 @@
+---
+title: "Mobile Document Capture"
+slug: "mobile-document-capture"
+letter: "M"
+tagline: "The phone is the scanner now — capture flows that turn a handheld camera into a reliable intake channel."
+description: "Mobile document capture turns phone cameras into document intake — guided capture, on-device quality checks, and processing-ready images."
+category: "Workflow & Automation"
+tags: ["mobile capture", "phone camera", "intake", "capture quality"]
+publishedAt: "2026-07-11"
+relatedTerms: ["document-capture-ux", "mobile-document-capture-sdk", "edge-ocr-processing"]
+status: "published"
+---
+
+Mobile document capture is document intake through the device everyone carries: the phone camera photographing the ID, the payslip, the receipt, the signed form — now the dominant capture channel for consumer-facing document flows, and a growing one for field operations. Its rise inverted a quality assumption: scanners produced controlled, flat, evenly lit images; phones produce handheld photos with perspective, curvature, shadows, glare, and motion — so mobile capture engineering is largely the art of getting scanner-grade input from camera-grade conditions.
+
+The capture flow does the work in real time, on-device: document boundary detection with a live overlay guiding the framing; continuous quality scoring (focus, lighting, glare, resolution, full-document visibility) gating the shutter or prompting the fix — "move away from the window," "hold steady" — and auto-capture firing when thresholds pass; then immediate post-processing (crop, perspective correction, enhancement) and, increasingly, on-device recognition giving instant verification ("we read your document number as… correct?"). Every defect caught in this loop costs the user a second; the same defect surviving to the back office costs a rejection cycle measured in days — the economics that justify all the real-time machinery.
+
+The channel's character shapes the pipeline behind it: models trained and calibrated for phone-photo conditions (a capture channel distinct from scans and faxes, with its own confidence calibration), fraud surfaces specific to it (the photo-of-a-screen spoof, the injected image — the document-spoofing entry's territory), and the completeness patterns of consumer submission (documents arriving one photo at a time, sessions abandoned mid-pack — flows designed to resume gracefully). Done well, mobile capture is the reason "bring your documents to the branch" became a legacy sentence; done carelessly, it is where onboarding funnels quietly leak their applicants.

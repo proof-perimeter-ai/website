@@ -1,0 +1,18 @@
+---
+title: "Legal Document OCR Accuracy"
+slug: "legal-document-ocr-accuracy"
+letter: "L"
+tagline: "A misread 'not' is a different contract — why legal text sets OCR's least forgiving accuracy bar."
+description: "Legal document OCR accuracy addresses the exacting recognition demands of legal text — where single-character errors change meaning and evidence."
+category: "Evaluation & Quality"
+tags: ["legal OCR", "accuracy", "legal documents", "evidentiary standards"]
+publishedAt: "2026-07-11"
+relatedTerms: ["ocr-accuracy-rate", "character-error-rate", "litigation-document-review"]
+status: "published"
+---
+
+Legal document OCR accuracy is the recognition-quality question posed at legal stakes: contracts, court filings, discovery productions, and recorded instruments where a single misread character can invert meaning ("now" for "not"), corrupt a citation (the transposed docket digit that breaks the reference), or alter a legal description's metes and bounds. General OCR accuracy discussions average over consequence; legal text concentrates it — the words are chosen adversarially precisely, the documents may become evidence, and errors don't degrade gracefully: they produce a different legal statement, fluently.
+
+The corpus is friendlier and harsher than average by turns. Friendlier: much legal material is cleanly typeset — briefs, published opinions, modern contracts — where modern engines run at very high character accuracy. Harsher: the archive is deep (decades of recorded deeds, typewritten agreements, carbon-copy court records, microfilm-generation scans), signatures, stamps, and handwritten marginalia interleave the print (the judge's annotation may be the holding), Bates numbers and confidentiality stamps overprint content, and defined-term precision means case-sensitivity matters ("Agreement" and "agreement" are different words in a contract). Domain post-processing helps where generic language models mislead: legal citations follow grammars that validate and correct recognition; statute and reporter references checksum against known corpora; but aggressive linguistic autocorrection is dangerous here — the archaic phrase or Latin term "corrected" into a modern word is a new error wearing a fixed one's clothes.
+
+The operational standard follows use. For search and review, high-but-imperfect OCR is acceptable and universal — with the known caveat that OCR misses become search misses, material in privilege screening and responsiveness culling. For quotation, filing, and anything a court will read, verification against the image is the rule: extracted text is a working copy, the page is the document, and every serious legal-document pipeline preserves that relationship — text linked to image, region by region — so the check that professional responsibility requires takes seconds rather than faith.

@@ -1,0 +1,18 @@
+---
+title: "Handwritten Signature Verification"
+slug: "handwritten-signature-verification"
+letter: "H"
+tagline: "Is that really their signature? — comparing the ink on the page against the specimen on file."
+description: "Handwritten signature verification compares document signatures against reference specimens — detecting forgery in banking and legal workflows."
+category: "Compliance & Security"
+tags: ["signature verification", "forgery detection", "biometrics", "banking"]
+publishedAt: "2026-07-11"
+relatedTerms: ["signature-detection", "document-forgery-detection", "dual-control-verification"]
+status: "published"
+---
+
+Handwritten signature verification is the assessment of whether a signature on a document was written by the person it claims: the check's signature against the account's specimen card, the loan agreement's against the onboarding file, the disputed contract's against known exemplars. It is one of the oldest document authentication problems — banks ran manual signature desks for a century — and a genuinely hard pattern-recognition task, because signatures are a biometric with unusual properties: highly variable within a person (no two genuine signatures are identical) and deliberately imitable between persons (forgers practice).
+
+The technical framing distinguishes two regimes. Offline (static) verification works from the document image alone — the shape, proportions, stroke topology, and ink characteristics of the written signature — which is the regime documents impose. Online (dynamic) verification, where capture hardware records the signing (pen trajectory, velocity, pressure), is far stronger — forgers can copy shape but rarely dynamics — and belongs to digital signing pads, not paper. Modern offline verification uses deep metric learning: networks trained on genuine/forged pairs to embed signatures so that one person's variations cluster while forgeries — even skilled ones — separate, with the score calibrated against reference sets of the claimed signer's specimens. The perennial challenges: few reference specimens per person, signature drift over years, and the asymmetry that skilled forgeries are rare in training data precisely because they're rare in life.
+
+Operationally, verification is a scored control inside larger workflows: high-confidence matches proceed, low scores route to human signature examiners (whose expertise remains the standard for contested cases), and thresholds are set per instrument value — the arithmetic of false accepts (fraud loss) against false rejects (customer friction) differing by orders of magnitude between a routine form and a high-value transfer. Its documentary sibling — signature *presence* detection (was it signed at all, in every required place?) — is easier, fully automatable, and frequently the more valuable control in completeness-checking workflows.

@@ -1,0 +1,18 @@
+---
+title: "Policy Document Parsing"
+slug: "policy-document-parsing"
+letter: "P"
+tagline: "The insurance policy as it was actually issued — schedule, wording, and endorsements, structured together."
+description: "Policy document parsing structures insurance policies — schedules, wordings, definitions — into the composite representation coverage decisions rely on."
+category: "Insurance"
+tags: ["policy parsing", "insurance documents", "coverage", "extraction"]
+publishedAt: "2026-07-11"
+relatedTerms: ["coverage-verification-automation", "insurance-endorsements-extraction", "policy-document-processing"]
+status: "published"
+---
+
+Policy document parsing is the structuring of insurance policies into machine-usable form: the schedule (named insured, limits, deductibles, effective dates — the table-like data specific to this policyholder), the wording (the insuring agreement, conditions, and exclusions — standardized language shared across many policies of the same form), and the defined terms that give both their precise legal meaning. Parsing a policy well means recovering not just the text but the *relationships* — which schedule limit applies to which wording section, which defined term governs which clause, and eventually which endorsements have amended the base document, per the endorsements-extraction entry's compositional problem.
+
+The task splits by content type, each demanding different handling. Schedule extraction is structured-field work — table and form extraction applied to the policy's declarations page, with the accuracy stakes of any financial figure (a misread limit is a misrepresented coverage amount). Wording extraction is contract analysis: clause segmentation identifying insuring agreements, conditions, and exclusions as distinct provisions; defined-term resolution linking every capitalized term ("Insured," "Occurrence," "Property") back to its definition, often in a separate section pages away; and cross-reference resolution following the wording's internal pointers ("as described in Section IV"). Because standard-form wordings recur across an insurer's book (and across the industry, via ISO and similar standardized forms), form-identification — recognizing *which* known wording this is — lets parsing reuse prior structural analysis rather than re-deriving it from scratch each time, a significant efficiency in high-volume lines.
+
+The parsed policy becomes the reference object that coverage verification, claims adjudication, and certificate reconciliation all query against — which means parsing quality is upstream of every downstream insurance-AI capability this glossary catalogs. Ambiguity in wording interpretation remains a human coverage-counsel question; parsing's job is making the policy's actual text — schedule, wording, and their relationships — reliably retrievable and citable, so that whoever answers the coverage question is answering from what the policy says rather than what someone remembers it saying.

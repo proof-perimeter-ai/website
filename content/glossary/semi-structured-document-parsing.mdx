@@ -1,0 +1,18 @@
+---
+title: "Semi-Structured Document Parsing"
+slug: "semi-structured-document-parsing"
+letter: "S"
+tagline: "Not a form, not free prose — the messy middle ground most business documents actually occupy."
+description: "Semi-structured document parsing handles documents with partial, inconsistent structure — the common case between rigid forms and pure narrative."
+category: "Document Understanding"
+tags: ["semi-structured", "parsing", "document types", "extraction"]
+publishedAt: "2026-07-11"
+relatedTerms: ["document-layout-analysis", "template-free-document-extraction", "context-aware-extraction"]
+status: "published"
+---
+
+Semi-structured document parsing addresses the category that describes most real business documents: neither the rigid, predictable field-and-box layout of a standardized form, nor the pure narrative prose of an essay or letter, but something in between — an invoice with a header section, a variable-length line-item table, and free-text payment terms; a medical report with some fixed fields and substantial narrative sections; a contract with numbered clauses following a loose but not perfectly consistent convention. The term matters because it names the difficulty most extraction systems actually have to solve, distinct from either pure-form extraction (largely solved by structured field extraction) or pure-narrative summarization (a language task with its own established methods).
+
+The parsing challenge in this middle ground is that a single document combines multiple structural regimes requiring different handling within the same page or file: table extraction for the line items, key-value extraction for the header fields, and narrative understanding for the free-text sections — often with structure that varies enough between instances of the "same" document type that pure template matching fails, but with enough consistency that treating the whole thing as unstructured prose discards real, exploitable structure. Effective approaches combine the techniques this glossary describes across its layout-analysis, table-extraction, and key-value-pairing entries within one document, applying each where it fits rather than forcing the whole document through one extraction paradigm, with layout-aware and multimodal models handling much of this mixed-mode recognition natively by attending to both the structural layout signals and the narrative content simultaneously.
+
+This category's practical significance is that it represents the accuracy frontier for most production document AI deployments: purely structured forms achieve very high accuracy with mature techniques, and purely narrative documents are well-served by established NLP methods, but the semi-structured middle — where most invoices, medical records, insurance documents, and legal filings actually live — is where the harder engineering problems concentrate, and where the gap between a system that performs well on demo documents and one that performs well on an organization's actual, messy document population is most likely to appear. Evaluating any extraction system's real-world readiness means testing it specifically against this middle category, not just the clean structured or clean narrative extremes that are easier to demonstrate well.

@@ -1,0 +1,18 @@
+---
+title: "EHR Data Extraction"
+slug: "ehr-data-extraction"
+letter: "E"
+tagline: "The patient's story, scattered across systems and scans — extracted into data that care and research can use."
+description: "EHR data extraction structures clinical information from electronic health records — notes, scanned documents, faxes — into usable, coded data."
+category: "Healthcare"
+tags: ["EHR", "clinical data", "healthcare extraction", "interoperability"]
+publishedAt: "2026-07-11"
+relatedTerms: ["clinical-notes-analysis", "medical-chart-abstraction", "discharge-summary-extraction"]
+status: "published"
+---
+
+EHR data extraction is the structuring of clinical information from electronic health records — a task that exists because "electronic" never meant "structured." Inside every EHR lives a mix: coded fields (problems, medications, labs) alongside free-text notes where the clinical substance concentrates, plus a shadow archive of scanned documents — faxed referrals, outside records, signed consents, old paper charts — attached as images the EHR stores but cannot read. Extraction reaches all three layers: normalizing the coded data, applying clinical NLP to the narratives, and running document AI over the scanned layer that traditional health-IT integration ignores.
+
+The technical stack is healthcare-specific at every level. Clinical language processing handles the notes — abbreviations, negation, temporality, and mapping to standard vocabularies (SNOMED, ICD-10, RxNorm, LOINC) so extracted facts interoperate across systems and feed FHIR-shaped exchanges. Document AI handles the scanned layer: classification sorting the referral from the insurance card from the outside lab report, OCR robust to fax quality, and extraction schemas per document type. Cross-source reconciliation then faces medicine's version of entity resolution: the same medication appearing in three notes at two doses, the outside record contradicting the internal problem list — with conflicts surfaced for clinical review rather than machine-resolved, because the discrepancy itself is clinically meaningful.
+
+The applications drive different accuracy postures: care-facing extraction (surfacing the outside allergy note, completing the medication history) errs toward recall with clinician verification; billing and quality-measure abstraction demands defensible precision; research and registry population runs at corpus scale under IRB and de-identification regimes. Uniformly, PHI governance shapes the architecture — processing within covered infrastructure, minimum-necessary access, audit logging — and provenance is clinical safety: every extracted fact pointing back to its source note or scanned page, because a clinician acting on extracted data needs to be one click from the original words.

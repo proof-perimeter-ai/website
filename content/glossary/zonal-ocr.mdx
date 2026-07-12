@@ -1,0 +1,18 @@
+---
+title: "Zonal OCR"
+slug: "zonal-ocr"
+letter: "Z"
+tagline: "Read only where you know the answer lives — the oldest, still-useful trick for fixed-layout speed and precision."
+description: "Zonal OCR restricts recognition to predefined regions on a fixed layout — fast and precise where documents genuinely don't vary, a template-era technique still in use."
+category: "OCR & Recognition"
+tags: ["zonal OCR", "template extraction", "fixed layouts", "recognition"]
+publishedAt: "2026-07-11"
+relatedTerms: ["template-free-document-extraction", "form-field-extraction", "optical-mark-recognition-omr"]
+status: "published"
+---
+
+Zonal OCR is the technique of restricting text recognition to predefined regions ("zones") of a document rather than processing the entire page — defining in advance that the invoice number always appears in this specific rectangle, the date in that one, and running recognition only within those bounded areas rather than analyzing the full page's layout and content. It represents the template-based extraction paradigm this glossary describes throughout as the field's historical default, applied at the recognition level specifically: a technique that predates and stands in direct contrast to the template-free extraction approaches now dominant for most modern document AI use cases.
+
+The technique's genuine strengths, worth taking seriously rather than dismissing as purely legacy, apply specifically where its core assumption holds: documents with truly fixed, unchanging layouts. When that assumption is valid — a specific government form whose layout is fixed by regulation, a standardized test answer sheet, an internal form an organization controls and never changes — zonal OCR offers real advantages over general-purpose extraction: faster processing since only small defined regions need recognition rather than the full page, higher precision since the zone definition itself eliminates ambiguity about which region contains which field, and lower computational cost since there's no need for the layout-analysis and contextual-understanding overhead that general-purpose document AI models carry. This is precisely the profile this glossary's template-free-extraction entry identifies as the remaining legitimate niche for template-based approaches: extremely high-volume, extremely stable document formats where setup cost is justified by processing efficiency at scale.
+
+The technique's well-known fragility is equally worth stating clearly: zonal OCR breaks immediately and completely when a document's layout shifts even slightly — a form redesign, a scan captured at a different scale or slightly different alignment, a scanner substitution that shifts margins — because the zones were defined against one specific expected layout, and any deviation means the system is now reading the wrong region entirely, often producing a confidently wrong result rather than an obvious failure. This fragility is exactly what drove the field's broader shift toward the template-free, layout-aware, and vision-language-model-based approaches this glossary describes as the current default: zonal OCR remains genuinely useful in its narrow niche of truly fixed layouts under an organization's own control, but it is no longer a sound general-purpose strategy for the layout diversity most real-world document streams actually present.

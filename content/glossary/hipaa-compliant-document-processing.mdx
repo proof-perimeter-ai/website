@@ -1,0 +1,18 @@
+---
+title: "HIPAA-Compliant Document Processing"
+slug: "hipaa-compliant-document-processing"
+letter: "H"
+tagline: "The chart is PHI, the fax is PHI, the extraction is PHI — processing healthcare documents inside the rules."
+description: "HIPAA-compliant document processing handles PHI under the Privacy and Security Rules — BAAs, minimum necessary, encryption, and audit controls."
+category: "Compliance & Security"
+tags: ["HIPAA", "PHI", "healthcare compliance", "privacy"]
+publishedAt: "2026-07-11"
+relatedTerms: ["phi-redaction", "ehr-data-extraction", "data-residency-in-document-ai"]
+status: "published"
+---
+
+HIPAA-compliant document processing is the handling of healthcare documents under the US Health Insurance Portability and Accountability Act: virtually every document a healthcare workflow touches — charts, claims, referrals, lab reports, intake forms, the eternal faxes — contains protected health information (PHI), and every system that creates, receives, stores, or transmits it falls under the Privacy Rule's use-and-disclosure limits and the Security Rule's safeguards. Document AI enters this frame as a processor of PHI at scale, which makes its compliance posture an architecture question, not a paperwork one.
+
+The obligations translate concretely. Business associate agreements: a vendor whose models process PHI is a business associate, contractually bound to HIPAA's requirements — and a cloud OCR API without a BAA is a violation waiting to be discovered. Minimum necessary: extraction schemas and access scopes designed around the purpose, not convenience — the billing pipeline needs codes and demographics, not the psychotherapy notes. Security Rule safeguards land as engineering: encryption in transit and at rest, access controls resolved to identified users, audit logs of every PHI access (including the model's), integrity protections, and — for the derived data documents generate — recognition that extracted values, embeddings, and training sets built from PHI are PHI, inheriting every control and every breach-notification consequence.
+
+The architectural gravity mirrors other regulated domains but with healthcare's particulars: fax-heavy intake keeps OCR quality and channel-specific calibration clinically relevant; de-identification (the Safe Harbor and expert-determination paths) is the gate through which document data reaches research and model training — itself a document AI task, since the eighteen identifiers hide in narrative text and scanned images; and processing location matters — many covered entities and their risk officers conclude that PHI-bearing documents are safest processed within infrastructure they control, with in-perimeter models replacing the pattern of shipping charts to external APIs. Throughout, the audit trail is the compliance artifact: who and what touched which record, when, and why — answerable per document, on demand.

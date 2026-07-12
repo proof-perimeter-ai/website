@@ -1,0 +1,18 @@
+---
+title: "Agentic Document Parsing"
+slug: "agentic-document-parsing"
+letter: "A"
+tagline: "A parser that doesn't just read once and hope — it zooms in, re-checks, and tries again like a careful analyst."
+description: "Agentic document parsing uses AI agents that iteratively inspect, re-read, and verify document regions, instead of a single fixed extraction pass."
+category: "AI Agents"
+tags: ["agentic parsing", "AI agents", "document parsing", "iterative extraction"]
+publishedAt: "2026-07-11"
+relatedTerms: ["agentic-document-processing", "agentic-ocr", "parsing"]
+status: "published"
+---
+
+Agentic document parsing replaces the single-pass "run the model, take the output" pattern with an agent that works a document the way a careful analyst would: read it, notice what's uncertain, and take further actions to resolve the uncertainty. The agent might zoom into a low-confidence region and re-read it at higher resolution, cross-check an extracted total against the line items on another page, consult a lookup tool to validate a code, or re-run a table region with a different parsing strategy — iterating until its answers are consistent or it concludes a human is needed.
+
+The shift is architectural. A traditional parsing pipeline is a fixed sequence of stages with one shot at each decision; errors made early are baked in. An agentic parser wraps models and tools in a reasoning loop: a planning model decides what to do next based on what it has seen so far, invokes tools (OCR engines, croppers, validators, calculators, retrieval), observes results, and revises. This makes the system adaptive to exactly the documents that break fixed pipelines — the skewed scan where one region needs different preprocessing, the statement whose balance doesn't reconcile on first read, the form with an unexpected extra page.
+
+The trade-offs are cost and governance. Multiple reasoning steps mean more inference per document, so agentic parsing is best reserved for high-value or initially-failed documents — often as an escalation tier above a fast conventional pass. And because the agent's path varies per document, auditability requires logging the full trajectory: every action taken, every intermediate read, and why the final value won. Done properly, that log is richer evidence than any static pipeline produces — a step-by-step account of how the answer was reached.

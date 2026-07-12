@@ -141,9 +141,9 @@ const tiers = [
     price: "CONTACT US",
     sub: "Proof Perimeter's proprietary document processing models — hosted or on-premises.",
     features: [
-      "Proof Perimeter's proprietary, tuned extraction models — no API key required",
+      "Proof Perimeter's proprietary, tuned models",
       "Deploy hosted, in a private cloud, or fully on-premises; air-gappable when required",
-      "Fine-tuning on your corrections and your worst documents",
+      "Fine-tuning on your corrections and your documents",
       "Custom workflows, legacy core connectors, system-of-record integration",
       "SSO, RBAC, maker-checker review, admin controls",
       "Governance dashboard: residency map, exportable conformity pack",
@@ -236,11 +236,10 @@ export default function DocumentAi() {
           <div className="mx-auto max-w-[1120px] px-7">
             <div className="max-w-[640px]">
               <h1 className="hero-animate-h1 max-w-[16ch] text-[clamp(34px,4.6vw,52px)] font-bold tracking-[-0.022em] text-ink">
-                Document AI you can start using in a minute and still defend in an audit.
+                Document AI you can start using in a minute.
               </h1>
               <p className="hero-animate-p mt-6 max-w-[54ch] text-[19px] text-ink-2">
-                Free with your own model key. Templates, workflows, confidence gates, human review, batch and API. Every extraction is
-                logged: which model ran it, where, and under whose key. When that has to be your own hardware, it can be.
+                Free with your own model key. Templates, workflows, confidence gates, human review, batch and API.
               </p>
               <div className="hero-animate-cta mt-8 flex flex-wrap gap-3.5">
                 <BtnSolid href="/book-demo">Start free</BtnSolid>

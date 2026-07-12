@@ -1,0 +1,18 @@
+---
+title: "Broker Statement Parsing"
+slug: "broker-statement-parsing"
+letter: "B"
+tagline: "Positions, trades, and fees from every custodian's house style — normalized into one portfolio view."
+description: "Broker statement parsing extracts holdings, transactions, and fees from brokerage and custodian statements into normalized portfolio data."
+category: "Financial Services"
+tags: ["broker statements", "portfolio data", "wealth management", "financial parsing"]
+publishedAt: "2026-07-11"
+relatedTerms: ["bank-statement-extraction", "financial-statement-extraction", "fund-prospectus-analysis"]
+status: "published"
+---
+
+Broker statement parsing is the extraction of structured portfolio data from brokerage and custodian statements: account holdings with quantities and valuations, transaction histories, income and dividend records, fee schedules, and margin details. Wealth managers, family offices, fund administrators, and lenders taking securities as collateral all face the same problem — the complete picture of a client's assets exists only across statements from multiple institutions, each rendered in its own proprietary layout, and often only as PDF.
+
+The documents are among the most table-dense in finance, and their variety is the core difficulty. Each custodian organizes differently: holdings grouped by asset class or account; multi-currency sections; footnoted valuations; transaction descriptions in house abbreviations; and instruments identified variously by ticker, CUSIP, ISIN, or free-text name. Parsing must not only extract these tables accurately across page breaks but normalize them — mapping every custodian's vocabulary into one schema, resolving security identifiers against reference data, and reconciling stated totals against the sum of parsed positions, an arithmetic check that doubles as an extraction integrity test.
+
+Parsed and normalized, the data unlocks consolidated reporting and analysis that manual aggregation made quarterly at best: whole-portfolio views across custodians, fee analysis, performance attribution, concentration and suitability checks, and collateral monitoring that updates as statements arrive. The sensitivity profile is high — statements reveal a client's entire financial position — so institutions typically require the parsing to run within their own environment, with per-field provenance preserved so any number in a client report traces back to the exact statement line it came from.

@@ -1,0 +1,18 @@
+---
+title: "Parsing Confidence Scores"
+slug: "parsing-confidence-scores"
+letter: "P"
+tagline: "How sure is the parser about the structure — the table's cells, the reading order, the section tree?"
+description: "Parsing confidence scores quantify structural certainty — layout, tables, order — routing doubtful parses like doubtful extractions."
+category: "Evaluation & Quality"
+tags: ["parsing confidence", "structural certainty", "quality", "routing"]
+publishedAt: "2026-07-11"
+relatedTerms: ["confidence-scoring-models", "document-parsing-accuracy", "parsing"]
+status: "published"
+---
+
+Parsing confidence scores are certainty estimates attached to structural decisions: how sure the parser is that this region is a table (and that its grid has these rows and columns), that these blocks read in this order, that this line is a heading at this level, that the page splits into these columns. Extraction confidence gets the attention — the score beside each field value — but structure carries its own uncertainty, and structural errors are upstream errors: a low-confidence table parse silently degrades every cell extracted from it, every chunk built on it, every answer citing it, none of which will know why.
+
+The scores originate where the structural models decide: detection confidences on layout regions, cell-structure model scores on table grids (per-cell and whole-table variants), sequence probabilities on reading order, classification scores on element roles — with the aggregation question (what is *the* confidence of a parse composed of hundreds of decisions?) answered per consumer: minimums over critical elements for gating, per-element scores preserved for targeted handling. Consistency signals augment the model scores usefully: the parse that disagrees with itself (text flow incoherent across the chosen order, table rows of wildly varying cell counts, arithmetic that fails where structure implies it should hold) is evidence of structural error independent of what any model reported — the linguistic and arithmetic checks this glossary's parsing entries recommend, recast as confidence inputs.
+
+The consumption patterns mirror extraction confidence: thresholds routing doubtful parses — to a stronger parser tier (the VLM escalation on the page the fast stack fumbled), to human review where structure matters enough (the financial table feeding covenant math), or to flagged-but-processed status where honesty suffices; calibration measured against structural ground truth per document type; and propagation downstream — a field extracted from a low-confidence table should not carry high field confidence, and the pipelines that compose scores across layers (parse × extraction × validation) are the ones whose final numbers mean something.

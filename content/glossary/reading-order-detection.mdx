@@ -1,0 +1,18 @@
+---
+title: "Reading Order Detection"
+slug: "reading-order-detection"
+letter: "R"
+tagline: "The sequence a human eye would follow — inferred from layout, and essential before a word is serialized."
+description: "Reading order detection determines the correct sequence through a page's content blocks — the ordering foundation beneath every text serialization."
+category: "Document Understanding"
+tags: ["reading order", "layout", "sequencing", "parsing"]
+publishedAt: "2026-07-11"
+relatedTerms: ["multi-column-reading-order", "document-layout-analysis", "multi-column-document-parsing"]
+status: "published"
+---
+
+Reading order detection is the general task of determining the sequence in which a document's content blocks should be read: given a page segmented into regions — paragraphs, headings, figures, captions, sidebars, footnotes — in what order does a human reader (and therefore any downstream text consumer) traverse them? It is the foundational ordering problem beneath every specific manifestation this glossary treats separately — multi-column layouts being the most common and most studied case, but reading order matters equally on single-column pages with interrupting figures, on forms whose fields don't follow simple top-to-bottom logic, and on any layout complex enough that visual position alone doesn't dictate sequence.
+
+The determination draws on several signal types working together. Geometric cues — position, alignment, whitespace gaps — suggest an obvious default for simple layouts but underdetermine complex ones, where the same set of detected blocks admits multiple geometrically plausible orderings. Typographic cues — heading levels, numbering schemes, font-size hierarchy — signal structural precedence that geometry alone misses. Semantic cues — does this ordering produce coherent, grammatically sensible text? — serve as both a modeling signal and a cheap validation check after the fact. Modern approaches increasingly frame reading order as a learned sequence-prediction task over detected blocks, trained on annotated corpora where humans marked the "correct" traversal — with VLM-based parsers reading the rendered page holistically often producing more human-like orderings than coordinate-heuristic pipelines that reason about blocks in isolation.
+
+The stakes of getting reading order wrong compound silently downstream: chunking for RAG splits at the wrong boundaries when order is scrambled, extraction associates the wrong label with the wrong value when their sequence relationship is corrupted, and text-to-speech and screen-reader consumption becomes actively confusing rather than merely imperfect. Because the failure produces plausible-looking output — scrambled text still parses as *some* sentence, just not the right one — reading order errors are among the harder document-processing failures to catch without deliberate coherence checking, which is why the entries throughout this glossary that touch serialization keep returning to it as a validation habit worth building in rather than assuming away.

@@ -1,0 +1,18 @@
+---
+title: "Robotic Process Automation (RPA)"
+slug: "robotic-process-automation-rpa"
+letter: "R"
+tagline: "The bot that clicks where a human used to click — and its uneasy, essential partnership with document AI."
+description: "Robotic Process Automation (RPA) automates rule-based system interactions — often paired with document AI to bridge extraction and legacy systems."
+category: "Workflow & Automation"
+tags: ["RPA", "automation", "legacy integration", "workflow"]
+publishedAt: "2026-07-11"
+relatedTerms: ["business-process-automation-bpa", "document-workflow-automation", "intelligent-document-processing"]
+status: "published"
+---
+
+Robotic Process Automation (RPA) is software that automates rule-based interactions with existing applications by mimicking what a human would do at a keyboard and screen — clicking buttons, filling fields, copying values between systems, navigating menus — without requiring an API or any change to the underlying applications themselves. It rose to prominence automating exactly the repetitive, high-volume, low-judgment tasks that filled back-office roles for decades, and its relationship to document AI is close but distinct: RPA excels at *acting* on structured data across systems; it has historically been poor at *reading* unstructured content, which is precisely the gap document AI fills.
+
+The combination — often marketed as a single capability but architecturally two distinct layers — follows a consistent pattern: document AI reads an incoming file and extracts structured data; RPA takes that structured output and executes the downstream system interactions a human clerk used to perform manually, typically against legacy applications that predate any modern API and were never going to get one. This pairing made sense historically because RPA bots, lacking any ability to interpret unstructured input themselves, needed exactly the kind of pre-extracted, validated data that document AI supplies — the invoice's vendor and amount pulled out first, then the RPA bot keys them into the decades-old ERP screen that has no integration endpoint.
+
+The architectural trend worth noting is that this pairing is increasingly being displaced from the middle: modern API-first document platforms and workflow orchestration tools increasingly connect directly to modern systems via actual APIs, leaving RPA's screen-scraping, click-simulation approach relevant mainly for the genuinely legacy systems that still lack any programmatic interface — a shrinking but real category, particularly in large enterprises, government, and heavily regulated industries running decades-old core systems that are expensive and risky to replace. Where RPA remains the necessary bridge, the same governance discipline this glossary applies elsewhere holds: bot actions should be logged and auditable, error handling should escalate to humans rather than fail silently mid-process, and the document AI feeding the bot should be measured with the same rigor as any extraction layer whose output triggers automated system changes.

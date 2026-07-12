@@ -1,0 +1,18 @@
+---
+title: "Markdown Document Conversion"
+slug: "markdown-document-conversion"
+letter: "M"
+tagline: "The lingua franca of the LLM era — documents rendered as clean markdown that models read natively."
+description: "Markdown document conversion turns PDFs and scans into structured markdown — headings, tables, emphasis — the preferred format for LLM pipelines."
+category: "Data Extraction"
+tags: ["markdown", "conversion", "document parsing", "LLM formats"]
+publishedAt: "2026-07-11"
+relatedTerms: ["docling", "normalize-documents-for-llm", "document-parsing-semantic-search"]
+status: "published"
+---
+
+Markdown document conversion is the rendering of documents — PDFs, scans, office files — into markdown: headings as `#` hierarchy, emphasis as asterisks, lists as lists, tables as pipe-delimited grids, code fenced, figures referenced with captions. The format's rise to default is an LLM-era phenomenon: markdown expresses document structure in plain text that language models parse effortlessly (their training corpora are saturated with it), it is compact relative to markup alternatives, human-readable in raw form, and it gives RAG pipelines and copilots a common intermediate representation — which is why modern parsers (Docling, the VLM-based converters, the document APIs) all speak it as a primary output.
+
+The conversion is document understanding wearing a serialization: everything this glossary covers under parsing — layout analysis, reading order, table structure recognition, header/footer separation, figure extraction — determines the markdown's fidelity, and the format makes the failures legible: the two-column page read straight across produces visibly interleaved nonsense; the mangled table produces a pipe-grid whose rows don't align; the missed heading flattens the section structure chunking depends on. Markdown's own limits shape the engineering: its tables can't express merged or spanning cells (converters choose between HTML-table fallback, cell duplication, or flattening — a decision that matters downstream), footnotes and cross-references have no native form, and precise geometry is gone — which is why serious pipelines emit markdown *plus* a richer structured representation (JSON with coordinates and provenance), the markdown for the model, the JSON for the audit trail.
+
+The quality test is functional: does retrieval built on this markdown find what documents contain, do models answer correctly from it, do the tables survive round-trip scrutiny? Teams comparing converters benchmark exactly that — and consistently find that markdown fidelity, especially table and reading-order fidelity, moves downstream answer quality more than most model choices made above it.

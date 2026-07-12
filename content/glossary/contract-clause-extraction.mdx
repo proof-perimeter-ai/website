@@ -1,0 +1,18 @@
+---
+title: "Contract Clause Extraction"
+slug: "contract-clause-extraction"
+letter: "C"
+tagline: "Finding the indemnity in the haystack — locating and classifying the provisions that matter across a mountain of agreements."
+description: "Contract clause extraction locates and classifies provisions — termination, indemnity, liability caps — across contracts for review and analysis at scale."
+category: "Legal"
+tags: ["clause extraction", "contract analysis", "legal AI", "provisions"]
+publishedAt: "2026-07-11"
+relatedTerms: ["contract-review-agents", "contract-obligation-tracking", "lease-abstraction"]
+status: "published"
+---
+
+Contract clause extraction is the identification, classification, and retrieval of specific provisions within contracts: the termination rights, indemnities, limitation-of-liability caps, change-of-control triggers, governing law, assignment restrictions, auto-renewal terms, and dozens of other clause types that determine what an agreement actually commits the parties to. Given one contract or a repository of fifty thousand, the system answers the questions legal and business teams constantly ask: does this agreement contain a most-favored-customer clause? what do our liability caps look like across the vendor portfolio? which contracts let the counterparty terminate on our change of control?
+
+Clauses resist naive search because legal drafting expresses the same provision in endless variation — an indemnity may never contain the word "indemnify," a termination-for-convenience right hides inside a paragraph about term and renewal, and the operative sentence is qualified by exceptions two sections away. Extraction models are therefore trained on clause semantics rather than keywords: encoder classifiers over contract-specific datasets established the field, and large language models now both classify more flexibly and extract the parameters within clauses — the cap amount, the notice period, the renewal window — turning each provision into structured, comparable data with a citation back to its exact text.
+
+The applications cluster into review acceleration and portfolio intelligence. In negotiation and diligence, extraction pre-locates the provisions a playbook cares about, so lawyers review positions rather than hunt for them. Across repositories, it enables the queries that were previously quarter-long projects: exposure assessments when regulation changes, renewal and obligation calendars, deviation analysis against standard terms. Because missed and misclassified clauses carry legal consequence, production systems report recall-oriented metrics per clause type, keep the human review layer on low-confidence and high-stakes provisions, and always link every extracted clause to its verbatim source.

@@ -1,0 +1,18 @@
+---
+title: "Document Retention Policies"
+slug: "document-retention-policies"
+letter: "D"
+tagline: "Seven years, ten years, or 'delete on request' — the rules that say how long each record must, and may, live."
+description: "Document retention policies define how long each record class is kept and when it's destroyed — enforced automatically via AI classification."
+category: "Compliance & Security"
+tags: ["retention", "records management", "disposal", "compliance"]
+publishedAt: "2026-07-11"
+relatedTerms: ["document-lifecycle-management", "records-management-automation", "sec-17a-4-document-archiving"]
+status: "published"
+---
+
+Document retention policies are the rules that assign every class of record a lifespan: how long it must be kept (regulatory minimums — tax records, KYC files, trade communications, and clinical records each carry their own clocks, varying by jurisdiction), when the clock starts (creation, account closure, contract termination, employee departure), what suspends it (litigation holds), and what happens at expiry — defensible destruction or archival transfer, documented either way. The policy exists in tension: under-retention risks regulatory breach and evidentiary loss; over-retention accumulates cost, breach surface, discovery burden, and — for personal data under minimization principles — its own compliance violation.
+
+Enforcement was historically aspirational, because retention attaches to what a document *is* and organizations couldn't classify their accumulation at scale. That is precisely the constraint document AI removes: classification models assign record categories automatically at ingestion and retroactively across legacy shares and archives; extraction captures the trigger dates schedules run from; and PII detection maps where privacy-driven rules apply. With classification in place, policy becomes executable — timers set per document, holds applied to matching populations, disposition queued at expiry with approval workflows and destruction certificates — and the perennial audit finding ("policy exists, practice doesn't") closes.
+
+Two AI-era extensions matter. Derived data inherits retention: extracted values, embeddings, caches, and training corpora built from a document are part of what its deletion must reach — a retention program that destroys the PDF and keeps its embeddings has not disposed of the record. And AI's own artifacts join the schedule: audit trails, model decision logs, and provenance records have retention requirements of their own, often longer than the documents they describe. Practically, defensibility is the standard throughout: consistent policy consistently applied, exceptions documented, and the ability to show a regulator or a court not just what was destroyed, but that the destruction followed the rules.

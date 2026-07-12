@@ -1,0 +1,18 @@
+---
+title: "Relationship Extraction"
+slug: "relationship-extraction"
+letter: "R"
+tagline: "Not just who and what, but how they connect — the edges between the entities a document mentions."
+description: "Relationship extraction identifies how entities in text connect — ownership, employment, obligation — the edge-finding half of knowledge graph construction."
+category: "Data Extraction"
+tags: ["relationship extraction", "NLP", "knowledge graphs", "entities"]
+publishedAt: "2026-07-11"
+relatedTerms: ["named-entity-recognition", "knowledge-graph-extraction", "entity-linking"]
+status: "published"
+---
+
+Relationship extraction is the identification of how entities mentioned in a document connect to one another: not just that "Acme Holdings" and "Beta Manufacturing" both appear in a filing, but that Acme *owns* Beta, or that a contract's Party A *guarantees* Party B's obligations, or that a person mentioned *is employed by* an organization also mentioned. Where named entity recognition finds the nodes, relationship extraction finds the edges — and it's the harder task, because relationships are typically expressed through syntax and context rather than through any single marked span, requiring the model to understand how a sentence's grammar connects two entities it has already found.
+
+The technical approaches span a familiar spectrum. Pattern and rule-based extraction works well for relationships with predictable linguistic expression (possessive constructions for ownership, standard contract boilerplate for party roles) but breaks on the endless paraphrase real documents contain. Supervised relation-classification models, trained on sentences with entity pairs and their labeled relationship type, generalize better but require the same kind of annotated training data every supervised document task depends on. Large language models changed the practical calculus most here of all this glossary's extraction tasks: relationships expressed across sentence boundaries, requiring multi-step inference ("the Company, as defined above, which is Acme Holdings per the recitals, guarantees...") or implied rather than stated, are exactly the kind of contextual reasoning language models handle far better than earlier pattern-based or classifier-based approaches — at the usual cost of needing grounding discipline to keep the extracted relationships anchored to actual supporting text rather than plausible inference.
+
+Relationship extraction rarely stands alone; it's the edge-generating half of knowledge graph construction, and its quality directly determines graph usefulness — a graph with accurate nodes but wrong or missing edges answers none of the connection-based questions (ownership chains, guarantee webs, related-party networks) that justify building a graph in the first place. As with entity extraction generally, confidence and provenance travel with each extracted relationship, because a fabricated or misread "owns" edge in a corporate-ownership graph isn't a minor error — it's exactly the kind of finding that due diligence, KYB, and fraud-network analysis are built to surface, and a wrong one actively misleads the analysis rather than merely underperforming it.

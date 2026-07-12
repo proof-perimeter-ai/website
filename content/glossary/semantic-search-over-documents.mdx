@@ -1,0 +1,18 @@
+---
+title: "Semantic Search Over Documents"
+slug: "semantic-search-over-documents"
+letter: "S"
+tagline: "Search by meaning, not just matching words — finding the paraphrase that keyword search would miss."
+description: "Semantic search over documents finds content by conceptual similarity using embeddings — surfacing relevant passages that share meaning, not wording."
+category: "RAG & Search"
+tags: ["semantic search", "embeddings", "meaning-based retrieval", "RAG"]
+publishedAt: "2026-07-11"
+relatedTerms: ["document-embeddings", "vector-search-for-documents", "relevance-scoring"]
+status: "published"
+---
+
+Semantic search over documents is retrieval based on conceptual meaning rather than exact word matching: a query about "employee termination for cause" finds a passage discussing "dismissal due to misconduct" even though the two phrasings share almost no words in common, because the retrieval system compares meaning — represented as vector embeddings — rather than comparing text strings. It's the retrieval paradigm that made modern RAG practical, since users and documents rarely phrase the same concept identically, and keyword search's brittleness to paraphrase was a long-standing limitation traditional full-text search never fully solved.
+
+The mechanism depends directly on the document-embeddings entry's foundation: both the query and the document corpus's passages are converted into vectors by an embedding model trained so that semantically similar content lands close together in vector space, and a search retrieves the passages whose vectors are nearest the query's vector — proximity in that mathematical space standing in for conceptual relevance. This is powerful specifically where keyword matching fails: synonyms, paraphrases, and conceptually related but differently-worded content all become findable, and cross-lingual semantic search (where embedding models trained on multilingual data place equivalent concepts from different languages near each other) extends the same principle across language barriers entirely.
+
+The well-known limitation, which every serious retrieval system in this glossary's RAG entries addresses through hybrid approaches, is that semantic search alone underperforms on exactly what keyword search excels at: exact identifiers, specific names, part numbers, case citations — content where the precise string matters more than the concept, and where two different account numbers are semantically "similar" (both look like account numbers) in a way that's actively unhelpful for retrieval. This is why production document search systems combine semantic and lexical retrieval rather than choosing one, using semantic search to catch the paraphrases and lexical search to catch the precise identifiers, with a reranking layer or fusion logic reconciling the two result sets into one ranking that captures both kinds of relevance — the practical resolution to what looks like a choice between two search paradigms but is really a case for using both together.

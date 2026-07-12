@@ -1,0 +1,18 @@
+---
+title: "Text-To-Speech From Documents"
+slug: "text-to-speech-from-documents"
+letter: "T"
+tagline: "Documents read aloud correctly — which requires the structure to be right before the voice ever starts."
+description: "Text-to-speech from documents converts document content into spoken audio — depending entirely on accurate parsing, structure, and reading order beneath it."
+category: "Accessibility"
+tags: ["text-to-speech", "TTS", "accessibility", "audio"]
+publishedAt: "2026-07-11"
+relatedTerms: ["screen-reader-compatibility", "low-vision-document-enhancement", "accessible-document-formats"]
+status: "published"
+---
+
+Text-to-speech from documents is the conversion of document content into spoken audio — serving accessibility for blind and low-vision users (as an alternative or complement to screen-reader-driven navigation), convenience for anyone who prefers listening to reading (commuters consuming reports, professionals reviewing documents hands-free), and language-learning or literacy-support contexts where hearing text alongside seeing it aids comprehension. The TTS synthesis itself — converting text into natural-sounding speech — is a mature, largely solved audio-generation problem; what makes text-to-speech *from documents* specifically a document AI challenge is that the synthesis is only as good as the text and structure fed into it, and documents make that upstream preparation genuinely hard.
+
+The dependency chain runs directly through this glossary's parsing and structure-recovery entries: reading order has to be correct, or the synthesized audio will read a multi-column page's content in a scrambled sequence that makes no sense heard aloud — arguably a worse experience than seeing the same scramble visually, since a listener can't skip around the way a reader scanning a garbled page might. Structural elements need appropriate handling for audio rather than visual presentation: a table read aloud cell-by-cell in raw reading order is nearly incomprehensible without some verbal signposting ("row: March, column: revenue, value:") that a well-designed document-to-speech pipeline inserts deliberately, since tables communicate through two-dimensional visual relationships that linear audio has no native way to convey without added narration. Footnotes, headers, and page furniture (per this glossary's footer and header-detection entries) need either exclusion from the primary audio stream or clear verbal marking as asides, since reading a repeating page-footer disclaimer aloud after every page would make the experience unusable.
+
+Quality in this domain is measured by listening comprehension outcomes, not just synthesis naturalness: a technically excellent voice reading badly-ordered or unmarked structural content produces audio that sounds fine and communicates poorly, which is why serious document-to-speech implementations invest as much in the parsing and structural-preparation layer — getting reading order, table handling, and content-versus-furniture distinctions right — as in the speech synthesis technology itself. This mirrors a pattern this glossary returns to across its accessibility entries: the AI capability that gets attention (synthesis, in this case) is frequently less determinative of a good outcome than the unglamorous document-understanding work that has to happen correctly first.

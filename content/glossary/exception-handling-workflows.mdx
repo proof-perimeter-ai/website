@@ -1,0 +1,18 @@
+---
+title: "Exception Handling Workflows"
+slug: "exception-handling-workflows"
+letter: "E"
+tagline: "Automation is judged by its exceptions — the designed paths for everything that doesn't flow through."
+description: "Exception handling workflows manage the documents automation can't complete — categorized, routed, resolved, and fed back as improvement signal."
+category: "Workflow & Automation"
+tags: ["exceptions", "error handling", "workflows", "operations"]
+publishedAt: "2026-07-11"
+relatedTerms: ["confidence-based-routing", "document-review-workflows", "straight-through-processing"]
+status: "published"
+---
+
+Exception handling workflows are the designed paths for every document that automation cannot complete: the scan too degraded to read, the field below its confidence threshold, the validation that failed (a balance that won't reconcile, a vendor not in the master), the document type never seen before, the pack missing its required attachment. In a mature system, these are not errors — they are expected outputs with defined destinations, and the quality of their handling determines the real economics of automation, since the exceptions are where all the human cost concentrates.
+
+Design starts with taxonomy: exceptions categorized by cause (image quality, extraction uncertainty, validation failure, business-rule conflict, missing information) because each category has a different resolution path and a different owner. Routing sends each to the cheapest competent resolver — recapture requests back to the submitter for quality failures, review queues for extraction uncertainty, specialist desks for domain conflicts, chase workflows for missing items — with context attached: the reviewer sees *why* the document excepted and what specifically needs resolving, not a bare file in a queue. Prioritization respects business clocks (the exception on a same-day payment outranks the archival batch), aging is monitored, and every resolution is captured — who did what to resolve it, feeding both the audit trail and the improvement loop.
+
+That loop is the strategic function: the exception stream is the most honest report the system produces about itself. Categorized exception rates trended over time show where models need retraining (a rising cluster of one vendor's new invoice format), where thresholds are miscalibrated, where upstream capture needs fixing (one branch's scanner producing half the quality exceptions), and where the business process itself generates the problem (a form customers systematically fill wrong). Programs that mine their exceptions shrink them; programs that merely staff them stay expensive forever.

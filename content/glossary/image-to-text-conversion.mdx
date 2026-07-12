@@ -1,0 +1,18 @@
+---
+title: "Image-To-Text Conversion"
+slug: "image-to-text-conversion"
+letter: "I"
+tagline: "From pixels to characters — the everyday name for the recognition stack that reads pictures of words."
+description: "Image-to-text conversion turns pictures containing text — scans, photos, screenshots — into machine-readable characters via OCR and vision models."
+category: "OCR & Recognition"
+tags: ["image to text", "OCR", "conversion", "recognition"]
+publishedAt: "2026-07-11"
+relatedTerms: ["optical-character-recognition", "scanned-document-processing", "document-text-extraction"]
+status: "published"
+---
+
+Image-to-text conversion is the everyday name for turning pictures that contain text — scanned pages, phone photos, screenshots, signs, labels — into machine-readable characters: the user-facing framing of the OCR and vision-model stack this glossary covers piece by piece. The phrasing tends to appear where the audience is practical rather than technical ("convert this image to text"), and it usefully spans a spectrum the technical vocabulary splits: document OCR (structured pages), scene text recognition (text in the wild — signage, packaging, displays), and screenshot text extraction (rendered UI text), each with its own difficulty profile and preferred models.
+
+The conversion quality hinges on matching tool to image type. Clean scanned documents are classical OCR territory — any mature engine performs well. Phone photos add geometry and lighting — deep-learning engines with preprocessing (or capture-time correction) earn their keep. Scene text is its own discipline: arbitrary orientations, perspective, fonts as decoration — the detection-plus-recognition stacks built for it (and modern VLMs) far outperform document engines applied naively. Screenshots are deceptively easy (perfect contrast, standard fonts) with a characteristic trap: UI text is dense with identifiers, truncation, and mixed content where linguistic autocorrection does harm. Handwriting anywhere shifts the problem to HTR models. Vision-language models increasingly serve as the universal answer at the convenience tier — one model reading all of these — with the standard trade: broad robustness, higher per-image cost, and confidence that needs external verification.
+
+For anything beyond casual use, the conversion's output should carry more than characters: positions (where each word sits), confidence (how sure the read is), and structure where the image had it (lines, blocks, tables) — because "the text" is rarely the end goal; the search index, the extraction, or the workflow downstream needs the text *situated*, and conversions that discard geometry and certainty force everything after to work blind.

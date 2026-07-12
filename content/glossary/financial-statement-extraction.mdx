@@ -1,0 +1,18 @@
+---
+title: "Financial Statement Extraction"
+slug: "financial-statement-extraction"
+letter: "F"
+tagline: "Balance sheet, P&L, cash flow — parsed from PDF into numbers that reconcile, with the footnotes attached."
+description: "Financial statement extraction structures balance sheets, income statements, and cash flows from PDFs — with arithmetic validation and footnote context."
+category: "Financial Services"
+tags: ["financial statements", "extraction", "credit analysis", "spreading"]
+publishedAt: "2026-07-11"
+relatedTerms: ["bank-statement-extraction", "financial-covenant-extraction", "table-extraction-from-documents"]
+status: "published"
+---
+
+Financial statement extraction is the structuring of company financials from documents — balance sheets, income statements, cash flow statements, and their footnotes, arriving as audited PDFs, scanned filings, and management accounts in every format a finance team can produce — into normalized data for credit analysis, underwriting, valuation, and monitoring. It is the automation of "spreading," the analyst ritual of re-keying statements into standard templates, which consumes junior hours at every bank, insurer, and fund that assesses counterparties.
+
+The task is table extraction hardened by accounting structure. Statements are hierarchical tables — line items nested under subtotals, multi-period columns, comparatives restated — where indentation carries meaning and sign conventions vary (parentheses, minus signs, CR notation). Normalization maps each company's idiosyncratic line labels onto a standard chart ("Trade and other receivables," "Accounts receivable, net" → one concept), units and currencies resolve (thousands versus millions, stated where you'd expect and sometimes only in a header footnote), and the arithmetic is the built-in ground truth: assets equal liabilities plus equity, subtotals sum, cash flows tie to balance movements — validation that catches extraction errors and, occasionally, the document's own. Footnotes are the expert tier: the lease commitments, contingencies, and accounting-policy details that change what the headline numbers mean, increasingly extracted by language models into linked context rather than left behind.
+
+Downstream, extracted statements feed the machinery of financial assessment: ratio computation and covenant testing, credit models and rating inputs, peer benchmarking, portfolio monitoring that ingests statements as they arrive rather than quarters later. Provenance discipline runs throughout — every number linked to its statement, page, and cell — because analysts and auditors alike will ask, and because the extracted dataset is only as defensible as its trail back to the audited page.

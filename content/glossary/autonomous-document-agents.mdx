@@ -1,0 +1,18 @@
+---
+title: "Autonomous Document Agents"
+slug: "autonomous-document-agents"
+letter: "A"
+tagline: "Given the case, not the steps — agents that carry document work from arrival to outcome on their own."
+description: "Autonomous document agents complete document tasks end-to-end — planning steps, using tools, resolving exceptions — with humans supervising outcomes, not steps."
+category: "AI Agents"
+tags: ["autonomous agents", "document agents", "AI automation", "agentic AI"]
+publishedAt: "2026-07-11"
+relatedTerms: ["agentic-document-processing", "goal-driven-document-agents", "autonomous-workflow-execution"]
+status: "published"
+---
+
+Autonomous document agents are AI systems entrusted with document work at the level of outcomes rather than steps: given "process this mortgage application pack" or "resolve this invoice dispute," the agent plans its own sequence of actions — reading, extracting, cross-checking, querying systems of record, requesting missing items, drafting communications — and carries the case to completion, escalating to humans only when it determines it should. The human role shifts from performing or approving each step to supervising the agent's outcomes, sampling its work, and handling what it hands back.
+
+Autonomy is a dial, not a switch, and mature deployments turn it deliberately. An agent might start in propose-only mode (its decisions reviewed before execution), graduate to autonomous execution for low-risk actions (filing, labeling, requesting documents) while approvals gate consequential ones (payments, rejections, external communications), and expand its autonomous scope as measured performance justifies. The engineering that makes this safe is unglamorous: hard permission boundaries on what tools the agent can invoke, validation and confidence gates it cannot reason its way around, spend and action budgets, and kill-switch observability over everything it does.
+
+The accountability question is where document agents meet governance. An autonomous agent's actions are still the institution's actions — a wrongly rejected claim or a mis-sent document is not excused by the autonomy of the software. That is why trajectory logging is foundational rather than optional: every observation, decision, tool call, and output recorded per case, forming an inspectable narrative of how each outcome was produced. Institutions in regulated sectors typically add a further constraint: the agent, its models, and its logs all run inside the institution's own perimeter, so autonomy never implies sensitive case files transiting infrastructure the institution doesn't control.

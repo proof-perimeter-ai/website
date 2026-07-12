@@ -1,0 +1,18 @@
+---
+title: "Content Faithfulness"
+slug: "content-faithfulness"
+letter: "C"
+tagline: "Say what the document says — no more, no less, and nothing it doesn't."
+description: "Content faithfulness measures whether AI outputs accurately reflect the source document — no fabrication, omission, or distortion of what it states."
+category: "Evaluation & Quality"
+tags: ["faithfulness", "hallucination", "grounding", "output quality"]
+publishedAt: "2026-07-11"
+relatedTerms: ["citation-grounded-extraction", "document-grounding", "extraction-accuracy-benchmarking"]
+status: "published"
+---
+
+Content faithfulness is the property that an AI system's output accurately reflects its source document: extractions state what the document states, summaries preserve its claims without additions or distortions, and answers to questions are supported by what the pages actually say. It is the document-AI-specific framing of the hallucination problem — a system can be fluent, plausible, and confident while asserting things the document never said, and in document work that failure mode is uniquely dangerous because the output *looks* like it came from the source.
+
+Faithfulness failures have characteristic shapes worth distinguishing. Fabrication: a value or claim with no basis in the document (a language model completing a pattern — inventing a plausible invoice date). Distortion: the document's content altered in meaning — a negation dropped ("no evidence of default" becoming "evidence of default"), a hedge removed, a number's unit changed. Omission-as-assertion: a summary that silently drops the exclusion clause changes what a reader believes the contract says. And contamination: the model blending its general training knowledge into what presents as a statement about this document — describing what lease agreements typically say rather than what this one says.
+
+Faithfulness is enforced and measured, not assumed. Enforcement mechanisms include citation-grounded outputs (every claim pointing to supporting text, automatically checkable), extraction constrained to document spans where the task allows, and prompting or fine-tuning that penalizes unsupported assertions. Measurement uses entailment-style checks — does the cited source actually support the claim? — via automated verifiers, LLM-as-judge protocols with human calibration, and targeted test sets seeded with documents that contradict common-knowledge priors, which catch contamination that ordinary benchmarks miss. For regulated use, faithfulness metrics belong beside accuracy in the evaluation stack: an extraction system is not "99% accurate" in any meaningful sense if its errors include confidently fabricated values.

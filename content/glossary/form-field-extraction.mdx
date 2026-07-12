@@ -1,0 +1,18 @@
+---
+title: "Form Field Extraction"
+slug: "form-field-extraction"
+letter: "F"
+tagline: "Label, box, value — reading forms the way they were designed to be filled, whatever filled them."
+description: "Form field extraction reads values from structured forms — printed, handwritten, or digital — pairing each field label with its filled content."
+category: "Data Extraction"
+tags: ["form extraction", "fields", "structured documents", "forms processing"]
+publishedAt: "2026-07-11"
+relatedTerms: ["key-value-pair-extraction", "fillable-pdf-processing", "handwritten-form-digitization"]
+status: "published"
+---
+
+Form field extraction is the reading of values from structured forms — applications, claims forms, tax forms, registration documents — where a designed layout pairs each field label with a space for its answer: the box, the line, the grid of character cells. The structure is both the opportunity and the task: the form's design says where each value should be and what it should contain, and extraction exploits that scaffolding across every way forms actually get filled — typed, printed, handwritten, checked, stamped, or some mixture on the same page.
+
+The method spectrum tracks how much the pipeline knows about the form. Template-based extraction, for known forms at fixed layouts, anchors zones per field — fast and precise until the form is revised, scanned at a shifted scale, or photographed askew (anchor-based registration absorbs some of this). Template-free extraction, the modern default, reads the form as a document: layout-aware models pairing labels with answer regions by proximity, geometry, and semantics — robust to versions never seen, and the only viable approach across hundreds of form variants. Field-type specialization handles the content: character-cell combs and constrained handwriting recognition, checkbox and radio-button state classification (marked, unmarked, corrected — the crossed-out check being a classic trap), date and amount fields with format priors, and signature presence detection. Cross-field logic then validates the whole: totals summing, dates ordering, conditional sections consistent with their trigger boxes.
+
+Forms also carry a structural gift extraction should collect: the blank form defines the complete field inventory, so extraction can report not just values but *coverage* — which fields were filled, which left empty, which required-but-missing — turning the extracted form into both data and a completeness verdict, the input that intake workflows use to chase what the form was supposed to contain.

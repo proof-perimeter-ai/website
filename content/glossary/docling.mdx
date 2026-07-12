@@ -1,0 +1,18 @@
+---
+title: "Docling"
+slug: "docling"
+letter: "D"
+tagline: "IBM's open-source document converter — PDFs into clean structured output, built for the RAG era."
+description: "Docling is an open-source document parsing toolkit that converts PDFs and office files into structured formats — layout, tables, reading order — for AI pipelines."
+category: "Tools & Platforms"
+tags: ["Docling", "open source", "document parsing", "PDF conversion"]
+publishedAt: "2026-07-11"
+relatedTerms: ["open-source-ocr-model", "markdown-document-conversion", "deepseek-ocr"]
+status: "published"
+---
+
+Docling is an open-source document conversion toolkit, originated at IBM Research, that parses PDFs, office documents, and images into clean structured representations — markdown, HTML, or a lossless JSON document model — with layout analysis, table structure recognition, reading order, and OCR for scanned content built in. It rose quickly to prominence because it arrived exactly when the RAG boom made one problem universal: everyone needed their document piles converted into LLM-ready structured text, locally, without shipping files to an API.
+
+Architecturally, Docling runs a pipeline of specialized models — layout detection trained on diverse document corpora, a dedicated table-structure model (TableFormer lineage), and pluggable OCR engines for scanned input — assembled into a unified document representation that preserves structure and provenance: headings, tables as tables, figures with captions, reading order across columns. Its ecosystem position is the pragmatic middle layer: richer than raw text extractors, lighter than end-to-end vision-language models, with first-class integrations into LangChain, LlamaIndex, and the surrounding RAG tooling, and permissive licensing that suits enterprise self-hosting.
+
+For teams building document pipelines, Docling represents a design point worth understanding regardless of whether they adopt it: specialized-model pipelines like it are fast, cheap, and deterministic relative to VLM parsing, and their structured output is auditable — but they can stumble where the specialist models' training distribution ends (exotic layouts, degraded scans, handwriting), exactly where large VLMs shine. Many production stacks therefore compose both: Docling-style conversion as the default path, VLM escalation for the documents that defeat it, benchmarked on the organization's own corpus to decide where the routing line sits.

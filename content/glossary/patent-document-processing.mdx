@@ -1,0 +1,18 @@
+---
+title: "Patent Document Processing"
+slug: "patent-document-processing"
+letter: "P"
+tagline: "Claims, drawings, and prior art — patent text parsed for search, analysis, and portfolio management."
+description: "Patent document processing extracts claims, classifications, and citations from patent filings — for prior-art search, portfolio analysis, and IP workflows."
+category: "Legal"
+tags: ["patents", "IP", "prior art", "claims analysis"]
+publishedAt: "2026-07-11"
+relatedTerms: ["diagram-understanding", "equation-extraction", "knowledge-graph-extraction"]
+status: "published"
+---
+
+Patent document processing is document AI applied to patent filings and grants: extracting the claims (the legally operative numbered sentences defining the invention's scope), the specification and abstract, classification codes (CPC/IPC), inventor and assignee data, citations (forward and backward — the prior art a patent cites and the later patents that cite it), and the technical drawings whose reference numerals tie back into the claim language. Patents are a distinctive document genre — deliberately broad and precisely worded at once, drafted by specialists to maximize defensible scope — and their processing serves prior-art search, freedom-to-operate analysis, portfolio management, and litigation, each reading the same document for a different purpose.
+
+The extraction challenges are genre-specific. Claim parsing must preserve the legal structure — independent versus dependent claims, the nested "wherein" clauses that narrow scope, the antecedent-basis chains where "said widget" refers back three clauses — structure that determines what the claim actually covers, not just what it says. Classification and citation extraction feed the search infrastructure prior-art analysis depends on, at a scale (a hundred million-plus documents across major offices) that makes structured indexing essential rather than optional. Drawing understanding connects reference numerals in figures to their claim and specification mentions — diagram understanding applied to patent-specific conventions (numbered lead lines, standardized views) — recovering what a claim means only in combination with what the drawing shows.
+
+The downstream applications compound the extraction's value: prior-art search that retrieves by claim scope and technical concept rather than keyword alone (semantic search over normalized claim language), portfolio analytics mapping a company's coverage against competitors' and against emerging technology areas, citation-graph analysis surfacing influential patents and white space, and litigation support reading asserted claims against accused products. As in the legal entries throughout this glossary, claim interpretation itself remains an attorney's task — extraction and structuring accelerate the reading; they don't replace the legal judgment of what a claim covers.

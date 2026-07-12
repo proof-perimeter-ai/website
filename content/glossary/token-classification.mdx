@@ -1,0 +1,18 @@
+---
+title: "Token Classification"
+slug: "token-classification"
+letter: "T"
+tagline: "Every word gets a label — the modeling framework beneath NER, key-value extraction, and layout-aware field tagging."
+description: "Token classification assigns a label to each token in a sequence — the general modeling task underlying NER, form-field extraction, and structured tagging."
+category: "Models & Training"
+tags: ["token classification", "NLP", "sequence labeling", "modeling"]
+publishedAt: "2026-07-11"
+relatedTerms: ["named-entity-recognition", "layout-aware-models", "key-value-pair-extraction"]
+status: "published"
+---
+
+Token classification is the general machine-learning task of assigning a label to each individual token (roughly, each word or sub-word unit) in a sequence — the modeling framework that underlies named entity recognition, form-field tagging, and much of the layout-aware extraction this glossary describes throughout, even though those entries discuss the *application* rather than the underlying modeling task by name. Understanding token classification as the shared mechanism beneath several seemingly distinct capabilities clarifies why they're technically related and often solved by variants of the same model architecture, even when the business problems they address (finding a person's name versus finding an invoice's total field) look quite different on the surface.
+
+In document AI specifically, token classification models take each recognized word (or the finer-grained sub-word tokens a transformer model actually operates on) and, drawing on its own content plus context from surrounding tokens plus — in layout-aware architectures — its spatial position on the page, predict which category it belongs to: is this token part of a person's name, is it the invoice-number field's value, is it a table header, is it ordinary body text carrying no special significance. The BIO tagging scheme (marking tokens as the Beginning, Inside, or Outside of a labeled span) is the classical formalism for handling multi-token labels — a company name spanning three words needs its tokens correctly grouped as one entity rather than three separate single-word entities — and remains foundational even in modern architectures that handle span boundaries somewhat differently.
+
+The practical reason this framing matters for anyone building or evaluating document extraction systems is that token classification's strengths and limitations transfer across its applications: it excels when the target labels correspond reasonably well to contiguous spans of tokens in the source text (a name, an address, a field value), and it struggles with tasks requiring synthesis or transformation beyond simply labeling existing tokens (normalizing a date's format, computing a derived value, resolving which of several similarly-labeled spans is the "correct" one for an ambiguous field) — which is precisely why modern document extraction pipelines increasingly layer generative extraction (language models producing structured output directly) alongside or instead of pure token classification for tasks that need that additional transformation and reasoning capability, reserving token-classification-style tagging for the sub-tasks where identifying existing spans is genuinely the whole job.

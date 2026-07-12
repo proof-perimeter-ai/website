@@ -1,0 +1,18 @@
+---
+title: "Sanctions Screening"
+slug: "sanctions-screening"
+letter: "S"
+tagline: "Checking every name against every list — where a missed match carries the heaviest possible consequence."
+description: "Sanctions screening matches customer and transaction names against government watchlists — where document AI's name-matching quality is a compliance frontline."
+category: "Compliance & Security"
+tags: ["sanctions screening", "watchlists", "AML", "compliance"]
+publishedAt: "2026-07-11"
+relatedTerms: ["aml-anti-money-laundering", "adverse-media-screening", "entity-resolution"]
+status: "published"
+---
+
+Sanctions screening is the matching of customer names, counterparty names, and transaction parties against government and international sanctions lists — OFAC's SDN list, EU and UN sanctions lists, and dozens of national equivalents — to prevent an institution from doing business with a sanctioned individual or entity. It carries some of the heaviest consequences in financial compliance: a missed match can result in facilitating a prohibited transaction, with penalties running to the institution's most serious regulatory exposure, which is why sanctions screening is deliberately engineered to favor recall over precision — better many false alerts than one missed genuine match.
+
+Document AI intersects sanctions screening at the name-extraction and name-matching layer, and the challenges are concentrated exactly there. Names arrive from documents in every degraded form this glossary catalogs — OCR errors on scanned IDs, handwriting on forms, transliteration variants of the same name across different source scripts, cultural naming-order differences, and the deliberate obfuscation attempts sanctions evasion specifically employs (transliteration shopping, minor spelling alterations, added or dropped middle names). Fuzzy matching algorithms tuned for name variation — phonetic matching, edit-distance thresholds, script-transliteration awareness — are essential because exact-string matching would miss the majority of genuine matches that arrive with any spelling variation at all, while matching too loosely produces an alert volume that buries genuine hits in noise.
+
+The operational reality is high false-positive volume by design, and the workflow around screening exists to manage that trade-off rather than eliminate it: every alert requires human disposition — confirmed match, false positive, or requiring further investigation — with the disposition and its rationale logged, since the audit trail of screening decisions is itself a required compliance artifact regulators examine. Ongoing screening compounds the document-processing load: sanctions lists update continuously, and institutions must re-screen their existing customer base against updates rather than screening only at onboarding, meaning the name-extraction and matching pipeline runs as a continuous background process against a customer base and a list that are both constantly changing.

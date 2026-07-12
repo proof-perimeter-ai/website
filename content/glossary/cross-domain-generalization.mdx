@@ -1,0 +1,18 @@
+---
+title: "Cross-Domain Generalization"
+slug: "cross-domain-generalization"
+letter: "C"
+tagline: "Trained on invoices, tested on lab reports — how well a model survives leaving home."
+description: "Cross-domain generalization is a model's ability to perform on document types, layouts, and domains it wasn't trained on — the key to template-free processing."
+category: "Models & Training"
+tags: ["generalization", "domain shift", "robustness", "transfer"]
+publishedAt: "2026-07-11"
+relatedTerms: ["zero-shot-document-extraction", "transfer-learning-for-document-ai", "template-free-document-extraction"]
+status: "published"
+---
+
+Cross-domain generalization is a document AI model's ability to perform well beyond the distribution it was trained on: new document types, unseen layouts, different industries' conventions, other languages and scripts, unfamiliar degradation patterns. It is the property that separates a model that learned *documents* from one that memorized *its training documents* — and it determines the real-world cost of deployment, because production traffic always eventually includes what the training set didn't: the new vendor's invoice format, the acquired subsidiary's forms, the regulator's revised template.
+
+Generalization in document models has identifiable sources. Scale and diversity of pretraining: models exposed to millions of varied documents internalize transferable structure — what tables are, how labels relate to values, how layouts organize meaning — rather than surface patterns. Architectural choices: representations that encode relative layout rather than absolute positions transfer across formats; multimodal fusion of text, vision, and geometry degrades more gracefully than any single signal. And training practices: augmentation that simulates unseen degradations, multi-domain task mixes, and instruction tuning that teaches following a schema rather than reproducing a template. Vision-language models represent the current high-water mark — extracting plausibly from document types they have never seen — though "plausibly" is the operative caveat: cross-domain performance is precisely where confidence calibration is least trustworthy and silent failure most likely.
+
+The practical stance is to measure rather than assume. Evaluation sets deliberately partitioned by domain — train on these document types, test on those — reveal the generalization gap that i.i.d. benchmarks hide; per-domain production monitoring catches the new document type quietly underperforming. And the economics follow a standard curve: strong generalist performance out of the box, with domain-specific fine-tuning closing the remaining gap where volume justifies it — the generalization getting you live quickly, the specialization getting you to production-grade accuracy on the documents that pay the bills.

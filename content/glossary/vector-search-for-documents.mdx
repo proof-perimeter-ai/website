@@ -1,0 +1,18 @@
+---
+title: "Vector Search For Documents"
+slug: "vector-search-for-documents"
+letter: "V"
+tagline: "The retrieval operation itself — finding nearest neighbors in embedding space, and the algorithms that make it fast."
+description: "Vector search for documents finds the most similar embeddings to a query vector — the algorithmic operation beneath semantic search and RAG retrieval."
+category: "RAG & Search"
+tags: ["vector search", "similarity search", "algorithms", "retrieval"]
+publishedAt: "2026-07-11"
+relatedTerms: ["vector-databases-for-documents", "semantic-search-over-documents", "document-embeddings"]
+status: "published"
+---
+
+Vector search for documents is the specific algorithmic operation of finding the embeddings nearest to a query vector within a large collection — the computational core that semantic search relies on, and the process that vector databases exist to make fast at scale. Where the semantic-search entry covers the broader retrieval pattern (searching by meaning rather than keyword) and the vector-databases entry covers the infrastructure that stores and serves the search, this entry addresses the operation itself: given a query embedding and a large set of candidate embeddings, how do you efficiently find the closest matches without comparing the query against every single candidate — a brute-force approach that becomes computationally impractical well before a document corpus reaches enterprise scale.
+
+The algorithms that make this practical trade exactness for speed, which is a deliberate and generally sound engineering choice worth understanding rather than assuming away: approximate nearest-neighbor (ANN) algorithms like HNSW (hierarchical navigable small world graphs) build index structures that let a search find *very likely* nearest neighbors in a small fraction of the time exact search would require, accepting a small, tunable probability of missing the true nearest neighbor in exchange for orders-of-magnitude speed improvement — a trade-off that's almost always the right one for document retrieval, where the difference between the single best-matching passage and the second-best is rarely operationally significant, and where the speed to serve real-time queries against millions of documents matters far more than perfect exactness. Distance metrics matter too: cosine similarity (measuring the angle between vectors, ignoring magnitude) and Euclidean distance (measuring straight-line distance) are the common choices, with the embedding model's own training determining which metric its vector space was actually optimized for — using the wrong metric against a given embedding model's space can meaningfully degrade retrieval quality even with otherwise correct implementation.
+
+The practical tuning knobs that affect real-world retrieval quality include the number of results retrieved (too few risks missing relevant content; too many burdens downstream reranking or generation with noise), index-specific parameters that trade search speed against accuracy (most ANN algorithms expose a tunable parameter controlling how thoroughly the index searches, directly trading latency for recall), and — as this glossary's retrieval and ranking entries emphasize repeatedly — the recognition that vector search alone rarely constitutes a complete retrieval solution: production document search systems combine vector search's conceptual-matching strength with lexical search's precision on exact identifiers, fused through hybrid retrieval and reranking, because vector search excels at one kind of relevance and reliably misses another that real document queries need just as often.

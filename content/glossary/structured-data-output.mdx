@@ -1,0 +1,18 @@
+---
+title: "Structured Data Output"
+slug: "structured-data-output"
+letter: "S"
+tagline: "The whole point, arrived at — documents converted into the form every downstream system actually wants."
+description: "Structured data output is the end product of document AI — records, fields, and typed values consumable by databases, APIs, and applications."
+category: "Data Extraction"
+tags: ["structured output", "data extraction", "integration", "downstream systems"]
+publishedAt: "2026-07-11"
+relatedTerms: ["json-output-from-ocr", "document-to-database-pipelines", "data-export-automation"]
+status: "published"
+---
+
+Structured data output is the destination this entire glossary's extraction and parsing entries are ultimately oriented toward: documents converted from files — images, PDFs, scans — into typed, organized records that databases, APIs, and business applications can consume directly, without any human needing to read a document to populate a system. It's worth naming explicitly as a concept because it's easy, in a field with so many intermediate technical steps, to lose sight of the fact that recognition, parsing, and extraction all exist in service of this one outcome: data a computer can use, not merely text a human could read.
+
+The qualities that separate genuinely useful structured output from a superficially structured but practically unusable result are consistency and typing discipline: every instance of a given field arriving in the same data type and format (dates as actual date objects or a single consistent string format, not sometimes "03/04/2026" and sometimes "March 4, 2026" depending on which document happened to produce it), consistent field naming and schema across documents of the same type (so a downstream consumer can write one integration rather than special-casing every source document's quirks), and appropriate nesting for genuinely hierarchical content (line items as an array of structured objects under an invoice, not flattened into unpredictable numbered fields). This is where the data-normalization entry's disciplines become non-negotiable rather than optional — structured output that preserves a document's surface-level formatting inconsistencies isn't actually structured in the sense that matters; it's merely organized-looking.
+
+The output's completeness properties matter as much as its typing: well-designed structured output carries confidence scores and provenance alongside each value (per this glossary's extraction-confidence and citation-grounding entries), explicit null or missing-value handling rather than silent omission when a field wasn't found, and validation status indicating whether business-rule checks passed — because a downstream system consuming this output needs to know not just *what* the document said but *how much to trust it*, and structured output that drops that context on the way out has quietly discarded the most operationally important part of what extraction produced. The measure of good structured output, ultimately, is whether a system receiving it can act on it correctly without a human ever having opened the source document at all.

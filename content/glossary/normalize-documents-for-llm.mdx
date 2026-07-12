@@ -1,0 +1,18 @@
+---
+title: "Normalize Documents For LLM"
+slug: "normalize-documents-for-llm"
+letter: "N"
+tagline: "The model reads best what's clean, structured, and consistent — preparing documents for the context window."
+description: "Normalizing documents for LLMs converts heterogeneous files into clean, consistent, structured text — the preparation layer of every LLM pipeline."
+category: "RAG & Search"
+tags: ["normalization", "LLM preparation", "preprocessing", "formats"]
+publishedAt: "2026-07-11"
+relatedTerms: ["markdown-document-conversion", "context-window-optimization", "document-understanding-for-rag"]
+status: "published"
+---
+
+Normalizing documents for LLMs is the preparation layer that converts heterogeneous files — PDFs, scans, office documents, emails, exports — into the clean, consistent, structured text that language models consume well: one representation (typically markdown or a structured schema), one encoding, headers and footers stripped, reading order correct, tables coherent, boilerplate separated, metadata attached. The step exists because LLMs are exquisitely input-sensitive in mundane ways: the same model that reasons brilliantly over clean text produces degraded answers from OCR debris, interleaved columns, and pipe-grids whose rows don't align — and it will not complain; it will just be quietly worse.
+
+The normalization checklist compounds the entries around it: parsing fidelity (the conversion and reading-order machinery), furniture removal (headers, footers, watermarks, disclaimers — kept as metadata, out of the flow), text hygiene (de-hyphenation, whitespace and unicode normalization, encoding repair — the mojibake that tokenizes into garbage), structural markup (headings as hierarchy, tables as tables, code fenced — the structure the chunker and the model both use), and consistency across the corpus: one set of conventions, so the model isn't parsing a different dialect per source. Metadata rides alongside — document type, date, source, section paths — serving retrieval filters and citations rather than polluting the text. The token economics reward the work twice: normalized text is smaller (boilerplate gone, structure compact) and better (attention spent on content), the context-window entry's arithmetic applied at corpus scale.
+
+The verification is functional, as throughout this glossary's RAG entries: retrieval and answer quality measured on normalized versus raw corpora — teams routinely find normalization the highest-leverage quality investment in the stack — plus the spot-check disciplines (do the tables round-trip, do random chunks read coherently) that catch the silent failures. Normalization is unglamorous by construction; its absence is what most "the LLM is bad at our documents" complaints turn out to be.

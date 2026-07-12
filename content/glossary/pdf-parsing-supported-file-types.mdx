@@ -1,0 +1,18 @@
+---
+title: "PDF Parsing Supported File Types"
+slug: "pdf-parsing-supported-file-types"
+letter: "P"
+tagline: "PDF is not one format — the variants a serious parser must actually handle."
+description: "PDF parsing must handle the format's real variety — text-layer, image-only, hybrid, forms, and malformed files — each needing different treatment."
+category: "Data Extraction"
+tags: ["PDF parsing", "file types", "format variety", "document intake"]
+publishedAt: "2026-07-11"
+relatedTerms: ["pdf-text-extraction", "fillable-pdf-processing", "document-text-extraction"]
+status: "published"
+---
+
+PDF parsing supported file types is a checklist worth making explicit, because "we support PDF" understates the format's real variety by a wide margin. Text-layer PDFs carry extractable glyphs directly — the easy case, though even here quality varies (properly tagged text versus vector-outlined "text" that's actually untagged shapes, invisible to naive extraction). Image-only PDFs are scans wrapped in PDF containers — no text layer at all, requiring OCR regardless of the file extension. Hybrid PDFs mix both within one document, or carry a *corrupted* text layer from a prior bad OCR pass masquerading as ground truth — the trap this glossary's text-extraction entry warns about, where trusting the embedded layer blindly is worse than ignoring it.
+
+Beyond that baseline, real-world PDF intake includes: fillable forms (AcroForm/XFA field data, per the fillable-PDF entry, present, flattened, or partially both); password-protected and encrypted files (requiring credentials or exemption workflows before any parsing runs); malformed and non-conformant PDFs (produced by buggy generators, requiring repair libraries or graceful degradation rather than pipeline crashes); PDF/A archival variants (embedding fonts and color profiles for long-term fidelity — generally parse cleanly but with format quirks); linearized and object-stream-compressed files (fine for rendering, sometimes awkward for direct text-layer extraction depending on the library); and portfolios (PDFs containing other PDFs as attachments — a nesting case the splitting and bundle-classification machinery must recognize).
+
+The practical implication is architectural: a parsing pipeline needs a detection step *before* processing — classifying which variant each incoming PDF actually is — and a routing table matching variant to treatment, because a pipeline hard-coded to "extract text layer" silently fails on image-only PDFs, and one hard-coded to "always OCR" wastes compute and accuracy on clean digital text. Robust intake also budgets for the format's edge tail: the corrupted file that needs repair, the portfolio that needs unpacking, the encrypted file that needs a human — each accounted for rather than silently dropped, per the ingestion-pipeline entry's defensive posture.

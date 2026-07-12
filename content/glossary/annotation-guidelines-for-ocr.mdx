@@ -1,0 +1,18 @@
+---
+title: "Annotation Guidelines For OCR"
+slug: "annotation-guidelines-for-ocr"
+letter: "A"
+tagline: "Is a smudged '5' a 5, a '?', or skipped entirely? The rulebook that keeps a thousand small judgment calls consistent."
+description: "Annotation guidelines for OCR are the written rules that standardize how annotators transcribe and label text, keeping training data consistent."
+category: "Models & Training"
+tags: ["annotation guidelines", "OCR labeling", "transcription rules", "data quality"]
+publishedAt: "2026-07-11"
+relatedTerms: ["annotation-for-document-ai", "ground-truth-data", "training-data-labeling"]
+status: "published"
+---
+
+Annotation guidelines for OCR are the written rulebook that tells annotators exactly how to transcribe and label text in document images — because "just type what it says" collapses immediately on real documents. Is an illegible character marked with a placeholder, guessed from context, or does it invalidate the whole word? Are ligatures split? Is "l" versus "1" decided by appearance or by context? Do transcriptions preserve original line breaks and hyphenation? Are struck-through words transcribed, tagged, or omitted? How are stamps, marginalia, and text in images handled? Every one of these questions will be answered somehow — the guidelines determine whether it's answered the same way twice.
+
+Consistency is the entire point, because inconsistent ground truth is a double tax: it teaches the model contradictory lessons during training, and it corrupts evaluation — a model can be scored wrong for producing a reading that a differently-minded annotator would have called correct. Good guidelines are concrete (built around real examples and edge-case galleries rather than abstract principles), versioned (so datasets record which rules produced them), and validated by measuring inter-annotator agreement on shared samples before full-scale labeling begins.
+
+Guidelines also encode task decisions that look clerical but shape the model's behavior. Whether annotators normalize ("O" corrected to "0" in numeric contexts) or transcribe faithfully determines whether the model learns to read or to interpret. Whether uncertain regions are labeled "unreadable" or excluded changes how the model handles degradation. Teams that treat guidelines as living documents — updated as new edge cases surface from production and review queues, with prior data re-checked against rule changes — end up with datasets that stay coherent as they grow.

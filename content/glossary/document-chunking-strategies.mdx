@@ -1,0 +1,18 @@
+---
+title: "Document Chunking Strategies"
+slug: "document-chunking-strategies"
+letter: "D"
+tagline: "Where you cut the document decides what the model can find — chunking is retrieval destiny."
+description: "Document chunking strategies split documents into retrieval units for RAG — by structure, semantics, or size — shaping answer quality downstream."
+category: "RAG & Search"
+tags: ["chunking", "RAG", "retrieval", "document splitting"]
+publishedAt: "2026-07-11"
+relatedTerms: ["retrieval-augmented-generation-rag-for-documents", "document-embeddings", "document-understanding-for-rag"]
+status: "published"
+---
+
+Document chunking strategies are the methods for splitting documents into the units that retrieval systems index and fetch: the passages that get embedded, searched, and handed to a language model as context. Chunking looks like a preprocessing detail and behaves like an architecture decision — a RAG system can only retrieve what exists as a chunk, so the cut points determine whether the answer to a question is findable as a coherent unit or scattered across fragments that each score too weakly to surface.
+
+The strategy spectrum runs from naive to structure-aware. Fixed-size chunking (every N tokens, with overlap) is the baseline: simple, uniform, and indifferent to meaning — it splits tables mid-row, separates clauses from their exceptions, and orphans headers from their content. Structure-aware chunking cuts along the document's own architecture — sections, headings, paragraphs, list items — which is why parsing quality is chunking destiny: you can only chunk along structure that the parser recovered. Semantic chunking groups by topical coherence, using embedding similarity to find natural breaks. Element-aware handling treats special content specially: tables kept intact (or summarized with the full table retrievable), code blocks unbroken, figure captions bound to their figures. And hierarchical or "parent-document" schemes index small chunks for retrieval precision while returning their larger context windows for generation — resolving the tension that retrieval wants small and generation wants complete.
+
+Practical tuning is empirical: chunk size and strategy tested against a retrieval evaluation set (questions with known source passages) rather than chosen by convention, with metadata attached to every chunk — source document, section path, page — both for citation and for filtered retrieval. The recurring production lesson: when RAG answers disappoint, the failure is more often in chunking and parsing than in the embedding model or the LLM — the answer existed, but no chunk contained it whole.

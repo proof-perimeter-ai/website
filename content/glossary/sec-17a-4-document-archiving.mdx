@@ -1,0 +1,18 @@
+---
+title: "SEC 17a-4 Document Archiving"
+slug: "sec-17a-4-document-archiving"
+letter: "S"
+tagline: "Write once, keep forever, prove you didn't touch it — the archiving standard broker-dealers must meet."
+description: "SEC Rule 17a-4 requires broker-dealers to retain records in tamper-evident, non-rewritable form — a specific technical standard document AI must serve."
+category: "Compliance & Security"
+tags: ["SEC 17a-4", "records retention", "broker-dealer compliance", "WORM"]
+publishedAt: "2026-07-11"
+relatedTerms: ["document-retention-policies", "document-audit-trail", "compliance-audit-documentation"]
+status: "published"
+---
+
+SEC Rule 17a-4 is the specific US securities regulation governing how broker-dealers must retain records — trade confirmations, correspondence, communications, and a defined list of other business records — and it's notable among retention rules for being unusually prescriptive about the *technical* storage requirements, not just the retention period. Records must be preserved in a non-rewritable, non-erasable format (the WORM — write once, read many — standard), for periods typically running years depending on the record type, with the storage medium itself required to prevent alteration or deletion for the duration of the required retention, not merely to have a policy against it.
+
+This technical specificity is where document AI intersects the rule directly, in two ways. First, capture and classification: identifying which incoming communications and records fall under 17a-4's scope in the first place is a classification problem at volume — a broker-dealer's communications span emails, chat platforms, voice, and documents, and determining which specific items are "records" subject to the rule (as distinct from routine, non-records correspondence) requires the same kind of automated classification this glossary's document-classification and information-governance entries describe, applied to a much broader content stream than documents alone. Second, and more specifically technical: the storage system itself must be *demonstrably* compliant — the rule has historically required an independent third-party (a "D3P," or designated third party) able to access and retrieve stored records, and audit examinations have specifically penalized firms whose storage systems couldn't prove non-alterability, not just claimed it.
+
+The compliance failures that have drawn the largest regulatory penalties in this area have often been about record *capture* gaps rather than storage technicalities — firms failing to retain records at all because a communication channel (a messaging app, a personal device) wasn't captured into the retention system in the first place, which is fundamentally a classification and ingestion-coverage problem before it's a storage-format problem. This is why modern 17a-4 compliance programs pair the storage-layer WORM requirement with document AI at the front end: comprehensive classification identifying every communication channel and content type that needs to be captured, ensuring nothing that should enter the tamper-evident archive is silently missed — because a technically perfect WORM store that never received the record in the first place provides no compliance protection at all.

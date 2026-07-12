@@ -1,0 +1,18 @@
+---
+title: "Precision And Recall In OCR"
+slug: "precision-and-recall-in-ocr"
+letter: "P"
+tagline: "Two ways to be wrong — inventing what isn't there versus missing what is."
+description: "Precision and recall in OCR separate false-positive errors from missed content — the two-sided metric pair beneath F1 and every detection task."
+category: "Evaluation & Quality"
+tags: ["precision", "recall", "metrics", "detection"]
+publishedAt: "2026-07-11"
+relatedTerms: ["f1-score-for-document-extraction", "character-error-rate", "extraction-accuracy-benchmarking"]
+status: "published"
+---
+
+Precision and recall in OCR are the two-sided measurement of detection and recognition tasks, separating the two ways a system can be wrong. Precision asks: of everything the system found or produced, how much was actually correct? Recall asks: of everything that was actually there, how much did the system find? A text detector that boxes every dark smudge as a word has high recall (it misses nothing) and low precision (most boxes are noise); a conservative one that only flags unambiguous text has high precision and low recall (real text goes undetected). Neither number alone tells the story — which is why they're reported together, and why F1 exists to summarize the trade-off in one figure when a single number is genuinely needed.
+
+The distinction matters practically because the two error types have different costs depending on task. In text region detection, low recall means content silently disappears from the pipeline (the faint stamp text nobody flagged as even being there) — often the more dangerous failure, since a missed detection produces no error signal at all, while a false positive at least produces something a downstream check might catch. In entity or field extraction, the calculus often flips: a spurious extracted value (low precision) can corrupt a database with fabricated data, while a missed field (low recall) is at least visibly absent and prompts a completeness check. Sanctions and fraud screening lean deliberately toward recall — a missed hit is the worse failure by orders of magnitude, and the resulting low precision (many false alerts) is accepted as the cost, managed through the review layer rather than the detection threshold.
+
+Reporting both numbers, not a collapsed single score, is what lets a team make that trade-off deliberately: adjusting confidence thresholds to favor precision or recall based on what the specific task actually punishes, and monitoring both in production because they can move independently — a model update that improves one while quietly degrading the other is a common regression this glossary's benchmarking entries exist to catch before deployment, not after.

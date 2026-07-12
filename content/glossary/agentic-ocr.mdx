@@ -1,0 +1,18 @@
+---
+title: "Agentic OCR"
+slug: "agentic-ocr"
+letter: "A"
+tagline: "OCR that knows when it's guessing — and does something about it before handing you the text."
+description: "Agentic OCR wraps text recognition in an agent loop: detect uncertain reads, re-process regions, cross-verify, and escalate — raising accuracy on hard documents."
+category: "AI Agents"
+tags: ["agentic OCR", "OCR", "AI agents", "self-correction"]
+publishedAt: "2026-07-11"
+relatedTerms: ["optical-character-recognition", "agentic-ocr-document-parsing", "agentic-document-parsing"]
+status: "published"
+---
+
+Agentic OCR wraps text recognition in a reasoning loop: rather than emitting whatever a single pass produced, the system evaluates its own output, identifies suspect regions, and takes corrective actions — re-processing a crop at higher resolution or with different preprocessing, trying an alternative recognition model, using linguistic and contextual plausibility to arbitrate between candidate readings, or checking a value against a known format (an IBAN checksum, a date pattern) and re-reading when it fails. The output isn't just text; it's text the system has actively tried to falsify and failed.
+
+This addresses the classic weakness of one-shot OCR: silent errors. A conventional engine reading a smudged "8" as "3" reports the wrong digit with moderate confidence, and nothing downstream may notice until the payment bounces. An agentic loop treats that moderate confidence as a trigger — zoom in, enhance, re-read, compare across the ensemble, and only then decide, or flag for human eyes. Vision-language models make the pattern practical because one model can both read regions and reason about whether a reading makes sense in context ("this field is labeled 'Sort Code'; the format should be XX-XX-XX").
+
+The cost profile shapes deployment: extra passes on every word would be wasteful, so agentic OCR typically runs as targeted escalation — a fast pass over everything, agent attention only on the fields and regions that matter and are uncertain. That keeps per-document cost close to conventional OCR while concentrating extra compute where errors are consequential, and it produces a useful audit artifact: for each contested value, a record of what was tried and why the final reading won.

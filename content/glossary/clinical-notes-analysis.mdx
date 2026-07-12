@@ -1,0 +1,18 @@
+---
+title: "Clinical Notes Analysis"
+slug: "clinical-notes-analysis"
+letter: "C"
+tagline: "The medicine is in the narrative — mining the free-text notes where clinicians actually record what happened."
+description: "Clinical notes analysis applies NLP and language models to free-text medical notes, extracting diagnoses, medications, and findings for care and coding."
+category: "Healthcare"
+tags: ["clinical notes", "medical NLP", "healthcare AI", "unstructured data"]
+publishedAt: "2026-07-11"
+relatedTerms: ["ehr-data-extraction", "medical-chart-abstraction", "medical-coding-automation-icd-10"]
+status: "published"
+---
+
+Clinical notes analysis is the application of language AI to the free-text portions of medical records — progress notes, admission and discharge summaries, consult reports, operative notes — where the substance of clinical care actually lives. Structured EHR fields capture codes and vitals, but the reasoning, nuance, and observations are narrative: why the clinician suspected what they suspected, what the patient reported, what was ruled out. Analysis extracts this into computable form: diagnoses and their status (active, resolved, ruled out), medications with doses and changes, symptoms, procedures, findings, and the temporal relationships among them.
+
+Clinical language resists generic NLP. Notes are telegraphic and abbreviation-dense ("SOB on exertion, r/o CHF"), abbreviations are ambiguous by specialty, negation and uncertainty are pervasive and decisive ("no evidence of malignancy" must never extract as malignancy), and information about the same fact conflicts across notes written by different clinicians on different days. The toolchain has evolved from rule-based systems with medical vocabularies (UMLS, SNOMED CT), through clinical-domain language models, to large language models that handle context, negation, and temporality far better — with the persistent requirements that outputs map to standard terminologies and that every assertion remain traceable to the note text supporting it.
+
+Applications span operations and care: coding and billing support (extracting what was documented to justify codes), quality-measure abstraction, registry population, clinical research cohort identification, risk adjustment, and decision support that surfaces what a busy clinician might miss in a long chart. The constraints are correspondingly medical: PHI makes notes among the most protected data anywhere — driving processing inside the health system's own infrastructure — and clinical consequence makes calibrated uncertainty and human verification non-negotiable for anything that touches care or reimbursement.

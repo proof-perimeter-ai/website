@@ -1,0 +1,18 @@
+---
+title: "Document Ranking Algorithms"
+slug: "document-ranking-algorithms"
+letter: "D"
+tagline: "Ten thousand candidates, ten slots — ranking decides what the searcher (or the LLM) actually sees."
+description: "Document ranking algorithms order search results by relevance — lexical scoring, semantic similarity, and rerankers — for search and RAG."
+category: "RAG & Search"
+tags: ["ranking", "relevance", "rerankers", "information retrieval"]
+publishedAt: "2026-07-11"
+relatedTerms: ["relevance-scoring", "document-retrieval-systems", "vector-search-for-documents"]
+status: "published"
+---
+
+Document ranking algorithms are the methods that order retrieval candidates by relevance to a query — the machinery that decides which ten of ten thousand matching documents or passages appear first, whether the consumer is a human scanning results or a language model whose context window will hold only the top handful. In RAG systems, ranking quality is answer quality: the generator can only ground on what ranking put in front of it, and a right answer ranked eleventh is functionally a wrong answer.
+
+The modern stack is layered by cost. First-stage retrieval casts wide and cheap: lexical scoring (BM25 remains the durable workhorse — exact terms, identifiers, and rare tokens are its strengths) and vector similarity from embedding models (paraphrase and concept matching are its strengths), often fused as hybrid retrieval because their failure modes are complementary. Second-stage reranking spends more compute on fewer candidates: cross-encoder models that read query and passage together score relevance far more precisely than any embedding geometry, and LLM-based rerankers push further at further cost. Above the text signals sit the document-aware factors that enterprise ranking needs: recency and version status (the amended policy over the superseded one), source authority, document type fit, and the user's permission set applied as a hard filter, not a soft signal.
+
+Evaluation and tuning are empirical or they are guesswork: relevance-judged query sets scored with standard IR metrics (nDCG, recall@k, MRR), sliced by query type — because lexical-friendly identifier lookups and semantic-friendly concept questions respond oppositely to the same tuning. Production ranking also observes its own consequences: click and citation behavior, RAG answer quality per retrieved set, and the drift that repository growth and content churn impose. The recurring practical lesson matches the rest of the retrieval stack: a modest reranker atop good hybrid retrieval routinely beats a bigger embedding model without one.

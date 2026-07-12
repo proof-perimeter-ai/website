@@ -1,0 +1,18 @@
+---
+title: "Context-Aware Extraction"
+slug: "context-aware-extraction"
+letter: "C"
+tagline: "The same digits mean different things on different pages — extraction that reads the surroundings, not just the value."
+description: "Context-aware extraction interprets fields using surrounding content — document type, section, related values — instead of reading values in isolation."
+category: "Data Extraction"
+tags: ["context-aware", "extraction", "document understanding", "disambiguation"]
+publishedAt: "2026-07-11"
+relatedTerms: ["key-value-pair-extraction", "layout-aware-extraction", "cross-document-reasoning"]
+status: "published"
+---
+
+Context-aware extraction is extraction that interprets each value in light of its surroundings rather than in isolation: the same string "03/04/2026" is a different date in a US form than a European one; "Total" means one thing in the line-items table and another in the summary box; a dollar figure in the "Prior Year" column must not populate a current-year field no matter how prominent it is. Context — document type, language and locale, section, column, neighboring fields, even other documents in the case — is what turns characters into correctly-typed facts.
+
+The contextual signals form a hierarchy. Local layout: the label beside a value, the column header above it, the section heading governing it. Document-level: the type and origin of the document (a UK bank statement implies day-first dates and GBP), its internal conventions (this vendor puts credits in parentheses), and cross-field constraints (net plus tax should equal gross — a relationship that both validates and disambiguates). Case-level: what the rest of the file establishes (the applicant's name from the ID resolves which of two names on a joint statement matters). Modern layout-aware models and vision-language models absorb much of the local and document-level context natively; case-level context typically enters through prompts, schemas, or agentic orchestration that carries state across documents.
+
+The practical consequence is that context-aware systems fail less catastrophically and validate more powerfully. Isolated extraction produces confident nonsense — the right-looking value from the wrong column; context-aware extraction either gets it right or produces detectable inconsistency, because the surrounding constraints it uses for interpretation double as checks. When evaluating extraction systems, the probing questions are contextual: how does it handle ambiguous date formats, repeated field labels, multi-entity documents, prior-period columns? The answers separate systems that read documents from systems that merely find text.

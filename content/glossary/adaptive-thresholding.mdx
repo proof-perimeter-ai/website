@@ -1,0 +1,18 @@
+---
+title: "Adaptive Thresholding"
+slug: "adaptive-thresholding"
+letter: "A"
+tagline: "One brightness cutoff can't handle a page that's sunlit on one side and shadowed on the other — so the cutoff adapts."
+description: "Adaptive thresholding binarizes document images using local, per-region cutoffs, preserving text on unevenly lit or degraded scans where global methods fail."
+category: "Image Preprocessing"
+tags: ["adaptive thresholding", "binarization", "image preprocessing", "scan quality"]
+publishedAt: "2026-07-11"
+relatedTerms: ["document-binarization", "image-preprocessing", "contrast-enhancement"]
+status: "published"
+---
+
+Adaptive thresholding is an image binarization technique that converts a grayscale document image into black-and-white by computing a separate brightness cutoff for each region of the page, rather than one global cutoff for the whole image. Around every pixel, the algorithm examines a local neighborhood — using its mean or a Gaussian-weighted average, or statistics-based methods like Sauvola — and decides "ink or paper" relative to that local context. Text in a shadowed corner and text under a bright lamp both survive, where a single global threshold would blacken one region and blank out the other.
+
+The technique matters for documents because real-world capture is uneven by nature: phone photos with side lighting, book pages that curve into shadow near the spine, faded thermal receipts, aged paper with stains and discoloration, carbon copies with weak contrast. Classical OCR engines operate on binarized input, and even modern deep-learning models benefit from consistent contrast, so a poor thresholding choice destroys information no downstream model can recover — strokes broken into fragments, or noise solidified into blobs that look like characters.
+
+In practice, adaptive thresholding is one stage in a preprocessing pipeline alongside deskewing, denoising, and contrast enhancement, with parameters (window size, sensitivity constant) that trade off between preserving thin strokes and suppressing background texture. A window too small amplifies noise; too large and it degenerates toward global behavior. Production document pipelines typically tune these choices per capture channel — the flatbed scanner fleet, the mobile app, the fax gateway — because each degrades images in its own characteristic way.

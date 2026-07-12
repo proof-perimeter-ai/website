@@ -1,0 +1,18 @@
+---
+title: "Insurance Endorsements Extraction"
+slug: "insurance-endorsements-extraction"
+letter: "I"
+tagline: "The policy is what the endorsements made it — extracting the amendments that change everything."
+description: "Insurance endorsements extraction structures policy amendments — additions, deletions, modifications — to determine a policy's true current terms."
+category: "Insurance"
+tags: ["endorsements", "policy amendments", "insurance extraction", "policy terms"]
+publishedAt: "2026-07-11"
+relatedTerms: ["policy-document-parsing", "coverage-verification-automation", "certificate-of-insurance-extraction"]
+status: "published"
+---
+
+Insurance endorsements extraction is the structuring of the documents that amend insurance policies after issuance: the endorsements (riders, in life insurance's vocabulary) that add or delete coverages, change limits and deductibles, add insureds or locations, exclude perils, or replace entire clauses. The extraction matters because a policy's operative terms are not its base wording but the composite the endorsements produce — and coverage determinations, renewals, and portfolio analytics that read only the base contract are reading a document that, legally speaking, no longer exists in that form.
+
+The task layers standard document AI with amendment semantics. Individually, endorsements extract like structured-ish documents: form numbers (the standardized ISO endorsement forms carry known meanings; manuscript endorsements are freeform), effective dates, premium changes, and the operative text. The hard intelligence is compositional: each endorsement's *effect* on the policy — does it add, delete, or replace, and what exactly ("Section IV.B is deleted and replaced with the following…"), applying them in sequence to compute the policy's current state, and resolving the conflicts real portfolios contain: endorsements that overlap, that amend already-amended language, or whose effective periods interleave. Language models handle the reading and the edit semantics; the output is a versioned policy representation — terms as of any date, with each provision traceable to base form or the endorsement that shaped it.
+
+Downstream, the composite view powers what the entries around this one describe: coverage verification against the policy as it actually stands, claims adjudication that catches the exclusion endorsement the base wording lacks, renewal and comparison analytics, and the reconciliation of certificates against underlying policies (the COI claiming coverage an endorsement quietly removed being a finding worth surfacing). As throughout insurance document AI, ambiguity routes to human coverage expertise — an endorsement whose effect is genuinely unclear is a legal question — with the extraction's job being to make such questions visible instead of silently resolved.

@@ -1,0 +1,18 @@
+---
+title: "Multi-Step Document Reasoning"
+slug: "multi-step-document-reasoning"
+letter: "M"
+tagline: "Find, then compute, then compare, then conclude — answers that take a chain of steps through the documents."
+description: "Multi-step document reasoning chains lookups, computations, and inferences across document content — beyond single-pass extraction."
+category: "AI Agents"
+tags: ["multi-step reasoning", "chained inference", "document QA", "agents"]
+publishedAt: "2026-07-11"
+relatedTerms: ["cross-document-reasoning", "agentic-document-parsing", "document-question-answering-docqa"]
+status: "published"
+---
+
+Multi-step document reasoning is answering questions whose solutions require chains of operations over document content: "Is the borrower's debt-to-income within policy?" requires finding the income evidence, extracting and normalizing the figures, finding the obligations across statements and credit documents, computing the ratio, retrieving the policy threshold, and comparing — five steps, multiple documents, arithmetic in the middle. Single-pass extraction answers "what does the document say"; multi-step reasoning answers "what follows from what the documents say" — the layer where document AI meets decision support.
+
+The failure modes of doing this naively motivate the architectures. A language model asked the composite question in one shot tends to shortcut: skipping steps, estimating the arithmetic, or answering from plausibility — fluent conclusions with broken chains. Structured approaches decompose instead: chain-of-thought prompting eliciting the intermediate steps explicitly (and making them checkable); tool-augmented reasoning delegating what models do unreliably — calculators for the arithmetic, retrieval for the lookups, validators for the comparisons — with the model orchestrating; and full agentic loops (this glossary's agent entries) for chains whose shape depends on what earlier steps discover. The reasoning trace is the common thread: each step's inputs, operation, and output recorded, so the conclusion carries its derivation — verifiable by a human, auditable later, and debuggable when wrong, none of which a bare answer provides.
+
+Evaluation targets the chain, not just the conclusion: benchmarks with multi-hop questions score whether intermediate steps were faithful (right passages found, arithmetic actually correct), since end-to-end accuracy can be right for wrong reasons at exactly the rate that collapses under distribution shift. And the deployment posture follows consequence, as ever: reasoned conclusions that feed decisions inherit the decision entries' disciplines — confidence through the chain (a conclusion is at most as sure as its weakest step), grounding at every retrieval, and human review where the chain's stakes warrant checking the work.

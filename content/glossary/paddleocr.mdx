@@ -1,0 +1,18 @@
+---
+title: "PaddleOCR"
+slug: "paddleocr"
+letter: "P"
+tagline: "Baidu's open OCR toolkit — fast, multilingual, and a fixture in production pipelines worldwide."
+description: "PaddleOCR is a widely used open-source OCR toolkit — lightweight detection and recognition models, 80+ languages, strong CJK support."
+category: "Tools & Platforms"
+tags: ["PaddleOCR", "open source", "OCR toolkit", "recognition"]
+publishedAt: "2026-07-11"
+relatedTerms: ["easyocr", "tesseract-ocr-python", "open-source-ocr-model"]
+status: "published"
+---
+
+PaddleOCR is Baidu's open-source OCR toolkit, built on the PaddlePaddle deep-learning framework, and one of the most deployed recognition stacks in the world: detection-plus-recognition pipelines (the PP-OCR model series) engineered aggressively for the speed/accuracy frontier — models compact enough for mobile and CPU serving while remaining competitive on quality — with support spanning 80+ languages and particular strength in Chinese and CJK recognition, its home territory. The broader suite extends past raw OCR into document structure: layout analysis, table recognition, key information extraction, and formula recognition under the PP-Structure line.
+
+Its production reputation rests on the engineering trade it embodies: PP-OCR models are distilled and pruned deliberately — the detection model, the classifier, and the recognizer together fitting in tens of megabytes — which makes PaddleOCR the common answer when the requirement is high-throughput, self-hosted recognition at modest hardware cost: the invoice pipeline processing millions of pages on CPU fleets, the mobile app reading documents on-device, the embedded system with no cloud option. The trade's other side matches: on the hardest material — degraded scans, complex handwriting, exotic layouts — larger models and VLM parsers outperform it, which is why PaddleOCR so often serves as the fast tier in the tiered architectures this glossary keeps describing, with escalation above it.
+
+Practical adoption notes: the framework dependency (PaddlePaddle rather than PyTorch) is a real integration consideration for teams standardized elsewhere — though ONNX export and community ports soften it; fine-tuning on domain data is well-supported and documented, giving it the adaptability path open weights promise; and the project's cadence is active, with model generations improving measurably — the standard advice applies of benchmarking the current release on your own corpus rather than inheriting reputation, in either direction.

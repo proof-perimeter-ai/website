@@ -1,0 +1,18 @@
+---
+title: "Manual Data Verification"
+slug: "manual-data-verification"
+letter: "M"
+tagline: "A person confirms the value — the human check, used deliberately where it earns its cost."
+description: "Manual data verification is human confirmation of document data — designed as targeted checks within automation, not blanket re-reading."
+category: "Workflow & Automation"
+tags: ["manual verification", "human checks", "quality", "review"]
+publishedAt: "2026-07-11"
+relatedTerms: ["assisted-data-entry", "dual-control-verification", "human-validation-pipelines"]
+status: "published"
+---
+
+Manual data verification is human confirmation of document-derived data — a person comparing the value against the source and attesting it's right. In the pre-automation world it *was* the process (enter, then verify, sometimes double-key); in an automated pipeline it becomes a deliberate instrument deployed where human judgment earns its cost: the low-confidence extraction, the high-stakes field, the regulated checkpoint, the sampled audit of confident output. The design question shifts from "how do we verify everything" to "which verifications, by whom, triggered how" — and the entries on review workflows and validation pipelines cover that architecture; this one concerns the verification act itself.
+
+Doing the act well is interface and psychology. Effective verification shows value and source together (the field beside its highlighted page region — comparison at a glance), sequences attention by risk (uncertain and consequential fields first), and makes confirmation cheap but not *free* — friction calibrated so attestation means looking, not reflexive clicking. The known enemy is automation bias: verifiers presented with a plausible pre-filled value systematically under-catch its errors, and the effect strengthens with the model's accuracy — the better the system, the sleepier the checker. Countermeasures are structural: blind verification for the highest stakes (the human reads the source before seeing the model's answer), seeded known-errors measuring each verifier's catch rate, disagreement-rate monitoring (the verifier who never disagrees isn't verifying), and rotation that keeps eyes fresh.
+
+Verification's output deserves the same respect as its act: each confirmation or correction recorded with verifier, timestamp, and basis — feeding the audit trail (who attested this value), the accuracy measurement (true production error rates come from exactly this data), and the training loop. The economic lens completes the picture: manual verification is the most expensive per-field operation in the pipeline, which is precisely why it should be spent like money — targeted, measured, and continuously re-aimed at wherever the current models' uncertainty actually lives.

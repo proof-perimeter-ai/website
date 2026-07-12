@@ -1,0 +1,18 @@
+---
+title: "Cross-Language Document Processing"
+slug: "cross-language-document-processing"
+letter: "C"
+tagline: "The KYC pack has documents in three scripts — the pipeline can't stop at English."
+description: "Cross-language document processing handles documents in and across multiple languages — recognition, extraction, and normalization independent of language."
+category: "OCR & Recognition"
+tags: ["cross-language", "multilingual", "translation", "global documents"]
+publishedAt: "2026-07-11"
+relatedTerms: ["multilingual-ocr", "right-to-left-text-recognition", "cross-domain-generalization"]
+status: "published"
+---
+
+Cross-language document processing is the capability to run document workflows over content in multiple languages — and across them: recognizing text in each language's script, extracting fields regardless of the language the labels are written in, normalizing values whose conventions differ by locale, and delivering results in the operating language of the downstream system. Any institution operating internationally lives this daily: onboarding packs mixing English contracts with Arabic IDs, trade finance documents spanning Chinese and German, EU operations processing twenty-plus official languages under one workflow.
+
+The layers each carry language sensitivity. Recognition needs script coverage (Latin, Arabic, CJK, Devanagari, Cyrillic and beyond), script identification when a single page mixes them, and direction handling for right-to-left and vertical text. Extraction must locate fields by meaning rather than string: "Rechnungsnummer," "numéro de facture," and "invoice number" are the same key, which multilingual layout models and vision-language models handle by operating in shared semantic space rather than per-language rules. Normalization is where quiet errors breed — date orders, decimal separators (1.500,00 versus 1,500.00), address structures, name conventions, and transliteration variants all differ by locale, and a value extracted correctly but normalized under the wrong convention is simply wrong. Translation, when required for review or downstream systems, sits atop the extraction — with the original always preserved, since the source text is the legal fact and the translation a convenience.
+
+Practical programs treat language coverage as measured capability, not a checkbox: accuracy evaluated per language and script (aggregate metrics hide the weakest ones), confidence calibrated per language, review queues staffed for the languages that route to them, and the long tail handled deliberately — a defined path for the occasional document in a language the pipeline doesn't yet support, rather than silent degradation. For institutions in multilingual regulatory environments, cross-language capability is not an enhancement; it is the difference between a pipeline that handles the business and one that handles a subset of it.

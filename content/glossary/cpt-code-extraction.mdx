@@ -1,0 +1,18 @@
+---
+title: "CPT Code Extraction"
+slug: "cpt-code-extraction"
+letter: "C"
+tagline: "The five digits that move healthcare money — read accurately from superbills, claims, and clinical notes."
+description: "CPT code extraction reads procedure codes from medical documents — superbills, claims, EOBs — powering billing automation and claims processing."
+category: "Healthcare"
+tags: ["CPT codes", "medical billing", "procedure codes", "healthcare extraction"]
+publishedAt: "2026-07-11"
+relatedTerms: ["medical-coding-automation-icd-10", "revenue-cycle-management-rcm", "prior-authorization-automation"]
+status: "published"
+---
+
+CPT code extraction is the automated reading of Current Procedural Terminology codes — the five-character codes that identify medical procedures and services — from healthcare documents: superbills and encounter forms, claim forms (the CMS-1500 and UB-04), explanations of benefits, prior authorization requests, and operative reports. CPT codes are the currency of US healthcare billing; every reimbursement, authorization, and utilization analysis runs on them, and an enormous volume of documents carrying them still moves as scans, faxes, and PDFs between providers, payers, and intermediaries.
+
+Extraction has a structured core with unstructured edges. On forms, CPT codes occupy known fields — but with modifiers appended (the two-character suffixes that change payment meaning: -25, -59, laterality), units and dates attached per line, and OCR stakes concentrated in five digits where a single character error means a different procedure entirely. Validation earns its keep: extracted codes check against the CPT code set for existence and effective dates, against the diagnosis codes on the same claim for medical-necessity plausibility, and against payer edit rules (bundling, mutually exclusive pairs) — checks that catch both extraction errors and upstream billing errors. The unstructured edge is deriving codes from narrative — reading an operative note and determining which CPT codes the documented work supports — which crosses from extraction into medical coding automation proper, with its compliance weight.
+
+Downstream, accurate CPT extraction feeds the revenue cycle at multiple points: claims intake and adjudication at payers, denial analysis and underpayment recovery at providers, prior authorization matching, and the utilization datasets behind network and actuarial analytics. The error economics justify care — miscoded claims mean denials, rework measured in weeks, or compliance exposure — so production systems run per-field confidence with human review on uncertain lines, and keep the extracted claim linked to its source image for the disputes that codes inevitably generate.

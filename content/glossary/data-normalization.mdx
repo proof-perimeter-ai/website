@@ -1,0 +1,18 @@
+---
+title: "Data Normalization"
+slug: "data-normalization"
+letter: "D"
+tagline: "'11/03/74', 'March 11, 1974', and '1974-03-11' walk into a database — normalization makes them one date."
+description: "Data normalization converts extracted document values into canonical formats — dates, amounts, names, codes — so downstream systems compare and compute correctly."
+category: "Data Extraction"
+tags: ["normalization", "canonical formats", "data quality", "standardization"]
+publishedAt: "2026-07-11"
+relatedTerms: ["data-validation-rules", "structured-data-output", "data-enrichment"]
+status: "published"
+---
+
+Data normalization is the conversion of extracted document values into canonical, computable forms: "11/03/74," "March 11th, 1974," and "1974-03-11" become one ISO date; "1.500,00 EUR," "€1,500," and "EUR 1500.00" become one amount with one currency; "Acme Corp.," "ACME CORPORATION," and "Acme corp" become one entity string; phone numbers gain country codes, addresses split into components, codes map to standard vocabularies. Extraction reads what the page says; normalization decides what it *means* in the target schema — and every comparison, validation, join, and calculation downstream depends on it being right.
+
+The difficulty is that surface forms underdetermine meaning, and the resolution rules are contextual. "03/04/2026" is March 4th or April 3rd depending on the document's locale — a decision requiring document-level context (a UK statement implies day-first), not string inspection. "1,500" is one-and-a-half thousand or fifteen hundred depending on the decimal convention; negative amounts hide in parentheses, trailing minus signs, or CR/DR markers; name order varies by culture; units lurk unstated ("weight: 70" — kilograms or pounds?). Robust normalization therefore runs as context-aware rules and models: locale inferred per document, conventions per document type and issuer, ambiguity below a confidence bar routed to review rather than resolved by default — because a silently mis-normalized value is more dangerous than an extraction error, arriving type-valid and plausible.
+
+Two engineering habits keep normalization trustworthy. Preserve the original: the raw extracted string travels alongside the normalized value, so disputes resolve against what the page said and re-normalization is possible when rules improve. And centralize the rules: normalization scattered across export mappings and downstream consumers drifts into inconsistency — the same document yielding different dates in two systems. As a pipeline stage with versioned rules, tests, and per-field metrics, normalization becomes what it should be: the quiet layer that lets a thousand document formats feed one coherent dataset.

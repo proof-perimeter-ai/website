@@ -1,0 +1,18 @@
+---
+title: "OCR Accuracy Rate"
+slug: "ocr-accuracy-rate"
+letter: "O"
+tagline: "The number everyone quotes and nobody defines — what OCR accuracy claims actually mean, and how to read them."
+description: "OCR accuracy rate quantifies recognition correctness — character, word, or field level — meaningful only with its measurement conditions stated."
+category: "Evaluation & Quality"
+tags: ["OCR accuracy", "metrics", "benchmarks", "claims"]
+publishedAt: "2026-07-11"
+relatedTerms: ["character-error-rate", "word-error-rate", "field-level-accuracy"]
+status: "published"
+---
+
+OCR accuracy rate is the headline number of text recognition — "99.5% accurate" — and the glossary entry it most needs is a decoder ring, because the number is meaningless without its definitions: accuracy of *what* (characters, words, or fields — each a different metric with different arithmetic: 99% character accuracy can be ~95% word accuracy and far lower field accuracy, since errors compound upward), measured *on what* (clean printed scans or the fax-and-handwriting tail — the corpus choice moves results by tens of points), under *what matching rules* (case, punctuation, whitespace, normalization — undisclosed leniency inflates freely), and *against what ground truth* (whose transcription, resolved how).
+
+Reading vendor and benchmark claims therefore means asking the qualifying questions: the metric's level and formula (character error rate's complement is the honest default; "accuracy" without a formula is marketing), the test population's composition (document types, capture channels, languages, quality mix — and whether it resembles *your* stream), the normalization and scoring rules, and the segmentation of results (an aggregate hides the segments; per-type numbers inform decisions). The strongest response to any claimed rate is the one this glossary's benchmarking entries systematize: measure on your own documents, with your own sealed ground truth, under stated rules — the only accuracy number that predicts your production experience.
+
+Used internally, accuracy rate becomes a managed metric rather than a claim: tracked per document type, channel, field, and language; paired with confidence calibration (does the score predict the accuracy?); trended against drift; and connected to the business numbers it drives — because the operational meaning of "99% vs 98%" is not one point but a doubling of the error volume that review queues, exception handling, and downstream corrections must absorb. The rate is a summary; the distribution underneath it is the truth.

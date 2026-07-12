@@ -1,0 +1,18 @@
+---
+title: "Workflow Orchestration"
+slug: "workflow-orchestration"
+letter: "W"
+tagline: "The engine that runs the process — state, sequencing, and coordination across every step a document passes through."
+description: "Workflow orchestration coordinates the sequence, state, and dependencies of multi-step document processes — the engine beneath document workflow automation."
+category: "Workflow & Automation"
+tags: ["workflow orchestration", "process engines", "coordination", "automation"]
+publishedAt: "2026-07-11"
+relatedTerms: ["document-workflow-automation", "event-driven-document-workflows", "agentic-document-workflows"]
+status: "published"
+---
+
+Workflow orchestration is the engineering discipline and infrastructure layer responsible for coordinating a multi-step process's sequencing, state, and dependencies — the engine underneath the document-workflow-automation entry's broader description of what document processes need, focused specifically on the orchestration mechanics rather than the document-specific application of them. Any process with more than a single step needs something tracking where each instance currently stands, what happens next, what conditions gate progression, and what to do when a step fails or takes longer than expected — and workflow orchestration is the general-purpose solution to that coordination problem, applicable well beyond documents but foundational to how document processes actually run at scale.
+
+The core capabilities an orchestration layer provides map onto real operational needs this glossary's workflow entries reference throughout: state management that tracks every in-flight document's current position without losing that state if a service restarts or a long wait (days for a customer's missing document) occurs mid-process; conditional branching that routes execution based on runtime content — the confidence-based routing and exception-handling patterns this glossary describes depend on an orchestration layer capable of making and executing these branching decisions reliably; retry and error-handling logic that distinguishes transient failures (worth automatically retrying) from persistent ones (requiring escalation); and observability that makes a process's current state, history, and bottlenecks visible rather than opaque, feeding the operational dashboards this glossary's analytics entries describe.
+
+The architectural choice of orchestration approach — a dedicated workflow engine, an event-driven architecture per this glossary's dedicated entry, or an agentic system that plans its own execution sequence rather than following a predefined workflow definition — shapes how flexible versus predictable a process is, and mature document AI systems often blend approaches deliberately: a reliable orchestration backbone handling the process's regulated, must-happen-in-order skeleton (mandatory approval gates, compliance checkpoints, audit logging), with more adaptive execution — event-driven reactions or agentic decision-making — handling the variable parts within that skeleton, per the agentic-document-workflows entry's hybrid pattern. Regardless of the specific technology chosen, the orchestration layer's reliability is foundational infrastructure that the rest of a document AI system's promises — completeness, auditability, predictable handling — ultimately depend on functioning correctly underneath everything else.

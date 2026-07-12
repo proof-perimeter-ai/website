@@ -1,0 +1,18 @@
+---
+title: "Blurred Text Recognition"
+slug: "blurred-text-recognition"
+letter: "B"
+tagline: "The photo was taken in a moving car, apparently — reading text through motion blur and missed focus."
+description: "Blurred text recognition recovers readable content from out-of-focus and motion-blurred document images using deblurring and robust OCR models."
+category: "OCR & Recognition"
+tags: ["blurred text", "deblurring", "image quality", "OCR robustness"]
+publishedAt: "2026-07-11"
+relatedTerms: ["low-resolution-image-ocr", "low-quality-scan-processing", "image-preprocessing"]
+status: "published"
+---
+
+Blurred text recognition addresses one of the most common real-world capture defects: document images where the text is smeared by camera motion, out-of-focus optics, or both. Blur destroys the high-frequency detail that distinguishes characters — the gap that separates "cl" from "d", the stroke that separates "8" from "3" — so conventional OCR confidence collapses and error rates climb steeply with blur severity. Since mobile capture became the dominant intake channel for receipts, IDs, and customer-submitted documents, blur handling moved from edge case to core requirement.
+
+Two complementary strategies exist. Restoration approaches attempt to undo the blur first: classical deconvolution when the blur kernel can be estimated, and neural deblurring models trained on paired sharp/blurred document images, which now recover legibility impressively from moderate degradation. Robustness approaches skip restoration and train recognition models on heavily augmented data that includes realistic blur, teaching the recognizer itself to read through degradation — with linguistic context doing real work, since a sequence model can often infer a smeared word from its neighbors. Production systems typically combine both, applying deblurring when quality metrics indicate it will help.
+
+There is a boundary worth respecting: severely blurred text may be genuinely unrecoverable, and a generative model asked to "restore" it can hallucinate plausible-looking characters that were never on the page — dangerous when the field is an amount or an account number. Well-designed pipelines therefore measure blur at capture time and prompt an immediate retake (the cheapest fix by far), score restored regions honestly rather than inheriting confidence from the enhanced image, and route reconstructed critical fields to human review rather than treating restoration as truth.

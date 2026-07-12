@@ -1,0 +1,18 @@
+---
+title: "Document Forgery Detection"
+slug: "document-forgery-detection"
+letter: "D"
+tagline: "The PDF looks perfect — the metadata, the fonts, and the pixel noise say otherwise."
+description: "Document forgery detection identifies fabricated and altered documents — digital tampering, template fraud, synthetic documents — before decisions rely on them."
+category: "Compliance & Security"
+tags: ["forgery detection", "document fraud", "tampering", "verification"]
+publishedAt: "2026-07-11"
+relatedTerms: ["tampered-document-detection", "document-spoofing", "synthetic-identity-detection"]
+status: "published"
+---
+
+Document forgery detection is the identification of documents that are not what they claim: fully fabricated documents built from templates or generators, genuine documents altered after the fact (an edited salary figure, a substituted name), and synthetic composites assembled from parts of real documents. The threat is structural to any process that grants value on documentary evidence — lending, onboarding, claims, immigration — and it has industrialized: template marketplaces sell realistic payslips and statements, editing tools leave ever-fainter traces, and generative AI now produces convincing document images from prompts.
+
+Detection layers multiple forensic lenses, because forgers rarely defeat all of them at once. Digital forensics reads what files disclose about themselves: metadata inconsistencies (creation tools, timestamps, edit histories), PDF internal structure anomalies, compression fingerprints that betray regional re-editing. Image forensics examines pixels: copy-move and splice artifacts, resampling traces, noise patterns that differ where content was inserted, font and kerning inconsistencies invisible to the eye. Content forensics checks the document against reality: checksums and formats of identifiers, arithmetic that must reconcile, cross-document consistency within a case, and issuer-specific conventions (this bank's statements never format dates that way). And channel signals — the same template's fingerprint recurring across unrelated applicants — turn individual screening into network detection.
+
+The operational posture is risk-scoring, not verdicts: signals aggregate into a forgery risk score that routes documents — clean ones proceed, suspicious ones divert to specialist review with the specific findings highlighted, and confirmed patterns feed both the models and the fraud-intelligence loop. Two disciplines matter at scale: calibration against base rates (most anomalies are innocent — bad scanners and helpful customers annotating their own statements outnumber fraudsters), and adversarial maintenance — detection quality decays as attackers adapt, making forgery models among the most retraining-hungry components in a document pipeline.

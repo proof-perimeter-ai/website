@@ -1,0 +1,18 @@
+---
+title: "Latency In Document Processing"
+slug: "latency-in-document-processing"
+letter: "L"
+tagline: "The customer is waiting, or nobody is — latency budgets that match the moment."
+description: "Latency in document processing spans capture-time milliseconds to batch hours — budgets, tail behavior, and the architecture each use case needs."
+category: "Workflow & Automation"
+tags: ["latency", "performance", "real-time", "SLAs"]
+publishedAt: "2026-07-11"
+relatedTerms: ["real-time-document-processing", "throughput-optimization", "edge-ocr-processing"]
+status: "published"
+---
+
+Latency in document processing is the time from document-in to result-out, and its governing insight is that the acceptable number varies by five orders of magnitude across use cases: capture-time feedback (is this photo readable?) needs tens of milliseconds on-device; interactive verification (the customer waiting while their ID processes) needs seconds; workflow processing (the claim entering triage) tolerates minutes; batch and archival work tolerates hours. Engineering latency well means matching architecture to the moment — not making everything fast, but making each thing fast *enough*, at the cost that budget justifies.
+
+The latency anatomy of a document pipeline has characteristic contributors: model inference (scaling with model size and page count — the VLM that reads beautifully at four seconds per page versus the compact model at two hundred milliseconds), queueing (often the dominant term under load, and the one dashboards miss when they measure processing time instead of end-to-end time), preprocessing and rasterization (the 400-page PDF's rendering cost before any model runs), and the human stations — where "latency" becomes queue-aging measured in hours and the SLA conversation changes vocabulary. Tail latency deserves its own attention: the p99 document (the huge file, the poison input, the retry storm) defines user experience and timeout budgets more than the median does.
+
+The levers are the standard performance toolkit with document specifics: model tiering (fast small models for the volume, escalation for the hard cases — latency and cost usually improve together), page-level parallelism (a 50-page document processed page-concurrent), caching (repeated templates, warm model instances), early-exit designs (return the critical fields first, complete the rest asynchronously), and placement (on-device and in-region inference removing network round-trips — where the latency argument and the sovereignty argument happen to align). Throughout, the budget is a product decision first: the entry for real-time processing covers the architectures; the discipline here is knowing which moments actually need them.

@@ -1,0 +1,18 @@
+---
+title: "Synthetic Identity Detection"
+slug: "synthetic-identity-detection"
+letter: "S"
+tagline: "A real Social Security number, a fabricated name, a manufactured credit history — identity fraud built to survive individual checks."
+description: "Synthetic identity detection identifies fabricated identities assembled from real and invented elements — a fraud pattern individual document checks miss."
+category: "Compliance & Security"
+tags: ["synthetic identity", "fraud detection", "identity fraud", "AML"]
+publishedAt: "2026-07-11"
+relatedTerms: ["document-forgery-detection", "entity-resolution", "fraud-risk-scoring"]
+status: "published"
+---
+
+Synthetic identity detection addresses a fraud pattern specifically designed to defeat the document-by-document, field-by-field verification checks this glossary describes throughout its KYC and identity entries: rather than forging a complete fake identity or stealing an existing real one, synthetic identity fraud combines genuine identifying elements (frequently a real Social Security number or national ID, often belonging to someone unlikely to actively monitor its use — a child, an elderly person, or someone deceased) with fabricated elements (an invented name, a manufactured address history) to construct an identity that passes individual verification checks because each component either is genuinely real or is internally consistent, even though the composite identity corresponds to no actual person.
+
+This is precisely why synthetic identity fraud is difficult for verification systems architected around single-document, single-check authentication: a synthetic identity's driver's license may pass forgery detection because it's competently produced, its Social Security number may pass validation because the number itself is real, and its address may be independently verifiable because the fraudster genuinely receives mail there — no individual check finds anything wrong, because nothing about any individual element is actually false. What makes the composite detectable is pattern and history analysis across time and across data sources rather than any single verification moment: synthetic identities typically show characteristic patterns like a thin or newly-originated credit history that doesn't match the claimed age or background, cross-referencing that reveals the SSN's issuance date is inconsistent with the claimed birth year, or network analysis revealing the same fabricated elements (a phone number, an address, an employer name) reused across multiple supposedly-unrelated identity applications — the entity-resolution and network-analysis techniques this glossary's fraud-scoring entry describes, applied specifically to surface a pattern no single document review would catch.
+
+Document AI's contribution to detection concentrates on the data-quality and cross-source layer that makes pattern analysis possible at all: reliable extraction of identity elements from every submitted document so they can be compared against authoritative sources and against other applications in the institution's own history, and the entity-resolution machinery to recognize when supposedly distinct applications share suspicious element overlap. Given the deliberately gradual nature of synthetic identity fraud — accounts built with genuine-seeming activity over months or years before being exploited — detection increasingly operates as ongoing monitoring rather than a one-time onboarding check, watching for the pattern signals that only emerge across an identity's accumulated history rather than at any single verification moment.

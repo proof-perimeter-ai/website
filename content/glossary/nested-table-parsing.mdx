@@ -1,0 +1,18 @@
+---
+title: "Nested Table Parsing"
+slug: "nested-table-parsing"
+letter: "N"
+tagline: "A table inside a cell inside a table — recovering hierarchy the flat grid can't hold."
+description: "Nested table parsing handles tables within tables — hierarchical structures in financial and technical documents that flat models flatten wrongly."
+category: "Data Extraction"
+tags: ["nested tables", "hierarchy", "table parsing", "structure"]
+publishedAt: "2026-07-11"
+relatedTerms: ["table-reconstruction", "merged-cell-extraction", "messy-spreadsheet-parsing"]
+status: "published"
+---
+
+Nested table parsing is the recovery of tables that contain tables: the cell whose content is itself a grid (the rate card inside the product row, the schedule embedded in the contract's table of terms), the visually singular table that is logically hierarchical (sub-line-items indented under line items, per-location breakdowns under regional rows), and the composite layouts — common in financial schedules, technical specifications, and regulatory filings — where hierarchy is expressed through nesting, indentation, and spanning simultaneously. Flat table models — rows times columns — either explode the nesting into misaligned cells or silently flatten it, and the flattening is semantic loss: which parent a nested row belongs to *is* its meaning.
+
+Parsing approaches meet the structure at different depths. Detection-level: recognizing that a cell region contains sub-table structure (internal rulings, its own header row, grid periodicity) and recursing the parser into it — clean when nesting is visually explicit. Interpretation-level: recovering *logical* nesting from flat visual grids — indentation levels, typography (the bold parent row, the italic subtotal), and label semantics reconstructing the hierarchy tree, the harder and more common case, where the table looks flat and means nested. Structure-aware models trained on hierarchical annotations and evaluated with tree-edit metrics handle both better than grid-only lineages, and VLM parsers reading the rendered table holistically often recover the hierarchy that coordinate pipelines miss — with the standard generative caveat about verifying what they emit.
+
+Serialization has to carry the hierarchy or the parsing was wasted: HTML nests natively; markdown does not (the flattening choice — parent columns duplicated, path-style labels, or HTML fallback — made deliberately per consumer); and JSON representations express the tree directly for database and analytical consumers. Validation exploits nesting's arithmetic where present — children summing to parents is both a structure check and an extraction check — and the usual confidence-and-review economics apply where hierarchy assignment wavers, because a row attached to the wrong parent is a plausible-looking error with real consequences.

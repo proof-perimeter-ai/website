@@ -1,0 +1,18 @@
+---
+title: "Document Spoofing"
+slug: "document-spoofing"
+letter: "D"
+tagline: "Not a fake document — a fake presentation of one: the screen photo, the replayed capture, the injected image."
+description: "Document spoofing presents illegitimate document captures — screen photos, replays, injected images — to defeat verification; detection reads capture authenticity."
+category: "Compliance & Security"
+tags: ["spoofing", "presentation attack", "liveness", "verification"]
+publishedAt: "2026-07-11"
+relatedTerms: ["document-forgery-detection", "tampered-document-detection", "facial-recognition-in-onboarding"]
+status: "published"
+---
+
+Document spoofing is the presentation-side attack on document verification: rather than forging the document's content, the attacker manipulates how it is captured — photographing a screen displaying a document image, submitting a photo of a photocopy, replaying a capture recorded elsewhere, or injecting a prepared image directly into the capture stream, bypassing the camera entirely. The distinction from forgery matters operationally: a spoofed capture can carry a perfectly genuine document (someone else's, or one the presenter shouldn't control), and content-focused forensics will find nothing wrong with it.
+
+Detection therefore reads the capture, not just the content. Screen-replay attacks betray themselves through moiré interference patterns, pixel grids, specular glare characteristic of displays, and unnatural color spectra; print-copy attacks through paper texture, halftone dots, and missing depth; and physical-document authenticity checks look for what only the real object exhibits — holographic elements shifting across frames, optically variable inks, embossing shadows — which is why serious ID verification uses short video or multi-frame capture with prompted movement rather than a single still. Injection attacks, the deepest variant, are fought below the image: attested capture SDKs, device integrity checks, and cryptographic binding of the capture session, because no pixel analysis catches an image that never passed through optics.
+
+Spoofing defense matters most in remote onboarding and KYC, where the document check and its companion selfie/liveness check are the identity perimeter — and where generative AI has raised the stakes by making both fake documents and fake faces cheap. The architecture that holds is layered: capture-side controls (attested SDKs, liveness prompts), presentation-attack detection models on the received imagery, content forensics on the document itself, and cross-checks against external records — with the scoring fused, thresholds tuned to the channel's risk, and the adversarial reality accepted: this is a moving contest, and detection models age faster here than anywhere else in document AI.

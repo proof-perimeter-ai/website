@@ -1,0 +1,18 @@
+---
+title: "AI Document Processing"
+slug: "ai-document-processing"
+letter: "A"
+tagline: "The umbrella term for putting machine intelligence to work on paperwork."
+description: "AI document processing uses machine learning — OCR, vision-language models, NLP — to read, understand, extract, and act on documents automatically."
+category: "Document Understanding"
+tags: ["AI document processing", "document AI", "machine learning", "automation"]
+publishedAt: "2026-07-11"
+relatedTerms: ["intelligent-document-processing", "document-understanding", "agentic-document-processing"]
+status: "published"
+---
+
+AI document processing is the broad discipline of applying machine learning to documents — reading them, understanding their structure, extracting their contents, and triggering actions based on what they contain. It spans everything from classic OCR that converts a scan into text, to layout-aware models that understand tables and forms, to large vision-language models that can answer free-form questions about a 200-page credit agreement. If a task used to require a person to open a file and read it, AI document processing is the family of techniques for doing it with a model instead.
+
+The field has gone through three broad generations. Template-based systems matched fixed layouts and broke the moment a vendor redesigned an invoice. Machine-learning extraction generalized across layouts but needed labeled training data for each document type. The current generation — built on transformers and vision-language models — can extract from document types it has never seen, follow natural-language instructions, and reason across pages, which collapses the setup cost that made earlier systems slow to deploy.
+
+What separates a demo from a production deployment is everything around the model: confidence scoring so the system knows when it might be wrong, human-in-the-loop review for the uncertain cases, validation rules that encode what "correct" means for each field, and audit trails that record how every value was produced. In regulated industries — banking, insurance, healthcare — a further constraint dominates architecture choices: sensitive documents often cannot leave the institution's environment, which pushes AI document processing toward on-premises or in-VPC deployment on the institution's own hardware.

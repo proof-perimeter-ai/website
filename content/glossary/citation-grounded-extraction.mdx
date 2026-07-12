@@ -1,0 +1,18 @@
+---
+title: "Citation-Grounded Extraction"
+slug: "citation-grounded-extraction"
+letter: "C"
+tagline: "Every answer comes with a receipt — the page, the region, the exact words it was extracted from."
+description: "Citation-grounded extraction attaches source evidence — page, location, quoted text — to every extracted value, making outputs verifiable by construction."
+category: "Data Extraction"
+tags: ["citation grounding", "provenance", "verifiable extraction", "evidence"]
+publishedAt: "2026-07-11"
+relatedTerms: ["document-grounding", "visual-grounding", "content-faithfulness"]
+status: "published"
+---
+
+Citation-grounded extraction is the practice of attaching evidence to every extracted value: not just "the effective date is 2026-03-01" but "…as stated on page 4, in the clause beginning 'This Agreement shall commence…', at this region of the page." The extraction and its citation travel together — into review interfaces, into databases, into downstream documents — so any consumer of the value can verify it against the source in seconds. It converts extraction from an assertion you must trust into a claim you can check.
+
+The pattern matters most where language models do the extracting, because their characteristic failure is fluent fabrication: a plausible date, a reasonable-sounding clause summary, delivered with the same confidence as a faithful one. Requiring citations changes the failure profile — a model forced to point at its evidence either points correctly (verifiable), points wrongly (detectably: the cited text doesn't support the value, which automated checks can catch by comparing them), or cannot point at all (a strong signal the value was invented). Systems enforce this with grounded output formats, span-level attribution from the model, and post-hoc verification that quoted evidence actually appears in the document at the claimed location.
+
+Grounding compounds in value downstream. Human review accelerates from minutes to seconds per field when the evidence is highlighted rather than hunted. Audits become queries: any figure in a report traces to a document region. Disagreements resolve on evidence rather than authority. And confidence takes on a second dimension — a value can be extraction-confident but weakly grounded (the model is sure, but the supporting text is ambiguous), which is precisely the case that deserves human eyes. For regulated document work, where "show me how you know this" is a standing question, citation-grounded extraction is less a feature than the natural shape of a defensible system.

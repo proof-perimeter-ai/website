@@ -1,0 +1,18 @@
+---
+title: "Handwritten Text Recognition"
+slug: "handwritten-text-recognition"
+letter: "H"
+tagline: "Reading what hands write — the recognition problem that separates modern document AI from its ancestors."
+description: "Handwritten text recognition (HTR) reads human handwriting — print and cursive — using deep sequence models, a capability classical OCR never achieved."
+category: "OCR & Recognition"
+tags: ["handwriting recognition", "HTR", "cursive", "recognition"]
+publishedAt: "2026-07-11"
+relatedTerms: ["intelligent-character-recognition-icr", "mixed-handwriting-and-print-recognition", "handwritten-form-digitization"]
+status: "published"
+---
+
+Handwritten text recognition (HTR) is the machine reading of human handwriting — from separated block capitals through everyday mixed print-cursive to flowing script — a problem categorically harder than printed OCR because handwriting has no fixed alphabet: every writer renders every character differently, characters connect and blend in cursive, and the same person's writing varies with speed, mood, and pen. Classical OCR never solved it; deep learning's sequence models made it practical, and HTR's arrival is a large part of why document automation now reaches the forms, notes, and annotations that once forced human transcription.
+
+The architecture story is sequence recognition: models read a text line as a whole — CRNNs with CTC training, then attention-based encoder-decoders, now transformer and VLM-based recognizers — letting linguistic context resolve what isolated letterforms cannot (the scribble legible only because the sentence demands that word). Training data is the binding constraint: handwriting diversity requires corpora spanning writers, styles, languages, and eras, supplemented by synthetic handwriting generation and augmentation; and domain adaptation matters more than in printed OCR, because a deployment's writer population (this hospital's clinicians, this region's script conventions) is a distribution worth fine-tuning toward — with the review loop supplying exactly the right corrections.
+
+Honest expectations calibrate deployment. Modern HTR performs impressively on legible modern handwriting and degrades with cursiveness, haste, degradation, and idiosyncrasy — with accuracy on hard material meaningfully below printed-text levels, and confidence calibration correspondingly vital. Production systems exploit every external constraint (field types, vocabularies, checksums), route low-confidence reads to review, and measure per writer-population rather than trusting global numbers. The frontier cases — historical scripts, medical cursive, mixed-language handwriting — remain specialist territory where domain-trained models and expert review share the work.

@@ -1,0 +1,18 @@
+---
+title: "Document Redaction Automation"
+slug: "document-redaction-automation"
+letter: "D"
+tagline: "Black boxes that actually remove — finding every name, number, and identifier, and destroying it in the file, not just on the screen."
+description: "Document redaction automation finds and removes sensitive content — PII, PHI, privileged text — with true content removal, at repository scale."
+category: "Compliance & Security"
+tags: ["redaction", "PII removal", "privacy", "sanitization"]
+publishedAt: "2026-07-11"
+relatedTerms: ["pii-detection-in-documents", "phi-redaction", "data-loss-prevention-dlp-for-documents"]
+status: "published"
+---
+
+Document redaction automation is the AI-driven finding and true removal of sensitive content from documents: personal identifiers, financial details, health information, privileged passages, trade secrets — located by detection models and eliminated from the file itself, at scale no manual process reaches. The demand comes from every direction at once: privacy regimes requiring minimization before sharing, FOIA and disclosure obligations, discovery productions, data-subject requests, and the newest driver — sanitizing document corpora before they feed training sets, RAG indexes, or external AI services.
+
+Two competencies must both hold. Detection: finding everything that qualifies — named entities in prose, identifiers in structured fields, faces and signatures in images, and the contextual cases rules miss (a person identifiable from "the claimant's sister, a nurse in the town's only clinic" without any name present). This is document AI proper: OCR bringing scanned content into scope, NER and language models reading meaning, coreference chasing the pronoun that leaks what the redacted name protected. Removal: actually destroying the content — a black rectangle drawn *over* text whose characters remain in the PDF layer is the classic, repeatedly litigated failure; correct redaction rewrites the content stream, scrubs metadata, OCR layers, and embedded objects, and verifies by re-extraction that nothing recoverable remains.
+
+The operating model is risk-tiered rather than fully autonomous: detection proposes with confidence per finding, policy determines what categories redact for which disclosure purpose (the same document redacts differently for a regulator than a counterparty), human review concentrates on low-confidence findings and high-stakes releases, and sampling audits the automated tier. Every redaction is logged — what category, what policy, who approved — because a redaction decision is itself the kind of decision someone later asks about, and the unredacted original persists under its own access controls as the authoritative record.

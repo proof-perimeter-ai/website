@@ -1,0 +1,18 @@
+---
+title: "Chart And Graph Parsing"
+slug: "chart-and-graph-parsing"
+letter: "C"
+tagline: "The bar chart knows the quarterly numbers — parsing recovers them from pixels, axes, and legends."
+description: "Chart and graph parsing interprets visual data displays in documents — identifying chart type, axes, series, and values — to recover the underlying data."
+category: "Document Understanding"
+tags: ["chart parsing", "graph understanding", "visual data", "document AI"]
+publishedAt: "2026-07-11"
+relatedTerms: ["chart-data-extraction", "figure-and-diagram-extraction", "visual-question-answering-on-documents"]
+status: "published"
+---
+
+Chart and graph parsing is the interpretation of visual data displays embedded in documents — bar charts, line graphs, pie charts, scatter plots — to understand their structure and recover their content: what type of chart it is, what the axes measure and their scales, which series the legend defines, and what values the visual elements encode. Documents are full of them: financial reports summarize performance in charts whose numbers appear nowhere else in the text; scientific papers carry results primarily in figures; regulatory filings and board packs communicate trends visually.
+
+Parsing a chart is a pipeline of visual sub-problems: classifying the chart type (which determines the decoding rules), detecting structural elements (axes, tick labels, gridlines, legend entries, data marks), reading the embedded text with OCR, and then inverting the visual encoding — mapping a bar's pixel height through the axis scale to a number, associating colors with legend series, handling stacked and grouped variants. Vision-language models now perform much of this end-to-end, answering questions about charts or emitting data tables directly, though precision on unlabeled marks remains bounded by pixel resolution: a bar can be read as "approximately 4.2" when the true value is 4.17, adequate for trend questions and hazardous for exact-figure extraction.
+
+That precision boundary shapes responsible use. Parsers distinguish values printed as data labels (exactly readable) from values inferred from geometry (approximate), and downstream consumers should preserve the distinction — a RAG system citing "revenue of roughly $4.2M (read from chart)" is honest; one asserting the figure as exact is manufacturing precision. Where charts matter analytically at scale — extracting KPI trends across hundreds of annual reports, say — pipelines pair chart parsing with cross-checks against any tabular or textual statement of the same figures, and route conflicts to review rather than choosing silently.

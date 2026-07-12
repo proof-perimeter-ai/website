@@ -1,0 +1,18 @@
+---
+title: "Government ID Parsing"
+slug: "government-id-parsing"
+letter: "G"
+tagline: "Passports, national IDs, residence permits — thousands of formats, one job: read and verify the identity."
+description: "Government ID parsing extracts and verifies identity data from official documents — MRZ, chips, visual zones — across global formats."
+category: "Compliance & Security"
+tags: ["ID parsing", "identity documents", "MRZ", "verification"]
+publishedAt: "2026-07-11"
+relatedTerms: ["passport-ocr", "drivers-license-extraction", "kyc-know-your-customer"]
+status: "published"
+---
+
+Government ID parsing is the extraction and verification of identity data from official documents — passports, national identity cards, residence permits, visas, driver's licenses serving as ID — across the thousands of formats the world's issuing authorities produce. It is the document backbone of KYC, border and age verification, and remote onboarding, and its distinctive property is redundancy by design: modern IDs carry the same identity data in multiple zones — the visual inspection zone (the printed fields), the machine-readable zone (the standardized MRZ strips on passports and many cards), and often an NFC chip (the ICAO 9303 biometric passport's cryptographically signed data) — and parsing them all is what makes verification strong.
+
+Each zone has its discipline. The MRZ is the reliable workhorse: fixed-format OCR-B text with embedded check digits validating each field — a parsing target designed for machines, where checksum failure means misread or tampered, either way a flag. The visual zone requires format-aware OCR across scripts and layouts (with the security printing — guilloche, optically variable ink, holograms crossing the text — as both obstacle and authenticity evidence), guided by document-type classification that first identifies *which* of thousands of ID formats this is, and which template's fields and security features to expect. Chip reading, where hardware allows, is the gold tier: signed data verified cryptographically against issuer certificates. Cross-zone comparison then closes the loop — visual, MRZ, and chip data must agree, and disagreement is among the strongest tamper signals available.
+
+Parsing feeds verification's larger stack — authenticity scoring, liveness and face match, issuer checks where registries permit — under the data-protection weight identity documents carry: strict retention, access, and residency handling, with in-perimeter processing increasingly standard for institutions whose regulators ask where the passports went. The engineering constant is the format long tail: coverage is a maintained catalog, not a solved problem, as issuing authorities redesign continuously.

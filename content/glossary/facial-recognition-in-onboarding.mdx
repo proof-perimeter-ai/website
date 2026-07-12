@@ -1,0 +1,18 @@
+---
+title: "Facial Recognition In Onboarding"
+slug: "facial-recognition-in-onboarding"
+letter: "F"
+tagline: "The face on the ID, the face on the selfie, and the proof there's a live person behind both."
+description: "Facial recognition in onboarding matches ID portraits to live selfies with liveness detection — the biometric layer of remote identity verification."
+category: "Compliance & Security"
+tags: ["facial recognition", "biometrics", "onboarding", "identity verification"]
+publishedAt: "2026-07-11"
+relatedTerms: ["kyc-know-your-customer", "document-spoofing", "government-id-parsing"]
+status: "published"
+---
+
+Facial recognition in onboarding is the biometric layer of remote identity verification: comparing the portrait on a captured identity document against a live selfie or video of the applicant, establishing that the person presenting the ID is its legitimate holder. Paired with document authenticity checks, it replaces the branch visit's implicit verification — the teller looking from the photo to the face — and it carries the same two questions in machine form: is this the same person (face matching), and is there actually a live person present (liveness detection, against printed photos, screens, masks, and increasingly deepfake injection).
+
+The document AI intersection is direct: the reference face comes *from* the document — extracted from the ID's portrait zone, which means detection of the photo region, handling of the security features deliberately printed across it (holographic overlays, guilloche), and quality assessment of what is often a small, laminated, re-photographed image. Match scoring then compares embeddings from face recognition models, with thresholds set against the deployment's risk tolerance — and calibrated per the well-documented demographic performance variations that regulators and standards bodies (NIST's FRVT/FRTE evaluations being the reference) expect institutions to understand and mitigate. Liveness runs alongside: passive models reading texture, depth, and micro-signals from the capture, active prompts (turn, blink, follow the dot) where risk warrants, and capture-attestation defending the pipeline below the pixels.
+
+Governance is inseparable from deployment: biometric data sits in the strictest categories of privacy law (explicit consent regimes, retention limits, in some jurisdictions dedicated biometric statutes), fairness monitoring across demographics is both an ethical and regulatory expectation, and fallback paths — human video verification, branch referral — must exist for the applicants automation cannot confidently verify. Done rigorously, the combination of document forensics, face match, and liveness raises remote onboarding to parity with in-person verification — while its audit trail records exactly what was checked, matched, and scored for every account the institution opens.

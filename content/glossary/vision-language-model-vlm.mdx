@@ -1,0 +1,18 @@
+---
+title: "Vision-Language Model (VLM)"
+slug: "vision-language-model-vlm"
+letter: "V"
+tagline: "One model that looks at the page and talks about it — reading, layout, and reasoning in a single pass."
+description: "A vision-language model (VLM) processes images and text together, letting one model read documents, understand layout, and answer questions about them."
+category: "Models & Training"
+tags: ["vision-language model", "VLM", "multimodal", "document AI models"]
+publishedAt: "2026-07-11"
+relatedTerms: ["multimodal-ai", "transformer-based-ocr", "visual-document-understanding"]
+status: "published"
+---
+
+A vision-language model (VLM) is a neural network that processes images and text in the same model, aligning what it sees with what it can say. Given a page image and a prompt, a VLM can transcribe the text, describe the layout, extract specific fields, or answer questions — "what is the policy expiry date?" — without a separate OCR engine, layout detector, and extraction model chained together. Architecturally, most VLMs pair a vision encoder that converts the image into visual tokens with a language model that reasons over those tokens alongside the prompt.
+
+For document work, VLMs changed the shape of the pipeline. Traditional stacks decomposed the problem — preprocess, OCR, layout analysis, field extraction — with errors compounding at each stage. A VLM ingests the rendered page and produces the requested output directly, which makes it remarkably robust to the cases that break staged pipelines: unusual layouts, mixed handwriting and print, tables with merged cells, stamps overlapping text. It also enables zero-shot extraction: describe the fields you want in plain language or a JSON schema, and the model finds them on document types it has never been trained on.
+
+The trade-offs are cost, latency, and control. Large hosted VLMs are expensive per page and require sending documents to an external API — often a non-starter for regulated institutions with data-residency obligations. This is driving interest in small, fine-tuned VLMs that run on the institution's own hardware: for a defined set of document types, a compact specialized model can match or beat a frontier generalist while running on commodity CPUs inside the perimeter, with every inference logged and no document ever leaving the building.

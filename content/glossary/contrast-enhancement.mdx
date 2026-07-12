@@ -1,0 +1,18 @@
+---
+title: "Contrast Enhancement"
+slug: "contrast-enhancement"
+letter: "C"
+tagline: "Making faint ink legible — stretching the difference between text and paper until models can read it."
+description: "Contrast enhancement amplifies the difference between text and background in document images — recovering legibility from faded and low-contrast captures."
+category: "Image Preprocessing"
+tags: ["contrast enhancement", "image preprocessing", "legibility", "faded documents"]
+publishedAt: "2026-07-11"
+relatedTerms: ["adaptive-thresholding", "document-denoising", "low-vision-document-enhancement"]
+status: "published"
+---
+
+Contrast enhancement is the preprocessing operation that amplifies the difference between document content and its background — stretching faint ink toward black and discolored paper toward white so that text sits crisply against its field. Low contrast is among the most common document degradations: faded thermal receipts, aging ink, carbon copies, over- or under-exposed phone captures, colored paper stocks, and generations of photocopying all compress the tonal gap that recognition depends on. Enhancement re-expands it before OCR or vision models spend their robustness on what a cheap transform could have fixed.
+
+The technique ladder starts with global histogram methods: linear contrast stretching maps the image's actual tonal range onto the full scale; histogram equalization redistributes tones for maximum overall separation — effective but capable of amplifying noise and over-darkening backgrounds. Local methods refine this: CLAHE (contrast-limited adaptive histogram equalization) is the workhorse, enhancing each region relative to its own statistics with a clipping limit that prevents noise blow-up — well matched to documents whose illumination varies across the page. Beyond classical methods, learned enhancement models trained on degraded/clean pairs handle compound degradations, jointly adjusting contrast with denoising and sharpening — with the standard caution that reconstructive models estimate rather than observe, and critical-field regions enhanced this way deserve honest downstream confidence.
+
+Placement and restraint are the practical skills. Enhancement typically runs after channel-specific profiling (a fax needs different treatment than a phone photo) and before binarization or recognition; over-enhancement is a real failure mode — halos around characters, background texture promoted into speckle, thin strokes eroded by aggressive curves. As with all preprocessing, the validating metric is not visual appeal but recognition accuracy on real documents, measured per capture channel, before and after.

@@ -1,0 +1,18 @@
+---
+title: "Messy Spreadsheet Parsing"
+slug: "messy-spreadsheet-parsing"
+letter: "M"
+tagline: "The workbook grew organically for nine years — parsing the spreadsheets humans actually make."
+description: "Messy spreadsheet parsing extracts data from real-world workbooks — multi-table sheets, merged headers, notes in cells, and format chaos."
+category: "Data Extraction"
+tags: ["spreadsheets", "Excel parsing", "messy data", "extraction"]
+publishedAt: "2026-07-11"
+relatedTerms: ["merged-cell-extraction", "table-reconstruction", "data-normalization"]
+status: "published"
+---
+
+Messy spreadsheet parsing is the extraction of usable data from spreadsheets as humans actually make them: workbooks where one sheet holds three unrelated tables separated by blank rows, headers merge and stack two-deep, a title and a date float above the data, notes live in cells ("check this!" in red), subtotal rows interleave the records, units change mid-column, and the real information coexists with formatting scaffolding, formulas, hidden rows, and the residue of nine years of organic growth. Spreadsheets are structured *format*, not structured *data* — the grid guarantees cells, not meaning — and business intake channels (broker submissions, supplier price lists, portfolio reports) deliver them in volume.
+
+Parsing them is table understanding with the spreadsheet's own evidence. Table detection segments each sheet's regions (data blocks versus titles, notes, and legends); header inference identifies the header rows — including stacked and merged ones — and derives column semantics; row classification separates records from subtotals, sections, and repeated headers; and type inference per column contends with the format's traps: dates that are numbers, numbers stored as text, the meaningful formatting (color as category, bold as status) that value-only extraction discards, and formulas whose *results* versus *logic* are different answers to "what does this cell say." Language models raised the ceiling meaningfully here — inferring what a column means from its header, its contents, and its neighbors — and schema-directed extraction ("populate this structure from this workbook") is often the practical framing.
+
+The output discipline mirrors document extraction: normalized records with provenance (sheet, cell range) per value, validation against the data's own arithmetic (the subtotals the sheet computes are ground truth to reconcile against), and honest flagging where inference stretched — because a spreadsheet's ambiguity ("is row 40 data or a note?") is real ambiguity, and the parser's job is surfacing it, not hiding it under a clean-looking table.

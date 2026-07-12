@@ -1,0 +1,18 @@
+---
+title: "Low-Confidence Flagging"
+slug: "low-confidence-flagging"
+letter: "L"
+tagline: "The system raises its hand — marking the outputs it isn't sure about before anyone relies on them."
+description: "Low-confidence flagging marks uncertain AI outputs — fields, documents, decisions — for review, the visible half of confidence-based routing."
+category: "Evaluation & Quality"
+tags: ["confidence flagging", "uncertainty", "review triggers", "quality"]
+publishedAt: "2026-07-11"
+relatedTerms: ["confidence-threshold", "confidence-based-routing", "human-in-the-loop-verification"]
+status: "published"
+---
+
+Low-confidence flagging is the practice of marking AI outputs whose confidence falls below the trust bar — the extracted field, the classification, the match decision that the system itself doubts — so that downstream consumers, human or machine, treat them accordingly: reviewed before use, excluded from automation, displayed with a visual caution. It is the visible half of confidence-based routing: where routing moves the doubtful item to a queue, flagging travels *with* the data — the uncertainty preserved as metadata wherever the value goes, rather than laundered away at the pipeline boundary.
+
+The design questions are about honesty surviving transport. Flags must persist into exports and databases (the ERP row carrying its review status, not just its value), render in interfaces (the amber highlight on the unverified field — with visual language that distinguishes "model unsure" from "validation failed" from "human corrected"), and gate consumption (the report that computes from flagged values disclosing so; the automated decision that requires unflagged inputs enforcing it). The alternative — confidence stripped at the boundary, every value arriving downstream looking equally certain — is how extraction errors become business errors with no intervening skepticism, and it is the default behavior of pipelines that never designed the flag's journey.
+
+Flagging also disciplines the flagger. Flag rates are operational telemetry: rising flags on a document type signal drift before accuracy measurably falls; flag rates by field and channel map where the models struggle; and the flagged population's *actual* error rate (measured from review outcomes) is the calibration check — flags that are usually fine train reviewers to skim, flags that are usually wrong should have routed harder. The mature end state treats certainty as a first-class data property: every value in the system knows how sure the system was, who if anyone verified it, and every consumer can act on that knowledge — which is most of what "trustworthy automation" concretely means.

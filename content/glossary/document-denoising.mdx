@@ -1,0 +1,18 @@
+---
+title: "Document Denoising"
+slug: "document-denoising"
+letter: "D"
+tagline: "Salt-and-pepper speckle, scanner streaks, coffee rings — subtracting everything that isn't the document."
+description: "Document denoising removes visual noise from document images — speckle, streaks, artifacts — improving OCR accuracy on degraded scans."
+category: "Image Preprocessing"
+tags: ["denoising", "noise removal", "image cleanup", "preprocessing"]
+publishedAt: "2026-07-11"
+relatedTerms: ["noise-reduction-techniques", "image-preprocessing", "document-binarization"]
+status: "published"
+---
+
+Document denoising is the removal of visual noise from document images — the salt-and-pepper speckle of aging scans and faxes, sensor noise from low-light phone captures, scanner streaks and dust shadows, compression artifacts, show-through from a page's reverse side, and the physical marks of use: stains, smudges, hole punches, staple shadows. The goal is a cleaner separation between content and contamination, because noise costs recognition accuracy directly — speckle fragments characters or masquerades as punctuation, streaks cut through text lines, and artifacts inflate the false detections that downstream layout analysis must survive.
+
+Techniques scale with noise complexity. Classical filters handle classical noise: median filtering for salt-and-pepper, morphological operations for isolated specks, Gaussian and bilateral smoothing (edge-preserving variants mattering for text, whose sharp edges are the signal). Frequency-domain methods remove periodic patterns like halftone screens from printed-photo regions. Learned denoising — encoder-decoder networks trained on noisy/clean document pairs, often synthetically corrupted — handles compound real-world degradation that no single filter models, and modern document-restoration models jointly denoise, deblur, and enhance in one pass. As with all document enhancement, the boundary discipline is conservatism: a denoiser aggressive enough to remove all speckle will eventually remove a decimal point, and a learned model can hallucinate clean-looking strokes — so critical-field regions warrant honest confidence rather than confidence inherited from a prettified image.
+
+Pipeline placement is channel-aware: fax intake and archival scans earn heavy denoising; born-digital PDFs need none; phone captures need different treatment than flatbed scans. Mature systems profile noise per source, apply matched treatment, and validate the whole arrangement the only way that means anything — recognition accuracy on real documents, before and after, per channel.

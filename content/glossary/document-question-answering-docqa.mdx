@@ -1,0 +1,18 @@
+---
+title: "Document Question Answering (DocQA)"
+slug: "document-question-answering-docqa"
+letter: "D"
+tagline: "Ask the page, get the answer — the task that measures whether a model actually understands documents."
+description: "Document question answering (DocQA) answers natural-language questions from document content — text, layout, tables, and figures combined."
+category: "Document Understanding"
+tags: ["DocQA", "question answering", "document understanding", "benchmarks"]
+publishedAt: "2026-07-11"
+relatedTerms: ["visual-question-answering-on-documents", "conversational-document-interfaces", "document-understanding"]
+status: "published"
+---
+
+Document question answering (DocQA) is the task of answering natural-language questions from a document's content: "What is the invoice due date?", "Who are the parties to this agreement?", "What was the operating margin in 2024?" — where the answer may live in prose, a table cell, a form field, a chart, or a combination requiring synthesis. DocQA matters both as a product capability (the engine behind document chat, copilots, and natural-language querying) and as the research community's favorite measuring stick for document understanding, with benchmark families (DocVQA and descendants) that test whether models integrate text, layout, and visual content rather than merely reading characters.
+
+The task decomposes differently by answer type. Extractive questions want a span from the document — robust, verifiable, the right default for factual fields. Abstractive questions require composition ("summarize the termination provisions") — more powerful, more hallucination-prone. Structural questions exercise layout understanding (the answer is defined by *where* content sits: a total in a summary box, a value under a column header); numerical questions add arithmetic over extracted values, a persistent weak point worth testing explicitly; and multi-page or multi-hop questions require retrieval and reasoning across locations, where long-context handling and grounding discipline get stressed simultaneously. Modern vision-language models handle single-page DocQA impressively; production systems wrap them with retrieval (for long documents), grounding enforcement (answers cited to regions), and calibrated refusal (the document doesn't say).
+
+For teams evaluating document AI, DocQA doubles as a probing methodology: a question set over your own documents — spanning tables, fine print, cross-references, and content that contradicts common knowledge — reveals a system's real understanding faster than any vendor benchmark. The systematic failures it exposes (chart numbers guessed, negations flipped, footnotes ignored) are exactly the ones that matter when the question-asker is an underwriter, an auditor, or a customer.

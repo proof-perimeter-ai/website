@@ -1,0 +1,18 @@
+---
+title: "Multi-Document Summarization"
+slug: "multi-document-summarization"
+letter: "M"
+tagline: "Twelve documents, one account — synthesis that reconciles versions, dedupes assertions, and keeps the contradictions visible."
+description: "Multi-document summarization synthesizes across document sets — case files, research corpora — reconciling overlap and surfacing conflicts."
+category: "Document Understanding"
+tags: ["multi-document", "summarization", "synthesis", "case files"]
+publishedAt: "2026-07-11"
+relatedTerms: ["document-summarization-workflows", "cross-document-reasoning", "multi-page-document-processing"]
+status: "published"
+---
+
+Multi-document summarization is synthesis across a document set: the claim file's dozen documents rendered as one coherent account, the deal's data-room workstream as a findings summary, the research question's forty papers as a literature review, the customer's correspondence history as a relationship brief. It differs from single-document summarization in kind, not just scale: the set's documents overlap (the same fact asserted five times, in five phrasings), supersede one another (the amendment, the corrected report, the later statement), and conflict (two accounts of the accident, two dates for the same event) — and the summarizer's job includes the editorial work a single document never demands: deduplication, version awareness, and honest handling of contradiction.
+
+The architecture layers what this glossary's related entries provide. Per-document understanding first (each document parsed, extracted, dated, typed); entity and event alignment across the set (the cross-document reasoning machinery — establishing that these mentions are the same person, these passages the same event); then synthesis with explicit policies: recency and authority precedence (the signed contract outranks the draft; the final report supersedes the preliminary), corroboration marking (asserted once versus confirmed across sources), and contradiction surfacing — the summary that silently picks one side of a conflict is worse than the one that reports both with sources, because the conflict is usually the operationally interesting fact. Attribution discipline completes it: every claim in the synthesis cited to its source documents, with multi-source claims carrying multiple citations.
+
+The consuming workflows set the shape: case-file briefings (adjusters, underwriters, caseworkers reading one page instead of twelve documents), matter chronologies in legal work, diligence roll-ups, and RAG systems whose retrieved passages span documents and whose answers are, in effect, micro multi-document summaries — inheriting every requirement above at answer speed. The quality bar follows the single-document entry's faithfulness machinery, plus the set-level test: does the synthesis represent the *set*, including its disagreements, or just the documents the model happened to weight?

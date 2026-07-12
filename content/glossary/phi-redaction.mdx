@@ -1,0 +1,18 @@
+---
+title: "PHI Redaction"
+slug: "phi-redaction"
+letter: "P"
+tagline: "Eighteen identifiers, one obligation — removing protected health information before a record can travel."
+description: "PHI redaction removes the identifiers that make health records personally identifiable — the gate through which clinical data reaches research and sharing."
+category: "Compliance & Security"
+tags: ["PHI redaction", "de-identification", "HIPAA", "healthcare privacy"]
+publishedAt: "2026-07-11"
+relatedTerms: ["document-redaction-automation", "hipaa-compliant-document-processing", "clinical-notes-analysis"]
+status: "published"
+---
+
+PHI redaction is the removal of protected health information from medical documents before they can be shared, researched on, or used to train models outside the strict controls that identified clinical data requires: HIPAA's Safe Harbor method names eighteen categories of identifier — names, dates more specific than year, geographic subdivisions smaller than state, phone and fax numbers, medical record and account numbers, biometric identifiers, and more — every one of which must be removed or generalized for a record to qualify as de-identified. It is document redaction's healthcare-specific, highest-stakes instance: the gate that turns a clinical record from a compliance liability into research- and AI-ready data.
+
+The detection challenge is medical language's own difficulty layered onto general PII detection: identifiers appear in narrative form dense with clinical vocabulary that general NER models weren't trained to distinguish from identifying content ("Dr. Chen at Memorial Hospital" contains both a name and a facility, embedded in a sentence about diagnosis); dates require category judgment (a date of birth must go, a relative timeline like "three weeks post-surgery" may be permissible under Safe Harbor's specific rules); and indirect identification is real — the rare-disease patient at the small rural clinic can be identifiable from context even with every explicit name removed, which is why the alternative Expert Determination method exists for cases where a qualified statistician assesses re-identification risk beyond Safe Harbor's checklist. Clinical NLP models fine-tuned specifically for PHI detection (rather than general-purpose PII models) consistently outperform on this domain-specific identification task.
+
+As with all redaction, detection is only half the job: removal must be genuine (content deleted from the underlying data structure, not merely visually obscured — the redaction entry's classic litigated failure applies doubly to health records) and verified before release. The output feeds research datasets, registries, AI training corpora, and any sharing arrangement crossing outside the covered entity's boundary — with every redaction pass logged, since de-identification methodology is itself something an IRB, a partner, or a regulator may ask to see evidence of.

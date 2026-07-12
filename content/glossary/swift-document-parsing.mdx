@@ -1,0 +1,18 @@
+---
+title: "SWIFT Document Parsing"
+slug: "swift-document-parsing"
+letter: "S"
+tagline: "Structured messages with unstructured corners — parsing the free-text fields banks' own standard leaves open."
+description: "SWIFT document parsing extracts data from interbank messaging formats — structured fields plus the free-text narrative sections requiring real parsing."
+category: "Financial Services"
+tags: ["SWIFT", "trade finance", "interbank messaging", "extraction"]
+publishedAt: "2026-07-11"
+relatedTerms: ["letter-of-credit-digitization", "trade-finance-document-processing", "financial-statement-extraction"]
+status: "published"
+---
+
+SWIFT document parsing is the extraction of data from SWIFT messages — the standardized interbank messaging formats (MT 700 series for letters of credit, MT 103 for payments, and dozens of other message types) that banks use to communicate everything from trade finance instructions to payment confirmations. SWIFT messages are, notably, already semi-structured by design — each message type has a defined field structure with numbered fields (Field 20 for a reference number, Field 32A for value date and amount, and so on) — which distinguishes this parsing task from reading an arbitrary PDF, but the standard's own structure leaves substantial free-text room that still requires genuine document AI, not simple field-splitting.
+
+The parsing challenge concentrates in exactly those free-text fields the standard permits: Field 47A ("Additional Conditions") in a letter of credit message, for instance, is a free-text field where the actual substantive terms and conditions of the credit are frequently written in natural language rather than any further-structured sub-format — meaning a bank's system receiving the message has the reference number and the amount cleanly delimited, but the conditions that determine what documents must be presented and what discrepancies matter require the same natural-language extraction and clause-analysis techniques this glossary's contract and letter-of-credit entries describe, applied within a message field rather than a standalone document. This mixed structure — rigid field delimiters wrapping genuinely unstructured content — is a recurring pattern across financial messaging standards, not unique to SWIFT, and it means "the message is structured" is only true at the outer layer.
+
+The practical extraction task therefore layers: message-level parsing splits the SWIFT message into its defined fields using the standard's own grammar (a comparatively mechanical task, since the field structure is documented and consistent), and content-level parsing applies to whichever fields carry free text, extracting the actual terms, conditions, and instructions those fields contain using the natural-language extraction techniques appropriate to their content. This combination feeds directly into the trade-finance and letter-of-credit workflows this glossary describes elsewhere — automated discrepancy checking against a letter of credit's terms, for instance, needs both the cleanly structured amount and date fields and the free-text conditions field parsed with equal reliability, since a discrepancy hiding in unparsed free text is exactly as costly as one in a field the system never bothered to structure.

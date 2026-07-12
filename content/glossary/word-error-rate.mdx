@@ -1,0 +1,18 @@
+---
+title: "Word Error Rate"
+slug: "word-error-rate"
+letter: "W"
+tagline: "One wrong character still fails the whole word — the metric that matches how readers actually perceive errors."
+description: "Word error rate (WER) measures OCR accuracy at the word level — any character mistake fails the whole word, closer to human-perceived quality."
+category: "Evaluation & Quality"
+tags: ["word error rate", "WER", "OCR metrics", "evaluation"]
+publishedAt: "2026-07-11"
+relatedTerms: ["character-error-rate", "ocr-accuracy-rate", "field-level-accuracy"]
+status: "published"
+---
+
+Word error rate (WER) is an OCR accuracy metric, closely related to character error rate but computed at word granularity: rather than counting individual character-level insertions, deletions, and substitutions, WER counts word-level errors — a word is either correctly recognized in its entirety or it counts as an error, with no partial credit for getting most of a word's characters right. This makes WER a stricter, more punishing metric than CER in a specific sense: a single misread character anywhere in a word — "Inv0ice" instead of "Invoice" — fails that entire word for WER purposes even though only one character out of seven was actually wrong, which is precisely why CER's complement (99% character accuracy) can correspond to a meaningfully worse word error rate on the same output, exactly the compounding relationship this glossary's ocr-accuracy-rate entry flags as a common source of confusion when comparing accuracy claims across different metrics.
+
+The rationale for using WER despite this apparent harshness is that it better approximates how errors actually feel to a human reader or how they actually affect many downstream uses: a document with 99% character accuracy sounds excellent, but if those errors are distributed as one wrong character per word across five percent of words, a reader encounters a garbled or wrong word roughly once every twenty words — a genuinely disruptive reading experience that the flattering character-level number obscures. WER surfaces this more honestly, which is why speech-recognition and document-transcription evaluation has long favored it as a primary metric alongside or instead of character-level scoring, particularly for use cases where word-level correctness matters more than character-level precision — general-purpose reading and search being reasonable examples, in contrast to identifier fields (account numbers, codes) where character-level precision matters more directly than whole-word correctness and CER or exact-match field accuracy is the more relevant metric.
+
+As with character error rate, WER's meaningfulness depends entirely on stated, consistent computation rules: how tokenization handles punctuation and hyphenation, whether case sensitivity is enforced, and what counts as "the same word" when minor formatting differences exist between the recognized output and ground truth — all decisions that materially affect the resulting number and that any serious comparison between systems or claims needs to hold constant. The practical takeaway for evaluating OCR quality claims mirrors this glossary's broader evaluation guidance: neither CER nor WER alone tells the complete story, and mature evaluation reports both alongside task-specific metrics like field-level accuracy, because each metric is sensitive to different error patterns that matter differently depending on what the extracted text will actually be used for.

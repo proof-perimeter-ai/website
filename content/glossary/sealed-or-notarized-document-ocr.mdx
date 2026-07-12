@@ -1,0 +1,18 @@
+---
+title: "Sealed Or Notarized Document OCR"
+slug: "sealed-or-notarized-document-ocr"
+letter: "S"
+tagline: "The embossed seal that cameras can't see and scanners barely can — reading documents whose authentication marks resist reading."
+description: "Sealed or notarized document OCR handles the recognition challenges of embossed seals, notary stamps, and raised authentication marks."
+category: "OCR & Recognition"
+tags: ["notarized documents", "seals", "authentication marks", "recognition"]
+publishedAt: "2026-07-11"
+relatedTerms: ["logo-and-stamp-detection", "document-forgery-detection", "handwritten-signature-verification"]
+status: "published"
+---
+
+Sealed or notarized document OCR addresses a specific and genuinely difficult recognition challenge: documents authenticated with embossed seals — raised, colorless impressions pressed into the paper itself rather than printed with ink — which are close to invisible to standard flatbed scanning and often only marginally visible to cameras, since the authentication mechanism relies on the seal being felt more than seen. Notarized documents, apostilles, corporate seals, and court certifications frequently carry exactly this kind of physically embossed mark alongside more conventional inked stamps and signatures, and a document AI pipeline built only for inked content will report the embossed seal as simply absent.
+
+The technical approaches that recover embossed content lean on capture and lighting rather than recognition-model sophistication alone: raking light photography (illuminating the page at a low, near-parallel angle so the raised impression casts a shadow that makes it visible) can reveal an embossed seal that flat scanning completely misses, and some specialized capture setups use multiple light angles or structured light specifically to surface relief detail. Where raking-light capture isn't practical, image processing that enhances subtle shadow and highlight variation can sometimes recover enough of an embossed seal's outline to confirm its presence and rough content, though rarely with the same reading confidence as ink-based marks. For inked notary stamps and seals — the more common case in day-to-day document processing — the recognition task is closer to the general stamp-detection and rotated-text problems this glossary covers, complicated by the circular or arc-following text layout many official seals use.
+
+The practical stakes explain why this narrow problem gets dedicated attention: a notarization or official seal is frequently the specific element that gives a document its legal force, and a verification workflow that can confirm the seal's *presence* — even without fully reading its content — provides meaningfully more assurance than one that's simply blind to embossed marks entirely. Production systems handling notarized or sealed documents at volume typically combine presence-detection (is a seal or stamp physically there, in roughly the expected location) with best-effort content reading, routing to human verification whenever the automated confidence in either falls short — because for these documents specifically, "we couldn't confirm the seal" is a materially different and more actionable finding than silently proceeding as if the seal weren't required at all.

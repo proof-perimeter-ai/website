@@ -1,0 +1,18 @@
+---
+title: "You Only Look Once (YOLO)"
+slug: "you-only-look-once-yolo"
+letter: "Y"
+tagline: "One pass, every object at once — the detection architecture that made real-time document element detection practical."
+description: "You Only Look Once (YOLO) is a fast single-pass object detection architecture widely used for document element detection — stamps, signatures, tables, checkboxes."
+category: "Models & Training"
+tags: ["YOLO", "object detection", "computer vision", "real-time"]
+publishedAt: "2026-07-11"
+relatedTerms: ["ai-vision-models", "logo-and-stamp-detection", "signature-detection"]
+status: "published"
+---
+
+You Only Look Once (YOLO) is a family of object detection architectures, now through many generations of improvement since its original release, distinguished by processing an entire image in a single forward pass to predict all detected objects and their bounding boxes simultaneously — as opposed to earlier detection approaches that scanned an image through multiple stages or proposed regions before classifying them, which were meaningfully slower. This single-pass design is what made YOLO and its architectural descendants a practical choice for real-time and high-throughput detection tasks, a property that translates directly into document AI use cases wherever fast, reliable localization of specific visual elements matters more than the deepest possible contextual understanding of the full page.
+
+In document processing specifically, YOLO-family models appear throughout the detection tasks this glossary describes as distinct capabilities: locating stamps and logos, detecting signatures, finding checkboxes and their filled/unfilled state, identifying barcode and QR code regions before decoding, and detecting table boundaries as a first-pass localization step before more specialized table-structure models take over. The appeal in each of these cases is the same: these are bounded, well-defined visual patterns (a stamp looks like a stamp, a checkbox looks like a checkbox) where a fast, purpose-trained detector can achieve high accuracy and speed without needing the fuller contextual and linguistic reasoning that a large vision-language model brings — and given that document pipelines frequently need to run many such detectors across every page of high-volume document streams, the speed advantage compounds meaningfully at production scale.
+
+The practical role YOLO-style detectors play in modern document AI architectures is often as a fast, specialized front-end layer: quickly localizing regions of interest (this is a stamp here, this is a table there, this is a signature block in this area) that then feed more specialized or more capable models for the actual content interpretation — a stamp region passed to stamp-content recognition, a table region passed to table-structure recognition, a signature region passed to verification. This layered pattern, pairing fast specialized detection with more capable downstream interpretation, recurs throughout this glossary's tiered-architecture discussions, and YOLO-family models remain a common, well-understood choice for the fast-detection layer even as vision-language models increasingly absorb more of the interpretation work downstream of that initial localization.

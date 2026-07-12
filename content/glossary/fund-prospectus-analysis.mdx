@@ -1,0 +1,18 @@
+---
+title: "Fund Prospectus Analysis"
+slug: "fund-prospectus-analysis"
+letter: "F"
+tagline: "Two hundred pages of fees, risks, and mandates — structured into data that platforms and compliance can use."
+description: "Fund prospectus analysis extracts fees, objectives, risks, and terms from fund documents — for platforms, due diligence, and compliance."
+category: "Financial Services"
+tags: ["prospectus", "fund documents", "asset management", "extraction"]
+publishedAt: "2026-07-11"
+relatedTerms: ["sec-filing-analysis", "financial-statement-extraction", "regulatory-filing-automation"]
+status: "published"
+---
+
+Fund prospectus analysis is the automated reading of fund offering documents — prospectuses, key information documents (KIDs/KIIDs), statements of additional information, factsheets — to extract the terms that investors, platforms, and regulators care about: fee structures (management, performance, entry/exit charges, expense ratios and their waivers), investment objectives and permitted strategies, risk factors and their classifications, share-class mechanics, redemption terms, and the benchmark and distribution details that vary by class and jurisdiction. The documents are long, legally drafted, periodically amended, and produced by every fund house in its own style — a corpus that platforms and analysts historically mined by hand.
+
+The extraction blends structured and interpretive work. Fee tables extract as tables — with the footnotes that modify them (the waiver expiring next year, the tiered schedule) attached rather than dropped, since the footnote frequently *is* the finding. Narrative sections yield to language-model analysis: objectives classified against strategy taxonomies, risk factors extracted and normalized (what this document calls "emerging market risk" mapped to the platform's risk vocabulary), permitted-investment language parsed into constraint data (derivatives usage, leverage limits, concentration caps). Cross-document consistency is its own task: the prospectus, the KID, and the factsheet describing the same fund must agree, and their divergences — a fee stated differently, a risk rating that doesn't match — are compliance findings that automated comparison surfaces systematically.
+
+The consumers shape the outputs: fund platforms populate their databases and comparison tools (fee data at scale, kept current across amendment cycles); due-diligence and gatekeeper teams screen against mandates and policy (which funds permit what this allocator prohibits); and compliance functions verify disclosure consistency and regulatory conformance across document families. As throughout financial document AI, every extracted term carries its citation into the source — the page and paragraph an analyst or auditor checks when the number is challenged.

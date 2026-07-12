@@ -1,0 +1,18 @@
+---
+title: "JSON Schema Extraction"
+slug: "json-schema-extraction"
+letter: "J"
+tagline: "Define the shape, get the data — extraction specified as a schema the model must fill."
+description: "JSON schema extraction has models populate a defined schema from documents — typed fields, constraints, and structure enforced on the output."
+category: "Data Extraction"
+tags: ["JSON schema", "structured extraction", "schemas", "constrained output"]
+publishedAt: "2026-07-11"
+relatedTerms: ["schema-based-extraction", "structured-data-output", "generative-ai-for-document-extraction"]
+status: "published"
+---
+
+JSON schema extraction is the pattern where extraction is specified as a schema the model must populate: the developer defines the output's shape — field names, types, required versus optional, enums, nested objects for line items and parties, descriptions that tell the model what each field means — and the extraction system returns a JSON instance conforming to it. The schema is simultaneously the requirement document, the model's instructions, and the validation contract, collapsing what template-era extraction spread across configuration, training, and post-processing into one declarative artifact.
+
+The pattern's power comes from how modern models consume it. Vision-language and language models read the schema's field names and descriptions as instructions — `"policy_expiry_date": "the date coverage ends, ISO 8601"` steers the model to find, normalize, and format in one pass — which is why schema *authoring* is the new prompt engineering: precise descriptions, disambiguation of near-miss fields (invoice date versus due date versus delivery date), and enum values that match how documents actually phrase things measurably move accuracy. Enforcement closes the loop: structured-output modes and constrained decoding guarantee syntactic conformance (the JSON parses, types match), while semantic validation — the checksums, cross-field rules, and grounding checks this glossary treats elsewhere — guards against the conforming-but-wrong output that syntax enforcement cannot catch.
+
+Operationally, schemas become versioned assets: evolved as requirements change (with migrations for downstream consumers, like any API), tested against benchmark documents per version (a reworded description is a model-behavior change), and organized into libraries per document type. The pattern's boundary is worth knowing: schemas excel where the target structure is known in advance; for exploratory processing of unknown documents, schema *inference* — having the model propose the schema from the documents — precedes it, and the two together form the arc from "what's in these files?" to production extraction.

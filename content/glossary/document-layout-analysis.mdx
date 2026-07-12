@@ -1,0 +1,18 @@
+---
+title: "Document Layout Analysis"
+slug: "document-layout-analysis"
+letter: "D"
+tagline: "Before reading the words, a model has to see the page the way a human does — headings here, table there, footnote at the bottom."
+description: "Document layout analysis detects the structural regions of a page — paragraphs, tables, headers, figures — so text can be read and extracted in the right context."
+category: "Document Understanding"
+tags: ["layout analysis", "document structure", "segmentation", "reading order"]
+publishedAt: "2026-07-11"
+relatedTerms: ["reading-order-detection", "document-segmentation", "table-extraction-from-documents"]
+status: "published"
+---
+
+Document layout analysis is the step that identifies the structural regions of a page before or alongside reading its text: where the paragraphs are, which block is a heading, where tables begin and end, what is a figure caption versus body text, and which regions are headers, footers, or page numbers. Text without layout is a soup of characters; layout is what tells a system that "Total: 4,860.00" belongs to the summary table and not to the paragraph above it.
+
+Technically, layout analysis is usually framed as a detection or segmentation problem: models locate regions with bounding boxes or pixel masks and assign them types (text block, title, table, figure, list). Earlier pipelines ran layout detection as a separate stage feeding OCR and extraction; modern layout-aware transformers and vision-language models fuse visual, spatial, and textual signals in one pass, which is why they handle multi-column scientific papers, dense financial statements, and messy scanned forms far better than text-only approaches.
+
+Layout analysis quietly determines the ceiling on everything downstream. Reading order depends on it — read a two-column page straight across and you get gibberish. Table extraction depends on it — a merged cell misidentified as body text corrupts a whole row. Retrieval-augmented generation depends on it — chunking a document without respecting section boundaries feeds the language model incoherent fragments. When extraction quality problems are diagnosed in production, the root cause is very often not the reading of characters but a layout mistake made before a single word was recognized.

@@ -1,0 +1,18 @@
+---
+title: "Occluded Text Extraction"
+slug: "occluded-text-extraction"
+letter: "O"
+tagline: "The stamp sits on the sentence — reading text that something else is covering."
+description: "Occluded text extraction recovers text hidden under stamps, signatures, stains, and overlaps — separation, inference, and honest uncertainty."
+category: "OCR & Recognition"
+tags: ["occlusion", "overlapping content", "recovery", "recognition"]
+publishedAt: "2026-07-11"
+relatedTerms: ["overlapping-text-detection", "stamped-document-processing", "document-image-segmentation"]
+status: "published"
+---
+
+Occluded text extraction is the reading of text that something covers: the "RECEIVED" stamp across the address block, the signature over the printed name, the sticker on the label, the fold shadow, the stain, the redaction rectangle from a previous life, the second document's corner in the scan. Occlusion is everyday reality in operational paper — stamps and signatures are *supposed* to land on content — and it defeats recognition in a specific way: partial glyph evidence that a standard recognizer either misreads confidently or drops silently, both worse than an honest "partially obscured."
+
+The recovery stack layers separation, inference, and honesty. Separation first: where occluder and text differ in color, texture, or layer (the blue stamp on black print, the pencil over type), segmentation isolates and removes the occluder, exposing damaged-but-readable text beneath — the segmentation and stamp-detection entries' machinery applied subtractively. Inference second: where pixels are simply gone, context does the work — language models completing the visible fragments, format constraints bounding the possibilities (the covered characters in a date can only be so many things), cross-references supplying the value from elsewhere in the document or case (the address obscured here appears clean on page 2 — retrieval beats reconstruction). Honesty always: recovered-by-inference is not read, and the output should say so — occluded spans flagged, per-character provenance distinguishing observed from completed, and consequential fields routed to review rather than trusted from reconstruction.
+
+The engineering context sets the priorities: occlusion detection itself (knowing *that* text is covered, and where) is cheap and prevents the silent failures; training with synthetic occlusion (stamps, strikes, and stains composited onto clean text) hardens recognizers measurably; and workflow answers often trump pixel answers — the covered value re-requested, cross-checked, or accepted as unknown, because a document process that pretends to have read what was hidden has converted an image problem into a data-integrity one.

@@ -1,0 +1,18 @@
+---
+title: "Barcode Recognition"
+slug: "barcode-recognition"
+letter: "B"
+tagline: "The one part of the page designed to be machine-read — if the scan hasn't mangled it."
+description: "Barcode recognition detects and decodes 1D and 2D barcodes in documents — routing slips, labels, forms — linking pages to records reliably."
+category: "OCR & Recognition"
+tags: ["barcode", "QR code", "document capture", "recognition"]
+publishedAt: "2026-07-11"
+relatedTerms: ["qr-code-extraction", "optical-mark-recognition-omr", "document-routing-automation"]
+status: "published"
+---
+
+Barcode recognition is the detection and decoding of barcodes within document images — linear (1D) symbologies like Code 128 and Code 39, and two-dimensional codes like QR and Data Matrix. Unlike the rest of a page, a barcode was designed for machines: it encodes data with built-in redundancy and error correction, so a successful decode is essentially certain to be correct. That reliability is why barcodes anchor so much document logistics — patient labels on medical forms, tracking codes on shipping documents, case numbers on legal filings, and batch separator sheets in scanning operations.
+
+In document processing pipelines, barcodes serve two distinct roles. As data carriers, they yield exact identifiers — an application number, a policy ID — that link the page unambiguously to a record, sparing OCR the risk of misreading a critical key. As structural markers, they drive document handling itself: separator pages with barcodes split a scanned batch into individual documents, and form-identifying codes tell the pipeline which template and extraction schema apply before a word is read. Many high-volume scanning operations are architected around this: the barcode is read first, and everything else follows from what it says.
+
+The failure modes are physical rather than interpretive: low resolution that merges bars, skew and perspective distortion from photos, damage, poor contrast on colored backgrounds, and codes that overlap text or stamps. Modern recognizers handle substantial degradation — locating candidates with detection models, then applying symbology-specific decoding with error correction — but pipelines still treat a failed decode as a signal: flag the page for human attention or fall back to OCR of the human-readable digits usually printed beside the code, rather than guessing.

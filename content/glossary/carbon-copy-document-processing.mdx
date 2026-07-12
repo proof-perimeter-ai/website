@@ -1,0 +1,18 @@
+---
+title: "Carbon Copy Document Processing"
+slug: "carbon-copy-document-processing"
+letter: "C"
+tagline: "The faint pink third copy from a triplicate pad — still legally meaningful, barely legible, and someone has to read it."
+description: "Carbon copy document processing recovers text from low-contrast carbon and carbonless duplicates using enhancement and robust recognition models."
+category: "Image Preprocessing"
+tags: ["carbon copies", "low contrast", "legacy documents", "enhancement"]
+publishedAt: "2026-07-11"
+relatedTerms: ["low-quality-scan-processing", "contrast-enhancement", "handwritten-text-recognition"]
+status: "published"
+---
+
+Carbon copy document processing deals with a stubborn legacy format: the duplicate impressions produced by carbon paper and carbonless (NCR) forms — delivery notes, receipts, deposit slips, medical forms, and field paperwork where the second or third copy is what reaches the office. These documents combine every recognition difficulty at once: faint, low-contrast impressions that weaken with each copy layer; smudging and pressure variation from handwriting through multiple sheets; colored paper stock (the classic pink and yellow copies) that further reduces contrast; and pre-printed form text competing with the impressed content.
+
+Processing them is first an image problem, then a recognition problem. Enhancement pipelines stretch the meager contrast between impression and background — channel-selective processing exploits the color difference between ink, impression, and tinted paper; adaptive thresholding handles the uneven pressure; and learned enhancement models trained on degraded/clean pairs recover strokes global methods miss. Recognition then needs models robust to broken, faint strokes — typically handwriting-capable engines trained with augmentation that simulates carbon degradation, since most carbon-copy content is handwritten field entries on printed forms.
+
+The workflow reality is that carbon copies are usually the trailing edge of a digitization effort: the last document class still arriving from drivers, agents, clinics, and branches that haven't moved to digital capture. Pragmatic pipelines set expectations accordingly — per-field confidence thresholds tuned lower-stakes fields versus critical ones, aggressive routing of illegible entries to human review, and capture-side fixes where possible (mobile photo capture of the top copy at the point of origin beats any enhancement of the third copy later). Meanwhile the extraction that does succeed carries the same structure and provenance as any born-digital document, letting decades of triplicate-pad operations join the automated flow.

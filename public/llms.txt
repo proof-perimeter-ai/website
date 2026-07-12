@@ -8,6 +8,7 @@ Proof Perimeter targets regulated BFSI document workflows: KYC and onboarding, l
 
 - [Home](https://proofperimeter.com/): Product overview — the problem (the "Sovereign-AI Gap"), how it works, differentiators, use cases, regulator coverage, personas, proof/economics, and FAQ.
 - [Book a demo](https://proofperimeter.com/book-demo): Request a free Sovereign-AI-Gap Audit and blind benchmark on your own documents.
+- [Glossary](https://proofperimeter.com/glossary): AI document processing glossary — plain-language definitions of OCR, intelligent document processing, extraction, document AI agent, compliance and evaluation terms, each at /glossary/{term}.
 
 ## Key facts
 

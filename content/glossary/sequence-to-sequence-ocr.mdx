@@ -1,0 +1,18 @@
+---
+title: "Sequence-To-Sequence OCR"
+slug: "sequence-to-sequence-ocr"
+letter: "S"
+tagline: "Reading a whole line as a sequence, not a string of isolated characters — the architecture shift that made context part of recognition."
+description: "Sequence-to-sequence OCR reads text lines as whole sequences rather than isolated characters, letting linguistic context resolve ambiguity."
+category: "OCR & Recognition"
+tags: ["seq2seq", "OCR architecture", "deep learning", "recognition models"]
+publishedAt: "2026-07-11"
+relatedTerms: ["deep-learning-ocr", "transformer-based-ocr", "handwritten-text-recognition"]
+status: "published"
+---
+
+Sequence-to-sequence OCR is the architectural approach that treats text-line recognition as a sequence prediction problem — mapping an image of a text line to a sequence of output characters — rather than segmenting the line into individual characters first and classifying each in isolation, which was how classical OCR engines worked. This shift, covered in this glossary's deep-learning-OCR entry as part of the field's broader evolution, deserves its own explanation because the sequence framing is specifically what unlocked context-aware recognition: a model reading a whole line as a sequence can use the characters around an ambiguous one to resolve it, the way a human reader effortlessly reads a smudged word correctly because the surrounding sentence makes only one interpretation sensible.
+
+The foundational architecture that established this approach was the CRNN — a convolutional network extracting visual features from the line image, feeding a recurrent network (typically LSTM-based) that models the sequence, trained with Connectionist Temporal Classification (CTC) loss, which elegantly solves the alignment problem between variable-length input images and variable-length output text without requiring character-level segmentation labels during training at all. This was the architecture that broke classical OCR's dependency on clean character segmentation — a text line with touching or overlapping characters, which defeated segment-then-classify approaches, became recognizable because the sequence model never needed to segment characters as a separate step. Attention-based encoder-decoder architectures followed, replacing CTC's implicit alignment with explicit attention mechanisms that let the model focus on relevant image regions while generating each output character, improving accuracy further and setting up the transition to today's transformer-based recognizers.
+
+The practical consequence of the sequence framing, still true in the current transformer and vision-language-model generation, is that recognition accuracy on any individual character depends partly on its neighbors — which is both a strength (ambiguous characters get resolved by context, exactly as human reading does) and a source of characteristic error modes worth knowing (a sequence model can occasionally "autocorrect" a genuinely unusual but correct character into a more common, contextually expected one, which is precisely why domain-specific strings like part numbers and account identifiers — which don't follow ordinary language statistics — sometimes need recognition strategies tuned differently than natural-language text, or validation layers that catch when the model's contextual confidence and the actual ground truth have diverged).

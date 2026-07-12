@@ -1,0 +1,18 @@
+---
+title: "Data Lineage In Document Processing"
+slug: "data-lineage-in-document-processing"
+letter: "D"
+tagline: "Every number in the database has a biography — which page it came from, what read it, who touched it, and when."
+description: "Data lineage in document processing traces each value from source page through models, validations, and edits to its final destination — end to end."
+category: "Compliance & Security"
+tags: ["data lineage", "provenance", "traceability", "governance"]
+publishedAt: "2026-07-11"
+relatedTerms: ["document-audit-trail", "audit-ready-document-workflows", "citation-grounded-extraction"]
+status: "published"
+---
+
+Data lineage in document processing is the complete traceable history of every value the pipeline produces: which document it came from (and which page, and which region), which model version extracted it with what confidence, which preprocessing touched the image first, which validations it passed, whether a human reviewed or corrected it, what normalization transformed it, and where it was delivered. Lineage answers the question that eventually arrives about any consequential number — *where did this come from?* — as a query rather than an investigation.
+
+Document pipelines make lineage both more necessary and more layered than typical data flows. More necessary because the source is an artifact, not a system: when the warehouse value disagrees with reality, the arbitration evidence is a page image, and only lineage connects them. More layered because so many transformations intervene — capture, enhancement, OCR, extraction, normalization, human edit, enrichment, export — each a place where a value can change, and each therefore a link the lineage must record. The practical implementation attaches provenance metadata that travels with the data (source document ID, region coordinates, model and version, confidence, reviewer actions with timestamps) plus pipeline-level records of configuration and code versions, so the state of the whole system at processing time is reconstructible.
+
+The payoffs stack across audiences. Regulators and auditors get the evidence chain — increasingly an explicit expectation as AI governance regimes ask institutions to demonstrate how automated decisions were produced. Engineers get root-cause speed: an accuracy regression traced to the model version or preprocessing change that introduced it. Data consumers get calibrated trust: a value's confidence and review status visible where it's used. And privacy operations get reach: when a deletion or rectification request arrives, lineage identifies every derived record the source document fed. Institutions that treat lineage as pipeline plumbing from day one get all of this by construction; those that defer it discover that retrofitting history is the one thing history doesn't allow.

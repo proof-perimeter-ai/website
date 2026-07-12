@@ -1,0 +1,18 @@
+---
+title: "Entity Linking"
+slug: "entity-linking"
+letter: "E"
+tagline: "'Apple' the company, not the fruit — connecting document mentions to the real-world things they name."
+description: "Entity linking connects document mentions to knowledge-base entries — disambiguating names into identified real-world entities."
+category: "Data Extraction"
+tags: ["entity linking", "disambiguation", "knowledge bases", "NER"]
+publishedAt: "2026-07-11"
+relatedTerms: ["named-entity-recognition", "entity-resolution", "knowledge-graph-extraction"]
+status: "published"
+---
+
+Entity linking is the task of connecting mentions in text to the specific real-world entities they refer to, as catalogued in a knowledge base: "Apple" in this paragraph links to the technology company (not the fruit, not the record label); "Paris" to the French capital (not the Texas city, not the person); "J. Chen, CFO" to the particular executive the registry knows. It runs a step beyond named entity recognition — NER finds and types the mentions; linking resolves *which* entity each mention names, turning strings into identifiers that carry everything the knowledge base knows.
+
+The method is candidate generation plus disambiguation. Candidates come from name dictionaries and aliases (every surface form an entity is known by); disambiguation ranks them by context — the words, entities, and topics surrounding the mention, matched against each candidate's profile — with modern systems doing this via embeddings and language-model reasoning rather than hand-tuned features. Documents raise the difficulty in characteristic ways: mentions abbreviated and initialed ("JPM," "the Bank"), OCR noise corrupting the strings, coreference chains where the informative mention ("Acme Holdings Ltd") and the linkable one ("the Company") are paragraphs apart, and domain knowledge bases — the institution's own customer master, counterparty registry, or product catalog — replacing Wikipedia as the linking target, usually with sparser alias coverage and higher stakes.
+
+In enterprise document pipelines, linking is what makes extraction *actionable*: the invoice's vendor linked to the master-file vendor (enabling the match against POs and payment history), the news article's company linked to the portfolio holding (enabling the risk alert), the contract's counterparty linked to the KYC file (enabling the exposure rollup). The confidence discipline applies with a twist — a wrong link is worse than no link, silently attaching one entity's history to another — so production linkers expose "no confident match" as a first-class outcome, routing it to resolution rather than forcing a best guess.

@@ -1,0 +1,18 @@
+---
+title: "Human-In-The-Loop Verification"
+slug: "human-in-the-loop-verification"
+letter: "H"
+tagline: "The model does the reading; a person checks its work — but only where the model isn't sure."
+description: "Human-in-the-loop verification routes low-confidence AI extractions to human reviewers, combining automation speed with human judgment and accountability."
+category: "Workflow & Automation"
+tags: ["human in the loop", "HITL", "review", "verification", "quality control"]
+publishedAt: "2026-07-11"
+relatedTerms: ["confidence-threshold", "review-queue-management", "low-confidence-flagging"]
+status: "published"
+---
+
+Human-in-the-loop (HITL) verification is the workflow pattern where AI handles the bulk of document processing automatically, but routes the cases it is uncertain about to a human reviewer before the results are committed. Instead of choosing between full automation (fast but occasionally wrong in ways nobody notices) and full manual processing (accurate but slow and expensive), HITL splits the work by confidence: the model processes everything, and people see only the fraction of fields or documents that fall below a defined confidence threshold.
+
+A well-designed review experience is what makes the economics work. The reviewer shouldn't re-read the whole document — they should see the extracted value, the model's confidence, and the exact region of the source page it came from, side by side, so a correction takes seconds rather than minutes. Corrections are also too valuable to throw away: captured systematically, they become evaluation data that measures real-world accuracy, and training data that improves the model on precisely the cases it gets wrong.
+
+In regulated document workflows, HITL is often not just an efficiency mechanism but a control that risk and compliance functions explicitly require. Decisions with legal or financial consequences — a KYC rejection, a claims denial, a sanctions-screening hit — frequently must show that a qualified person reviewed the machine's output. That makes the audit trail part of the feature: who reviewed what, when, what they changed, and why a given document did or did not qualify for straight-through processing.

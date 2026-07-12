@@ -1,0 +1,18 @@
+---
+title: "Document Grounding"
+slug: "document-grounding"
+letter: "D"
+tagline: "The answer must live in the pages — grounding keeps AI outputs tethered to what the document actually says."
+description: "Document grounding constrains AI outputs to be supported by source document content — with evidence links — preventing fabrication in extraction and Q&A."
+category: "Document Understanding"
+tags: ["grounding", "faithfulness", "evidence", "hallucination prevention"]
+publishedAt: "2026-07-11"
+relatedTerms: ["citation-grounded-extraction", "content-faithfulness", "visual-grounding"]
+status: "published"
+---
+
+Document grounding is the principle — and the engineering — of keeping AI outputs tethered to source documents: every extracted value, every answer, every summary claim supported by identifiable content in the pages, with the support made explicit. A grounded system doesn't just say "the notice period is 60 days"; it can show the clause, on the page, that says so. Grounding is the document-AI antidote to the language model's defining weakness: the ability to produce fluent, plausible, confident statements with no basis in the input.
+
+Grounding operates at several strengths. Weakest: prompting the model to answer only from provided context — helpful, unenforced. Stronger: requiring citations with every claim, then mechanically verifying them — does the cited passage exist, and does it entail the claim? (Verification is what turns citations from decoration into a control; unverified citations can themselves be hallucinated.) Strongest, where the task allows: constraining outputs to spans of the source — extractive rather than generative answers — or validating generated values against document-derived constraints. Visual grounding extends the chain to pixels: the answer linked not just to text but to the bounding-box region it occupies, which is what review interfaces highlight and auditors ultimately trust.
+
+The refusal behavior is grounding's other half: a grounded system must say "the document does not address this" when it doesn't — resisting both the model's instinct to be helpful from general knowledge and the user's instinct to accept whatever sounds right. In practice, grounded refusals surface real business signal (the claim pack genuinely lacks the proof; the contract genuinely omits the clause). For document AI in regulated use, grounding is the property everything else leans on: extraction accuracy is measurable, review is fast, and audits are answerable, precisely because every output knows where it came from.

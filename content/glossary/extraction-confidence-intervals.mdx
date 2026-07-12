@@ -1,0 +1,18 @@
+---
+title: "Extraction Confidence Intervals"
+slug: "extraction-confidence-intervals"
+letter: "E"
+tagline: "The benchmark says 96.2% — the interval says 94.8 to 97.3, and the difference changes decisions."
+description: "Extraction confidence intervals quantify statistical uncertainty in accuracy measurements — how sure you can be that measured performance is real."
+category: "Evaluation & Quality"
+tags: ["confidence intervals", "statistics", "evaluation", "uncertainty"]
+publishedAt: "2026-07-11"
+relatedTerms: ["extraction-accuracy-benchmarking", "confidence-scoring-models", "model-evaluation-datasets"]
+status: "published"
+---
+
+Extraction confidence intervals are the statistical error bars on accuracy measurements: when a benchmark reports 96.2% field accuracy from a 500-document test set, the interval — roughly 94.8% to 97.3% at standard confidence — states how much that number could move purely from sampling luck. The distinction matters because document AI decisions ride on small differences: model B's 96.8% versus model A's 96.2% is a purchasing argument if real and noise if not, and only the intervals (or a paired significance test) can say which.
+
+The mechanics are standard statistics applied with document-specific care. Proportion intervals (Wilson or bootstrap) fit per-field accuracy; the effective sample size is the trap — 500 documents yielding 6,000 field values are not 6,000 independent observations, since errors cluster within documents (one bad scan fails many fields), so document-level bootstrap resampling gives honester intervals than naive field counting. Stratified reporting shrinks and sharpens: the interval on "handwritten claim forms" is wide because that stratum is small — which is itself the finding: the system's performance on that segment is *unknown*, not "roughly the average." Paired comparison — both models on the same documents, analyzing the per-document differences — detects real improvements far smaller than unpaired intervals could distinguish.
+
+The practical payoffs are decision hygiene. Test-set sizing becomes calculable: the interval width you need determines the documents you must label, before the project rather than after the disappointment. Regression gates become principled: a model change "passes" when its improvement is statistically distinguishable, not when a point estimate ticks up. And monitoring avoids false alarms: production accuracy estimated from small review samples fluctuates; intervals separate the drift that demands retraining from the noise that demands patience. In a field fond of single-number claims, the interval is the difference between measurement and anecdote.

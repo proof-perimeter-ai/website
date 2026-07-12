@@ -1,0 +1,18 @@
+---
+title: "Multi-Column Reading Order"
+slug: "multi-column-reading-order"
+letter: "M"
+tagline: "Which block comes next — the sequencing decision that turns detected columns into readable text."
+description: "Multi-column reading order determines the correct sequence through columnar layouts — the ordering half of multi-column parsing."
+category: "Document Understanding"
+tags: ["reading order", "columns", "sequencing", "layout"]
+publishedAt: "2026-07-11"
+relatedTerms: ["multi-column-document-parsing", "reading-order-detection", "document-layout-analysis"]
+status: "published"
+---
+
+Multi-column reading order is the sequencing decision within columnar layouts: given the page's detected blocks — columns, headings, figures, captions, sidebars — in what order does a reader (human or machine) traverse them? It is the ordering half of multi-column parsing (detection being the other), and the half where subtle judgment lives: column boundaries can be geometrically obvious while the *sequence* remains genuinely ambiguous — does the full-width heading start a new flow across both columns beneath it, or cap the flow above? Does the boxed sidebar interrupt the reading or accompany it?
+
+The general reading-order entry covers the task's full scope; the multi-column case has its own recurring structures worth naming. Standard columnar flow: down column one, top of column two — with the sequence direction script-dependent (right-to-left scripts reverse the column order). Interrupting elements: full-width titles, figures, and tables that segment the columns into vertical zones, each zone flowing independently — the model that misses the zoning threads text through a figure's position. Non-flow elements: sidebars, pull-quotes, marginalia, and advertisements that belong to the page but not the sequence — best emitted as attached-but-separate content, since forcing them into the linear order corrupts it wherever they land. Continuation structure: the newspaper's jump lines and the form's "see reverse," where the flow leaves the page entirely and resumes elsewhere — document-level ordering that per-page models can't see.
+
+The evaluation and consumption points mirror the parent entries: sequence metrics against annotated orderings, linguistic-coherence checks as cheap production verification, and the consumers' stake — chunking, extraction context, text-to-speech for accessibility, and every LLM that will read the serialization — inheriting whatever order was chosen. In columnar documents more than anywhere, reading order *is* the parse: the same detected blocks in the wrong sequence are a different, wrong document.

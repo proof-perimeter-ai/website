@@ -1,0 +1,18 @@
+---
+title: "Document Version Comparison"
+slug: "document-version-comparison"
+letter: "D"
+tagline: "What changed between draft four and draft five — found by machine, ranked by consequence."
+description: "Document version comparison detects and characterizes differences between document versions — textual, structural, and semantic — with materiality ranking."
+category: "Document Understanding"
+tags: ["version comparison", "diff", "redlines", "change detection"]
+publishedAt: "2026-07-11"
+relatedTerms: ["contract-redlining-ai", "document-similarity-matching", "document-lifecycle-management"]
+status: "published"
+---
+
+Document version comparison is the automated detection and characterization of differences between versions of a document: what was added, deleted, and modified between the contract's fourth and fifth drafts, between the policy wording at issuance and at renewal, between the regulation as proposed and as adopted. The classical tool is textual diff — the redline — but document-grade comparison must go further: aligning content that moved (a relocated clause is not a deletion plus an addition), comparing across formats (the Word draft against the signed PDF against the scanned counterpart), and above all judging *materiality* — which changes matter.
+
+The technical layers stack. Text comparison with move detection handles the mechanical differences; structural comparison tracks changes at the clause and section level (renumbering handled, so 8.2 becoming 9.2 with identical content registers as no change); format-crossing comparison runs both documents through parsing (and OCR where scanned) into a common representation before diffing — with OCR noise filtered so a re-scan doesn't read as a thousand edits. Semantic analysis is the layer language models added: classifying each change's effect ("liability cap reduced from 24 to 12 months' fees," "notice period unchanged, but delivery method restricted"), distinguishing substantive changes from stylistic ones, and flagging the pattern lawyers most fear — the small edit with large consequence, a "not" inserted, a defined term swapped, an exception widened.
+
+The applications are trust checkpoints: verifying that the execution copy matches the negotiated draft (and that nothing entered between final redline and signature), auditing what changed across a policy's renewals, tracking regulatory text through its amendment history, and monitoring counterparty paper for quiet revisions. Output discipline mirrors the rest of document AI — every detected change anchored to both versions' exact locations, materiality classifications reviewable rather than authoritative, and the comparison itself logged, since "what changed and who knew" is a question with legal weight.

@@ -1,0 +1,18 @@
+---
+title: "SEC Filing Analysis"
+slug: "sec-filing-analysis"
+letter: "S"
+tagline: "Ten-Ks, proxies, and 8-Ks — public disclosure documents mined for the changes and risks buried in dense prose."
+description: "SEC filing analysis extracts and analyzes disclosure content from 10-Ks, 10-Qs, proxies, and 8-Ks — structured data and change detection from regulatory text."
+category: "Financial Services"
+tags: ["SEC filings", "10-K", "financial disclosure", "extraction"]
+publishedAt: "2026-07-11"
+relatedTerms: ["financial-statement-extraction", "earnings-call-transcript-analysis", "document-version-comparison"]
+status: "published"
+---
+
+SEC filing analysis is document AI applied to the periodic and event-driven disclosures public companies file with the US Securities and Exchange Commission — annual reports (10-K), quarterly reports (10-Q), proxy statements, and current-event disclosures (8-K) — extracting both the structured financial data these filings contain and analyzing the extensive narrative disclosure sections (risk factors, management's discussion and analysis, legal proceedings) that carry as much analytical significance as the numbers, often more, since narrative disclosure is where companies describe what the numbers don't show directly.
+
+The extraction task spans the same financial-statement structuring this glossary treats separately, applied specifically to SEC-format documents, plus a narrative-analysis layer that financial statement extraction alone doesn't cover: risk factor extraction and categorization (identifying and classifying the specific risks a company discloses, which regulatory practice requires companies to update and often reorder by priority), MD&A analysis (extracting management's own explanation of results, which frequently contains forward-looking qualitative signal the raw numbers don't capture), and legal proceedings tracking (structuring disclosed litigation and regulatory matters, their status, and their potential financial exposure). Because these documents follow XBRL structured-data tagging requirements for financial statement line items specifically, much of the numeric extraction can draw on that structured layer directly rather than requiring pure document parsing — though the narrative sections remain unstructured prose requiring the full extraction stack.
+
+The analytical value that makes this a heavily automated domain concentrates in change detection: comparing a company's current filing against its prior period's filing to surface what changed in risk factor language, what new litigation appeared, what accounting policy shifted, or what previously-stated forward guidance was quietly walked back — exactly the document-version-comparison capability this glossary describes, applied at the scale of tracking thousands of public companies' filings continuously. Investment research, credit analysis, and regulatory monitoring all consume this analysis, with the same discipline this glossary insists on throughout: extracted figures and flagged changes need citations back to the specific filing section and page, because in a domain where the underlying documents are legally binding public disclosures, an analytical claim that can't be traced to its source is not analysis anyone can act on with confidence.

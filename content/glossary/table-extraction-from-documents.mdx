@@ -1,0 +1,18 @@
+---
+title: "Table Extraction From Documents"
+slug: "table-extraction-from-documents"
+letter: "T"
+tagline: "Rows, columns, and the relationships between them — the structure that flat text extraction always destroys."
+description: "Table extraction from documents recovers structured grids from tables — detection, cell structure, and content — the foundational capability many document types depend on."
+category: "Data Extraction"
+tags: ["table extraction", "table structure", "data extraction", "structured data"]
+publishedAt: "2026-07-11"
+relatedTerms: ["table-extraction-ocr", "table-reconstruction", "merged-cell-extraction"]
+status: "published"
+---
+
+Table extraction from documents is the recovery of tabular data — rows, columns, headers, and the cell values at their intersections — from document images or files, converting a visual grid into a structured representation like a dataframe, HTML table, or nested JSON that preserves the logical relationships a flat text dump destroys entirely. It's foundational rather than niche: financial statements, invoices, scientific papers, insurance schedules, and countless other document types carry their most analytically valuable content specifically in table form, and this glossary's numerous domain-specific extraction entries (financial statements, bank statements, bills of materials, and more) all depend on table extraction working correctly beneath them.
+
+The task decomposes into stages that current architectures increasingly unify but that remain conceptually distinct. Table detection locates where tables exist on a page, distinguishing them from other content — a non-trivial problem when tables lack full ruling lines and rely on alignment and whitespace instead. Structure recognition determines the table's row and column layout, including the merged and spanning cells this glossary's dedicated entries treat separately, since real tables deviate from a uniform grid constantly. Content recognition reads what's inside each identified cell, applying whatever OCR or handwriting recognition the cell's content requires. And logical reconstruction assembles detected structure and recognized content into a coherent output — handling tables that span multiple pages, tables with repeated headers, and the header-to-data-column relationships that give the numbers their meaning.
+
+Modern table-structure models (transformer-based architectures trained specifically on annotated table datasets) handle most of this pipeline jointly rather than as separate stages, and vision-language models increasingly extract table content directly from page images with impressive results on straightforward tables — though the harder cases (nested tables per this glossary's dedicated entry, nonstandard layouts, and degraded scans of dense financial tables) still separate strong systems from adequate ones. Evaluation uses structure-aware metrics specifically because naive cell-matching accuracy can look deceptively high while missing exactly the structural errors — a misplaced merge, a shifted column — that corrupt a table's actual meaning without necessarily corrupting its individual cell readings.

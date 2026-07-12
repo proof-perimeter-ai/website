@@ -1,0 +1,18 @@
+---
+title: "Chart Data Extraction"
+slug: "chart-data-extraction"
+letter: "C"
+tagline: "From picture back to spreadsheet — reconstructing the data table the chart was drawn from."
+description: "Chart data extraction recovers structured data tables from chart images in documents — series, categories, and values — for analysis and indexing."
+category: "Data Extraction"
+tags: ["chart data", "data extraction", "figures", "visual data recovery"]
+publishedAt: "2026-07-11"
+relatedTerms: ["chart-and-graph-parsing", "table-extraction-from-documents", "figure-and-diagram-extraction"]
+status: "published"
+---
+
+Chart data extraction is the recovery of a structured data table from a chart image: the series names, category labels, and numeric values that the chart was originally drawn from, reconstructed by reading its visual encoding in reverse. Where chart parsing (the broader task) covers understanding a chart's structure and answering questions about it, data extraction targets the specific deliverable of a machine-usable dataset — rows and columns you can load, join, and compute with — from what the document presents only as pixels.
+
+The reconstruction chains several recognitions: chart type sets the decoding geometry; axis calibration maps pixel positions to data coordinates using tick labels read by OCR; mark detection locates the bars, points, line vertices, or pie segments; legend association assigns marks to series; and value estimation converts geometry to numbers — exact where data labels are printed, interpolated from position where they are not. Each stage contributes error, and the compounding is why extracted chart data should carry per-value provenance: labeled versus inferred, and with what estimated precision. Modern vision-language models can emit the table directly from the image, which simplifies the pipeline but makes that honesty layer easier to forget.
+
+The applications justify the care. Analysts extracting KPI histories from years of annual reports, researchers harvesting results from published figures, and RAG systems indexing documents where the answer lives only in a chart all need figure content as data, not description. The practical discipline mirrors table extraction: validate internally (stacked components should sum to totals, percentages to 100), cross-check against textual statements of the same figures elsewhere in the document, and treat high-stakes numbers that exist only as unlabeled geometry as candidates for human confirmation rather than facts.

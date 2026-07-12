@@ -1,0 +1,18 @@
+---
+title: "Document Dewarping"
+slug: "document-dewarping"
+letter: "D"
+tagline: "Flattening the photographed page — undoing the curve of the book spine and the crumple of the receipt."
+description: "Document dewarping corrects nonlinear distortion — page curl, folds, perspective — mapping photographed documents back to flat readable geometry."
+category: "Image Preprocessing"
+tags: ["dewarping", "distortion correction", "page flattening", "mobile capture"]
+publishedAt: "2026-07-11"
+relatedTerms: ["document-deskewing", "perspective-correction", "mobile-document-capture"]
+status: "published"
+---
+
+Document dewarping is the correction of nonlinear geometric distortion in document images — the curvature of a book page arcing into its binding, the curl of a receipt, the folds of a letter photographed after unfolding, the compound warp of a page shot at an angle in someone's hand. Where deskewing fixes a single rotation and perspective correction fixes a planar tilt, dewarping addresses surfaces that aren't flat at all: it estimates the page's three-dimensional shape and computes the mapping that flattens it back to the rectangle it was printed as.
+
+Modern approaches are predominantly learned. Networks trained on synthetically warped documents — flat pages rendered onto simulated 3D surfaces with realistic lighting — predict either the deformation field directly (a per-pixel displacement map from warped to flat) or the underlying 3D geometry from which the flattening follows. Classical cues still inform the problem: text lines that should be straight, page boundaries that should be rectilinear, ruled lines and table borders as geometric anchors. The quality bar is set by what follows: OCR accuracy on dewarped text, straightness of recovered baselines, and the readability of dense content like tables, where residual warp misaligns exactly the row-column geometry extraction depends on.
+
+Dewarping earns its complexity in the capture channels that produce warped input at scale: mobile submission flows (the dominant intake for consumer documents), book and bound-volume digitization (where spine curvature is structural), and archival material with physical history. Pipelines apply it selectively — a quality gate detects warp before spending the compute — and capture UX remains the cheaper complement: guidance that gets the page flatter in the first place reduces how much geometry the model must invent. As with all reconstructive enhancement, honest systems remember that severely warped regions are estimated, not observed, and score extracted values from them accordingly.

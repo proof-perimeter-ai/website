@@ -1,0 +1,18 @@
+---
+title: "Continuous Learning Systems"
+slug: "continuous-learning-systems"
+letter: "C"
+tagline: "The whole loop, running: production feeds review, review feeds training, training feeds production."
+description: "Continuous learning systems close the loop between production document processing, human feedback, and model retraining — improving automatically with use."
+category: "Models & Training"
+tags: ["continuous learning", "feedback loops", "MLOps", "self-improving systems"]
+publishedAt: "2026-07-11"
+relatedTerms: ["continual-model-training", "feedback-loops-in-ai-extraction", "self-healing-extraction-models"]
+status: "published"
+---
+
+A continuous learning system is a document AI deployment engineered so that using it improves it: production processing generates confidence-routed review work, review generates corrections, corrections flow through curation into training data, retraining produces candidate models, evaluation gates promotion, and the improved model changes what routes to review — the loop closing back on itself. Where continual training names the model-update practice, a continuous learning system is the full operational architecture: data pipelines, review tooling, curation, evaluation infrastructure, and deployment automation working as one machine.
+
+Each connection in the loop carries design decisions that determine whether it compounds or corrupts. Corrections must be captured losslessly (field, value, source region, reviewer, context) and versioned. Curation must filter reviewer error and adjudicate disagreement, or the system trains on noise. Sampling must counter the loop's inherent bias — review queues contain the hardest cases, so retraining data needs balancing with representative traffic, and periodic random audits of "confident" outputs guard against the failure mode confidence-routing can't see: errors the model is sure about. Evaluation must be immune to contamination, with gold sets that never touch training. And deployment must be reversible, because a bad model promoted into the loop poisons its own future data.
+
+The strategic consequence is a widening moat: a continuous learning system's accuracy on its institution's specific documents — its layouts, languages, degradations, and edge cases — grows past anything an off-the-shelf model can offer, precisely because it learns from a stream competitors cannot access. That same specificity argues for keeping the loop inside the institution's perimeter: the corrections, the training data distilled from them, and the models they produce are concentrated extracts of sensitive operational data, and their governance — lineage, access, retention — is part of the system's design, not an afterthought.

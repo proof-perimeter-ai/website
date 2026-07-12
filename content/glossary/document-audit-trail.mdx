@@ -1,0 +1,18 @@
+---
+title: "Document Audit Trail"
+slug: "document-audit-trail"
+letter: "D"
+tagline: "Who saw it, what read it, what changed it — the tamper-evident diary every regulated document keeps."
+description: "A document audit trail records every access, processing step, and change in a document's life — the tamper-evident evidence base for compliance."
+category: "Compliance & Security"
+tags: ["audit trail", "logging", "compliance", "tamper evidence"]
+publishedAt: "2026-07-11"
+relatedTerms: ["audit-ready-document-workflows", "data-lineage-in-document-processing", "document-lifecycle-management"]
+status: "published"
+---
+
+A document audit trail is the chronological, tamper-evident record of everything that happened to a document: its arrival (when, from where, via what channel, with what integrity hash), every access (who viewed or downloaded it), every processing step (which models read it, with what versions and outputs), every human action (reviews, corrections, approvals, redactions), every transformation (splits, merges, format conversions), and its lifecycle events through to retention-driven disposal. Where data lineage traces values, the audit trail chronicles the document as an object — and in regulated contexts, the trail is part of what makes the document usable as evidence at all.
+
+The engineering requirements follow from the adversarial question the trail must survive: could this record have been altered? Append-only storage, cryptographic chaining or periodic anchoring of hashes, synchronized timestamps, and identity-resolved actors (a named person or a specific service, not "system") are the standard answers. Completeness is the subtler requirement — a trail with gaps invites the inference that the gaps hide something, so the logging must be structural (emitted by the platform as a condition of action) rather than voluntary (whatever applications remembered to write). AI processing raises the bar again: model version, configuration, confidence, and inference location per step, because "the system read it" is no longer a sufficient answer when a regulator asks what produced a value.
+
+Operationally, the trail serves more than audits. Disputes resolve on it (what did the customer actually submit, and when); incidents reconstruct from it (which documents did the misconfigured model version touch); insider risk investigations depend on access records; and legal holds and eDiscovery obligations assume it exists. The design discipline is to treat the trail as a product with consumers — queryable by document, by actor, by time window, by model version — rather than as log files whose theoretical completeness dissolves the first time someone actually needs an answer from them.

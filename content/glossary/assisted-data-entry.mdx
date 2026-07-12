@@ -1,0 +1,18 @@
+---
+title: "Assisted Data Entry"
+slug: "assisted-data-entry"
+letter: "A"
+tagline: "The form fills itself; the human confirms — flipping data entry from typing to checking."
+description: "Assisted data entry pre-fills forms and records from documents using AI extraction, so people verify and correct instead of typing from scratch."
+category: "Workflow & Automation"
+tags: ["assisted data entry", "pre-fill", "data capture", "productivity"]
+publishedAt: "2026-07-11"
+relatedTerms: ["manual-data-verification", "human-in-the-loop-verification", "key-value-pair-extraction"]
+status: "published"
+---
+
+Assisted data entry inverts the traditional relationship between a person and a form: instead of reading a document and typing its contents into fields, the system extracts the contents automatically and the person verifies, corrects, and completes. The operator's job shifts from transcription to judgment — confirming that the pre-filled policy number matches the document, fixing the one field the model misread, and supplying the values that require human interpretation. It is the pragmatic middle ground between fully manual processing and full automation, and often the first deployment stage of a document AI program.
+
+The design of the verification experience determines how much of the theoretical speedup survives contact with reality. Effective interfaces show each pre-filled value alongside a snippet of the exact source region it came from, so confirmation is a glance rather than a search through the document; they order fields by confidence so attention goes where errors are likely; and they make correction a single click-and-type, capturing the fix as feedback for the model. Poorly designed assistance can be worse than none — if operators must hunt through the document to verify every field, or if the model is wrong often enough that trust collapses, users revert to typing and the system becomes overhead.
+
+Assisted data entry also functions as the on-ramp to higher automation. The correction stream it generates is labeled training data from production traffic; the per-field accuracy it reveals identifies which fields are ready for straight-through processing; and as thresholds are introduced, the same interface gracefully becomes the exception-review station for the shrinking share of fields that still need eyes. Organizations that treat it as a stepping stone — instrumenting corrections and promoting fields to full automation as accuracy proves out — convert a productivity tool into a migration path.

@@ -1,0 +1,18 @@
+---
+title: "Relevance Scoring"
+slug: "relevance-scoring"
+letter: "R"
+tagline: "How well does this match what was actually asked — the number that ranking and retrieval both depend on."
+description: "Relevance scoring quantifies how well a document or passage matches a query — the ranking signal beneath search and RAG retrieval quality."
+category: "RAG & Search"
+tags: ["relevance scoring", "ranking", "search", "retrieval"]
+publishedAt: "2026-07-11"
+relatedTerms: ["document-ranking-algorithms", "document-retrieval-systems", "vector-search-for-documents"]
+status: "published"
+---
+
+Relevance scoring is the computation of how well a document or passage matches what a query is actually asking for — the numeric signal that ranking algorithms sort by, and the concept that ties together the lexical and semantic retrieval methods this glossary describes elsewhere. A raw relevance score can come from many sources: term-frequency-based lexical matching (how often and how distinctively the query's words appear), vector similarity (how close the query and passage sit in embedding space), or a learned scoring model (a cross-encoder or reranker that reads query and passage together and predicts relevance directly) — each producing a number on its own scale, which is precisely why combining multiple relevance signals into one usable ranking requires deliberate score normalization and fusion, not just summing.
+
+The document-specific complications multiply beyond generic search relevance. A passage can be lexically relevant (contains the right words) while being semantically irrelevant (the words appear in an unrelated context — a contract's boilerplate definitions section matching a query about substantive terms just because it defines the vocabulary), or semantically relevant while lexically invisible (a paraphrase that embedding similarity catches and keyword matching misses entirely). Document-level factors beyond the text itself often need folding into the score: recency (is this the current policy or a superseded version), authority (is this the approved document or someone's draft), and specificity (does this passage directly answer the question or merely touch the topic in passing) — none of which pure text-similarity scoring captures, which is why production relevance scoring in enterprise contexts typically layers business rules atop the raw text-match signal rather than treating text similarity as the whole answer.
+
+Evaluating relevance scoring requires the same discipline this glossary's evaluation entries insist on generally: judged query sets where humans have rated actual relevance, scored with standard information-retrieval metrics, sliced by query type because a scoring approach tuned for exact-identifier lookups and one tuned for conceptual questions respond to very different signals. The practical lesson that recurs across document retrieval systems: relevance scoring tuned and validated on your actual query patterns and document population outperforms any generic, off-the-shelf scoring configuration — because what counts as "relevant" is itself domain-specific, not a universal constant a model learns once and applies everywhere.

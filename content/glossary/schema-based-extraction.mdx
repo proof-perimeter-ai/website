@@ -1,0 +1,18 @@
+---
+title: "Schema-Based Extraction"
+slug: "schema-based-extraction"
+letter: "S"
+tagline: "Define what you want; let the model find it — extraction driven by target structure, not document template."
+description: "Schema-based extraction specifies desired output structure and lets models locate matching content — the general pattern behind modern extraction."
+category: "Data Extraction"
+tags: ["schema-based extraction", "structured extraction", "field specification", "AI extraction"]
+publishedAt: "2026-07-11"
+relatedTerms: ["json-schema-extraction", "template-free-document-extraction", "generative-ai-for-document-extraction"]
+status: "published"
+---
+
+Schema-based extraction is the general pattern underlying most modern document extraction: rather than building a system that recognizes a specific document's layout and pulls values from known positions (the template-based approach this glossary describes as increasingly legacy), the extraction system is given a target schema — the fields wanted, their types, and often a description of what each field means — and a sufficiently capable model locates and extracts matching content regardless of the document's specific layout. The json-schema-extraction entry covers the specific technical implementation using JSON Schema as the specification format; this broader entry names the paradigm itself, which predates and extends beyond that particular format.
+
+The paradigm shift this represents is significant enough to be worth stating plainly: template-based extraction required a distinct configuration — and often a distinct trained model — per document layout, meaning a hundred different invoice formats needed a hundred different extraction setups, each breaking whenever the source layout changed. Schema-based extraction inverts this: one schema ("invoice number, vendor name, line items, total") applies across every invoice layout a vision-language or layout-aware model has the general capability to read, because the model is locating content by *meaning* (what a vendor name looks like, semantically and contextually) rather than by *position* (the value at coordinates X,Y). This is what makes zero-shot and few-shot extraction on previously unseen document types practical rather than requiring a setup project for every new format encountered.
+
+The schema itself becomes the primary engineering artifact in this paradigm — its field descriptions function as instructions to the model, its type constraints function as validation rules, and its structure determines what a system can and can't extract without modification. This shifts the skill and effort previously spent on template configuration and layout-specific training toward schema design and validation logic: writing field descriptions precise enough to disambiguate near-miss fields, defining the business-rule validation that catches plausible-but-wrong extractions, and building the confidence-and-review workflow around outputs that a template system's determinism never required in the same way. The trade is real but favorable at scale: less setup effort per document type, more ongoing discipline around schema quality and output verification.

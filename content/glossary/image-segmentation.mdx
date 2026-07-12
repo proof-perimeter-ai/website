@@ -1,0 +1,18 @@
+---
+title: "Image Segmentation"
+slug: "image-segmentation"
+letter: "I"
+tagline: "Every pixel assigned a meaning — the computer-vision primitive beneath document region analysis."
+description: "Image segmentation partitions images into labeled regions at pixel level — the vision technique underlying document layout and content separation."
+category: "Image Preprocessing"
+tags: ["segmentation", "computer vision", "pixel classification", "deep learning"]
+publishedAt: "2026-07-11"
+relatedTerms: ["document-image-segmentation", "document-layout-analysis", "you-only-look-once-yolo"]
+status: "published"
+---
+
+Image segmentation is the computer-vision task of partitioning an image into labeled regions at the pixel level: semantic segmentation assigns every pixel a class, instance segmentation additionally separates individual objects of the same class, and panoptic segmentation unifies both. Where detection answers "what and roughly where" with bounding boxes, segmentation answers with exact shapes — masks that follow contours — making it the tool of choice when geometry is irregular and boundaries matter.
+
+The architectural lineage runs from fully convolutional networks and the U-Net encoder-decoder family (whose skip connections preserve the fine detail that dense prediction needs) through transformer-based models (mask-classification architectures, segmentation heads on vision transformers) to the promptable-segmentation era (SAM-style models that segment anything given a point or box prompt, transferable zero-shot). Training requires pixel-level annotation — the most expensive labeling in computer vision — which drives the field's reliance on pretraining, synthetic data, and weakly-supervised methods that stretch scarce masks.
+
+In document AI, segmentation appears wherever rectangles fail: separating overlapping content (the stamp across the paragraph, the signature over the printed name), isolating handwriting from print for per-recognizer routing, extracting the document from a photographed background (the segmentation behind auto-cropping), delimiting irregular regions (curved text, rotated annotations, torn-page boundaries), and pixel-precise redaction that removes the sensitive content rather than a box near it. Its trade-off is constant across uses: masks cost more than boxes — in annotation, computation, and pipeline complexity — so document systems deploy segmentation where its precision is the point and detection everywhere else, often composing both: detect cheaply at scale, segment the regions where exactness pays.

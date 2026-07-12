@@ -1,0 +1,18 @@
+---
+title: "Extraction Accuracy Benchmarking"
+slug: "extraction-accuracy-benchmarking"
+letter: "E"
+tagline: "Not 'how good is the model' but 'how good is it on our documents, per field, against ground truth.'"
+description: "Extraction accuracy benchmarking measures field extraction against ground truth — per field and document type — the evidence base for automation decisions."
+category: "Evaluation & Quality"
+tags: ["benchmarking", "extraction accuracy", "evaluation", "ground truth"]
+publishedAt: "2026-07-11"
+relatedTerms: ["field-level-accuracy", "ai-document-parser-benchmark", "f1-score-for-document-extraction"]
+status: "published"
+---
+
+Extraction accuracy benchmarking is the disciplined measurement of how correctly a system pulls target fields from documents: a test set with human-verified ground truth per field, matching rules that define correctness, and results reported at the granularity decisions require — per field, per document type, per capture channel. It is the evidence base beneath every serious document AI decision: which model to buy or build, where to set confidence thresholds, which fields have earned straight-through processing, and whether last month's model change helped or hurt.
+
+The methodology's load-bearing details are easy to get wrong. Ground truth must be independently produced (not corrected model output, which inherits the model's blind spots) under written conventions, with the evaluation set sealed away from all training and tuning. Matching rules must be explicit per field type: is "1,500.00" equal to "1500"? Is a date correct if the value matches but the format differs? Exact-match, normalized-match, and fuzzy-match regimes give different numbers from identical outputs, and undisclosed normalization is how vendor benchmarks mislead. The test population must mirror production — including the degraded, handwritten, and unusual tail — and stratification must survive into reporting: the aggregate that averages printed invoices with faxed claims flatters the system precisely where it fails.
+
+Benchmarking's operational form is the regression suite: re-run on every candidate model, prompt change, and version upgrade, with per-segment deltas gating promotion — the practice that turns "we upgraded the model" from a hope into a measured event. Its analytical form pairs accuracy with confidence: calibration curves per field showing whether the scores routing documents actually track correctness. And its honest form includes error taxonomy — not just how often the extraction fails but *how* (wrong region, misread characters, wrong normalization, fabrication) — because each failure mode points at a different fix.

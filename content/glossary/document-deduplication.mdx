@@ -1,0 +1,18 @@
+---
+title: "Document Deduplication"
+slug: "document-deduplication"
+letter: "D"
+tagline: "The same invoice, submitted three times — dedup catches the copy before it's paid twice."
+description: "Document deduplication detects identical and near-duplicate documents — exact hashes to fuzzy matching — preventing double processing and payment."
+category: "Document Understanding"
+tags: ["deduplication", "duplicate detection", "near-duplicates", "fraud prevention"]
+publishedAt: "2026-07-11"
+relatedTerms: ["document-similarity-matching", "document-forgery-detection", "document-indexing"]
+status: "published"
+---
+
+Document deduplication is the detection of documents that are the same — exactly or effectively — across an intake stream or a repository: the invoice emailed twice, the claim receipt submitted to two adjusters, the contract stored in four folders, the statement re-uploaded after a timeout. Its stakes vary from housekeeping (storage, search clutter, redundant processing cost) to money (duplicate invoice payments are a classic accounts-payable leak) to fraud (the same receipt supporting multiple claims, lightly edited to dodge naive checks).
+
+The detection hierarchy matches effort to evasiveness. Exact duplicates fall to file hashes — trivial and certain, but defeated by any change, including a re-scan of the same paper. Near-duplicate detection works on content: text extracted and compared via shingling and similarity hashing (MinHash and kin), robust to format shifts and OCR noise; perceptual image hashing catches re-scans and photos of the same page; and embedding similarity finds semantic duplicates that differ in rendering. The decisive design question is the equivalence policy — what counts as "the same"? The same invoice re-scanned should merge; the same invoice template for a different month must not; an amended contract is related but distinct. Good systems classify the relationship (identical, re-capture, revision, template-sibling) rather than emitting a bare similarity score, because each relationship carries a different action.
+
+In payment and claims contexts, deduplication runs as a control: candidate matches on key fields (vendor, amount, date proximity, invoice number variants) flag before disbursement, with fuzzy matching tuned against the adversarial reality that intentional duplicates are edited precisely to evade exact matching. In repositories and training-data pipelines, it runs as hygiene — with the additional AI-specific motive that duplicated documents in training or evaluation sets silently distort both learning and measurement.

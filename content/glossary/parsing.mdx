@@ -1,0 +1,18 @@
+---
+title: "Parsing"
+slug: "parsing"
+letter: "P"
+tagline: "From file to structure — the word the whole field leans on, defined."
+description: "Parsing converts documents into structured representations — text, layout, tables, hierarchy — the load-bearing step between files and understanding."
+category: "Document Understanding"
+tags: ["parsing", "structure", "document processing", "fundamentals"]
+publishedAt: "2026-07-11"
+relatedTerms: ["document-parsing-accuracy", "markdown-document-conversion", "document-layout-analysis"]
+status: "published"
+---
+
+Parsing, in document AI, is the conversion of a document file into a structured representation: the text with its reading order, the layout with its regions and roles, the tables with their cell structure, the hierarchy of sections and headings, the figures with their captions — the document as organized content rather than as pixels or a glyph soup. It is the load-bearing middle of every pipeline in this glossary: capture and recognition feed it; extraction, search, RAG, and understanding consume what it produces; and its fidelity bounds everything downstream — the theme the parsing-accuracy and RAG-ingestion entries measure and the conversion entries serialize.
+
+The word's scope is worth pinning because it drifts. Narrow parsing: structural recovery — layout, order, tables — without interpretation; the parser tells you *there is* a table with these cells, not what the cells mean. Broad parsing (as vendors often use it): the full read — structure plus extraction plus normalization, "parse this invoice" meaning "give me the fields." The narrow sense is the architecturally useful one: it names a layer with its own quality metrics, failure modes, and tooling (the classical pipelines, the specialized-model stacks like Docling, the VLM parsers), separable from the extraction schemas and business logic built above it — and the layer whose errors masquerade as everyone else's: the "extraction failure" that was a reading-order scramble, the "bad retrieval" that was a mangled table.
+
+Adjacent-field usage helps disambiguate conversations: in NLP, parsing means syntactic analysis of sentences; in programming, the processing of formal grammars; document parsing borrowed the word for its own structure-recovery problem, and cross-domain discussions (an engineer's "we parse the PDF" meaning text extraction; a vendor's meaning full IDP) reward a clarifying question. Within this glossary, parsing means the structural layer — and its neighbors (extraction, understanding, conversion) mean what's built on it.

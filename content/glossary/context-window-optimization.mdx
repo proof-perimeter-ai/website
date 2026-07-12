@@ -1,0 +1,18 @@
+---
+title: "Context Window Optimization"
+slug: "context-window-optimization"
+letter: "C"
+tagline: "The model's working memory is finite and metered — send it the pages that matter, not the whole filing cabinet."
+description: "Context window optimization fits document content into an LLM's token budget effectively — selecting, structuring, and compressing what the model sees."
+category: "Models & Training"
+tags: ["context window", "tokens", "LLM optimization", "cost"]
+publishedAt: "2026-07-11"
+relatedTerms: ["document-chunking-strategies", "normalize-documents-for-llm", "retrieval-augmented-generation-rag-for-documents"]
+status: "published"
+---
+
+Context window optimization is the craft of using a language model's finite input capacity well when working with documents: deciding what enters the window, in what form, and in what order, so the model sees what the task requires without drowning in what it doesn't. Even as windows have grown to hundreds of thousands of tokens, the discipline persists for three reasons: cost scales with tokens sent, latency scales with tokens processed, and attention quality degrades over long contexts — models demonstrably miss facts buried mid-window in haystacks of irrelevant text.
+
+For document work, optimization operates at several layers. Selection: retrieval or page routing sends only the relevant sections of a 400-page credit agreement, not the whole file — the highest-leverage decision, often cutting tokens by an order of magnitude. Representation: a page rendered as clean structured markdown (headings, tables as tables) carries the same information in a fraction of the tokens of raw OCR dumps with coordinates, and parses better besides; conversely, some tasks need the page image itself, and vision-token budgets have their own resolution trade-offs. Compression: summaries, entity digests, or extracted-fact sheets stand in for full text where the task tolerates it. Arrangement: instructions and schemas positioned where models attend best, critical content not buried mid-context, and consistent formatting that lets caching amortize repeated prefixes across a batch.
+
+The optimization is task-relative, and the failure modes bracket it: send too little and the model answers from insufficient evidence (or worse, fills gaps from its priors — a faithfulness hazard); send too much and cost, latency, and mid-context misses rise together. Mature document pipelines treat token flow as an engineering metric — tracked per document type, tested against accuracy — because at production volumes, the difference between a naive and an optimized context strategy is frequently the difference between an economically viable system and an abandoned one.

@@ -1,0 +1,18 @@
+---
+title: "Bank Statement Extraction"
+slug: "bank-statement-extraction"
+letter: "B"
+tagline: "Ten banks, ten layouts, one question: what actually happened in this account?"
+description: "Bank statement extraction converts statement PDFs and scans into structured transactions and balances for lending, KYC, and reconciliation workflows."
+category: "Financial Services"
+tags: ["bank statements", "transaction extraction", "lending", "financial documents"]
+publishedAt: "2026-07-11"
+relatedTerms: ["financial-statement-extraction", "loan-origination-ai", "table-extraction-from-documents"]
+status: "published"
+---
+
+Bank statement extraction is the automated conversion of bank statements — PDFs, scans, and phone photos — into structured data: account metadata, opening and closing balances, and the full transaction table with dates, descriptions, amounts, and running balances. It is a foundational capability in lending (income and affordability assessment), KYC and source-of-funds checks, accounting reconciliation, and fraud investigation, because the statement is the ground truth of what actually moved through an account.
+
+The difficulty is format diversity at scale. Every bank lays out statements differently — column orders vary, descriptions wrap unpredictably across lines, multi-currency accounts interleave sections, and carried-forward balances split across page boundaries. Digital PDFs at least contain text; scanned and photographed statements add OCR challenges, and statements are also a favorite target of document fraud, with edited PDFs and fabricated templates common in loan applications. Robust systems combine layout-aware table extraction with strong validation — the arithmetic check that each running balance equals the prior balance plus the transaction is a powerful integrity test that catches both extraction errors and some tampering.
+
+Downstream, extracted transactions feed analytics that raw documents never could: income regularity detection, expense categorization, overdraft and gambling-pattern flags for affordability rules, and cross-statement consistency checks in multi-account applications. Since statements carry some of the most sensitive personal financial data an institution handles, deployment constraints are strict — many lenders require extraction to run inside their own environment, with each parsed statement carrying provenance and any low-confidence rows routed to review before a credit decision relies on them.

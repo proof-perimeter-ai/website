@@ -1,0 +1,18 @@
+---
+title: "Diagram Understanding"
+slug: "diagram-understanding"
+letter: "D"
+tagline: "Boxes, arrows, and symbols that mean something — reading the drawings that text extraction skips."
+description: "Diagram understanding interprets structured drawings in documents — flowcharts, schematics, org charts — extracting their elements and relationships."
+category: "Document Understanding"
+tags: ["diagrams", "flowcharts", "schematics", "visual understanding"]
+publishedAt: "2026-07-11"
+relatedTerms: ["figure-and-diagram-extraction", "chart-and-graph-parsing", "visual-document-understanding"]
+status: "published"
+---
+
+Diagram understanding is the interpretation of structured drawings — flowcharts, organizational charts, network and engineering schematics, process diagrams, floor plans, circuit drawings — as the relational structures they encode, not just as images containing scattered text. A flowchart is a graph: nodes with types (decision, process, terminator), edges with directions and labels, and a semantics the shapes conventionally carry. Understanding means recovering that graph — who reports to whom in the org chart, which valve isolates which line in the P&ID, what sequence the process actually follows — in machine-usable form.
+
+The task composes several recognitions: symbol detection (shapes and domain glyphs, which in engineering domains follow standards — electrical symbols, piping and instrumentation conventions), text recognition with association (which label belongs to which element — nontrivial when labels float near lines), connector tracing (following arrows and lines through crossings, junctions, and page jumps), and finally graph assembly with domain validation (a flowchart decision node should have multiple exits; a circuit must be electrically coherent). Vision-language models now answer questions about everyday diagrams impressively, while high-stakes technical drawings still favor specialized pipelines whose structured output can be checked against domain rules.
+
+The applications justify the effort: digitizing decades of plant schematics into asset databases, extracting process flows from operations documentation for automation and audit, making org charts and network topologies queryable, and — increasingly — feeding RAG systems where the answer to "what happens after approval?" exists only as an arrow in a diagram. The honest limits mirror chart extraction: relationships read from geometry carry interpretation risk, so production systems attach confidence to recovered structure, validate against domain constraints, and route safety-relevant drawings (a misread isolation valve is not a cosmetic error) through expert verification before the extracted model is trusted.

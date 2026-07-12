@@ -1,0 +1,18 @@
+---
+title: "Data Validation Rules"
+slug: "data-validation-rules"
+letter: "D"
+tagline: "The checksum doesn't care how confident the model was — rules that catch what statistics miss."
+description: "Data validation rules check extracted document values against formats, arithmetic, and business logic — catching errors confidence scores can't see."
+category: "Data Extraction"
+tags: ["validation rules", "data quality", "business rules", "error detection"]
+publishedAt: "2026-07-11"
+relatedTerms: ["data-normalization", "confidence-based-routing", "exception-handling-workflows"]
+status: "published"
+---
+
+Data validation rules are the deterministic checks applied to extracted document data: format rules (an IBAN has a country-specific length and passes its checksum; a date parses and falls in a plausible range), arithmetic rules (line items sum to the subtotal, subtotal plus tax equals total, running balances reconcile), cross-field rules (the end date follows the start date; the currency matches the country), and business rules (the vendor exists in the master file; the amount is within the PO's tolerance; the policy was in force on the loss date). They are the complement to model confidence — a second, independent opinion on whether an extraction can be trusted.
+
+The complementarity is the point. Confidence scores express the model's statistical self-assessment, which fails in a known direction: the model can be confidently wrong, especially on inputs unlike its training data. Validation rules fail differently — they encode *external* truth about how the world is structured, and they catch precisely the confident errors: the misread digit that breaks the checksum, the plausible-looking total that doesn't equal the sum of its parts, the date that parses but predates the company's existence. A field that passes both a well-calibrated confidence threshold and a meaningful validation suite has been checked two independent ways; that conjunction is what makes high straight-through processing rates safe rather than reckless.
+
+Rules earn their keep through curation. Good suites are layered (universal format checks, document-type checks, institution-specific business checks), versioned and tested like code, and measured — each rule's fire rate and true-positive rate tracked, because a rule that fires constantly on legitimate variation trains operators to override it, and an override habit is a disabled control. Failures route by design: hard failures block with a specific reason ("balance mismatch: stated 4,860.00, computed 4,680.00"), soft failures flag for review, and the failure taxonomy feeds improvement on both sides — recurring validation failures are the best map of where the extraction models, or the rules themselves, need work.

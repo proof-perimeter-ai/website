@@ -1,0 +1,18 @@
+---
+title: "Agentic OCR Document Parsing"
+slug: "agentic-ocr-document-parsing"
+letter: "A"
+tagline: "Reading and structuring in one loop — an agent that recognizes the text and builds the document's structure, checking itself as it goes."
+description: "Agentic OCR document parsing combines recognition and structural parsing in one agent loop — reading text, reconstructing layout, and self-verifying the result."
+category: "AI Agents"
+tags: ["agentic OCR", "document parsing", "AI agents", "structured extraction"]
+publishedAt: "2026-07-11"
+relatedTerms: ["agentic-ocr", "agentic-document-parsing", "document-layout-analysis"]
+status: "published"
+---
+
+Agentic OCR document parsing is the pattern where a single agent loop handles both recognition (what does the text say?) and parsing (how is the document structured, and which text plays which role?) — using each to check the other. Reading and structure are interdependent: knowing a region is a table changes how its contents should be read, and reading the contents can reveal that the assumed structure is wrong (a "column" that's actually two merged columns, a footnote misattached to the wrong section). A fixed pipeline commits to structure before reading; an agent revisits both as evidence accumulates.
+
+Concretely, such an agent might sketch the page structure, read regions within it, notice that a table's extracted rows don't align with its headers, re-examine the region and discover a spanning cell, re-parse with the corrected structure, and re-read the affected cells. It can verify parses semantically too — do the line items sum to the stated total? does the reading order produce coherent sentences? — and treat failures as signals to try again rather than results to pass along. Vision-language models enable the pattern by unifying seeing, reading, and reasoning in one model that the agent loop can direct.
+
+This term overlaps heavily with agentic OCR and agentic document parsing individually; the compound emphasizes the integration — recognition and structural understanding sharing one self-correcting loop. It matters most on the documents where the two failure modes compound: dense financial tables, scanned forms with handwriting in printed grids, multi-column layouts with embedded figures. As with all agentic patterns, production use pairs the loop with cost controls (escalate only hard cases) and full trajectory logging so every final value is traceable to how it was read.

@@ -1,0 +1,18 @@
+---
+title: "Amazon Textract"
+slug: "amazon-textract"
+letter: "A"
+tagline: "AWS's document-reading API — OCR, forms, and tables as a cloud service call."
+description: "Amazon Textract is AWS's managed document analysis service — OCR plus form, table, and query-based extraction via API, priced per page."
+category: "Tools & Platforms"
+tags: ["Amazon Textract", "AWS", "OCR API", "cloud document processing"]
+publishedAt: "2026-07-11"
+relatedTerms: ["google-document-ai", "abbyy-finereader", "api-first-document-processing"]
+status: "published"
+---
+
+Amazon Textract is AWS's managed document analysis service: send a page image or PDF to the API and receive machine-readable output — raw text with positions, detected form fields as key-value pairs, table structures, checkbox states, and identity-document fields. Beyond basic OCR, its Queries feature lets you ask for fields in natural language ("What is the invoice due date?"), and specialized endpoints target invoices, receipts, and IDs. Pricing is per page and per feature, and it integrates natively with the AWS ecosystem — S3, Lambda, Step Functions — which is how most production deployments wire it into pipelines.
+
+Textract's appeal is operational: no models to host, effortless elastic scale, and pay-as-you-go economics that suit spiky volumes. Its constraints are the flip side of the managed model. Accuracy is what it is — there is no fine-tuning on your document types, so performance on unusual layouts, poor scans, or domain-specific documents must be taken as delivered and compensated with downstream validation. Language coverage is narrower than some competitors. And architecturally, every document leaves your environment for an AWS service endpoint — manageable for many workloads via region selection and AWS's compliance certifications, but a genuine barrier where data-residency or sovereignty rules prohibit sensitive documents from transiting a third-party service at all.
+
+In the broader landscape, Textract competes with Google Document AI and Azure's Document Intelligence as the hyperscaler tier of document processing, with open-source engines below and specialized IDP platforms and fine-tuned in-perimeter models above. Teams commonly benchmark it as the baseline: strong general OCR and table extraction out of the box, with the decision hinging on whether their accuracy targets, document mix, and residency obligations fit a general-purpose cloud API.

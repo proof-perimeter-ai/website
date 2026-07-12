@@ -1,0 +1,18 @@
+---
+title: "Fine-Tuning For Documents"
+slug: "fine-tuning-for-documents"
+letter: "F"
+tagline: "Take the model that knows documents; teach it yours — the standard path from good to production-grade."
+description: "Fine-tuning for documents adapts pretrained models to specific document tasks and populations — methods, data needs, and when it beats prompting."
+category: "Models & Training"
+tags: ["fine-tuning", "adaptation", "LoRA", "training"]
+publishedAt: "2026-07-11"
+relatedTerms: ["domain-specific-model-tuning", "transfer-learning-for-document-ai", "custom-ocr-model-training"]
+status: "published"
+---
+
+Fine-tuning for documents is the continued training of a pretrained model on document-specific data — adapting a general vision-language model, layout model, or OCR system to a particular task, document population, or output format by updating its weights on examples of the target work. It occupies the decisive middle of the adaptation spectrum: more powerful and durable than prompting (the knowledge lives in the weights, not the context window), less costly than training from scratch (the pretrained model contributes everything general about documents; the tuning contributes what's specific).
+
+The method menu is now well-settled. Full fine-tuning updates everything — maximal capacity, maximal cost, and real risks of overfitting and forgetting on modest datasets. Parameter-efficient methods dominate practice: LoRA and adapters train small inserted weight matrices (often under 1% of parameters), capturing most of the achievable gain at a fraction of the compute, cheap enough to maintain per-task or per-document-type adapter libraries over one base model. Instruction tuning shapes behavior and format (the model that reliably emits your schema); task tuning sharpens accuracy on the extraction, classification, or parsing objective. Data requirements scale with ambition — format compliance from hundreds of examples, meaningful accuracy gains on a document domain from thousands, with quality and representativeness mattering more than raw count, and the review queue's corrections forming the natural feedstock.
+
+The decision framework is empirical and sequenced: exhaust prompting and few-shot first (they're free to iterate), fine-tune when the measured gap persists and the volume justifies it, and weigh the obligations that come with weights — training data governance, evaluation gates before deployment, retraining as documents drift. The payoff, where warranted, compounds: a compact fine-tuned model matching a frontier generalist on the institution's own documents, at a fraction of the inference cost, deployable inside the perimeter where those documents must stay.

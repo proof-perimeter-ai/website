@@ -1,0 +1,18 @@
+---
+title: "Field-Level Accuracy"
+slug: "field-level-accuracy"
+letter: "F"
+tagline: "The metric that matches the stakes — was *this field* right, not how many characters were."
+description: "Field-level accuracy measures whether each extracted field's final value is correct — the business-grade metric for document extraction."
+category: "Evaluation & Quality"
+tags: ["field accuracy", "metrics", "extraction quality", "evaluation"]
+publishedAt: "2026-07-11"
+relatedTerms: ["extraction-accuracy-benchmarking", "character-error-rate", "f1-score-for-document-extraction"]
+status: "published"
+---
+
+Field-level accuracy is the fraction of extracted fields whose final, normalized values are exactly correct — the invoice total right or wrong, the date of birth right or wrong — measured per field type across a ground-truth test set. It is the metric that speaks the business's language: downstream systems and decisions consume field values whole, and a value that is 90% correct at the character level (one digit wrong in an account number) is 100% wrong at the field level, which is the level where payments route and claims pay.
+
+Its diagnostic power comes from granularity. Reported per field type, it exposes the heterogeneity that aggregates bury: the printed header fields at 99.5%, the handwritten totals at 91%, the multi-line address at 96% — each its own automation decision, threshold, and improvement target. Reported per document type and channel, it locates the problems: this vendor's format, that branch's scanner. Crossed with confidence, it yields the calibration curves that make routing rational. The definitional work is the same as all extraction benchmarking — normalization rules stated (else "1,500.00" versus "1500" corrupts the measurement), empty-field semantics defined (correctly extracting "nothing present" counts, and matters for optional fields), and multi-value fields given explicit scoring.
+
+Field-level accuracy also frames the economics of automation honestly. A document is straight-through processable only if *every* consequential field clears its bar, so document-level automation rates compound from field-level rates — twenty fields at 99% each yield roughly 82% of documents with all twenty right, a compounding that surprises stakeholders calibrated on single headline numbers. That arithmetic is why per-field routing outperforms per-document routing, why the weakest critical field dominates the system's effective performance, and why improvement effort ranked by field-level impact — accuracy gain times field criticality times volume — is how mature teams choose what to fix next.

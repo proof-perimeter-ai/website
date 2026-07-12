@@ -1,0 +1,18 @@
+---
+title: "Document Deskewing"
+slug: "document-deskewing"
+letter: "D"
+tagline: "The page went through the scanner at two degrees — deskewing puts the text back on the horizontal."
+description: "Document deskewing detects and corrects rotational tilt in scanned pages — straightening text lines to restore OCR and layout accuracy."
+category: "Image Preprocessing"
+tags: ["deskewing", "skew correction", "rotation", "preprocessing"]
+publishedAt: "2026-07-11"
+relatedTerms: ["image-skew-correction", "document-dewarping", "image-preprocessing"]
+status: "published"
+---
+
+Document deskewing is the detection and correction of rotational tilt in document images — the small angular offset introduced when paper feeds through a scanner slightly crooked, a photo is taken off-axis, or a page was copied askew years before digitization. Even modest skew degrades processing: text lines cross the horizontal-band assumptions of line segmentation, character shapes present rotated to recognizers trained mostly on upright text, table lines stop aligning with rows and columns, and layout analysis inherits geometry that no longer matches reading structure.
+
+Detection estimates the dominant text angle by exploiting documents' strong horizontal regularity. Projection-profile methods rotate trial angles and score how sharply row-pixel histograms peak — maximum contrast between text lines and gaps marks the true orientation. Hough-transform approaches find the dominant line direction from text baselines and rules; frequency-domain methods read the angle from the Fourier spectrum's structure; and learned estimators regress skew directly, helping on sparse or noisy pages where classical signals weaken. Correction is then a rotation with appropriate interpolation — cheap and safe. The adjacent problem worth distinguishing: orientation detection (is the page rotated 90/180/270 degrees, or upside down?) is a separate classification usually run first, since deskewing assumes the page is approximately upright and merely tilted.
+
+Deskewing is standard, low-risk pipeline hygiene — one of the few preprocessing steps with essentially no downside when detection is confident — and its diagnostics are useful beyond correction: skew distributions per intake channel identify the misaligned scanner or the branch that needs a capture-flow fix. Its limits define its sibling: deskewing handles rigid rotation only; pages curved, folded, or photographed with perspective distortion need dewarping, the nonlinear correction that a single rotation angle can't provide.

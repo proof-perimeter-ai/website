@@ -1,0 +1,18 @@
+---
+title: "Table Reconstruction"
+slug: "table-reconstruction"
+letter: "T"
+tagline: "From detected fragments to a coherent grid — assembling everything table extraction found into one usable structure."
+description: "Table reconstruction assembles detected cells, spans, and recognized content into a coherent structured table — the final assembly step of extraction."
+category: "Data Extraction"
+tags: ["table reconstruction", "structure assembly", "data extraction", "tables"]
+publishedAt: "2026-07-11"
+relatedTerms: ["table-extraction-from-documents", "merged-cell-extraction", "nested-table-parsing"]
+status: "published"
+---
+
+Table reconstruction is the final assembly step in the table-extraction pipeline: taking the outputs of detection, structure recognition, and content recognition — a set of identified cells with their positions, spans, and recognized text — and assembling them into one coherent, logically consistent table representation, resolving any inconsistencies between what different stages of the pipeline independently produced. It's a distinct problem from any single upstream stage because errors and ambiguities from detection, structure, and content recognition can combine in ways that only become visible — and only become fixable — when reconstruction attempts to assemble everything into a single grid that has to actually make sense.
+
+The reconstruction process handles several classes of problems that individual-stage processing can't resolve alone. Cross-page continuation: a table that spans multiple pages needs its rows stitched together in correct sequence, with repeated headers recognized and not duplicated as data rows, and the multi-page-document-processing entry's continuity-detection techniques applied specifically to tabular content. Consistency reconciliation: when structure recognition and content recognition disagree — a cell that structural analysis suggests should be empty but content recognition found text in, or a row whose cell count doesn't match its neighbors — reconstruction has to apply resolution logic, often falling back to the structurally-implied grid as more reliable than a content-recognition anomaly, or flagging the inconsistency for review rather than silently guessing. Format serialization: converting the internal structural representation into whatever output format the pipeline needs — an HTML table preserving spans natively, a markdown table requiring the flattening decisions this glossary's markdown-conversion entry describes, or a JSON structure for direct programmatic consumption.
+
+The validation opportunities reconstruction offers are worth exploiting deliberately rather than treating reconstruction as a purely mechanical assembly step: a reconstructed table's internal arithmetic (do rows sum to stated totals, do repeated header patterns match across a multi-page table's constituent pages) provides a coherence check that can catch upstream errors before they reach a downstream consumer — and reconstruction pipelines that run this validation and flag or auto-correct detected inconsistencies produce measurably more reliable output than pipelines that treat each stage's output as final and simply concatenate them into a result.

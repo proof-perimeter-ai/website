@@ -1,0 +1,18 @@
+---
+title: "Decision Automation From Documents"
+slug: "decision-automation-from-documents"
+letter: "D"
+tagline: "Not just reading the file — acting on it: approve, price, pay, escalate, decline."
+description: "Decision automation from documents lets systems make operational decisions — approvals, pricing, routing — directly from extracted, validated document content."
+category: "Workflow & Automation"
+tags: ["decision automation", "decisioning", "document-driven", "business rules"]
+publishedAt: "2026-07-11"
+relatedTerms: ["document-driven-decisioning", "autonomous-workflow-execution", "straight-through-processing"]
+status: "published"
+---
+
+Decision automation from documents is the step beyond extraction: systems that don't merely convert documents into data but act on that data — approving the invoice for payment, pricing the insurance application, releasing the shipment, granting the credit-limit increase, escalating the suspicious file. The document's arrival triggers the decision; extraction and validation supply the facts; decision logic — rules, scorecards, models, or their combination — renders the outcome; and the workflow executes it. Human involvement becomes exception-based: reserved for the cases the logic routes out.
+
+The architecture stacks three layers with distinct trust requirements. The reading layer (extraction, normalization, validation) must deliver facts with known accuracy and honest confidence — a decision automated on top of unmeasured extraction inherits errors invisibly. The decision layer must be governed as decision logic always should be: versioned rules and models, tested against historical cases, monitored for drift and disparate impact, explainable case by case. The action layer must be bounded: authority limits (auto-approve to $10k, propose above), reversibility awareness (automate the reversible aggressively, gate the irreversible), and a complete record joining input facts, logic version, and outcome — the decision's biography, ready for the customer dispute, the auditor, or the post-incident review.
+
+The deployment path that works is graduated by evidence. Shadow mode first: the automation decides, humans still decide, disagreements analyzed. Then partial authority on the decision segments where measured agreement is high and stakes are low; then expansion as performance earns it — with adverse decisions (declines, denials, terminations) typically retaining human involvement longest, both prudentially and because regulation in many domains requires it. Done in that order, decision automation converts extraction accuracy into business velocity — decisions in seconds instead of queues — without the leap of faith that gives automation programs their failure stories.

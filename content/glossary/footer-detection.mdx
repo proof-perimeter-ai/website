@@ -1,0 +1,18 @@
+---
+title: "Footer Detection"
+slug: "footer-detection"
+letter: "F"
+tagline: "The page number, the confidentiality stamp, the running title — recognized as furniture, not content."
+description: "Footer detection identifies repeating page-bottom elements — page numbers, disclaimers, running titles — separating them from document content."
+category: "Document Understanding"
+tags: ["footer detection", "page furniture", "layout", "boilerplate"]
+publishedAt: "2026-07-11"
+relatedTerms: ["header-detection", "page-number-extraction", "document-layout-analysis"]
+status: "published"
+---
+
+Footer detection is the identification of the repeating elements at the bottom of document pages — page numbers, running titles, confidentiality notices, file paths, print timestamps, firm boilerplate — and their separation from the document's actual content. It is a small task with outsized downstream effects: footers left in the content stream corrupt everything that consumes it — the paragraph that reads "…the party shall CONFIDENTIAL — DO NOT DISTRIBUTE Page 14 of 82 continue to…", the RAG chunk that matches every query containing the company name, the extracted table that absorbed a footer line as its final row.
+
+Detection combines position with repetition. Positional priors (the bottom band of the page) are necessary but insufficient — content runs into footer zones, and footnotes (which *are* content) live exactly there. The stronger signal is cross-page regularity: elements that recur at the same position with identical or patterned text (the incrementing page number, the constant disclaimer) across many pages are furniture; a bottom-of-page paragraph appearing once is content. Production detectors cluster candidate elements across the document, score repetition and pattern conformity, and handle the honest complications: footers that change by section, first pages without them, footnotes to be preserved and distinguished, and scanned documents where fax headers and scanner stamps add another furniture layer at unpredictable positions.
+
+What happens after detection is task-dependent, which is why good parsers *label* rather than delete: content extraction and RAG ingestion strip footers from the flow (keeping chunks clean and embeddings meaningful); page-number extraction reads them as navigation structure (validating completeness — "Page 14 of 82" implies 82 pages had better exist); compliance workflows read the classification stamps as handling metadata; and forensics reads print timestamps and file paths as evidence. The footer is noise to one consumer and signal to another — detection's job is knowing it's a footer; policy decides its fate.

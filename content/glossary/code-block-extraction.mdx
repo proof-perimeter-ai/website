@@ -1,0 +1,18 @@
+---
+title: "Code Block Extraction"
+slug: "code-block-extraction"
+letter: "C"
+tagline: "Whitespace is syntax — pulling source code out of PDFs without breaking the one thing that must not break."
+description: "Code block extraction identifies and preserves source code in documents — indentation, symbols, and monospace structure intact — for docs and RAG pipelines."
+category: "Data Extraction"
+tags: ["code extraction", "technical documents", "monospace", "documentation"]
+publishedAt: "2026-07-11"
+relatedTerms: ["technical-manual-parsing", "markdown-document-conversion", "latex-extraction-from-pdf"]
+status: "published"
+---
+
+Code block extraction is the identification and faithful recovery of source code embedded in documents — API documentation, technical manuals, textbooks, patents, research papers — where the code's exact characters and layout are semantically load-bearing. General text extraction habits are actively destructive here: normalizing whitespace breaks Python indentation, smart-quote substitution corrupts string literals, line re-wrapping merges statements, and OCR's classic confusions (l/1, O/0, backtick/apostrophe) turn working examples into broken ones. A code block is text where nothing may be "cleaned up."
+
+Extraction proceeds in two stages. Detection finds the blocks: monospace font runs, background shading, indentation patterns, and line numbering are the visual signals, with layout models classifying regions as code versus prose (inline code spans inside sentences are the harder sibling case). Recovery then reads the block under code-appropriate rules — preserving every space, tab, and blank line; disabling linguistic autocorrection that would "fix" identifiers into dictionary words; and, where the language is identifiable, using syntax plausibility as a validation signal (does the extracted block parse? do brackets balance?) to catch OCR damage that prose metrics would miss.
+
+The demand has grown with RAG and AI copilots: when documentation is chunked and indexed for retrieval, code blocks must survive as intact units — a half-a-function chunk is worse than none — and be tagged as code with their language, so downstream models render and reason about them correctly. Converters targeting markdown express this as fenced blocks with language hints. For born-digital PDFs the text layer helps but is not sufficient (layout reconstruction still determines line breaks and indentation); for scanned technical archives, code-aware OCR is the difference between a searchable library of working examples and a corpus of subtly broken ones.

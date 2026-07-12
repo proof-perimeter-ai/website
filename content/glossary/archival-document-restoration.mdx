@@ -1,0 +1,18 @@
+---
+title: "Archival Document Restoration"
+slug: "archival-document-restoration"
+letter: "A"
+tagline: "Un-yellowing the past — recovering readable text from faded ink, foxed paper, and a century of wear."
+description: "Archival document restoration uses image processing and AI to recover legibility from aged, damaged documents ahead of digitization and OCR."
+category: "Image Preprocessing"
+tags: ["archival restoration", "historical documents", "digitization", "image enhancement"]
+publishedAt: "2026-07-11"
+relatedTerms: ["historical-document-digitization", "document-denoising", "low-quality-scan-processing"]
+status: "published"
+---
+
+Archival document restoration is the digital recovery of legibility from aged and damaged documents: fading ink, yellowed and foxed paper, water stains, tears, bleed-through from the reverse side, and the accumulated noise of decades of handling. The goal is not cosmetic — it is to recover enough signal that the text can be read, by humans and by OCR, without fabricating content that was never there. Restoration sits at the front of digitization pipelines for archives, registries, libraries, and any institution whose records predate its databases.
+
+The techniques range from classical image processing to learned models. Background removal and adaptive binarization separate ink from discolored paper; bleed-through suppression exploits differences between front and back content; despeckling and inpainting address physical damage; and neural enhancement and super-resolution models — trained on pairs of degraded and clean documents, often synthetically degraded for training — can recover strokes that thresholding alone loses. Handwritten archival material adds recognition difficulty on top: historical scripts, obsolete abbreviations, and languages in older orthographies typically require handwriting models trained for the period and archive in question.
+
+A restoration principle borrowed from physical conservation applies digitally: preserve the original. Pipelines keep the raw capture untouched and treat every enhancement as a derived, documented layer — important both scientifically and legally, since a land record or civil registry entry may carry evidentiary weight, and an AI model that "restores" a digit that wasn't legibly there has manufactured evidence. For that reason, serious archival programs pair aggressive enhancement for readability with conservative rules about what enters the authoritative transcription, routing genuinely ambiguous passages to expert human readers.

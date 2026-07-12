@@ -1,0 +1,18 @@
+---
+title: "API-First Document Processing"
+slug: "api-first-document-processing"
+letter: "A"
+tagline: "No dashboard required — document intelligence as an endpoint your systems call, not an app your people log into."
+description: "API-first document processing exposes parsing, extraction, and workflows as programmable APIs, so document intelligence embeds into any system."
+category: "Tools & Platforms"
+tags: ["API-first", "document API", "integration", "developer tools"]
+publishedAt: "2026-07-11"
+relatedTerms: ["real-time-data-extraction-apis", "document-to-database-pipelines", "json-output-from-ocr"]
+status: "published"
+---
+
+API-first document processing is a product architecture where every capability — upload, classification, extraction, validation, review status, export — is exposed as a programmable interface, with any human-facing application built on top of the same APIs rather than beside them. The document intelligence becomes infrastructure: a loan origination system POSTs a document pack and receives structured, validated JSON; a claims platform subscribes to webhooks that fire when extraction completes or a human review resolves; nothing in the flow requires a person to log into a vendor dashboard.
+
+The architectural consequences are what make the approach matter. Because the API is the product, integration is a first-class concern: idempotent submission, asynchronous processing with webhooks or polling for long-running documents, stable versioned schemas so downstream parsers don't break when models improve, granular error semantics, and machine-readable confidence and provenance on every field. Testability improves too — document processing becomes a component you can integration-test, stage, and monitor like any other service dependency, rather than a black-box application humans mediate.
+
+API-first does not mean humans are absent — it means human steps are also API-visible: a document routed to review emits a status, the correction emits an event, and the calling system always knows where each document stands. The evaluation criteria for such platforms are correspondingly engineering-shaped: latency and throughput characteristics, rate-limit behavior, schema stability across model upgrades, webhook reliability, and — for sensitive workloads — where the API actually runs, since an API-first platform that can deploy inside your own VPC extends the same programmability to documents that cannot leave your perimeter.

@@ -1,0 +1,18 @@
+---
+title: "Document Retrieval Systems"
+slug: "document-retrieval-systems"
+letter: "D"
+tagline: "The right document, the right passage, right now — the machinery between a question and a corpus."
+description: "Document retrieval systems find relevant documents and passages from repositories — combining lexical, semantic, and metadata search for humans and RAG."
+category: "RAG & Search"
+tags: ["retrieval", "search systems", "information retrieval", "RAG"]
+publishedAt: "2026-07-11"
+relatedTerms: ["document-indexing", "document-ranking-algorithms", "enterprise-knowledge-retrieval"]
+status: "published"
+---
+
+Document retrieval systems are the machinery that connects an information need to the documents and passages that satisfy it: query in, ranked relevant content out, across repositories that may span millions of files. They serve two consumers with different tolerances — humans, who can scan a results page and reformulate; and RAG pipelines, where retrieval output feeds a language model directly and a miss becomes a wrong or unanswerable response with no human reformulation in the loop. The rise of the second consumer turned retrieval quality from a search-team concern into the load-bearing wall of every document AI application built on generation.
+
+The architecture composes the layers this glossary treats individually: ingestion and parsing produce faithful text and structure; chunking defines the retrieval units; indexing builds the lexical, vector, and metadata layers; query processing interprets and expands what was asked (including rewriting conversational follow-ups into standalone queries); hybrid retrieval casts the candidate net; ranking and reranking order it; and access control threads through everything — a retrieval system that surfaces documents a user cannot open has failed one way; one that leaks content through snippets and answers has failed worse. Freshness engineering keeps the index synchronized with the repository's churn: new versions supersede, deletions propagate, holds and permission changes take effect in the index, not just the source.
+
+Operating one well means measuring it: retrieval evaluation sets with judged relevance, recall@k tracked per query class, RAG answer quality attributed back to retrieval versus generation failures, and user behavior (abandonment, reformulation, citation clicks) as the ambient signal. The diagnostic order of operations when quality disappoints has become folk wisdom for good reason: check parsing, then chunking, then retrieval, then ranking — and only then the model at the end that everyone blamed first.

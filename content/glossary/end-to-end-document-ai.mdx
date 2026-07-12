@@ -1,0 +1,18 @@
+---
+title: "End-To-End Document AI"
+slug: "end-to-end-document-ai"
+letter: "E"
+tagline: "One system from intake to outcome — or one model from pixels to answer: two meanings, both reshaping the field."
+description: "End-to-end document AI covers full-pipeline platforms from capture to delivery — and single models that go from page image to structured output directly."
+category: "Document Understanding"
+tags: ["end-to-end", "document AI", "pipelines", "unified models"]
+publishedAt: "2026-07-11"
+relatedTerms: ["intelligent-document-processing", "vision-language-model-vlm", "what-is-document-intelligence-platform"]
+status: "published"
+---
+
+End-to-end document AI carries two related meanings worth keeping distinct. At the system level, it names platforms that own the whole document journey — capture, classification, extraction, validation, human review, integration, audit — as one coherent product rather than a stitched chain of point solutions: one place where accuracy is measured, exceptions are managed, and the provenance trail runs unbroken from intake to the system of record. At the model level, it names architectures that map directly from page pixels to task output — a single network producing the structured extraction, the answer, the markdown — without intermediate OCR, layout, and extraction stages, the design vision-language models embody.
+
+The model-level meaning marks a genuine architectural shift. Staged pipelines decompose the problem and compound their errors: the OCR mistake propagates through layout into extraction, and no stage can repair what an earlier one lost. End-to-end models optimize the whole mapping jointly — the recognition informed by the task, the ambiguous character resolved by what the field needs to be — which is a large part of their robustness on degraded and unusual documents. The costs are opacity (no intermediate outputs to inspect when the answer is wrong, which grounding and attention-based evidence partially restore) and compute (a VLM forward pass versus a cascade of small specialists), keeping hybrid designs — fast staged pipeline, end-to-end escalation — economically alive.
+
+The system-level meaning is a procurement and architecture stance: the alternative is best-of-breed assembly (a capture tool, an OCR API, an extraction model, a workflow engine, a review UI), which offers component leverage at integration cost — and, more subtly, fragments accountability: when accuracy disappoints, five vendors each point elsewhere. Evaluations tend to converge on the questions this glossary keeps returning to: measured accuracy on *your* documents, honest confidence, operable review, evidence throughout — whichever architecture delivers them.

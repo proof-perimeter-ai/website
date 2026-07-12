@@ -1,0 +1,18 @@
+---
+title: "Real-Time Capture Feedback"
+slug: "real-time-capture-feedback"
+letter: "R"
+tagline: "The retake costs a second now, or a callback later — feedback that fixes the photo before the shutter closes."
+description: "Real-time capture feedback guides users during document photography — live quality signals that prevent bad captures before they're submitted."
+category: "Image Preprocessing"
+tags: ["capture feedback", "mobile capture", "quality gating", "UX"]
+publishedAt: "2026-07-11"
+relatedTerms: ["document-capture-ux", "mobile-document-capture", "auto-cropping-documents"]
+status: "published"
+---
+
+Real-time capture feedback is the live, on-device guidance shown to a user while they're photographing a document — before the shutter fires, not after — signaling whether the current framing, focus, lighting, and completeness are good enough to proceed. It is the specific mechanism that makes the document-capture-UX entry's cost asymmetry actionable: a defect caught here costs the user a couple of seconds and a re-angle; the same defect discovered downstream costs a rejection, a resubmission request, or a silently degraded extraction nobody notices until it causes a problem.
+
+The technical requirement is strict latency: feedback has to update at or near camera frame rate to feel responsive rather than laggy, which means the quality-assessment models running this loop are necessarily compact and optimized for on-device inference — the edge-processing entry's tiering principle in its purest form, where the fastest, smallest tier exists specifically because this task tolerates nothing slower. The signals evaluated continuously include boundary detection (is the full document visible and reasonably framed, with a live overlay showing the detected edges), focus and blur estimation (is the image sharp enough to read), lighting and glare assessment (is there a bright reflection obscuring content, is the exposure adequate), and resolution sufficiency (is the document occupying enough of the frame to read its finest text). Auto-capture systems use these same signals as a trigger, firing the shutter automatically the moment all thresholds pass rather than waiting for a manual tap — removing timing judgment from the user entirely.
+
+The design principle that separates effective feedback from annoying feedback is specificity and brevity: "move closer" or "reduce glare" rather than a generic quality warning, delivered as an unobtrusive overlay rather than a blocking dialog, with auto-capture doing the disappearing act of good UX — working so that most users never consciously notice the guidance loop that got their capture right on the first try. The instrumentation payoff matters organizationally too: capture-attempt and retake telemetry, tracked per app version and device class, is the earliest and cheapest signal that a capture flow (or a specific device population) needs attention — well before downstream accuracy metrics would reveal the same problem.

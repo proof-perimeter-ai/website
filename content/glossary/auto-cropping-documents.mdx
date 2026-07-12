@@ -1,0 +1,18 @@
+---
+title: "Auto-Cropping Documents"
+slug: "auto-cropping-documents"
+letter: "A"
+tagline: "Finding the page inside the photo — trimming away the desk, the thumb, and the coffee cup."
+description: "Auto-cropping detects document boundaries in photos and scans, removing backgrounds and framing the page for accurate downstream OCR."
+category: "Image Preprocessing"
+tags: ["auto-cropping", "boundary detection", "mobile capture", "preprocessing"]
+publishedAt: "2026-07-11"
+relatedTerms: ["perspective-correction", "mobile-document-capture", "image-preprocessing"]
+status: "published"
+---
+
+Auto-cropping is the preprocessing step that finds the document within a captured image and trims everything else away: the desk surface around a phone photo, the scanner lid's black margin, the neighboring page of an open book, the fingers holding a receipt. The detector locates the document's boundary — typically as a quadrilateral, since photographed pages are rarely perfectly rectangular in the image — and crops to it, usually feeding directly into perspective correction that maps the quadrilateral back to a flat rectangle.
+
+The problem is harder than it looks in the wild. Documents photographed on similar-colored surfaces have low-contrast edges; receipts curl; multiple documents may share a frame; shadows fall across boundaries; and a white form on a white table defeats naive edge detection entirely. Classical approaches use edge and contour analysis with geometric constraints; modern pipelines use segmentation models trained specifically to separate "document" from "everything else," which handle clutter, partial occlusion, and poor lighting far more reliably. On-device implementations in mobile capture SDKs run these models in real time, guiding the user with a live boundary overlay before the shot is taken.
+
+Auto-cropping earns its place in the pipeline because everything downstream inherits its mistakes. A crop that clips the edge of a page can amputate the account number printed in the corner; a crop that includes background clutter feeds the OCR engine texture it may hallucinate characters from; an undetected second document contaminates extraction with another file's values. Production systems treat low-confidence boundary detection as a quality gate — prompting recapture at the point of capture, where the fix costs a second, rather than in the back office, where it costs a customer callback.

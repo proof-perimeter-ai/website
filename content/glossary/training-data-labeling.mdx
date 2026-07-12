@@ -1,0 +1,18 @@
+---
+title: "Training Data Labeling"
+slug: "training-data-labeling"
+letter: "T"
+tagline: "The verb form of what the annotation entries describe — the ongoing work, not just the finished dataset."
+description: "Training data labeling is the ongoing operational activity of annotating documents for model training — process, tooling, and workforce management."
+category: "Models & Training"
+tags: ["data labeling", "annotation", "training data", "operations"]
+publishedAt: "2026-07-11"
+relatedTerms: ["annotation-for-document-ai", "labeled-dataset-creation", "active-learning-for-ocr"]
+status: "published"
+---
+
+Training data labeling is the ongoing operational activity — as distinct from the labeled-dataset-creation entry's project-level framing and the annotation-for-document-ai entry's coverage of the underlying task — of running annotation as a sustained function within a document AI program: the workforce (in-house, outsourced, or crowd-sourced), the tooling and process that keeps them productive and consistent, and the continuous pipeline connecting production system needs to labeling capacity to model retraining. Where "dataset creation" implies a bounded project with a start and end, "labeling" as an operational activity is often ongoing for as long as a document AI system is actively maintained and improved.
+
+The workforce model decision shapes much of what follows operationally: in-house annotation teams offer the tightest quality control and domain knowledge accumulation but carry fixed cost and scaling limits; specialized annotation vendors offer scalability and often domain expertise in specific verticals (medical, legal document annotation) at the cost of less direct oversight; crowd-sourced platforms offer the cheapest per-unit cost and fastest scaling for well-specified, lower-complexity tasks but require the most robust quality-control infrastructure to compensate for variable annotator skill and attention, and are generally unsuitable for sensitive document content given confidentiality and access-control requirements this glossary's compliance entries insist on. Many mature programs use a hybrid model deliberately: in-house or trusted specialist annotators for the highest-stakes, most ambiguous, or most sensitive labeling, with broader crowd or vendor capacity absorbing high-volume, well-specified, lower-sensitivity work.
+
+The operational metrics that distinguish a well-run labeling function from an ad hoc one mirror standard workforce-management discipline applied to this specific task: throughput and cost per labeled unit tracked and optimized, inter-annotator agreement monitored continuously (not just measured once at guideline-creation time) as an early warning that guidelines have drifted or a specific annotator needs retraining, and — critically for keeping the function aligned with actual model needs — active feedback from model performance back into labeling priorities, per the active-learning entry's principle that labeling effort should concentrate on what the current model actually struggles with rather than continuing to produce more examples of what it already handles well. Programs that treat labeling as a one-time setup cost rather than this kind of ongoing, actively-managed function tend to see their models' accuracy plateau or quietly decay as production documents drift from whatever distribution the original labeling effort captured.

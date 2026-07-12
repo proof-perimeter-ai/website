@@ -1,0 +1,18 @@
+---
+title: "Perspective Correction"
+slug: "perspective-correction"
+letter: "P"
+tagline: "The photo was taken at an angle — mapping the tilted rectangle back to a flat page."
+description: "Perspective correction removes planar tilt from photographed documents — mapping a captured quadrilateral back to a rectangular page."
+category: "Image Preprocessing"
+tags: ["perspective correction", "geometric correction", "mobile capture", "preprocessing"]
+publishedAt: "2026-07-11"
+relatedTerms: ["document-dewarping", "auto-cropping-documents", "document-deskewing"]
+status: "published"
+---
+
+Perspective correction is the geometric transformation that removes planar tilt from a photographed document: when a flat page is photographed off-axis — the camera not held perfectly parallel to the paper — its rectangular edges project as a quadrilateral, with the far edge appearing shorter than the near one and the whole image subtly trapezoidal. Correction maps that quadrilateral back to a true rectangle, restoring the page's actual proportions and making its text uniform in scale across the frame — a routine but essential step for any capture channel where a camera, not a flatbed scanner, produced the image.
+
+The technique is a well-defined problem in projective geometry: given the four corners of the document as they appear in the photo (found by boundary detection, per the auto-cropping entry) and the document's true aspect ratio (known, assumed standard, or estimated), compute the homography — the transformation matrix — that maps the captured quadrilateral onto a rectangle, then resample the image through it. The math is exact; the engineering challenge is upstream, in corner detection accuracy — a boundary detector that clips a corner or includes background produces a correction that's confidently wrong, warping the content rather than fixing it. Robust pipelines therefore validate the detected quadrilateral's plausibility (angles near-rectangular, aspect ratio sane) before committing to a transform.
+
+Perspective correction sits between auto-cropping and dewarping in the geometric-correction sequence: cropping finds the boundary, perspective correction handles the *planar* tilt that boundary implies, and dewarping handles what perspective correction cannot — genuine surface curvature (a book's spine, a curled receipt) that no single homography expresses. Mobile capture SDKs apply correction automatically as part of the capture flow, often previewing the corrected result live so users can confirm framing before committing the shot — the point being, as with all this glossary's preprocessing entries, that geometry fixed at capture time is geometry the recognition models never have to compensate for.

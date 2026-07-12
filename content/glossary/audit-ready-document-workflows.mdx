@@ -1,0 +1,18 @@
+---
+title: "Audit-Ready Document Workflows"
+slug: "audit-ready-document-workflows"
+letter: "A"
+tagline: "Six months later, someone asks 'why was this approved?' — audit-ready means the workflow can answer."
+description: "Audit-ready document workflows record who and what touched every document — models, versions, confidence, reviewers — producing evidence regulators can inspect."
+category: "Compliance & Security"
+tags: ["audit trail", "compliance", "document workflows", "provenance"]
+publishedAt: "2026-07-11"
+relatedTerms: ["document-audit-trail", "compliance-automation", "data-lineage-in-document-processing"]
+status: "published"
+---
+
+An audit-ready document workflow is one that can reconstruct and justify its own history: for any document, at any later date, it can show what arrived, what was done to it, by which system or person, in what order, and on what basis each decision was made. Audit-readiness is a property designed in, not bolted on — every processing step emits evidence as it runs, so answering an auditor's question is a query, not an archaeology project across logs, inboxes, and the memories of departed employees.
+
+When AI performs the processing, the evidentiary bar rises in specific ways. It is no longer enough to record that "the system extracted the value" — audit-ready AI workflows record which model and version performed each extraction, where the inference physically ran, what confidence it reported, which validation rules passed, whether the field crossed the automation threshold or went to a human, and if so, who reviewed it and what they changed. This per-document, per-field provenance is what allows an institution to answer the questions that AI governance regimes and financial regulators increasingly ask: not "do you use AI?" but "show me how this specific decision was produced."
+
+The practical payoff extends beyond passing audits. Workflows built to this standard debug faster (the trail that satisfies a regulator also explains a production incident), upgrade more safely (model version changes are visible in the record, so accuracy shifts are attributable), and de-risk automation expansion (each increase in straight-through processing is backed by evidence of measured performance). The design habits are consistent: append-only logs, integrity protection such as hashing, retention aligned to the document's regulatory class, and provenance records attached to the extracted data itself as it flows into downstream systems.

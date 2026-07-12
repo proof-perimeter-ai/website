@@ -1,0 +1,18 @@
+---
+title: "Document Understanding For RAG"
+slug: "document-understanding-for-rag"
+letter: "D"
+tagline: "RAG answers are made at ingestion time — understanding the documents is what makes retrieval retrievable."
+description: "Document understanding for RAG applies structure-aware parsing and enrichment at ingestion, so retrieval and generation work with meaning, not fragments."
+category: "RAG & Search"
+tags: ["RAG", "document understanding", "ingestion", "retrieval quality"]
+publishedAt: "2026-07-11"
+relatedTerms: ["retrieval-augmented-generation-rag-for-documents", "document-parsing-semantic-search", "enterprise-rag-document-ingestion"]
+status: "published"
+---
+
+Document understanding for RAG is the application of full document comprehension — structure, tables, sections, metadata, relationships — at the ingestion stage of retrieval-augmented generation, on the premise that RAG answer quality is largely decided before any question is asked. The naive RAG recipe (extract text, chunk by token count, embed, retrieve) treats documents as undifferentiated strings; understanding-first ingestion treats them as what they are — structured artifacts whose meaning depends on organization — and the difference propagates to every answer the system will ever give.
+
+Concretely, understanding upgrades each ingestion decision. Parsing recovers structure faithfully: tables as tables, reading order across columns, headings as hierarchy — so chunks are coherent units rather than accidental fragments. Semantic enrichment attaches what retrieval needs: document type, section paths, dates, entities, and generated summaries of tables and figures that embed well while the originals stay retrievable. Relationship capture preserves what naive pipelines discard — this amendment modifies that agreement, this exhibit belongs to that filing — enabling retrieval to bring the *current, complete* answer rather than a superseded fragment. And selective representation matches content to its best encoding: prose to text embeddings, tables to structured stores or text-plus-description hybrids, figures to VLM-generated descriptions, with routing at query time.
+
+The evidence for the approach is the field's most repeated production lesson: when RAG disappoints, the failure autopsy usually finds the answer existed in the corpus but not in any retrievable form — split mid-table, buried in a mis-ordered column read, or hidden behind a superseded version. Teams that invest at ingestion — and measure it with retrieval evaluation sets before and after — routinely gain more answer quality per engineering hour there than from any model upgrade at the generation end.

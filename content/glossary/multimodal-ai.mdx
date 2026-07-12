@@ -1,0 +1,18 @@
+---
+title: "Multimodal AI"
+slug: "multimodal-ai"
+letter: "M"
+tagline: "Vision, language, and more in one model — the paradigm that made documents a native input."
+description: "Multimodal AI processes multiple input types — images, text, audio — in one model, the paradigm behind modern document understanding."
+category: "Models & Training"
+tags: ["multimodal", "AI models", "vision-language", "foundation models"]
+publishedAt: "2026-07-11"
+relatedTerms: ["vision-language-model-vlm", "multimodal-document-understanding", "machine-learning"]
+status: "published"
+---
+
+Multimodal AI is the model paradigm that processes multiple input types — images, text, audio, video — in one system, aligning them in shared representations so the model can reason across them: describe what it sees, answer questions about an image, read a chart and discuss its numbers. The architecture pattern is encoders per modality feeding a common backbone (typically a language model), trained on paired data at scale until the modalities genuinely interoperate — the image's content available to the same reasoning that handles the text's.
+
+Documents are the multimodal medium par excellence, which is why this paradigm rearranged the field: a page is simultaneously image (its visual appearance, the stamps and signatures, the degradation), text (its linguistic content), and structure (the layout that binds them) — and pre-multimodal pipelines processed each aspect separately, integrating by engineering. Multimodal models consume the page whole: the vision-language entries in this glossary trace the consequences — OCR, layout, and understanding collapsing into single models, robustness on documents that broke staged pipelines, instruction-driven flexibility. Audio joins where documents meet conversation (the claim call transcribed and reconciled with the claim documents); video joins at capture (liveness detection, document authenticity from multi-frame inspection).
+
+For practitioners, the paradigm's practical meanings: model selection now includes genuinely multimodal options at every scale (frontier APIs to compact open weights), the text-versus-vision input decision is a per-task engineering choice (send the parsed markdown, the page image, or both — cost, fidelity, and task demands trading off), and evaluation must cover the modality seams — the failure modes live where vision hands off to language (the chart number confidently misread, the layout cue missed) more than within either alone. The direction of travel is unmistakable: document AI's future models are multimodal by default, and the single-modality components persist where their efficiency, not their necessity, justifies them.

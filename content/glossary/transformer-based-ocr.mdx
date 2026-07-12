@@ -1,0 +1,18 @@
+---
+title: "Transformer-Based OCR"
+slug: "transformer-based-ocr"
+letter: "T"
+tagline: "Attention all the way down — the architecture generation that pushed recognition past CNN-RNN hybrids."
+description: "Transformer-based OCR uses attention-driven architectures for text recognition, superseding CNN-RNN hybrids and enabling today's vision-language document models."
+category: "OCR & Recognition"
+tags: ["transformers", "OCR architecture", "deep learning", "attention"]
+publishedAt: "2026-07-11"
+relatedTerms: ["attention-mechanisms-in-vision-models", "sequence-to-sequence-ocr", "vision-language-model-vlm"]
+status: "published"
+---
+
+Transformer-based OCR is text recognition built on transformer architectures — the attention-driven design that superseded the CNN-plus-recurrent-network hybrids (CRNNs) this glossary's sequence-to-sequence-OCR entry describes as an earlier architectural generation. Where CRNNs process a text line sequentially through a recurrent network, transformers process the entire sequence through self-attention layers that let every position attend directly to every other position simultaneously — a structural change with real consequences for both training efficiency (transformers parallelize during training far better than recurrent architectures, which must process sequentially) and recognition quality on longer or more complex sequences, where attention's ability to directly relate distant positions avoids the information-degradation that recurrent architectures can suffer over long sequences.
+
+The architecture typically takes an encoder-decoder form specifically suited to recognition: a vision encoder (often itself built on the vision-transformer principles this glossary's attention-mechanisms entry describes, or a hybrid combining convolutional feature extraction with transformer processing) processes the input image into a rich representation, and a decoder generates the output character sequence, using cross-attention to reference relevant regions of the image representation while producing each output character — letting the model, in effect, look directly at the specific part of the image relevant to whatever character it's currently generating, an interpretable and effective mechanism that also enables the visual-grounding capability this glossary describes as valuable for verification and review interfaces, since the attention weights can indicate which image region supported a given output.
+
+The practical significance of this architectural lineage is that it's the direct technical ancestor of the vision-language models now dominant in document AI: a modern document VLM's ability to read text is, underneath its broader multimodal capabilities, built on transformer-based recognition principles extended and scaled dramatically further, trained on vastly larger and more diverse data than earlier dedicated OCR transformers, and integrated with a language-model backbone that adds reasoning and instruction-following on top of raw recognition. Understanding transformer-based OCR as a distinct step in this lineage — rather than conflating it entirely with either the earlier CRNN generation or the current VLM generation — clarifies where recognition-specific architectural innovation (attention, cross-modal grounding) actually originated before being absorbed into the broader multimodal document-understanding systems this glossary treats as the current state of the art.

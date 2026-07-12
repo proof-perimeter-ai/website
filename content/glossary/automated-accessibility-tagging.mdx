@@ -1,0 +1,18 @@
+---
+title: "Automated Accessibility Tagging"
+slug: "automated-accessibility-tagging"
+letter: "A"
+tagline: "Teaching a million old PDFs to speak to screen readers — semantics applied at a scale no manual team could reach."
+description: "Automated accessibility tagging uses document AI to add semantic structure — headings, tables, reading order, alt text — to untagged PDFs at scale."
+category: "Accessibility"
+tags: ["accessibility tagging", "PDF remediation", "tagged PDF", "automation"]
+publishedAt: "2026-07-11"
+relatedTerms: ["accessible-pdf-compliance", "accessible-document-formats", "document-layout-analysis"]
+status: "published"
+---
+
+Automated accessibility tagging applies document AI to the remediation problem: taking documents that lack semantic structure — scanned pages, untagged PDFs exported from design tools, decades of accumulated archives — and adding the tags that assistive technologies require: heading levels, paragraph and list structure, table semantics with header associations, reading order, figure alternative text, and form field labels. Manual tagging by a specialist takes minutes to hours per document; organizations sitting on repositories of millions of documents have no manual path to compliance at all.
+
+The AI stack maps naturally onto the tagging task because it is the same problem as document understanding. Layout analysis identifies the structural regions; reading-order models sequence them; table-structure recognition reconstructs row, column, and header relationships; classification distinguishes decorative images from content-bearing figures; and vision-language models generate draft alternative text describing charts and photographs. The output is written back as the document's tag tree, transforming a flat visual artifact into a navigable structure a screen reader can traverse by headings, skim by list, and read tables from intelligently.
+
+Quality assurance is where automated tagging programs succeed or fail, because accessibility standards include criteria machines can't fully judge — whether alt text is meaningful, whether the reading order makes sense for this content, whether a table's structure reflects its logic. Mature pipelines pair automation with targeted human review: automated checkers validate structural conformance, sampling or confidence-based routing sends uncertain documents to remediation specialists, and the highest-traffic or legally-critical documents get full manual verification. The result is a tiered program that reaches the whole repository while concentrating human expertise where judgment is genuinely required.

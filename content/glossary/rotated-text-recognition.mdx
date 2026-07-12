@@ -1,0 +1,18 @@
+---
+title: "Rotated Text Recognition"
+slug: "rotated-text-recognition"
+letter: "R"
+tagline: "Sideways stamps, vertical margin notes, angled labels — text that never intended to be read horizontally."
+description: "Rotated text recognition reads text at arbitrary angles — stamps, margin annotations, rotated labels — beyond the assumption of horizontal lines."
+category: "OCR & Recognition"
+tags: ["rotated text", "arbitrary orientation", "recognition", "stamps"]
+publishedAt: "2026-07-11"
+relatedTerms: ["vertical-text-recognition", "document-deskewing", "logo-and-stamp-detection"]
+status: "published"
+---
+
+Rotated text recognition is the reading of text oriented at angles other than the page's dominant horizontal flow — the sideways date stamp, the margin note written perpendicular to the main text to fit available space, the rotated label on a diagram, the certification seal with text following a circular or angled arc. It's distinct from the deskewing problem this glossary treats separately: deskewing corrects a *whole page's* small unintentional tilt back to horizontal; rotated text recognition handles content that was *deliberately* placed at a different angle than the surrounding text, often specifically because it needed to fit in a space the main layout didn't accommodate.
+
+The detection challenge precedes the recognition challenge: a layout analysis pass tuned only for horizontal text blocks will either miss rotated regions entirely or misinterpret them as noise, so rotated-text-aware pipelines need detection models trained to find text at arbitrary orientations — typically framed as oriented bounding box or polygon detection rather than the axis-aligned boxes sufficient for horizontal text, since a tightly-fit box around 45-degree text looks very different from one around horizontal text of the same content. Once detected, recognition proceeds either by rotating the detected region back to horizontal before feeding it to a standard recognizer (the common and often simplest approach, effective when the rotation angle is confidently known) or by using recognition models trained to handle arbitrary input orientation directly, which sidesteps potential quality loss from the rotation-and-resample step but requires training data that actually represents the rotation diversity being asked of it.
+
+The practical document contexts where this matters cluster around annotation and authentication marks more than body content: date and approval stamps rotated to fit alongside other stamps, handwritten margin notes at whatever angle was convenient to the writer, rotated diagram labels and callouts, and circular or arc-following text on official seals — content that is frequently *exactly* the information a workflow cares about (the approval date, the annotation's substance) despite occupying a small, awkwardly oriented fraction of the page. Production pipelines that skip rotated-text handling entirely aren't merely missing edge-case accuracy; they're systematically blind to a category of content that skews toward being procedurally important precisely because stamps and annotations exist to mark significant events.

@@ -1,0 +1,18 @@
+---
+title: "Cross-Document Reasoning"
+slug: "cross-document-reasoning"
+letter: "C"
+tagline: "The answer isn't in any single file — it emerges when the ID, the statement, and the application are read together."
+description: "Cross-document reasoning connects and reconciles information across multiple documents — consistency checks, synthesis, and case-level conclusions."
+category: "Document Understanding"
+tags: ["cross-document", "multi-document", "reasoning", "reconciliation"]
+publishedAt: "2026-07-11"
+relatedTerms: ["multi-step-document-reasoning", "entity-resolution", "multi-document-summarization"]
+status: "published"
+---
+
+Cross-document reasoning is the capability to connect, compare, and reconcile information across multiple documents to reach conclusions no single document contains: the applicant's declared income versus what the bank statements show; the invoice against the purchase order and the goods receipt; the medical claim against the clinical records that should support it; the contract amendment against the base agreement it modifies. Most consequential document work is case work — sets of documents that reference, corroborate, and contradict one another — and reading them in isolation misses exactly the signals that matter.
+
+The technical substance layers on top of single-document extraction. Entity resolution establishes that "J. Okafor," "Jonathan Okafor," and "OKAFOR JONATHAN A" across three documents are the same person — or meaningfully aren't. Field alignment maps semantically equivalent values across different document types for comparison, tolerating legitimate variation (the statement's address formatted differently than the ID's) while catching substantive conflict. Temporal reasoning orders events across dated documents and applies precedence — the amendment supersedes the original, the latest payslip reflects current income. And synthesis composes the reconciled picture into case-level judgments: is this application internally consistent, is this claim supported, what changed across these policy versions? Long-context language models and agentic orchestration have made these compositions practical; the discipline is keeping each cross-document conclusion traceable to the specific passages in specific documents that ground it.
+
+The applications are wherever fraud, completeness, and consistency decide outcomes: KYC and lending files, claims adjudication, due diligence data rooms, litigation fact development. Cross-document contradictions are among the strongest fraud signals available (fabricated documents are rarely fabricated consistently), and cross-document confirmation is what lets automation trust its own straight-through decisions. The engineering corollary: case-level reasoning inherits every upstream error, so its reliability depends on extraction quality, honest per-field confidence, and reconciliation logic that flags conflicts for humans rather than resolving them silently.

@@ -1,0 +1,18 @@
+---
+title: "Mixed Handwriting And Print Recognition"
+slug: "mixed-handwriting-and-print-recognition"
+letter: "M"
+tagline: "The printed form and the pen that filled it — two recognition problems sharing every page."
+description: "Mixed handwriting and print recognition handles pages combining both — separating, routing, and reading each content type correctly."
+category: "OCR & Recognition"
+tags: ["mixed content", "handwriting", "print", "recognition"]
+publishedAt: "2026-07-11"
+relatedTerms: ["handwritten-text-recognition", "handwritten-form-digitization", "document-image-segmentation"]
+status: "published"
+---
+
+Mixed handwriting and print recognition is the reading of pages that contain both — which is to say, most operationally interesting paper: the printed form with handwritten answers, the contract with pen annotations and initials, the invoice with a scrawled approval and date, the medical fax where the printed report carries a clinician's margin notes. The two content types are different recognition problems (print's regularity versus handwriting's variability), and pages mixing them fail in a characteristic way when processed uniformly: a print-tuned engine shreds the handwriting; a handwriting model wastes capacity and accuracy on the print.
+
+The classical architecture separates then routes: script-type classification — at region, line, or word granularity — segments printed from handwritten content (segmentation-grade separation where they overlap: the annotation across the paragraph, the signature over the printed name), and each stream goes to its recognizer, with results re-merged in reading order and the handwriting flagged as such downstream (its confidence profile differs, and consumers should know which words came from a pen). The separation itself carries information: *what* was handwritten on a printed document is usually the point — the filled fields, the corrections, the approvals — so the print/hand distinction doubles as a semantic layer, distinguishing the form from its filling, the document from its annotations.
+
+Modern unified models — VLMs and mixed-trained recognizers that read both scripts in one pass — simplify the pipeline and handle the interleaved cases (the sentence half-printed, half-corrected by hand) more gracefully, at the usual cost profile, and often *without* the explicit print/hand labeling the routed architecture produced for free. Production systems therefore frequently keep a script classifier in the stack even atop unified recognition — not to route anymore, but to label: preserving the annotation layer's identity, calibrating confidence per script type, and letting review queues prioritize the handwritten fields where the errors actually live.

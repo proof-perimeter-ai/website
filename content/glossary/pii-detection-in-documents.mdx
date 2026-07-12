@@ -1,0 +1,18 @@
+---
+title: "PII Detection In Documents"
+slug: "pii-detection-in-documents"
+letter: "P"
+tagline: "Finding the personal data hiding in prose, tables, and scans — before it leaks, trains, or overstays its welcome."
+description: "PII detection in documents locates personally identifiable information across formats — structured fields and free text alike — for privacy compliance."
+category: "Compliance & Security"
+tags: ["PII detection", "privacy", "personal data", "compliance"]
+publishedAt: "2026-07-11"
+relatedTerms: ["data-loss-prevention-dlp-for-documents", "document-redaction-automation", "gdpr-data-extraction-compliance"]
+status: "published"
+---
+
+PII detection in documents is the location of personally identifiable information across document content: names, addresses, national identifiers, financial account numbers, dates of birth, and the broader categories privacy regimes define — present not just in structured form fields (where a schema tells you where to look) but scattered through free text, tables, images, and scanned content where nothing announces "personal data starts here." It is the detection layer beneath data loss prevention, redaction, retention scheduling, and every privacy obligation this glossary's compliance entries describe — none of which can execute without first knowing where the personal data actually is.
+
+The technical approach layers signal types. Pattern-based detection catches format-regular identifiers reliably: national ID numbers, card numbers, and other identifiers with checksum or structural regularity, matched with high precision and low recall (catches the format, misses anything that doesn't look like the pattern). Named entity recognition catches the harder, context-dependent cases: names, addresses, and organizations embedded in prose, requiring the language understanding this glossary's NER entry describes, tuned for privacy categories rather than general entity types. Contextual and inferential detection catches what neither pattern nor NER alone finds — the person identifiable from a combination of non-identifying facts (occupation plus employer plus city), or the indirect identifier that only means something in context. OCR is a prerequisite across the board: scanned documents carry PII invisibly to text-based scanners until recognition surfaces it, a frequent gap in privacy programs built around digital-native tooling.
+
+The detection output feeds action, and the actions differ by regime and purpose: classification tagging the document's sensitivity for access and retention policy, redaction removing specific spans for a specific disclosure, DLP blocking exfiltration, and data-subject-request fulfillment locating every instance of a person's data across an entire repository — the last being where detection precision and recall both matter acutely, since missing an instance is a compliance failure and over-flagging buries the genuine findings in noise. Accuracy is consequently measured and monitored like any consequential extraction: per category, per document type, with confidence-based review on the cases detection itself flags as uncertain.

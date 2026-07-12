@@ -1,0 +1,18 @@
+---
+title: "Document-To-Database Pipelines"
+slug: "document-to-database-pipelines"
+letter: "D"
+tagline: "PDFs in, rows out — the end-to-end plumbing that turns files into queryable records."
+description: "Document-to-database pipelines convert files into database records — extraction, normalization, schema mapping, and loading with provenance intact."
+category: "Workflow & Automation"
+tags: ["document to database", "ETL", "pipelines", "structured data"]
+publishedAt: "2026-07-11"
+relatedTerms: ["data-export-automation", "structured-data-output", "schema-based-extraction"]
+status: "published"
+---
+
+Document-to-database pipelines are the end-to-end systems that convert documents into database records: files arrive (PDFs, scans, spreadsheets-as-attachments), extraction reads them against target schemas, normalization and validation shape the values, and the results load into relational tables, warehouses, or operational systems as queryable rows — the document population becoming a dataset. It is the document world's version of ETL, with the extraction step doing work that traditional ETL never faced: the "source system" is an unstructured artifact that must be read, not queried.
+
+The pipeline's contract is the target schema, and the mapping discipline determines data quality. Each schema field traces to an extraction definition (what to find, where it may appear, how to normalize it); required fields drive completeness handling (load with nulls, hold for review, or reject — a policy per field, not an accident); type and referential constraints validate before loading (the vendor must exist, the date must parse, the foreign key must resolve); and the impedance mismatches get explicit designs — the document with repeating line items feeding a parent-child table pair, the multi-value field meeting a single-value column. Idempotency and deduplication protect against the intake realities (the same statement submitted twice must not become two rows), and every loaded row carries provenance columns: source document ID, extraction confidence, review status — so the database can answer where any value came from.
+
+The operational stance treats the pipeline as production data infrastructure: reconciliation counts per run (documents in, rows out, exceptions held), schema-evolution management on both ends (a new form version upstream, a migrated column downstream), and monitoring on the quality gradient — null rates, validation failures, and correction rates per field, trending over time. Done well, the effect is the quiet one that document AI ultimately serves: questions that used to mean opening files ("what's our total exposure across these contracts?") become SQL.

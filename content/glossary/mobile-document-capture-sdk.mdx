@@ -1,0 +1,18 @@
+---
+title: "Mobile Document Capture SDK"
+slug: "mobile-document-capture-sdk"
+letter: "M"
+tagline: "The capture flow as a component — boundary detection, quality gates, and ID flows dropped into your app."
+description: "Mobile document capture SDKs embed guided capture in apps — detection, quality scoring, enhancement, and ID-specific flows as components."
+category: "Tools & Platforms"
+tags: ["capture SDK", "mobile", "components", "integration"]
+publishedAt: "2026-07-11"
+relatedTerms: ["mobile-document-capture", "document-capture-ux", "edge-ocr-processing"]
+status: "published"
+---
+
+A mobile document capture SDK is the capture flow packaged as an embeddable component: the boundary detection, live guidance overlays, quality scoring, auto-capture, cropping, perspective correction, and enhancement that good mobile capture requires — delivered as a library an app team integrates in days rather than a computer-vision project they staff for quarters. The build-versus-buy calculus favors SDKs unusually strongly here: the capture problem is undifferentiated across apps, the on-device vision engineering is deep, and the edge cases (device fragmentation, camera API quirks, low-end hardware performance) are exactly the kind that consume teams.
+
+The category spans tiers. General document capture SDKs handle the universal flow — detect, guide, capture, correct — with output tuned for downstream processing (resolution floors, compression settings that don't destroy OCR). Identity-verification SDKs specialize: ID-format-aware capture (the flow that knows a passport's MRZ needs sharp focus at the bottom), NFC chip reading where documents and devices support it, selfie-and-liveness capture for the biometric pair, and capture attestation — the cryptographic binding of the session that defends against injection attacks, an increasingly load-bearing feature as generative spoofing matures. Evaluation criteria worth weighting: on-device model quality across the device spectrum (the flagship phone is not the fleet), offline capability, image and data handling (what leaves the device, to whose servers — an SDK that exfiltrates captures to vendor infrastructure is an architecture decision wearing a convenience), accessibility of the capture UX, and the telemetry exposed for funnel tuning.
+
+Integration discipline mirrors any critical dependency: capture quality metrics monitored per app version and device class, SDK updates tested against the downstream pipeline (a changed compression default is an invisible accuracy event), and the vendor's data practices contractually pinned — because the capture SDK sits at the most sensitive point in the flow, holding the raw document in its hands before anyone else.

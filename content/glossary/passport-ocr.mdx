@@ -1,0 +1,18 @@
+---
+title: "Passport OCR"
+slug: "passport-ocr"
+letter: "P"
+tagline: "Two lines of OCR-B at the bottom of the page — the machine-readable zone that verification is built on."
+description: "Passport OCR reads travel documents — the MRZ's check-digit-validated lines and the visual zone — for identity verification at scale."
+category: "OCR & Recognition"
+tags: ["passport OCR", "MRZ", "travel documents", "identity"]
+publishedAt: "2026-07-11"
+relatedTerms: ["government-id-parsing", "kyc-know-your-customer", "facial-recognition-in-onboarding"]
+status: "published"
+---
+
+Passport OCR is the reading of travel documents, anchored by the machine-readable zone (MRZ): the two 44-character lines at the passport data page's foot, printed in the OCR-B typeface to the ICAO Doc 9303 standard, encoding name, nationality, document number, birth date, sex, and expiry — with check digits woven through, so a correct read *proves itself* arithmetically. The MRZ is recognition's friendliest target (a fixed font, a fixed grammar, built-in validation) and its highest-stakes one, sitting at the front of border control, KYC onboarding, and every remote identity flow that begins "photograph your passport."
+
+The reading discipline exploits the standard: locate the MRZ band (layout is fixed relative to the data page), recognize under the OCR-B prior, parse against the positional grammar (every character's role known by index), and validate the check digits — failures triggering re-capture or re-recognition rather than acceptance, since a checksum-failing MRZ is either misread or altered, and both demand attention. The visual zone above carries the same data in human-readable form plus the photo; cross-zone comparison (visual versus MRZ, and versus the NFC chip's signed data where reading is possible) is the verification backbone, per the government-ID entry — disagreement being tamper evidence of the first order. Capture quality drives everything: the MRZ's fine print punishes blur and glare (the laminate's reflections are the classic enemy), which is why passport capture flows gate hard on focus and lighting at the moment of photography.
+
+Production notes from the field: name transliteration (the MRZ's ASCII rendering of non-Latin names) requires care when matching against other documents — the MRZ's "OEZDEMIR" and the bank record's "Özdemir" are the same person, and matching logic must know it; truncation rules for long names are standardized and worth implementing rather than improvising; and the data's sensitivity class is maximal — passport records under access, retention, and residency controls as strict as any document AI handles.

@@ -1,0 +1,18 @@
+---
+title: "Google Document AI"
+slug: "google-document-ai"
+letter: "G"
+tagline: "Google Cloud's document processing suite — OCR, pretrained parsers, and custom processors as managed services."
+description: "Google Document AI is GCP's managed document processing platform — OCR, specialized parsers, and trainable custom extractors via API."
+category: "Tools & Platforms"
+tags: ["Google Document AI", "GCP", "cloud OCR", "document processing API"]
+publishedAt: "2026-07-11"
+relatedTerms: ["amazon-textract", "abbyy-finereader", "api-first-document-processing"]
+status: "published"
+---
+
+Google Document AI is Google Cloud's managed document processing platform: a family of "processors" exposed via API — general OCR built on Google's recognition research, specialized pretrained parsers (invoices, receipts, IDs, W-2s and other tax forms, lending documents), a layout parser oriented toward RAG ingestion, and custom processors that customers train on their own labeled documents through a managed workflow. Output arrives as a structured Document object: text with geometry, detected entities and key-value pairs, tables, and confidence per element, integrated naturally with the rest of GCP (Cloud Storage triggers, BigQuery destinations, Vertex AI adjacency).
+
+Its differentiated strengths track Google's estate: OCR quality with broad language coverage descending from Google's translation and vision research; the pretrained processor catalog encoding per-document-type expertise (the invoice parser knows invoices structurally, not just textually); and the custom-training path — uptraining and custom extractors — that lets teams push accuracy on their own document types without building training infrastructure, a genuine differentiator versus take-it-as-delivered APIs. The Gemini era has folded frontier VLM capability into and alongside the platform, blurring the line between "document API" and "prompt a multimodal model" — with the platform's value increasingly in the operational wrapper: schemas, versioning, evaluation tooling, human-in-the-loop review integration.
+
+The evaluation calculus mirrors its hyperscaler peers: per-page pricing that suits variable volume and disfavors massive steady state; accuracy that must be benchmarked on your documents rather than assumed from the catalog; and the architectural fact that processing happens in Google's cloud — with regional endpoints and compliance certifications addressing many regimes, and not the ones that require documents never to transit third-party infrastructure at all, where in-perimeter deployment remains the answer. Teams commonly slot it as a strong general-purpose tier: excellent breadth out of the box, with specialized or self-hosted models taking the workloads where domain accuracy or sovereignty dominates.

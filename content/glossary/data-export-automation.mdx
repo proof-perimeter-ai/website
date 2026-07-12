@@ -1,0 +1,18 @@
+---
+title: "Data Export Automation"
+slug: "data-export-automation"
+letter: "D"
+tagline: "Extraction isn't done until the data lands — in the ERP, the warehouse, the case system — in the shape they expect."
+description: "Data export automation delivers extracted document data into downstream systems — ERP, databases, APIs — in validated, consistent formats without manual steps."
+category: "Workflow & Automation"
+tags: ["data export", "integration", "delivery", "formats"]
+publishedAt: "2026-07-11"
+relatedTerms: ["document-to-database-pipelines", "structured-data-output", "json-output-from-ocr"]
+status: "published"
+---
+
+Data export automation is the delivery leg of document processing: moving extracted, validated data into the systems where it does work — ERP and accounting platforms, core banking and policy systems, case managers, data warehouses, spreadsheets for the teams that live in them — automatically, in the format and shape each destination expects. It is the unglamorous step that determines whether document AI produces outcomes or just produces JSON: extraction that ends in a results screen still leaves a human to re-key, which quietly reinstates the manual process automation was meant to remove.
+
+The engineering substance is contract management between systems. Each destination defines a schema — field names, types, code lists, required fields — and export maps the extraction output onto it: normalizing values into the destination's conventions (its date formats, its vendor IDs, its chart of accounts), applying the destination's validation before delivery rather than after rejection, and handling the impedance mismatches (the invoice with three tax lines meeting an ERP that models one). Delivery mechanics need production discipline: idempotency so retries don't double-post, batching aligned to destination limits, error capture that routes failures to resolution rather than a log nobody reads, and versioned mappings so a destination's schema change doesn't silently corrupt the flow.
+
+Two practices distinguish robust export layers. Provenance travels with the data: the exported record carries its source document reference and extraction confidence, so the ERP entry can be traced to the page it came from — the audit thread intact across the system boundary. And the export is observable end-to-end: reconciliation counts (documents in, records delivered, exceptions held) reported per destination per period, because the failure mode that hurts most is the silent one — documents processed perfectly, data exported to nowhere, discovered at month-end as a gap in the ledger.

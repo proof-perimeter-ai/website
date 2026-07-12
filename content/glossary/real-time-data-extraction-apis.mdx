@@ -1,0 +1,18 @@
+---
+title: "Real-Time Data Extraction APIs"
+slug: "real-time-data-extraction-apis"
+letter: "R"
+tagline: "Submit a document, get structured data back in seconds — extraction as a synchronous API call."
+description: "Real-time data extraction APIs return structured document data synchronously — sub-second-to-seconds latency for interactive workflows."
+category: "Tools & Platforms"
+tags: ["real-time APIs", "extraction", "synchronous processing", "integration"]
+publishedAt: "2026-07-11"
+relatedTerms: ["api-first-document-processing", "real-time-document-processing", "latency-in-document-processing"]
+status: "published"
+---
+
+Real-time data extraction APIs are document processing endpoints designed to return structured output synchronously, within the latency budget an interactive workflow demands — typically seconds rather than the minutes or hours acceptable for batch processing. The distinguishing engineering commitment is that the caller waits for the response: the mobile app verifying an ID mid-onboarding, the point-of-sale system reading a receipt for expense capture, the customer-facing form that pre-fills from an uploaded document — all of these architectures assume the extraction call returns before the user's attention moves on, which imposes real constraints on what the API can do inside its response.
+
+Meeting that constraint shapes the implementation choices this glossary's latency entry catalogs in general: model tiering toward faster, more compact models for the initial synchronous response (with escalation to stronger models available only as an asynchronous follow-up if the first pass flags low confidence), page and document-size limits that keep worst-case processing time bounded, aggressive caching for repeated templates and layouts, and infrastructure provisioned for the latency percentile that matters — the p99 document, not the median, since a single slow request in an interactive flow is a visible failure regardless of how fast the average request completes. API design typically offers both modes explicitly: a synchronous endpoint for documents small and simple enough to guarantee real-time response, and an asynchronous webhook-based pattern for anything that might exceed the real-time budget, letting the caller choose the right contract per use case rather than forcing every document through the same latency assumption.
+
+The evaluation criteria for choosing or building one of these APIs go beyond raw accuracy: published latency percentiles under realistic load (not just best-case single-request timing), rate limits and their fit to expected traffic patterns, graceful degradation behavior when the real-time budget can't be met (does it time out silently, or fail over to an async path with clear signaling), and — for sensitive documents — where the synchronous inference actually runs, since real-time performance requirements have historically pushed teams toward cloud APIs by default, a trade-off that in-perimeter deployments on sufficiently optimized compact models increasingly avoid needing to make.

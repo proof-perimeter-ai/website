@@ -1,0 +1,18 @@
+---
+title: "Labeled Dataset Creation"
+slug: "labeled-dataset-creation"
+letter: "L"
+tagline: "From document pile to training asset — the project that turns samples and guidelines into a dataset."
+description: "Labeled dataset creation builds annotated document collections for training and evaluation — sampling, guidelines, annotation, QC, and versioning."
+category: "Models & Training"
+tags: ["labeled datasets", "annotation projects", "training data", "data curation"]
+publishedAt: "2026-07-11"
+relatedTerms: ["annotation-for-document-ai", "ground-truth-data", "training-data-labeling"]
+status: "published"
+---
+
+Labeled dataset creation is the end-to-end project of building an annotated document collection: defining what the dataset is for (training which capability, evaluating which claims), sampling documents that represent the target population, writing the guidelines that make labeling consistent, running the annotation with quality control, and packaging the result — versioned, documented, split into train/validation/test — as the durable asset every model decision will lean on. It is where document AI programs succeed or fail earliest and least visibly: the dataset's biases and blind spots become the model's, permanently and quietly.
+
+Sampling is the underrated step. The dataset must mirror deployment reality — every document type, capture channel, quality tier, language, and time period the production stream contains, in proportions that either match reality or deliberately oversample the rare-but-critical (with the reweighting documented). The classic failures are convenience sampling (the clean documents that were easy to gather), temporal staleness (last year's formats teaching next year's model), and leakage (near-duplicate documents straddling the train/test split, inflating every metric). Splits deserve design: test sets drawn from later time periods and held-out sources simulate deployment honestly; random splits flatter.
+
+The rest of the discipline this glossary covers in its own entries — guidelines and agreement measurement, annotation interfaces and workforces, adjudication — culminates here in packaging: documentation of what the dataset contains and how it was made (the datasheet), versioning as guidelines and populations evolve, and governance matching the source documents' sensitivity, since a labeled KYC dataset is KYC data with answers attached. The asset view is the right frame: a well-made labeled dataset outlives the models trained on it, appreciates as the correction loop feeds it, and constitutes much of what an institution actually owns when it says it has invested in document AI.

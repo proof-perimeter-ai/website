@@ -1,0 +1,18 @@
+---
+title: "Named Entity Recognition"
+slug: "named-entity-recognition"
+letter: "N"
+tagline: "Finding the names in the prose — people, companies, places, dates — the classic NLP task documents lean on."
+description: "Named entity recognition (NER) locates and types entities in text — persons, organizations, amounts, dates — foundational to document extraction."
+category: "Data Extraction"
+tags: ["NER", "entities", "NLP", "extraction"]
+publishedAt: "2026-07-11"
+relatedTerms: ["entity-linking", "entity-resolution", "natural-language-processing"]
+status: "published"
+---
+
+Named entity recognition (NER) is the task of locating and typing the entities text mentions: persons, organizations, locations, dates, monetary amounts, and — in domain variants — the specialized inventories that matter to each field: medications and conditions in clinical text, statutes and courts in legal text, instruments and identifiers in financial text. It is one of NLP's foundational tasks, decades deep in methods (rules and gazetteers, then sequence-labeling models, then transformer fine-tunes, now LLM extraction), and a workhorse layer in document pipelines: much of what "extraction" means in prose-heavy documents is NER plus the linking and normalization built on it.
+
+Documents complicate the textbook task in familiar ways. The text arrives from OCR with its noise (the entity boundary that spans a recognition error); layout carries typing signals prose lacks (the name in the signature block versus the same name mid-paragraph play different roles — party versus mention); domain vocabularies overwhelm general models (the general NER that tags "May" as a date in "May Chen"); and the entity inventory is a schema decision: what counts as an entity, at what granularity ("Acme Holdings Ltd" versus "Acme"), with what types — decisions that annotation guidelines must pin before accuracy is even definable. LLM-based NER changed the economics — entity types definable by description, zero-shot coverage of new inventories — with the trade this glossary keeps noting: flexibility and comprehension up, deterministic repeatability down, and grounding (each entity tied to its exact span) the discipline that keeps generative extraction honest.
+
+NER's value is mostly downstream: the entities feed linking (which real-world thing), resolution (the same thing across documents), redaction (the PII to remove), screening (the names to check against lists), and the knowledge graphs and case reasoning built above. Which sets its quality bar by consumer: search tolerates recall misses; sanctions screening does not — the same layered evaluation-and-review posture the rest of this glossary applies.

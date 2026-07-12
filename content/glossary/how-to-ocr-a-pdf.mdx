@@ -1,0 +1,18 @@
+---
+title: "How To OCR A PDF"
+slug: "how-to-ocr-a-pdf"
+letter: "H"
+tagline: "First check whether it needs OCR at all — then pick the tool that matches the stakes."
+description: "How to OCR a PDF: check for a text layer, choose a tool — CLI, library, or API — run recognition, and verify the output quality."
+category: "Tools & Platforms"
+tags: ["OCR tutorial", "PDF", "how-to", "tools"]
+publishedAt: "2026-07-11"
+relatedTerms: ["pdf-text-extraction", "tesseract-ocr-python", "document-ai-tutorials"]
+status: "published"
+---
+
+How to OCR a PDF starts with a question most guides skip: does the PDF need OCR at all? Born-digital PDFs carry a text layer — extractable directly, losslessly, with any PDF library — and running OCR on them replaces perfect text with a model's approximation. Check first (select text in a viewer, or programmatically test for extractable text per page); OCR is for the pages that are images: scans, faxes, photographs bound into PDF. Mixed files are common, so the robust recipe operates per page — extract the text layer where it exists, recognize where it doesn't.
+
+The tool ladder matches effort to stakes. Quickest: OCRmyPDF, the command-line standard — `ocrmypdf input.pdf output.pdf` adds a searchable text layer under the original page images (Tesseract underneath), with flags for language packs, deskewing, and cleanup: ideal for making archives searchable. Programmatic: Python with pypdfium2 or pdf2image to rasterize pages, then an OCR engine — Tesseract via pytesseract for the classical route, EasyOCR or PaddleOCR for deep-learning robustness, or a document parser like Docling when you want structure (tables, layout, markdown) rather than raw text. Managed: cloud document APIs (Google Document AI, Amazon Textract, Azure Document Intelligence) for accuracy and structure without hosting models — minding per-page cost and the fact that your documents leave for the provider's cloud, which sensitive content may prohibit. For the hardest material — handwriting, degraded scans, complex layouts — vision-language models now read what dedicated engines miss, locally via open weights or through APIs.
+
+Whatever the tool, verify: spot-check output against pages (especially tables and numbers), watch per-word confidence where the engine reports it, and match preprocessing to the input (300 DPI rasterization is the workhorse setting; deskew and denoise for rough scans). And if the PDFs are one step in something larger — extraction, search, RAG — choose from the start a tool whose output preserves what the pipeline downstream needs: positions, structure, and confidence, not just characters.

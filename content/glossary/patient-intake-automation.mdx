@@ -1,0 +1,18 @@
+---
+title: "Patient Intake Automation"
+slug: "patient-intake-automation"
+letter: "P"
+tagline: "The clipboard, replaced — intake forms captured, extracted, and populated into the record before the visit starts."
+description: "Patient intake automation digitizes registration and history forms — extraction into EHR fields, reducing wait-room paperwork and re-entry."
+category: "Healthcare"
+tags: ["patient intake", "registration", "healthcare automation", "EHR"]
+publishedAt: "2026-07-11"
+relatedTerms: ["handwritten-form-digitization", "ehr-data-extraction", "medical-referral-automation"]
+status: "published"
+---
+
+Patient intake automation is the digitization of registration and history-taking: the demographic form, insurance card, consent documents, and medical history questionnaire a patient completes — on paper in the waiting room or digitally beforehand — extracted and populated directly into the EHR rather than re-keyed by front-desk staff. Intake is healthcare's most universal document friction point: every visit generates it, errors here propagate through billing and clinical records alike, and the clipboard-and-re-entry pattern is exactly the kind of redundant manual work document AI targets first.
+
+The processing spans the intake packet's mixed content. Demographic and insurance fields extract via form-field and card-OCR machinery (the insurance card's payer, plan, and member ID feeding eligibility checks in real time, catching coverage problems before the visit rather than at billing). Handwritten history sections — medications, allergies, past conditions, family history — need the handwriting and form-digitization stack, with field-type priors doing real work (the allergy field constrained to a medication-name vocabulary catches misreads standard language models wouldn't flag). Signature and consent capture confirms completion of required authorizations, logged for compliance. And identity resolution matches the intake to the correct patient record — critical where duplicate or mismatched records cause real clinical risk, not just administrative annoyance.
+
+The deployment pattern favors prevention over correction: digital pre-visit intake (patients completing structured forms via portal or tablet) eliminates the recognition problem entirely for those who use it, with paper-and-OCR as the fallback for those who don't — a channel-shift strategy this glossary's capture entries recommend generally, applied to the highest-volume healthcare document there is. Where OCR remains necessary, PHI handling governs deployment as throughout healthcare document AI: processing within covered infrastructure, extracted fields flowing to the EHR with confidence and provenance, and low-confidence entries (the illegible allergy, the ambiguous medication) held for staff verification before they reach a clinical record anyone will rely on.

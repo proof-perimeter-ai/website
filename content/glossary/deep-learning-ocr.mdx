@@ -1,0 +1,18 @@
+---
+title: "Deep Learning OCR"
+slug: "deep-learning-ocr"
+letter: "D"
+tagline: "The generation gap in text recognition — neural networks that learned to read where rules used to try."
+description: "Deep learning OCR uses neural networks — CNNs, sequence models, transformers — for text recognition robust to fonts, handwriting, and degradation."
+category: "OCR & Recognition"
+tags: ["deep learning", "OCR", "neural networks", "text recognition"]
+publishedAt: "2026-07-11"
+relatedTerms: ["ai-ocr-models", "transformer-based-ocr", "sequence-to-sequence-ocr"]
+status: "published"
+---
+
+Deep learning OCR is text recognition performed by neural networks trained on data, as distinct from the classical engines built from hand-engineered features and rules. The classical approach — binarize, segment characters, match against font-derived features, correct with dictionaries — served well on clean printed pages and degraded sharply outside them. Deep learning inverted the design: instead of engineers specifying what an "A" looks like, models learn it from millions of examples spanning fonts, scripts, distortions, and handwriting — and with it, the tolerance for real-world mess that rules never achieved.
+
+The architectural lineage tracks broader deep learning history. Convolutional networks first handled detection (finding text) and classification (reading characters); the pivotal move was recognizing lines rather than characters — CRNN architectures with CTC training read a whole text line as a sequence, sidestepping the segmentation problem that broke classical engines on touching or degraded characters, and letting learned language context resolve individual ambiguity. Attention-based encoder-decoders and then transformers pushed further, treating recognition as image-to-text generation; today's vision-language models subsume OCR entirely, reading pages as one capability among many. Each generation traded more compute for more robustness — and the engineering craft lies in choosing the point on that curve a workload actually needs.
+
+Practically, deep learning OCR redefined what counts as machine-readable. Handwriting, phone photos, low-resolution faxes, dense multilingual pages — categories classical OCR effectively excluded — became processable, which is what opened document automation to the document types institutions actually struggle with. It also changed the improvement model: accuracy on a difficult domain is no longer capped by an engine's design but by training data — a fine-tuning path from "the OCR can't read our documents" to a model that can, on hardware as modest as commodity CPUs when the model is sized to the task.

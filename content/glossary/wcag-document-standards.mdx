@@ -1,0 +1,18 @@
+---
+title: "WCAG Document Standards"
+slug: "wcag-document-standards"
+letter: "W"
+tagline: "The web accessibility standard's document-applicable requirements — the criteria automated tagging is built against."
+description: "WCAG document standards apply the Web Content Accessibility Guidelines' relevant success criteria to documents — the benchmark automated remediation targets."
+category: "Accessibility"
+tags: ["WCAG", "accessibility standards", "compliance", "document accessibility"]
+publishedAt: "2026-07-11"
+relatedTerms: ["accessible-pdf-compliance", "screen-reader-compatibility", "automated-accessibility-tagging"]
+status: "published"
+---
+
+WCAG document standards refer to the application of the Web Content Accessibility Guidelines — the internationally recognized accessibility standard developed primarily for web content — to documents specifically, since many of WCAG's success criteria apply directly to document accessibility even though the standard wasn't authored with PDFs and Office documents as its primary target. Organizations subject to accessibility regulations (Section 508 in the US public sector and its contractors, the European Accessibility Act, and various national equivalents) frequently reference WCAG conformance levels — A, AA, AAA, with AA being the most commonly required baseline — as the measurable standard their documents must meet, making WCAG the de facto benchmark that automated accessibility tagging and remediation pipelines are built and tested against.
+
+The specific WCAG success criteria most relevant to documents map closely onto themes this glossary's accessibility entries address individually: perceivable content requires text alternatives for non-text content (the alt-text generation this glossary's figure-extraction and automated-tagging entries describe), sufficient color contrast (relevant to both born-accessible document creation and the low-vision-enhancement entry's concerns), and content presentable without relying on visual characteristics alone (a document that conveys meaning only through color, for instance, fails this criterion regardless of how well-tagged its structure otherwise is). Operable and understandable criteria extend to navigable structure (heading hierarchy that supports the screen-reader navigation this glossary's compatibility entry describes) and consistent, predictable organization. Robust criteria require that content work reliably across assistive technologies — a practical requirement that's exactly what proper tagging, as distinct from merely visually-correct-looking formatting, is meant to guarantee.
+
+For document AI programs building automated remediation pipelines, WCAG's success criteria function as the concrete, testable target that structural and semantic tagging aims to satisfy — automated checkers can verify many criteria mechanically (is there alt text present, is heading hierarchy well-formed, does color contrast meet the numeric threshold), which is precisely why automated accessibility tagging pipelines can validate their own output against WCAG criteria as a quality gate before human review, reserving human judgment for the criteria automated checking can't fully assess (is the alt text actually meaningful, does the reading order actually make sense) rather than requiring exhaustive manual review of every criterion on every document — the same automation-plus-targeted-human-verification pattern this glossary applies throughout its accessibility and quality-assurance entries.

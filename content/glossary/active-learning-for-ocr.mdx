@@ -1,0 +1,18 @@
+---
+title: "Active Learning For OCR"
+slug: "active-learning-for-ocr"
+letter: "A"
+tagline: "Let the model pick its own homework — labeling the examples it finds hardest, not ten thousand it already knows."
+description: "Active learning for OCR selects the most informative samples for human labeling, improving recognition models faster with far less annotation effort."
+category: "Models & Training"
+tags: ["active learning", "OCR training", "annotation efficiency", "model improvement"]
+publishedAt: "2026-07-11"
+relatedTerms: ["active-review-learning-loops", "training-data-labeling", "continual-model-training"]
+status: "published"
+---
+
+Active learning for OCR is a training strategy in which the model itself chooses which examples humans should label next — typically the ones it is least confident about or that disagree most across model variants. Instead of annotating a random ten thousand document images and hoping the hard cases are represented, an active learning loop runs the current model over a large unlabeled pool, ranks samples by informativeness (low confidence, high entropy, disagreement between ensemble members), and sends only the top slice to annotators. The model retrains on the new labels and the cycle repeats.
+
+The economics are compelling because OCR annotation is expensive and most of it is wasted on easy examples. A model that already reads clean printed invoices at 99.5% accuracy learns nothing from another thousand clean invoices; it learns from the faded thermal receipts, the cursive annotations, the stamps overlapping text, the low-resolution faxes. Active learning concentrates the labeling budget exactly there — practitioners routinely report reaching a target accuracy with a fraction of the labels random sampling would require.
+
+In production document pipelines, active learning often runs implicitly through the human-in-the-loop review queue: the documents that fall below the confidence threshold are, by construction, the ones the model found hardest, and every reviewer correction is a label for precisely such a case. Feeding those corrections back into training — with care to avoid feedback bias, since reviewed samples aren't a random slice of traffic — turns the operational review process into a continuous, self-targeting improvement loop.

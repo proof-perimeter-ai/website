@@ -1,0 +1,18 @@
+---
+title: "Retrieval-Augmented Generation (RAG) For Documents"
+slug: "retrieval-augmented-generation-rag-for-documents"
+letter: "R"
+tagline: "Give the model a library card instead of asking it to memorize the library."
+description: "RAG for documents retrieves the most relevant passages from a document corpus and feeds them to an LLM, grounding its answers in your actual files."
+category: "RAG & Search"
+tags: ["RAG", "retrieval-augmented generation", "document search", "LLM grounding"]
+publishedAt: "2026-07-11"
+relatedTerms: ["document-embeddings", "vector-search-for-documents", "document-chunking-strategies"]
+status: "published"
+---
+
+Retrieval-augmented generation (RAG) is the architecture that lets a large language model answer questions about documents it was never trained on: when a query arrives, the system first retrieves the most relevant passages from a document corpus, then hands those passages to the model as context for generating the answer. Instead of hoping the model memorized your loan policies or contracts, RAG fetches the actual text and asks the model to reason over it — which grounds answers in source material and allows citations back to specific pages.
+
+The retrieval side is where document quality is won or lost. Documents are split into chunks, each chunk is converted into an embedding vector that captures its meaning, and vectors are stored in an index that supports semantic search. Every step hides consequential decisions: chunk along section boundaries or fixed token counts, embed tables as text or as structure, index at the paragraph or the page level. A RAG system built on badly parsed documents — tables flattened into word soup, multi-column pages read in the wrong order, headers glued to body text — will retrieve incoherent fragments, and no downstream model can compensate.
+
+That is the under-appreciated dependency: RAG quality is document processing quality. Enterprise teams routinely discover that upgrading the parsing and chunking layer improves answer accuracy more than upgrading the language model. For sensitive corpora — client files, medical records, deal documents — the same residency constraints that govern extraction apply to RAG infrastructure: the embeddings, the vector index, and the retrieval pipeline all contain the document's content in recoverable form, and regulated institutions increasingly run the entire stack inside their own perimeter.

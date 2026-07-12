@@ -1,0 +1,18 @@
+---
+title: "Screen Reader Compatibility"
+slug: "screen-reader-compatibility"
+letter: "S"
+tagline: "Not just readable — navigable: the structural test every accessible document must actually pass."
+description: "Screen reader compatibility requires proper document structure — real text, tagged hierarchy, reading order — that assistive technology can navigate correctly."
+category: "Accessibility"
+tags: ["screen readers", "accessibility", "assistive technology", "document structure"]
+publishedAt: "2026-07-11"
+relatedTerms: ["accessible-document-formats", "accessible-pdf-compliance", "automated-accessibility-tagging"]
+status: "published"
+---
+
+Screen reader compatibility is the practical, testable outcome that the accessible-document-formats and accessible-PDF-compliance entries describe in policy terms: does a screen reader — the assistive technology blind and low-vision users depend on to have documents read aloud and navigated by structure — actually work correctly on this document? It's a more concrete standard than "is this document accessible," because it names a specific, verifiable interaction: can a user navigate by heading, does the reader announce table structure so cell relationships make sense audibly, does image alt text convey meaningful content, and does the reading order match how the document should logically flow.
+
+The technical requirements this compatibility depends on are the structural properties document AI's parsing and layout-analysis capabilities can recover and encode: text must be real, machine-readable text rather than an image of text (OCR's basic contribution to accessibility — a scanned page with no OCR layer is functionally invisible to a screen reader, announced as nothing at all); heading hierarchy must be tagged with actual semantic levels, not merely styled to look like headings visually, since a screen reader navigates by the tag, not the font size; tables need explicit header-cell relationships so a screen reader can announce "column: total, row: March" rather than reading cell contents as an undifferentiated stream; reading order must match logical flow, since a screen reader traverses the tagged order regardless of visual position, meaning the same reading-order errors that corrupt RAG chunking corrupt screen-reader navigation identically; and images require meaningful alternative text describing their actual content and purpose, not a filename or a generic placeholder.
+
+Testing compatibility properly means going beyond automated structural checkers (which catch missing tags and broken hierarchy reliably) to actual screen-reader testing — navigating the document with the same tools and techniques a blind user would employ, because some failures only surface in that experience: alt text that's technically present but unhelpful, a reading order that passes automated checks but doesn't make practical sense when heard sequentially, or table navigation that technically has headers but doesn't announce them usefully at the complexity the table actually presents. This is why serious remediation programs pair automated tagging (document AI's contribution, operating at the scale a manual-only approach could never reach) with genuine assistive-technology testing on a meaningful sample — the automation extends reach, the testing verifies the automation actually achieved the outcome that was the whole point.

@@ -1,0 +1,18 @@
+---
+title: "Event-Driven Document Workflows"
+slug: "event-driven-document-workflows"
+letter: "E"
+tagline: "The document arrives, an event fires, the process wakes — architecture that reacts instead of polling."
+description: "Event-driven document workflows react to document events — arrival, extraction complete, review resolved — via queues and triggers, not schedules."
+category: "Workflow & Automation"
+tags: ["event-driven", "architecture", "triggers", "asynchronous"]
+publishedAt: "2026-07-11"
+relatedTerms: ["document-workflow-automation", "document-ingestion-pipeline", "real-time-document-processing"]
+status: "published"
+---
+
+Event-driven document workflows are processing architectures that react to occurrences rather than run on schedules: a document's arrival emits an event; the classification service consumes it and emits "classified"; extraction consumes that; "extraction complete" wakes validation; "review resolved" resumes the case that was waiting on a human. Each step subscribes to what it cares about and publishes what it produces, with queues and event buses carrying the flow — the alternative to both batch schedules (documents waiting for the nightly run) and monolithic pipelines (one service owning every step in lockstep).
+
+The architectural benefits map well onto document processing's realities. Elasticity: intake volume is spiky (month-end floods, campaign surges), and queue-buffered consumers scale independently — ten extraction workers at peak, one at midnight — while the queue absorbs what momentarily exceeds capacity. Resilience: a failing step's events wait rather than vanish; retry and dead-letter semantics give every document a fate (processed, retried, or parked with a reason) instead of a silent loss. Composability: new consumers attach without touching producers — the fraud-scoring service subscribing to "extraction complete" alongside the existing flow, shadow-mode models consuming real traffic harmlessly. And long-lived waits come naturally: the case paused for a customer's missing document holds no resources — it simply resumes when the arrival event fires, days later.
+
+The disciplines are the event-architecture classics with document flavor: idempotent consumers (the same document event delivered twice must not double-post the invoice), ordering awareness where sequence matters (the amendment processed before its base contract corrupts state), event schemas versioned like the APIs they are, and end-to-end observability — correlation IDs threading each document's events into a coherent trace, because a workflow distributed across a dozen services still owes the auditor a single, ordered story of what happened to this file.

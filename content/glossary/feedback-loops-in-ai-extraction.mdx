@@ -1,0 +1,18 @@
+---
+title: "Feedback Loops In AI Extraction"
+slug: "feedback-loops-in-ai-extraction"
+letter: "F"
+tagline: "Every correction is a lesson — if the pipeline is built to learn it."
+description: "Feedback loops in AI extraction route human corrections and outcomes back into models, thresholds, and rules — the mechanism of continuous improvement."
+category: "Models & Training"
+tags: ["feedback loops", "corrections", "improvement", "learning systems"]
+publishedAt: "2026-07-11"
+relatedTerms: ["active-review-learning-loops", "continuous-learning-systems", "human-in-the-loop-verification"]
+status: "published"
+---
+
+Feedback loops in AI extraction are the mechanisms that route information about the system's performance back into the system: reviewer corrections becoming training data, validation failures tuning extraction prompts and rules, downstream outcomes (the payment that bounced, the reconciliation that failed) tracing back to the extractions that caused them, and confidence calibration updating against observed correctness. The loop is what separates a system that improves with use from one that merely operates — and its presence or absence is largely determined at design time, by whether the pipeline captures its own performance signals in usable form.
+
+The signal sources are richer than the review queue alone. Explicit corrections are the premium feed — a human looked, disagreed, and fixed, yielding a labeled hard case — but they carry selection bias (only low-confidence traffic gets reviewed) that retraining must balance with random audit samples of "confident" output. Implicit signals scale wider: the validation rule that fired, the exported record edited downstream in the ERP (an error that escaped review and was caught by the business — the most valuable and least captured signal in most deployments), the exception codes, the customer dispute. Each requires plumbing: identity that links the downstream event back through export and normalization to the original extraction and its source region — data lineage doing double duty as the feedback loop's address system.
+
+The loop's dangers are the loops' classics: feedback bias (training only on corrected failures skews the model), label noise (reviewer errors trained in as truth), and drift amplification (a miscalibrated confidence gate sends the wrong traffic to review, which mis-trains the next model, which further miscalibrates the gate). The countermeasures are curation, adjudication, balanced sampling, and — always — the sealed evaluation benchmark that no feedback touches, standing outside the loop to say whether all this learning actually helped.

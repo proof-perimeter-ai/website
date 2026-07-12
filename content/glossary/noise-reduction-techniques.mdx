@@ -1,0 +1,18 @@
+---
+title: "Noise Reduction Techniques"
+slug: "noise-reduction-techniques"
+letter: "N"
+tagline: "The filter toolkit — median, morphological, frequency, and learned — matched to the noise each channel actually makes."
+description: "Noise reduction techniques clean document images — median and morphological filters, frequency methods, learned denoisers — matched to noise type."
+category: "Image Preprocessing"
+tags: ["noise reduction", "filters", "denoising", "image processing"]
+publishedAt: "2026-07-11"
+relatedTerms: ["document-denoising", "image-preprocessing", "low-quality-scan-processing"]
+status: "published"
+---
+
+Noise reduction techniques are the method toolkit behind document denoising: the specific filters and models that remove specific contaminations, chosen by matching technique to noise type — because noise is not one phenomenon, and the filter that cures one kind smears another. The document-denoising entry covers the *why* and the pipeline placement; this one inventories the *how*.
+
+The classical toolkit maps to noise taxonomies. Impulse noise (salt-and-pepper speckle from scanning and fax transmission): median filtering — replacing each pixel with its neighborhood median — removes isolated specks while preserving edges far better than averaging; morphological operations (opening, closing) clear specks and fill pinholes with structuring elements sized below stroke width. Gaussian and sensor noise (low-light phone captures): edge-preserving smoothers — bilateral filtering, non-local means — average within similar regions without blurring the text edges that are the signal. Periodic noise (halftone screens from printed photos, interference patterns): frequency-domain filtering — notching the offending frequencies in the Fourier spectrum — removes what spatial filters can't isolate. Structured artifacts (scanner streaks, fax lines): targeted line detection and removal, with the care that table rulings and underlines are structure, not noise — the classic collateral-damage case.
+
+Learned denoising subsumes and exceeds the classical set on compound degradation: encoder-decoder networks trained on noisy/clean document pairs (real or synthetically corrupted) handle mixtures no single filter models, and current restoration models denoise, deblur, and enhance jointly. The selection discipline is empirical and channel-aware — noise profiled per intake source, candidate techniques scored by downstream recognition accuracy rather than visual appeal — and the conservatism rule caps everything: every filter destroys some information along with the noise, thin strokes and small punctuation die first, and the pipeline that denoises hardest is often quietly erasing the decimal points it was built to read.

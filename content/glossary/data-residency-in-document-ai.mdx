@@ -1,0 +1,18 @@
+---
+title: "Data Residency In Document AI"
+slug: "data-residency-in-document-ai"
+letter: "D"
+tagline: "The document is stored in Frankfurt — but where did the model that read it run? Residency's newest question."
+description: "Data residency in document AI concerns where documents are processed, not just stored — inference location, model APIs, and sovereignty obligations."
+category: "Compliance & Security"
+tags: ["data residency", "sovereignty", "compliance", "deployment"]
+publishedAt: "2026-07-11"
+relatedTerms: ["edge-device-document-processing", "hipaa-compliant-document-processing", "gdpr-data-extraction-compliance"]
+status: "published"
+---
+
+Data residency in document AI is the question of where document data physically exists at every moment of its processing life — and it has a dimension that storage-era residency policies never contemplated: inference location. An institution can hold its documents in an in-country data center and still send every page, at processing time, to a model API in another jurisdiction. The document is "stored in Frankfurt"; the KYC pack was *read* in a US-operated inference cluster. Residency and sovereignty regimes — the EU's data protection and operational-resilience frameworks, Gulf regulators' data rules, India's DPDP, Singapore MAS guidance — increasingly force institutions to answer for that distinction.
+
+The technical map of exposure is broader than the upload itself. Documents transit to the inference endpoint; prompts and extracted outputs may be logged or retained by the provider; embeddings and caches derived from documents carry recoverable content; fine-tuning on institutional data plants it in model weights; and support or abuse-monitoring access can widen who sees what. Contractual controls (regional endpoints, zero-retention terms, processing agreements) address parts of this; architectural controls address it structurally — running inference inside the institution's own VPC, sovereign cloud, or on-premises hardware, so documents never cross the perimeter at all. The economics of that architecture changed when compact fine-tuned models began matching large hosted models on defined document tasks while running on commodity CPUs: in-perimeter stopped requiring a GPU estate.
+
+The operational discipline is evidence, not assertion. A residency policy states that documents are processed in-region; a defensible program can demonstrate it — per document: where inference ran, under which deployment, with what retention. That provenance-level answer is what regulators' questions are converging toward, and it changes procurement: the evaluation of a document AI platform now includes not just accuracy and cost but the deployment topology it can honestly commit to, and the per-document evidence it produces about where the reading actually happened.

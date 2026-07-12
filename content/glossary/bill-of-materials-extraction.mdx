@@ -1,0 +1,18 @@
+---
+title: "Bill Of Materials Extraction"
+slug: "bill-of-materials-extraction"
+letter: "B"
+tagline: "Every part, quantity, and reference number — pulled intact from engineering documents where a wrong digit means a wrong build."
+description: "Bill of materials extraction parses BOM tables from engineering and manufacturing documents into structured part lists with quantities and references."
+category: "Data Extraction"
+tags: ["bill of materials", "BOM", "manufacturing documents", "table extraction"]
+publishedAt: "2026-07-11"
+relatedTerms: ["table-extraction-from-documents", "parts-catalog-ai", "technical-manual-parsing"]
+status: "published"
+---
+
+Bill of materials (BOM) extraction is the automated parsing of BOM tables — the itemized lists of parts, quantities, reference designators, materials, and specifications that accompany engineering drawings, manufacturing work orders, and procurement documents — into structured data that ERP, PLM, and procurement systems can consume. BOMs arrive as PDF tables, drawing title blocks, spreadsheet exports flattened into documents, and supplier quotes, and re-keying them is both slow and dangerous: a transposed quantity or a misread part number propagates into wrong orders, wrong builds, and stopped lines.
+
+The extraction task is table understanding under engineering-specific pressure. Part numbers are long, dense alphanumeric strings where OCR confusions (O/0, I/1, B/8) are maximally harmful and context provides little correction; tables nest sub-assemblies with indentation levels that carry meaning; rows continue across pages; revision clouds and annotations amend printed values; and the same document may mix imperial and metric units. Effective systems pair layout-aware table extraction with domain validation — part numbers checked against the item master, quantities sanity-checked against assembly counts, units normalized — so that errors surface as flagged exceptions rather than silent data corruption.
+
+The integration context gives BOM extraction its value: matched against the item master, an extracted BOM reveals unknown or superseded parts; compared across revisions, it produces an engineering change summary; fed into procurement, it becomes RFQs and orders without transcription. Because a BOM is effectively an instruction set for spending money and building product, mature deployments keep confidence-based human review on the fields that steer those actions, and preserve the link from every structured row back to its exact location on the source drawing or document.

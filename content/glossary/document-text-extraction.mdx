@@ -1,0 +1,18 @@
+---
+title: "Document Text Extraction"
+slug: "document-text-extraction"
+letter: "D"
+tagline: "Getting the words out — from the PDF's text layer or the scan's pixels — as the raw material for everything else."
+description: "Document text extraction recovers text from files — native PDF layers or OCR on images — producing the raw content all document AI builds on."
+category: "Data Extraction"
+tags: ["text extraction", "PDF text", "OCR", "content recovery"]
+publishedAt: "2026-07-11"
+relatedTerms: ["pdf-text-extraction", "optical-character-recognition", "document-parsing-accuracy"]
+status: "published"
+---
+
+Document text extraction is the recovery of textual content from document files — the foundational operation every downstream capability consumes. It has two fundamentally different paths depending on what the file contains: born-digital documents (PDFs with text layers, office formats) carry their text as data, extractable directly and losslessly; scanned and photographed documents carry only pixels, requiring OCR to recognize the text from the image. Real repositories mix both, plus the hybrid trap: PDFs that look digital but contain scanned pages, and PDFs whose text layer exists but is corrupt — a prior OCR pass's errors embedded as if they were truth. Robust pipelines detect which case they're facing per page rather than assuming.
+
+The digital path is easier but not trivial. A PDF's text layer stores positioned glyphs, not paragraphs — extraction must reconstruct reading order from coordinates (columns, wrapped lines, hyphenation), decode font encodings that sometimes map glyphs to wrong or private-use characters, handle text rendered as vector outlines (invisible to naive extraction), and decide what to do with layers, annotations, and form fields. The OCR path inherits everything this glossary covers under recognition: preprocessing, detection, recognition models, and confidence. Both paths converge on the same output discipline: text plus geometry (where each word sits) plus provenance (which path produced it, at what confidence) — because downstream consumers from extraction to RAG need to know not just what the text says but how much to trust it and where to point when asked.
+
+The quality question is often invisible until it isn't: text extraction failures are silent (missing regions, scrambled order, mojibake from encoding faults) and they poison everything downstream — the field extractor that can't find what the text layer scrambled, the search index that can't match what was never extracted. Auditing extraction against rendered pages, per document source, is cheap insurance that surprisingly few pipelines buy.

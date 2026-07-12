@@ -1,0 +1,18 @@
+---
+title: "Image Skew Correction"
+slug: "image-skew-correction"
+letter: "I"
+tagline: "Two degrees off is enough to hurt — measuring and undoing the tilt in captured pages."
+description: "Image skew correction estimates and reverses rotational tilt in document images — restoring the horizontal text alignment recognition expects."
+category: "Image Preprocessing"
+tags: ["skew correction", "rotation", "preprocessing", "alignment"]
+publishedAt: "2026-07-11"
+relatedTerms: ["document-deskewing", "perspective-correction", "image-preprocessing"]
+status: "published"
+---
+
+Image skew correction is the estimation and reversal of rotational tilt in document images — the same operation the field also calls document deskewing, approached here from the image-processing side: given a page captured a few degrees off-axis, measure the angle and rotate it back so text baselines run horizontal. Small skews are ubiquitous (paper feeds crooked, cameras tilt, originals were photocopied askew decades ago) and quietly corrosive: line segmentation assumes near-horizontal bands, table cells stop aligning with their grid, and recognition models see character shapes rotated away from their training distribution.
+
+Angle estimation exploits documents' geometric regularity. Projection profiles score candidate angles by how sharply horizontal pixel histograms separate text lines from gaps — the true angle maximizes the contrast. Hough transforms find dominant line orientations from baselines, rules, and table borders. Frequency-domain analysis reads the text-line periodicity's orientation from the Fourier spectrum. Connected-component methods fit baselines through character clusters. Each has failure modes — sparse pages starve projection profiles, decorative diagonals mislead Hough voting — so robust implementations combine estimators or fall back to learned angle regressors on difficult layouts. Correction itself is a rotation with appropriate interpolation and canvas handling; the subtlety is knowing when *not* to correct — genuinely rotated content (landscape tables in portrait documents, angled stamps) and multi-orientation pages need region-level decisions, not a global spin.
+
+Its adjacent siblings complete the geometric toolkit: orientation detection handles the coarse 90/180/270-degree cases first (skew correction assumes approximate uprightness), perspective correction handles planar tilt from off-axis photography, and dewarping handles the nonlinear curves a single angle can't express. Skew telemetry per intake channel earns its keep operationally — a drift in a branch scanner's skew distribution is a hardware maintenance ticket announcing itself before accuracy visibly drops.

@@ -1,0 +1,18 @@
+---
+title: "Document Embeddings"
+slug: "document-embeddings"
+letter: "D"
+tagline: "Meaning as coordinates — documents mapped into vector space where similar content sits close together."
+description: "Document embeddings encode text and pages as vectors capturing meaning — powering semantic search, similarity, and RAG retrieval."
+category: "RAG & Search"
+tags: ["embeddings", "vectors", "semantic search", "representation"]
+publishedAt: "2026-07-11"
+relatedTerms: ["vector-search-for-documents", "semantic-search-over-documents", "document-chunking-strategies"]
+status: "published"
+---
+
+Document embeddings are vector representations of document content — passages, pages, or whole files encoded as points in a high-dimensional space where geometric proximity tracks semantic similarity. A paragraph about "terminating the agreement for cause" and a query about "cancelling the contract when the vendor breaches" land near each other despite sharing few words; that property is what powers semantic search, similarity matching, clustering, deduplication, and the retrieval half of every RAG system. Embedding models — transformer encoders trained on similarity objectives — produce them; vector indexes store and search them.
+
+The document-specific craft lies in what gets embedded and how. Chunk-level embeddings are the RAG workhorse, which makes embedding quality inseparable from parsing and chunking quality: an embedding of a mangled table or a mid-sentence fragment encodes the mangling. Content type matters — tables, dense with numbers and sparse with prose, embed poorly as raw text and often better as generated descriptions; multilingual corpora need models whose vector space aligns across languages; and domain vocabulary (legal, clinical, financial) rewards domain-tuned embedding models where general ones blur crucial distinctions. Metadata typically rides alongside rather than inside the vector: filters on document type, date, and jurisdiction constrain the search space before geometry ranks what remains.
+
+Two operational facts deserve more attention than they get. Embeddings are content in recoverable form — inversion attacks reconstruct substantial text from vectors, so embedding stores inherit the source documents' confidentiality classification and residency constraints; "we only send the vectors out" is not an isolation argument. And embeddings are model-versioned: vectors from different models (or versions) are incomparable, so an embedding-model upgrade means re-embedding the corpus — a planned migration, with the index rebuilt and retrieval quality re-benchmarked, not a drop-in swap.

@@ -1,0 +1,18 @@
+---
+title: "Signature Detection"
+slug: "signature-detection"
+letter: "S"
+tagline: "Was it signed? Where? By whom, if the document says — the presence check that precedes verification."
+description: "Signature detection locates and confirms the presence of signatures in documents — the completeness check that precedes identity verification."
+category: "Document Understanding"
+tags: ["signature detection", "completeness", "document verification", "forms"]
+publishedAt: "2026-07-11"
+relatedTerms: ["handwritten-signature-verification", "document-image-segmentation", "logo-and-stamp-detection"]
+status: "published"
+---
+
+Signature detection is the localization and presence-confirmation of signatures within a document — answering "was this signed, and where" — as distinct from the harder question the handwritten-signature-verification entry addresses, which is "does this signature actually belong to the claimed signer." Detection is a necessary and much simpler first step that a great many document workflows need on its own: contract execution checks, form completeness validation, and consent documentation all frequently care primarily about whether a signature exists in the required location, with identity verification either unnecessary for the use case or handled through a separate, stronger mechanism entirely.
+
+The detection task is object detection applied to a visually distinctive but variable target: signatures share loose characteristics (typically freehand strokes with different visual texture than printed or typed text, occupying a roughly predictable region like a signature line or block) but vary enormously in size, style, and legibility between individuals, meaning detection models train on the general visual pattern of "handwritten mark in a signature-appropriate context" rather than any specific signature's shape. Segmentation challenges compound the task in exactly the ways this glossary's overlapping-content entries describe: signatures frequently overlap printed text, cross signature lines, or sit near stamps and dates, requiring the same layer-separation techniques applied to any occluded-content problem, and detection models need to distinguish a genuine signature from other handwritten marks that might appear near a signature block — an initial, a date, a witness's separate signature — each carrying different document meaning despite similar visual character.
+
+Multi-page and multi-signature documents add a structural dimension detection alone must resolve: contracts and forms frequently require signatures in multiple locations (each page initialed, a final signature block, sometimes multiple parties signing in designated areas), and completeness checking means confirming *all* required signature locations are filled, not just that a signature exists somewhere in the document — a distinction that matters enormously for the document-completeness workflows this glossary's form-extraction and workflow-automation entries describe, where a contract missing one party's signature on one page is materially incomplete despite being fully signed everywhere else.

@@ -1,0 +1,18 @@
+---
+title: "Knowledge Graph Extraction"
+slug: "knowledge-graph-extraction"
+letter: "K"
+tagline: "From pages to a web of facts — entities and relationships lifted out of documents and linked."
+description: "Knowledge graph extraction builds entity-relationship graphs from documents — structured networks of who, what, and how they connect."
+category: "Data Extraction"
+tags: ["knowledge graphs", "relationships", "entities", "graph extraction"]
+publishedAt: "2026-07-11"
+relatedTerms: ["relationship-extraction", "entity-linking", "entity-resolution"]
+status: "published"
+---
+
+Knowledge graph extraction is the construction of entity-relationship graphs from document content: the people, companies, products, places, and events documents mention, connected by the relationships documents assert — owns, employs, supplies, guarantees, litigates against, is a subsidiary of. Where field extraction produces records and RAG produces retrievable passages, graph extraction produces a *network*: a queryable web of facts that supports the questions neither tables nor search answer well — paths ("how is this vendor connected to this sanctioned entity?"), aggregations over structure ("total exposure across everything this group ultimately owns"), and pattern detection (the fraud ring's shared addresses, the undisclosed related parties).
+
+The pipeline composes capabilities this glossary treats individually, pointed at a graph target: named entity recognition finds the mentions; entity resolution and linking collapse them into canonical nodes (the step where graph quality is won or lost — a graph of unresolved name variants is noise wearing structure); relationship extraction reads the edges from prose, tables, and layout (the org chart's lines, the contract's defined parties, the filing's ownership percentages); and event extraction adds the time-stamped happenings that give the graph its dynamics. Language models upgraded every stage — reading relationships expressed across sentences and documents, normalizing them into typed edges with attributes — while the graph disciplines remain: an ontology defining what node and edge types exist, provenance on every assertion (which document, which passage — because graph facts get challenged), and confidence that survives into the graph for query-time filtering.
+
+The consuming applications concentrate where connection *is* the question: financial crime and KYB (ownership chains, control structures, network risk), due diligence (the target's web of obligations and affiliations), competitive and research intelligence, and increasingly GraphRAG — retrieval that walks the graph alongside vector search, giving language models multi-hop context that passage retrieval alone assembles poorly.

@@ -1,0 +1,18 @@
+---
+title: "Domain-Specific Model Tuning"
+slug: "domain-specific-model-tuning"
+letter: "D"
+tagline: "The generalist knows documents; the tuned model knows *your* documents — and the gap is measurable."
+description: "Domain-specific model tuning adapts document AI models to an organization's documents — layouts, language, quirks — for accuracy generalists can't reach."
+category: "Models & Training"
+tags: ["fine-tuning", "domain adaptation", "specialization", "model tuning"]
+publishedAt: "2026-07-11"
+relatedTerms: ["fine-tuning-for-documents", "custom-ocr-model-training", "transfer-learning-for-document-ai"]
+status: "published"
+---
+
+Domain-specific model tuning is the adaptation of general document AI models to a particular domain's documents: the insurer's claim forms, the bank's trade finance paper, the healthcare network's referral formats — with their characteristic layouts, vocabularies, abbreviations, degradation patterns, and edge cases. General models arrive knowing documents; tuning teaches them *these* documents, and the improvement concentrates exactly where general performance is weakest: the domain's unusual structures, its jargon-dense fields, its hardest capture channels.
+
+The methods span a cost-effect spectrum. Full fine-tuning updates all weights on domain data — maximal adaptation, maximal training cost and forgetting risk. Parameter-efficient methods (LoRA and adapters) tune small weight subsets, capturing most of the gain at a fraction of the compute while preserving the base model's generality — the current default for VLM adaptation. Below the weight level sit lighter interventions worth exhausting first: schema and prompt engineering that encode domain knowledge as instruction, few-shot examples from the domain, and retrieval that supplies domain context at inference. The decision discipline is empirical: a domain benchmark, the best untuned configuration as baseline, and tuning justified by the measured gap — because tuning also buys obligations (training data curation, evaluation infrastructure, retraining as the domain drifts).
+
+The strategic dimension echoes across this glossary: tuned models embody proprietary knowledge of the institution's document distribution — an accumulating asset fed by the review loop's corrections — and they change the deployment calculus, since a compact tuned model frequently matches a frontier generalist on the domain while running at a fraction of the cost, on hardware modest enough to live inside the institution's own perimeter. That combination — better on what matters, cheaper at volume, deployable where the documents must stay — is why domain tuning is usually the endgame of serious document AI programs, entered when the measurement says the generalist has given what it has.

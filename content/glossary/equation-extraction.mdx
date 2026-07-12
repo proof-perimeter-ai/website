@@ -1,0 +1,18 @@
+---
+title: "Equation Extraction"
+slug: "equation-extraction"
+letter: "E"
+tagline: "From typeset math to LaTeX — recovering formulas that plain OCR reads as alphabet soup."
+description: "Equation extraction recognizes mathematical notation in documents — converting typeset and handwritten formulas into LaTeX or MathML."
+category: "Data Extraction"
+tags: ["equation extraction", "math OCR", "LaTeX", "scientific documents"]
+publishedAt: "2026-07-11"
+relatedTerms: ["latex-extraction-from-pdf", "code-block-extraction", "figure-and-diagram-extraction"]
+status: "published"
+---
+
+Equation extraction is the recognition of mathematical notation in documents — locating formulas and converting them into structured representations like LaTeX or MathML that preserve their actual meaning. Standard OCR fails math categorically: an integral with limits, a fraction stack, a subscripted tensor index all read as scrambled character sequences when processed as linear text, because mathematical notation is fundamentally two-dimensional — meaning lives in spatial arrangement (superscript versus subscript versus inline), in symbol relationships (the limits belong to that integral), and in a symbol vocabulary far beyond alphanumerics.
+
+The task splits into detection and recognition. Detection locates math regions — display equations, inline expressions woven through sentences (the harder case, requiring token-level discrimination between the variable *n* and the letter n), and numbered equation blocks whose labels support cross-referencing. Recognition then parses the two-dimensional structure into a serialized form: modern approaches treat it as image-to-sequence generation — transformer encoder-decoders trained on rendered-LaTeX/source pairs at scale — with syntactic validity of the output (does the LaTeX compile? do the braces balance?) serving as a useful built-in check. Handwritten math, from tablet input to scanned worksheets, adds the recognition difficulty of handwriting to the structural difficulty of notation.
+
+Demand comes from several directions: scientific and technical document digitization (papers, textbooks, standards — where searchable, renderable math is the difference between an archive and a corpus), accessibility (MathML feeding screen readers that can speak a formula's structure), RAG over technical content (an equation flattened to noise is unfindable and unusable as context), and patent and engineering workflows where formulas carry the substance. The fidelity bar is exacting — a dropped exponent or swapped subscript produces a *different formula*, plausible and wrong — so pipelines validate structurally, render-and-compare where possible, and treat low-confidence expressions as review items rather than best guesses.

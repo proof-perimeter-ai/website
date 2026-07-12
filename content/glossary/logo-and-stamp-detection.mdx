@@ -1,0 +1,18 @@
+---
+title: "Logo And Stamp Detection"
+slug: "logo-and-stamp-detection"
+letter: "L"
+tagline: "The rubber stamp and the letterhead mark — small graphics carrying identity, authority, and authenticity."
+description: "Logo and stamp detection locates and identifies graphical marks on documents — issuer logos, official stamps, seals — for classification and verification."
+category: "Document Understanding"
+tags: ["logo detection", "stamps", "seals", "graphical marks"]
+publishedAt: "2026-07-11"
+relatedTerms: ["signature-detection", "sealed-or-notarized-document-ocr", "stamped-document-processing"]
+status: "published"
+---
+
+Logo and stamp detection is the location and identification of graphical marks on documents: the issuer's logo that announces which bank's statement this is, the rubber stamps that mark receipt, approval, and payment, the official seals of notaries, registries, and government offices, the certification marks that authorize. These small graphics punch above their pixel count — a logo is often the fastest document-classification feature available, a stamp can change a document's legal status ("PAID", "APPROVED", "RECEIVED with date"), and a seal's presence (or its absence, or its forgery) decides authenticity questions.
+
+Detection is object detection tuned to the mark ecology: models locate candidate regions (logos in headers, stamps anywhere — including squarely across text, rotated, overlapping each other and the signatures they accompany), with recognition then identifying *which* mark: matching against a curated library (the bank logos this pipeline expects, the stamp inventory this registry uses) via embedding similarity, or reading the stamp's own text — date stamps and annotation stamps being hybrid objects where detection hands off to rotation-tolerant OCR. The overlap problem is the technical crux: stamps interpenetrate the content beneath, so segmentation-quality separation preserves both the stamp (as evidence) and the underlying text (for extraction) — the entry on document image segmentation covers the machinery.
+
+The uses split by what the mark asserts. Classification and routing: the logo shortcutting document-type and issuer identification. Workflow state: the approval stamp as a machine-readable process fact (this invoice was authorized; this filing was received on this date). Authenticity: seal and stamp verification against known-genuine references — geometry, ink characteristics, expected placement — feeding forgery scoring, with the adversarial caveats that domain carries: stamps are the most-copied security element precisely because they're the most-trusted visually, so their verification belongs inside a layered forensic stack, not alone.

@@ -1,0 +1,18 @@
+---
+title: "Document Segmentation"
+slug: "document-segmentation"
+letter: "D"
+tagline: "Cutting the content at its joints — pages into regions, files into documents, text into sections."
+description: "Document segmentation divides documents into meaningful units — regions on a page, documents in a bundle, sections in a file — for structured processing."
+category: "Document Understanding"
+tags: ["segmentation", "structure", "regions", "sections"]
+publishedAt: "2026-07-11"
+relatedTerms: ["document-image-segmentation", "document-splitting-ai", "document-layout-analysis"]
+status: "published"
+---
+
+Document segmentation is the umbrella term for dividing document content into meaningful units, and it operates at three distinct granularities that share a name but not a method. Page-level segmentation partitions a page image into regions — text blocks, tables, figures, headers — the visual task underlying layout analysis. File-level segmentation splits multi-document files into their constituent documents — the scanned bundle problem. And content-level segmentation divides a document's text into logical sections — chapters, clauses, topics — the structural task underlying chunking, navigation, and section-targeted extraction. Which sense applies is usually clear from context, but conflating them causes real confusion in requirements and vendor conversations.
+
+Each granularity has its own signals and failure modes. Page-level segmentation reads visual structure (whitespace, alignment, typography) and fails on dense or unconventional layouts. File-level segmentation reads discontinuities (letterheads, page numbering resets, format shifts) and fails on documents without distinctive boundaries. Content-level segmentation reads discourse structure (headings, numbering schemes, topical coherence — legal documents' clause hierarchies being the canonical hard case, where section 12.3(b)(ii) must attach to its parents) and fails when formatting doesn't mirror logic: the heading-free contract, the report whose structure lives in prose transitions.
+
+What unifies them is consequence: segmentation defines the units everything downstream operates on, so its errors are inherited rather than caught. A table split across two regions extracts as two half-tables; a bundle boundary missed merges two customers' documents into one case; a clause severed from its exception chunk-by-chunk inverts a contract's meaning in retrieval. The engineering response is likewise uniform — segment confidence tracked and thresholded, uncertain boundaries routed to cheap human confirmation, and downstream validation (does the extraction reconcile? does the section parse coherently?) treated as a second check on cuts the segmenter got wrong.

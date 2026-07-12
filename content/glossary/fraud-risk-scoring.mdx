@@ -1,0 +1,18 @@
+---
+title: "Fraud Risk Scoring"
+slug: "fraud-risk-scoring"
+letter: "F"
+tagline: "Every submission gets a number — the aggregated suspicion that decides who gets a closer look."
+description: "Fraud risk scoring aggregates fraud signals — document forensics, consistency checks, patterns — into scores that route cases to investigation."
+category: "Compliance & Security"
+tags: ["fraud scoring", "risk models", "detection", "investigation routing"]
+publishedAt: "2026-07-11"
+relatedTerms: ["document-forgery-detection", "synthetic-identity-detection", "claims-triage-automation"]
+status: "published"
+---
+
+Fraud risk scoring is the aggregation of fraud signals into a per-case number that drives routing: the application, claim, or transaction scored for the likelihood that something about it is fraudulent, with low scores flowing through, high scores diverting to investigation, and the band between getting lighter-touch checks. Scoring is the operational answer to an arithmetic problem — fraud signals are individually weak and collectively meaningful, investigation capacity is scarce, and most anomalies are innocent — so the system's job is concentrating expensive human attention where the aggregate evidence justifies it.
+
+Document AI feeds the score its richest signals. Document forensics contributes tampering and template-fraud indicators (metadata anomalies, pixel-level edits, known-bad template fingerprints); extraction-level consistency checks contribute the cross-document contradictions that fabricated cases exhibit (the income that differs between application and statement, the date that can't precede the other date); behavioral and channel signals add capture context (the "scanned" document that was never on paper, the submission pattern); and network features — shared addresses, devices, bank accounts, template fingerprints across supposedly unrelated cases — contribute the ring-detection signals that individual-case review can't see. Models trained on adjudicated historical outcomes weight the ensemble, with the training discipline fraud demands: adversarial drift (fraudsters adapt to whatever the model catches), label delay and noise (fraud confirmed months later, much never confirmed), and severe class imbalance.
+
+Governance is intrinsic because the score touches people: false positives delay legitimate customers and, at worst, accuse them — so thresholds are set against measured precision at each band, adverse actions require human review and explainable findings (the specific signals, not just the number), and fairness monitoring checks that the score's errors don't concentrate demographically. The audit trail runs deep here for a further reason: fraud determinations get litigated, and the institution must show what evidence produced the suspicion and what process turned suspicion into action.

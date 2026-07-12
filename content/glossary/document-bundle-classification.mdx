@@ -1,0 +1,18 @@
+---
+title: "Document Bundle Classification"
+slug: "document-bundle-classification"
+letter: "D"
+tagline: "The 80-page PDF is actually eleven documents — bundle classification finds them and names them."
+description: "Document bundle classification identifies the multiple documents inside combined files — classifying each and its boundaries within scanned packs."
+category: "Document Understanding"
+tags: ["bundle classification", "document packs", "splitting", "multi-document files"]
+publishedAt: "2026-07-11"
+relatedTerms: ["document-splitting-ai", "document-classification", "multi-page-document-processing"]
+status: "published"
+---
+
+Document bundle classification is the combined task of recognizing that a single file contains multiple documents and determining what each one is: the 80-page scanned "loan file.pdf" that is actually an application, two IDs, six payslips, three bank statements, a valuation report, and an employer letter. Real-world intake channels produce bundles constantly — branch scanners batch a customer's whole folder, brokers email consolidated packs, claimants photograph everything at once — and until the bundle is decomposed and classified, nothing downstream (type-specific extraction, completeness checks, routing) can begin.
+
+The task couples two decisions that inform each other: where documents begin and end (splitting), and what each segment is (classification). Boundary signals include layout resets (a new letterhead, a form's first page), page-numbering restarts ("Page 1 of 3" is a gift), format shifts (portrait statements to landscape spreadsheets), and semantic discontinuity; classification signals are the standard visual and textual fingerprints of each document type. Joint models that predict per-page labels plus boundary probabilities outperform decoupled pipelines, because knowing a page is "bank statement, page 2" constrains both questions at once. The stubborn cases are real: documents without distinctive first pages, single-page documents in sequence, the same type back-to-back (three payslips: two boundaries or none?), and appendices that belong to a parent document rather than standing alone.
+
+Downstream, the classified bundle becomes a structured case: each component document routed to its extraction schema, a completeness check run against the process's required-documents list (the missing proof-of-address caught at intake, not at decision time), and duplicates or wrong-customer inclusions flagged. Confidence discipline applies at both levels — uncertain boundaries and uncertain classifications route to quick human confirmation, because a mis-split bundle contaminates every extraction built on it.

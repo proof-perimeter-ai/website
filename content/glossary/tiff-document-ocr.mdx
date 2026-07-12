@@ -1,0 +1,18 @@
+---
+title: "TIFF Document OCR"
+slug: "tiff-document-ocr"
+letter: "T"
+tagline: "The archival scanning format that never quite went away — multi-page, lossless, and still arriving from legacy systems."
+description: "TIFF document OCR handles the format's specific characteristics — multi-page structure, compression variants, and legacy-archive prevalence."
+category: "OCR & Recognition"
+tags: ["TIFF", "scanning format", "legacy systems", "OCR"]
+publishedAt: "2026-07-11"
+relatedTerms: ["pdf-parsing-supported-file-types", "fax-document-ocr", "scanned-document-processing"]
+status: "published"
+---
+
+TIFF document OCR addresses the specific characteristics of a file format that remains surprisingly persistent in document workflows despite PDF's broader dominance: TIFF (Tagged Image File Format) has been the standard output format for professional scanning equipment, fax systems, and archival digitization projects for decades, prized specifically for its lossless compression options and multi-page container capability, which made it the format of choice for institutions digitizing large physical archives — government records offices, healthcare systems, legal document repositories — well before PDF's ubiquity, and which continues arriving from legacy scanning infrastructure and fax gateways that were never updated to output anything else.
+
+The format-specific handling TIFF requires differs from PDF processing in several concrete ways worth understanding for any pipeline that needs to support it. Multi-page structure: a single TIFF file can contain many pages as sequential frames within one file (similar in concept to a multi-page PDF but with different internal encoding), requiring the parsing pipeline to correctly enumerate and process each frame as a distinct page rather than assuming, as some naive image-processing code does, that a TIFF file represents a single image. Compression variants: TIFF supports multiple compression schemes (including uncompressed, LZW, and the CCITT Group 3/4 compression schemes specifically designed for fax and bi-level scanned-document content), and a robust TIFF handler needs to correctly decode whichever variant a given file actually uses rather than assuming one universal format — a common source of silent failures when pipelines built and tested against one compression variant encounter files using another. Bit-depth handling: many archival and fax-originated TIFFs are bi-level (pure black and white, one bit per pixel) rather than grayscale or color, which affects both how the image should be read and what preprocessing and enhancement techniques are appropriate, since bi-level images have already had the binarization decision made for them at capture time, for better or worse.
+
+The practical significance for organizations building document intake pipelines is coverage completeness: a pipeline architected only around PDF and common image formats will silently fail or require manual conversion whenever a TIFF arrives from a legacy scanning system, government records transfer, or fax gateway — exactly the kind of format-support gap this glossary's pdf-parsing-supported-file-types entry warns against more generally, applied to a format that, while less prominent in casual conversation about document AI, remains genuinely common in the institutional and archival document streams that many serious document AI deployments actually need to process.

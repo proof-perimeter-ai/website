@@ -1,0 +1,18 @@
+---
+title: "Document Processing Production Deployment"
+slug: "document-processing-production-deployment"
+letter: "D"
+tagline: "The demo worked; now come the faxes, the spikes, the audits, and the 2 a.m. pages — production is a different discipline."
+description: "Production deployment of document processing covers the engineering beyond models — throughput, monitoring, review ops, governance, and rollback."
+category: "Workflow & Automation"
+tags: ["production deployment", "MLOps", "operations", "reliability"]
+publishedAt: "2026-07-11"
+relatedTerms: ["document-ai-case-studies", "throughput-optimization", "continual-model-training"]
+status: "published"
+---
+
+Document processing production deployment is everything that separates a working model from a working system: the engineering, operations, and governance required to run document AI against real traffic, at real volume, with real consequences. The models are a minority of the work. Around them: ingestion that survives every channel's chaos, throughput architecture sized for peak (month-end statement floods, renewal seasons), latency budgets per use case, confidence routing and review operations staffed and tooled, monitoring that catches drift before customers do, integration contracts with downstream systems, and the audit, residency, and access controls the document types demand.
+
+The deployment sequence that works is graduated by evidence. Shadow mode first: the system processes real traffic, outputs compared against the incumbent process, nothing depends on it — this is where the document population teaches you what the pilot corpus didn't contain. Then assisted mode: outputs pre-fill human work, corrections instrument the true accuracy. Then partial automation: straight-through processing for the field-and-document segments whose measured performance clears the bar, humans on the rest, thresholds tuned from data. Expansion follows measurement, and every stage keeps rollback ready — a model version, threshold change, or prompt update that regresses must be revertible in minutes, which implies versioning everything and never letting the pipeline's behavior depend on unversioned state.
+
+The steady-state disciplines determine whether year two looks like year one: benchmark-gated releases (no model change ships without beating the incumbent on the evaluation suite), drift monitoring per document type and channel, review-correction loops feeding retraining, capacity planning for queues, incident runbooks for the failure classes documents produce (the poison file that crashes a worker; the format change that halves confidence overnight), and periodic audits of the "confident" traffic that no human sees. Production document AI is a living system; deployments designed as projects decay, deployments designed as operations compound.

@@ -1,0 +1,18 @@
+---
+title: "Low-Resolution Image OCR"
+slug: "low-resolution-image-ocr"
+letter: "L"
+tagline: "When a character is eight pixels tall — reading text at resolutions the models were never promised."
+description: "Low-resolution image OCR reads text from under-resolved captures — small crops, thumbnails, distant photos — via super-resolution and robust models."
+category: "OCR & Recognition"
+tags: ["low resolution", "OCR", "super-resolution", "small text"]
+publishedAt: "2026-07-11"
+relatedTerms: ["blurred-text-recognition", "low-quality-scan-processing", "fax-document-ocr"]
+status: "published"
+---
+
+Low-resolution image OCR is text recognition where the pixels barely suffice: characters a handful of pixels tall in downsampled scans, video frames, thumbnails, distant or wide-angle photos where the document occupies a corner of the frame, and the compressed images messaging apps produce from what was once a decent capture. Resolution is recognition's raw material — the visual differences between 3 and 8, between cl and d, live in strokes a pixel or two wide — and below a threshold (rules of thumb put comfortable recognition around 20+ pixels of character height, with degradation accelerating beneath) the information is simply thin.
+
+The techniques squeeze what remains. Text-specific super-resolution — models trained on paired low/high-resolution text images — reconstructs plausible high-resolution glyphs far better than generic upscaling, because text's strong priors (strokes, alphabets, layout regularity) constrain the reconstruction; recognition robustness training (low-resolution augmentation in the recognizer's diet) attacks the same problem from the model side; and context does the rest — sequence models and language priors resolving individually unreadable characters from their neighbors, format constraints (this is a date, that column is currency) vetoing implausible readings. The reconstruction caveat applies at full strength: a super-resolved character is an inference, and for consequential fields the pipeline should know the difference — confidence discounted, review invited — because plausible-glyph hallucination is precisely how misread account digits are born.
+
+The capture-side lesson is the cheapest fix here as everywhere: resolution lost is rarely recoverable, so systems that influence their inputs enforce minimums at the source — capture SDKs refusing under-resolved document photos with immediate feedback, intake validators bouncing thumbnails with a re-request, rasterization settings (the silent resolution decision in every PDF pipeline) set to the recognizer's needs rather than storage's preference. Low-resolution OCR is the remedial skill; adequate resolution is the policy.

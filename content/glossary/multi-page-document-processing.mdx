@@ -1,0 +1,18 @@
+---
+title: "Multi-Page Document Processing"
+slug: "multi-page-document-processing"
+letter: "M"
+tagline: "The document is bigger than the page — state, structure, and values that only exist across pages."
+description: "Multi-page document processing handles content spanning pages — continued tables, carried totals, cross-references — beyond per-page reading."
+category: "Document Understanding"
+tags: ["multi-page", "document processing", "continuity", "long documents"]
+publishedAt: "2026-07-11"
+relatedTerms: ["multi-document-summarization", "document-splitting-ai", "context-window-optimization"]
+status: "published"
+---
+
+Multi-page document processing is the handling of what exists only across pages: the table that continues with repeated headers (or without them), the balance carried forward, the clause whose exception lives two pages later, the footnote referenced from page 3 and defined on page 40, the signature block that executes everything before it. Per-page processing — the natural unit for OCR and layout models — is blind to all of it, and pipelines that process pages independently then concatenate results systematically break exactly these structures: the continued table becomes two half-tables, the running total loses its thread, the pronoun loses its antecedent.
+
+The engineering patterns address continuity at different layers. Structural stitching: continuation detection for tables (matching column geometry and headers across the break, re-joining rows split at page boundaries), list and paragraph flow across pages, hyphenation resolution at page breaks. Stateful extraction: values that accumulate or reference across pages (running balances validated page-over-page, "total carried forward" reconciled) processed with document-level state rather than per-page amnesia. Long-context understanding: for reasoning tasks, either genuinely long-context models consuming the whole document (with the context-window entry's cost and attention caveats) or retrieval-within-document architectures that fetch the relevant pages per question — the cross-reference resolved by looking it up, the way a human reader flips. And page-level parallelism preserved where safe: the recognition layer can fan out per page for throughput as long as the understanding layer re-assembles with document-level awareness.
+
+The validation opportunities are the structures themselves: page numbering ("Page 3 of 17" implying sixteen siblings — completeness checkable), carried totals reconciling, section numbering continuous — each a cheap integrity test that catches missing pages, mis-ordered scans, and stitching failures. Multi-page discipline is ultimately a statement about the unit of meaning: pages are capture artifacts; the document is the thing — and the pipeline's architecture should know which one it's processing at every stage.

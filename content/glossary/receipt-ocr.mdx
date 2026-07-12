@@ -1,0 +1,18 @@
+---
+title: "Receipt OCR"
+slug: "receipt-ocr"
+letter: "R"
+tagline: "Thermal paper, cramped abbreviations, and a fading print job — the small document that punches above its difficulty."
+description: "Receipt OCR reads merchant, line items, and totals from receipts — a compact but genuinely hard recognition target for expense and retail workflows."
+category: "OCR & Recognition"
+tags: ["receipt OCR", "expense", "retail", "recognition"]
+publishedAt: "2026-07-11"
+relatedTerms: ["expense-report-automation", "table-extraction-ocr", "low-quality-scan-processing"]
+status: "published"
+---
+
+Receipt OCR is text recognition specialized for one of the most common yet genuinely difficult document types in circulation: the merchant name, date, line items with prices, tax, tip, and total that a receipt records, printed by thermal printers whose output fades within months, formatted in cramped abbreviated layouts that vary wildly by merchant and point-of-sale system, and captured overwhelmingly by phone camera rather than scanner — combining nearly every difficulty this glossary's OCR entries catalog individually into one small, high-volume document class.
+
+The recognition challenges are receipt-specific in their concentration. Thermal fade means many receipts arrive already degraded before any capture happens, requiring the contrast-enhancement and low-quality-scan techniques at their most aggressive settings. Layout diversity is extreme even within a single country's retail ecosystem — no two POS systems format identically, ruling out template approaches entirely in favor of the template-free, layout-aware extraction this glossary treats as the modern default. Line-item extraction is effectively a compressed table-extraction problem, with item descriptions, quantities, and prices packed into narrow columns with minimal whitespace separation, requiring the same structure-recovery discipline as any table but at receipt-scale density. And the arithmetic validation that table extraction generally benefits from is unusually powerful here: line items should sum to the subtotal, subtotal plus tax should equal the total — a check that catches both misreads and, occasionally, the receipt's own printing errors.
+
+The economics favor heavy automation despite the difficulty: receipts are the highest-volume document type many expense and retail-analytics pipelines process, and even moderate per-receipt accuracy gains compound significantly at scale. Production systems typically extract a structured core (merchant, date, total, tax) with high-confidence automation, treat full line-item extraction as a secondary tier with wider tolerance for review, and lean on merchant-database matching (resolving the extracted, sometimes-truncated merchant name against a known-merchant reference) to improve both accuracy and downstream categorization — the receipt-OCR-specific instance of the entity-resolution and data-enrichment patterns this glossary describes more generally.

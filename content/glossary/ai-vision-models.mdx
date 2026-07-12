@@ -1,0 +1,18 @@
+---
+title: "AI Vision Models"
+slug: "ai-vision-models"
+letter: "A"
+tagline: "The general term for neural networks that see — and the visual backbone of every document AI system."
+description: "AI vision models are neural networks that interpret images — detection, segmentation, recognition — and form the visual foundation of document processing."
+category: "Models & Training"
+tags: ["vision models", "computer vision", "deep learning", "image understanding"]
+publishedAt: "2026-07-11"
+relatedTerms: ["vision-language-model-vlm", "attention-mechanisms-in-vision-models", "you-only-look-once-yolo"]
+status: "published"
+---
+
+AI vision models are neural networks that interpret visual input — classifying images, detecting and localizing objects, segmenting regions pixel by pixel, and extracting features that downstream systems reason over. The lineage runs from convolutional neural networks, which dominated the 2012–2020 era, through vision transformers, which process an image as a sequence of patches and now anchor most state-of-the-art systems, to multimodal models that bind vision to language. Everything a document pipeline does visually — finding text, detecting tables, spotting signatures and stamps, judging image quality — rests on this model family.
+
+In document processing, vision models appear in specialized roles: detectors (often YOLO-family or transformer-based) locate text blocks, tables, checkboxes, logos, and signatures; segmentation models separate page regions and isolate document boundaries in photos; classification backbones fingerprint document types from appearance alone; and quality models decide whether a capture is readable or needs re-scanning. Documents are a peculiar visual domain — extremely high resolution, dense fine detail where a single pixel row can distinguish a 3 from an 8, and strong two-dimensional structure — so document-specific models and training recipes routinely beat general-purpose vision models applied naively.
+
+The current architectural trend is consolidation: vision-language models absorb tasks that once required separate specialized detectors, reading and reasoning about a page in one pass. But the specialized models retain decisive advantages in throughput and footprint — a compact detector processes hundreds of pages per second on a CPU — so production document systems typically compose both: small fast vision models for the high-volume structural work, larger multimodal models where understanding and judgment are required.

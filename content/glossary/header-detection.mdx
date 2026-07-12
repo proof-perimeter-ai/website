@@ -1,0 +1,18 @@
+---
+title: "Header Detection"
+slug: "header-detection"
+letter: "H"
+tagline: "Running titles and letterheads at the top of the page — furniture to strip, signals to use."
+description: "Header detection identifies repeating page-top elements — running titles, letterheads, fax stamps — separating them from content and mining their signals."
+category: "Document Understanding"
+tags: ["header detection", "page furniture", "letterheads", "layout"]
+publishedAt: "2026-07-11"
+relatedTerms: ["footer-detection", "document-layout-analysis", "document-splitting-ai"]
+status: "published"
+---
+
+Header detection is the identification of the repeating elements at the top of document pages — running titles, chapter names, letterheads, logos, fax transmission stamps, "Page X" lines that some layouts place top-right — and their separation from body content. It is footer detection's twin, sharing the core method (positional priors plus cross-page repetition analysis: elements recurring at the same position with constant or patterned content are furniture) and the same downstream stakes: headers left in the content stream contaminate extraction, chunking, and search with text that belongs to the page, not the document's meaning.
+
+The header zone carries richer signals than the footer's, which makes detection's second job — mining rather than merely stripping — more valuable here. Letterheads identify the document's issuer (the bank, the firm, the agency — a classification feature and an entity extraction in itself); running section titles reveal document structure that aids navigation and chunk labeling; fax stamps carry transmission metadata (sender, timestamp, page count) that intake workflows use; and header *changes* across pages are among the strongest document-boundary signals bundle splitting has — a new letterhead mid-file announces a new document more reliably than most content analysis.
+
+The distinctions that keep detection honest: the first page's header is usually different and content-bearing (the letterhead belongs to the document's identity even as it's excluded from body text; a report's title page is content, not furniture), headers vary by section in structured documents (per-chapter running titles — furniture with structure), and top-of-page content that isn't repeated (a date line, an addressee block) must not be swept up by positional enthusiasm. As with footers, mature parsers label rather than delete — emitting header elements as typed metadata so each consumer applies its own policy: stripped from the RAG chunk, parsed by the intake router, preserved by the archival converter.

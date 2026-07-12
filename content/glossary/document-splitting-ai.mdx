@@ -1,0 +1,18 @@
+---
+title: "Document Splitting AI"
+slug: "document-splitting-ai"
+letter: "D"
+tagline: "Finding where one document ends and the next begins — inside the 100-page scan that arrived as one file."
+description: "Document splitting AI detects boundaries between documents in combined files — separating scanned bundles into processable units."
+category: "Document Understanding"
+tags: ["document splitting", "boundary detection", "bundles", "preprocessing"]
+publishedAt: "2026-07-11"
+relatedTerms: ["document-bundle-classification", "multi-page-document-processing", "document-classification"]
+status: "published"
+---
+
+Document splitting AI is the detection of boundaries between distinct documents inside a combined file: the batch scan, the consolidated email attachment, the broker's assembled pack — one PDF, many documents, and no machine-readable markers saying where each begins. Splitting is the gate to everything type-specific: until the 100-page file becomes an application, four statements, two IDs, and a valuation report, no extraction schema, completeness check, or routing rule can attach to anything.
+
+The boundary signals are learned from how documents announce themselves. First pages have distinctive anatomy — letterheads, logos, titles, form headers, address blocks; page numbering betrays structure ("Page 1 of 4" is a boundary oracle when present); visual discontinuities mark transitions (orientation flips, paper stock changes visible as background shifts, print-to-handwriting transitions); and semantic discontinuity — the topic, entities, and vocabulary changing between consecutive pages — catches boundaries that look unremarkable. Modern splitters frame the task as per-page sequence classification (each page: continuation or new-document-start, often jointly with document type), with the classic operational alternative — barcode or blank separator sheets inserted at scan time — still the cheapest solution where the scanning process is under the institution's control.
+
+The hard cases define the accuracy ceiling: identical document types back to back (three one-page payslips — two boundaries with almost no signal), appendices and exhibits that belong *with* a parent document rather than apart from it (splitting an agreement from its signature pages is a worse error than not splitting at all), and cover sheets that are boundaries but not documents. Confidence-aware handling absorbs this: certain boundaries execute automatically, uncertain ones render as a thumbnail strip for a human to confirm in seconds, and downstream anomalies (an extraction schema matching nothing, a document failing completeness) loop back as evidence that a cut fell in the wrong place.

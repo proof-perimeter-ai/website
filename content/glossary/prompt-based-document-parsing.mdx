@@ -1,0 +1,18 @@
+---
+title: "Prompt-Based Document Parsing"
+slug: "prompt-based-document-parsing"
+letter: "P"
+tagline: "Describe what you want in plain language, and the model finds it — parsing steered by instruction, not configuration."
+description: "Prompt-based document parsing directs extraction and parsing through natural-language instructions rather than code or trained templates."
+category: "Data Extraction"
+tags: ["prompt engineering", "parsing", "instruction-following", "LLM extraction"]
+publishedAt: "2026-07-11"
+relatedTerms: ["schema-based-extraction", "generative-ai-for-document-extraction", "zero-shot-document-extraction"]
+status: "published"
+---
+
+Prompt-based document parsing is the practice of directing a language or vision-language model's extraction and parsing behavior through natural-language instructions — a prompt describing what to find and how to structure it — rather than through code, trained templates, or explicit configuration. "Extract the invoice number, vendor name, and line items as JSON; dates should be ISO 8601" is a prompt-based parsing instruction, and the model's instruction-following capability, developed through the broader training this glossary's model entries describe, does the work of locating and structuring the requested content without any document-type-specific engineering beyond writing the prompt itself.
+
+The technique's practical power lies in how quickly it enables new extraction tasks: where template-based and even schema-based extraction (this glossary's dedicated entry) traditionally involved some setup investment — defining fields formally, sometimes providing examples — prompt-based parsing can be adjusted by simply rewriting the instruction, making it well suited to exploratory work, rapid prototyping against unfamiliar document types, and one-off or low-volume extraction tasks where building a more formal, production-grade pipeline isn't justified. Prompt engineering craft matters directly to output quality here: specificity about field definitions, explicit handling instructions for edge cases ("if no due date is stated, return null rather than guessing"), and format constraints all measurably affect how reliably the model produces usable, consistent output.
+
+The relationship to schema-based extraction is close enough that the two are often used together rather than as alternatives: a well-designed prompt frequently *contains* an explicit schema specification as its most load-bearing component, with the surrounding natural-language instruction adding the disambiguation, edge-case handling, and formatting guidance a bare schema alone wouldn't convey. Where prompt-based parsing differs most from more engineered extraction pipelines is reliability under scale and drift: a prompt that works well in testing can produce inconsistent output as document variety increases, requiring the validation, confidence-scoring, and monitoring disciplines this glossary emphasizes throughout to catch degradation — prompt-based parsing accelerates getting extraction working; it doesn't remove the need for the production-grade verification layer that any consequential extraction pipeline still requires.

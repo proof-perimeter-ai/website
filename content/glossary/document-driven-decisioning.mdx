@@ -1,0 +1,18 @@
+---
+title: "Document-Driven Decisioning"
+slug: "document-driven-decisioning"
+letter: "D"
+tagline: "The file decides: outcomes computed from what the documents establish, with the reasoning on the record."
+description: "Document-driven decisioning bases automated business decisions on facts established from documents — with evidence chains from decision back to page."
+category: "Workflow & Automation"
+tags: ["decisioning", "document-driven", "automated decisions", "evidence"]
+publishedAt: "2026-07-11"
+relatedTerms: ["decision-automation-from-documents", "straight-through-processing", "cross-document-reasoning"]
+status: "published"
+---
+
+Document-driven decisioning is the pattern where business outcomes are computed from facts that documents establish: the loan approved because the statements evidence the income, the claim paid because the invoices and reports substantiate the loss, the vendor onboarded because the certificates prove the coverage. The phrase emphasizes the evidentiary chain — decisions *driven by* documents, with each decision traceable through the extracted facts to the pages that establish them — as distinct from decisions merely accompanied by documents nobody machine-read.
+
+The architecture is a fact pipeline feeding a decision layer. Documents yield extractions; extractions pass validation and normalization into *established facts* — values with confidence, provenance, and corroboration status (asserted by one document, confirmed across several, or contradicted between them). The decision logic — rules, scorecards, models — consumes facts rather than raw extractions, which is the load-bearing distinction: a decision layer that knows each input's evidential quality can require stronger evidence for larger decisions, treat uncorroborated facts as pending rather than true, and route contradictions to investigation instead of resolving them by accident of processing order.
+
+The pattern's discipline pays off precisely where document-based decisions get challenged. The declined applicant, the disputing claimant, the examining regulator all ask the same question — on what basis? — and document-driven decisioning answers it structurally: this decision, from these facts, at these confidences, established by these document regions, under this version of the logic. That same structure powers improvement: decision outcomes fed back against their evidence reveal which facts predict well, which document types under-deliver reliability, and where the extraction layer's errors actually reach outcomes — closing the loop between how documents are read and what the reading is for.

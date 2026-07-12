@@ -1,0 +1,18 @@
+---
+title: "Enterprise Knowledge Retrieval"
+slug: "enterprise-knowledge-retrieval"
+letter: "E"
+tagline: "The organization knows the answer — retrieval is how anyone actually finds it, permissions intact."
+description: "Enterprise knowledge retrieval finds answers across an organization's documents and systems — secure, permission-aware, and current."
+category: "RAG & Search"
+tags: ["enterprise search", "knowledge retrieval", "RAG", "knowledge management"]
+publishedAt: "2026-07-11"
+relatedTerms: ["document-retrieval-systems", "enterprise-rag-document-ingestion", "semantic-search-over-documents"]
+status: "published"
+---
+
+Enterprise knowledge retrieval is the capability of finding what the organization collectively knows — across its documents, wikis, tickets, contracts, policies, and communications — and delivering it to the person or AI system that needs it, at the moment of need, within the permissions they hold. The problem it attacks is ancient and expensive: institutional knowledge exists but is undiscoverable — the answer lives in a policy PDF nobody can find, an expert's old memo, a resolved ticket from two years ago — so work is redone, precedents missed, and the same questions answered manually forever.
+
+The modern architecture is RAG-shaped at enterprise constraints. Connectors ingest from the sprawl of repositories; document understanding parses the heterogeneous formats faithfully; hybrid retrieval (lexical plus semantic, with metadata filters) serves both identifier lookups and concept questions; and generation composes cited answers rather than result lists. What distinguishes *enterprise* retrieval from consumer search is the constraint set: permission trimming as a correctness requirement (the retrieval layer must enforce every source system's ACLs — an answer synthesized from a document the asker can't open is a security incident, not a feature), freshness against constant churn (the superseded policy must stop answering), version and authority awareness (the approved document outranking its drafts), and auditability of what was retrieved for whom.
+
+The quality determinants echo the retrieval stack generally — parsing and chunking fidelity, evaluation sets, reranking — plus one enterprise-specific truth: coverage and trust are earned per repository. Deployments that succeed start where knowledge pain is sharpest and permissions are cleanest, instrument answer quality and citation click-through, and expand connector by connector — because a knowledge system that answers confidently from stale or forbidden sources loses organizational trust faster than any accuracy metric can win it back.

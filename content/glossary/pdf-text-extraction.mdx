@@ -1,0 +1,18 @@
+---
+title: "PDF Text Extraction"
+slug: "pdf-text-extraction"
+letter: "P"
+tagline: "The text layer is data, not narrative — reconstructing paragraphs from positioned glyphs."
+description: "PDF text extraction reads born-digital text layers — reconstructing reading order, structure, and encoding from positioned glyph data."
+category: "Data Extraction"
+tags: ["PDF extraction", "text layer", "reading order", "born-digital"]
+publishedAt: "2026-07-11"
+relatedTerms: ["document-text-extraction", "pdf-parsing-supported-file-types", "multi-column-document-parsing"]
+status: "published"
+---
+
+PDF text extraction is the reading of a born-digital PDF's embedded text layer — glyphs the file stores as data, positioned precisely on the page, rather than pixels requiring OCR. It sounds like the easy half of document text extraction, and for isolated words it is: no recognition uncertainty, exact characters, instant. The difficulty is reconstruction — a PDF's text layer is a bag of positioned glyphs, not a stream of paragraphs, and turning "characters at these coordinates" back into "the sentences a reader would read" is a real parsing problem the format doesn't solve for you.
+
+The reconstruction work spans several failure-prone steps. Reading order: glyphs carry positions, not sequence — a two-column page's text layer often stores content in an arbitrary or generation-tool-dependent order, meaning naive extraction (read in stream order) frequently interleaves columns exactly like the scanned-and-OCR'd case, despite having "perfect" text. Line and paragraph assembly: grouping positioned glyphs into words (using spacing thresholds), words into lines (using baseline alignment), lines into paragraphs (using vertical spacing and indentation) — each a heuristic with failure modes on unusual layouts. Encoding fidelity: font encoding tables sometimes map glyphs to wrong or private-use Unicode code points — text that displays correctly but extracts as mojibake, a silent failure that looks like success until someone reads the output. And ligatures, hyphenation, and embedded fonts each introduce their own reconstruction quirks.
+
+The practical upshot is that "just extract the text layer" undersells the task: production PDF text extraction runs through the same layout-analysis and reading-order machinery this glossary applies to scanned documents, just with recognition uncertainty replaced by reconstruction uncertainty. Libraries vary meaningfully in how well they handle this (some prioritize raw speed, some prioritize structural fidelity), and the validation habit that catches OCR failures — does the extracted text read coherently, do tables round-trip — applies with equal force to PDFs whose "perfect" text can still come out scrambled.

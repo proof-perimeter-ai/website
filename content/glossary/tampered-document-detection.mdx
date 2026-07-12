@@ -1,0 +1,18 @@
+---
+title: "Tampered Document Detection"
+slug: "tampered-document-detection"
+letter: "T"
+tagline: "The document is genuine, but was it altered after the fact? — forensics for edited-not-fabricated fraud."
+description: "Tampered document detection identifies alterations to genuine documents — edited figures, substituted pages, modified dates — through digital and visual forensics."
+category: "Compliance & Security"
+tags: ["document tampering", "forensics", "fraud detection", "alteration"]
+publishedAt: "2026-07-11"
+relatedTerms: ["document-forgery-detection", "document-spoofing", "synthetic-identity-detection"]
+status: "published"
+---
+
+Tampered document detection focuses on a specific subcategory of the broader document-forgery-detection entry's territory: documents that are fundamentally genuine — a real bank statement, an actual employment letter, an authentic government-issued form — but have been altered after issuance to change what they say, as distinct from documents fabricated wholesale from a template or generator. This distinction matters because tampering leaves different forensic traces than fabrication: a tampered document inherits the genuine original's authentic printing, paper, and format characteristics everywhere except the specific altered region, meaning detection often concentrates on finding the localized inconsistency rather than assessing the document as a whole.
+
+The forensic signals that distinguish a tampered region from its surrounding genuine content cluster around several detectable inconsistencies. Digital tampering of scanned or born-digital PDFs leaves traces in compression artifacts (a region re-saved or edited after the original file's creation often shows different JPEG compression characteristics than untouched areas), font and rendering inconsistencies (a digit changed using different software than produced the original often uses a subtly different font, weight, or anti-aliasing), and metadata anomalies (edit timestamps, software signatures, or revision history inconsistent with the document's claimed single-origin creation). Physical tampering — an altered paper document subsequently rescanned — leaves different traces: alignment or spacing irregularities where text was physically added or covered, ink or toner density inconsistencies between the altered region and the surrounding genuine print, and in some cases visible evidence of correction fluid, overwriting, or splicing that survives even after rescanning.
+
+The detection approach that works best combines automated forensic screening — models trained to flag the digital and visual inconsistency signals described above — with the same cross-document and cross-field consistency checking this glossary's cross-document-reasoning entry describes: a tampered income figure on a payslip becomes far more detectable when compared against the same applicant's bank statement deposits or tax records than when the payslip is assessed in isolation, since tampering typically alters one document without correspondingly altering every other document that should agree with it. As with all fraud-adjacent detection in this glossary, the operational posture is risk-scoring and human escalation rather than automated rejection — forensic signals indicate elevated tampering probability, not certainty, and confirmed determinations warrant the same investigative rigor and documented rationale this glossary's forgery-detection entry describes.
