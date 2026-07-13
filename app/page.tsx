@@ -5,34 +5,13 @@ import { FadeIn } from "@/components/FadeIn";
 import { Eyebrow } from "@/components/Eyebrow";
 import { SiteNav } from "@/components/SiteNav";
 import { SiteFooter } from "@/components/SiteFooter";
+import { BtnSolid } from "@/components/Button";
 import { siteConfig } from "@/lib/metadata";
 
 export const metadata: Metadata = {
   title: siteConfig.tagline,
   alternates: { canonical: "/" },
 };
-
-function BtnSolid({ href, children }: { href: string; children: React.ReactNode }) {
-  return (
-    <Link
-      href={href}
-      className="inline-flex items-center justify-center gap-2 rounded-[5px] bg-signal px-4.5 py-2.75 text-[15px] font-semibold text-white transition-colors hover:bg-signal-deep"
-    >
-      {children}
-    </Link>
-  );
-}
-
-function BtnGhost({ href, children }: { href: string; children: React.ReactNode }) {
-  return (
-    <Link
-      href={href}
-      className="inline-flex items-center justify-center gap-2 rounded-[5px] border border-line-2 bg-transparent px-4.5 py-2.75 text-[15px] font-semibold text-ink transition-colors hover:border-ink"
-    >
-      {children}
-    </Link>
-  );
-}
 
 const steps = [
   {

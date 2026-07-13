@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { JsonLd } from "@/components/JsonLd";
 import { FadeIn } from "@/components/FadeIn";
 import { Eyebrow } from "@/components/Eyebrow";
 import { SiteNav } from "@/components/SiteNav";
 import { SiteFooter } from "@/components/SiteFooter";
 import { DeploymentTierTabs } from "@/components/DeploymentTierTabs";
+import { BtnSolid, BtnGhost } from "@/components/Button";
 
 export const metadata: Metadata = {
   title: "Document AI",
@@ -13,28 +13,6 @@ export const metadata: Metadata = {
     "Free document AI with your own model key — templates, workflows, confidence gates, human review, batch and API. Every extraction carries a provenance record. On-prem when you need it.",
   alternates: { canonical: "/document-ai" },
 };
-
-function BtnSolid({ href, children }: { href: string; children: React.ReactNode }) {
-  return (
-    <Link
-      href={href}
-      className="inline-flex items-center justify-center gap-2 rounded-[5px] bg-signal px-4.5 py-2.75 text-[15px] font-semibold text-white transition-colors hover:bg-signal-deep"
-    >
-      {children}
-    </Link>
-  );
-}
-
-function BtnGhost({ href, children }: { href: string; children: React.ReactNode }) {
-  return (
-    <Link
-      href={href}
-      className="inline-flex items-center justify-center gap-2 rounded-[5px] border border-line-2 bg-transparent px-4.5 py-2.75 text-[15px] font-semibold text-ink transition-colors hover:border-ink"
-    >
-      {children}
-    </Link>
-  );
-}
 
 const heroRecord: [string, string, boolean?][] = [
   ["document", "doc_8fa2c91 · kyc_individual_v3"],

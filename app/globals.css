@@ -55,14 +55,28 @@ body {
 .hero-animate-badge  { animation: hero-fade-up 0.7s ease-out 0ms   both; }
 .hero-animate-h1     { animation: hero-fade-up 0.7s ease-out 100ms both; }
 .hero-animate-p      { animation: hero-fade-up 0.7s ease-out 200ms both; }
+.hero-animate-pills  { animation: hero-fade-up 0.7s ease-out 260ms both; }
 .hero-animate-cta    { animation: hero-fade-up 0.7s ease-out 320ms both; }
 .hero-animate-trust  { animation: hero-fade-up 0.7s ease-out 400ms both; }
 .hero-animate-image  { animation: hero-fade-up 0.7s ease-out 200ms both; }
+
+/* Dot-grid + glow hero background, used by /document-ai-v2. CSS-only, no JS. */
+.docai-v2-hero-bg {
+  background-image: radial-gradient(var(--line-2) 1px, transparent 1px);
+  background-size: 22px 22px;
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 0%, black 40%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 0%, black 40%, transparent 100%);
+}
+
+.docai-v2-hero-glow {
+  background: radial-gradient(closest-side, color-mix(in srgb, var(--signal) 16%, transparent), transparent 100%);
+}
 
 @media (prefers-reduced-motion: reduce) {
   .hero-animate-badge,
   .hero-animate-h1,
   .hero-animate-p,
+  .hero-animate-pills,
   .hero-animate-cta,
   .hero-animate-trust,
   .hero-animate-image {
