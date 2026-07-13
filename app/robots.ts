@@ -7,12 +7,12 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
+        disallow: "/mockup",
       },
-      // Explicit allow rules for AI / answer-engine crawlers, so indexing
-      // intent isn't left to interpretation of the wildcard rule alone.
       {
         userAgent: ["GPTBot", "ClaudeBot", "PerplexityBot", "Google-Extended", "CCBot"],
         allow: "/",
+        disallow: "/mockup",
       },
     ],
     sitemap: `${siteConfig.url}/sitemap.xml`,

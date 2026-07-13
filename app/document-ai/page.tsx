@@ -184,7 +184,7 @@ const faqs = [
   {
     question: "Is it really free?",
     answer:
-      "Yes, with your own LLM API key. The full workspace — templates, workflows, batch, API, review, export, provenance — with no document limit. You pay your model provider directly, at their rates. We don't charge anything. If you'd rather not manage a key, the Enterprise tier runs on Proof Perimeter's own proprietary document processing models — no API key required.",
+      "Yes, with your own LLM API key. The full workspace — templates, workflows, batch, API, review, export, provenance — with no document limit. You pay your model provider directly, at their rates. We don't charge anything. If you'd rather not manage a key, the Enterprise tier runs on Proof Perimeter's own proprietary document processing models.",
   },
   {
     question: "Do my documents pass through your servers?",
