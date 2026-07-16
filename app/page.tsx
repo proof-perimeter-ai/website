@@ -317,9 +317,9 @@ export default function DocumentAiV2() {
                 </div>
               ))}
               <div className="grid grid-cols-[1fr_1.3fr_1.3fr] items-center border-t border-line">
-                <div className="p-4.5 text-[13.5px] font-semibold text-ink-2">Get started</div>
+                <div className="p-4.5 text-[13.5px] font-semibold text-ink-2"></div>
                 <div className="p-4.5">
-                  <BtnSolid href="/book-demo">Start free with your API key</BtnSolid>
+                  <BtnSolid href="/book-demo">Get started for free</BtnSolid>
                 </div>
                 <div className="p-4.5">
                   <BtnGhost href="/book-demo">Book Demo</BtnGhost>
