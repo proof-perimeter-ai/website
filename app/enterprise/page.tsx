@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   title: "Document AI for Enterprise",
   description:
     "Vertical-tuned document AI, deployed hosted, in a private cloud, or fully on-premises with zero egress. Fine-tuned on your documents, with the governance and controls your regulator asks to see.",
-  alternates: { canonical: "/document-ai-enterprise" },
+  alternates: { canonical: "/enterprise" },
 };
 
 const pills = ["Vertical-tuned models", "Zero egress AI", "AI Governance & Controls"];
@@ -98,6 +98,12 @@ const comparisonRows: [string, string, string][] = [
   ["Integration", "API access", "Custom workflows, legacy core connectors, system-of-record integration"],
   ["Admin & governance", "Standard workspace controls", "SSO, RBAC, maker-checker review, governance dashboard, conformity pack"],
   ["Support", "Community / standard support", "Deployment support and an SLA"],
+];
+
+const complianceBullets = [
+  "Zero egress — nothing leaves your chosen boundary",
+  "SSO, RBAC & maker-checker on every workflow",
+  "Independently assessed, not self-reported",
 ];
 
 const faqs = [
@@ -297,7 +303,7 @@ export default function DocumentAiEnterprise() {
                   <tr>
                     <td className="p-4.5" />
                     <td className="border-l border-line p-4.5">
-                      <Link href="/document-ai" className="text-[14.5px] font-semibold text-signal hover:text-signal-deep">
+                      <Link href="/#choose-your-path" className="text-[14.5px] font-semibold text-signal hover:text-signal-deep">
                         Start free with your API key →
                       </Link>
                     </td>
@@ -310,6 +316,35 @@ export default function DocumentAiEnterprise() {
                 </tbody>
               </table>
             </FadeIn>
+          </div>
+        </section>
+
+        {/* Trust & compliance */}
+        <section id="regulators" className="border-t border-line py-22">
+          <div className="mx-auto max-w-[1120px] px-7">
+            <div className="grid grid-cols-1 gap-10 md:grid-cols-2 md:items-center">
+              <div>
+                <Eyebrow>Trust & compliance</Eyebrow>
+                <h2 className="mt-4.5 max-w-[20ch] text-[clamp(28px,3.6vw,38px)] font-bold tracking-[-0.022em] text-ink">
+                  Built for institutions that get audited.
+                </h2>
+                <ul className="mt-7 list-none p-0">
+                  {complianceBullets.map((b) => (
+                    <li key={b} className="flex items-center gap-3 py-2 text-[15px] whitespace-nowrap text-ink-2">
+                      <span className="h-2 w-2 shrink-0 rounded-full bg-live" />
+                      {b}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <FadeIn className="flex items-center justify-center ">
+                <img
+                  src="/assets/compliance/banner.png"
+                  alt="HIPAA, AICPA SOC, GDPR and ISO 27001 compliance certifications"
+                  className="h-auto w-full max-w-[420px] object-contain"
+                />
+              </FadeIn>
+            </div>
           </div>
         </section>
 

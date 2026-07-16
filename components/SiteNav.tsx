@@ -9,10 +9,8 @@ export function SiteNav() {
           <BrandMark />
         </Link>
         <nav className="hidden gap-7 text-[15px] font-medium text-ink-2 md:flex">
-          <Link href="/#how" className="hover:text-ink transition-colors">How it works</Link>
-          <Link href="/#cases" className="hover:text-ink transition-colors">Use cases</Link>
-          <Link href="/#regulators" className="hover:text-ink transition-colors">Regulators</Link>
-          <Link href="/document-ai" className="hover:text-ink transition-colors">Document AI</Link>
+          <Link href="/enterprise" className="hover:text-ink transition-colors">Enterprise</Link>
+          <Link href="/#choose-your-path" className="hover:text-ink transition-colors">Pricing</Link>
         </nav>
         <Link
           href="/book-demo"

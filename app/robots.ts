@@ -7,12 +7,12 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
-        disallow: "/mockup",
+        disallow: ["/mockup", "/home-v1", "/home-v2"],
       },
       {
         userAgent: ["GPTBot", "ClaudeBot", "PerplexityBot", "Google-Extended", "CCBot"],
         allow: "/",
-        disallow: "/mockup",
+        disallow: ["/mockup", "/home-v1", "/home-v2"],
       },
     ],
     sitemap: `${siteConfig.url}/sitemap.xml`,

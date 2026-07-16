@@ -11,7 +11,8 @@ export const metadata: Metadata = {
   title: "Document AI",
   description:
     "Free document AI with your own model key — templates, workflows, confidence gates, human review, batch and API. Every extraction carries a provenance record. On-prem when you need it.",
-  alternates: { canonical: "/document-ai" },
+  alternates: { canonical: "/home-v2" },
+  robots: { index: false, follow: false },
 };
 
 const heroRecord: [string, string, boolean?][] = [

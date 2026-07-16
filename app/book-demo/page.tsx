@@ -26,12 +26,6 @@ export default function BookDemo() {
             <h1 className="mt-4.5 text-[clamp(30px,4.4vw,44px)] font-bold tracking-[-0.022em] text-ink">
               Start free with your own model key — or go Enterprise with ours.
             </h1>
-            <p className="mx-auto mt-5.5 max-w-[56ch] text-lg text-ink-2">
-              Use Proof Perimeter for free with your own LLM API key — no cost beyond what you pay your model
-              provider. Or move to the Enterprise tier for Proof Perimeter&rsquo;s proprietary document-processing
-              models, hosted or on-premises, with enterprise-grade security, deployment and support. Tell us a bit
-              about what you&rsquo;re processing and we&rsquo;ll get you set up.
-            </p>
 
             <div className="mx-auto mt-12 max-w-[560px] rounded-lg border border-line bg-panel p-8 text-left">
               <div
