@@ -1,12 +1,8 @@
 import type { Metadata } from "next";
-import Script from "next/script";
+import { BookDemoCal } from "@/components/BookDemoCal";
 import { Eyebrow } from "@/components/Eyebrow";
 import { SiteNav } from "@/components/SiteNav";
 import { SiteFooter } from "@/components/SiteFooter";
-
-const HUBSPOT_FORM_ID = "6a13a408-2df7-4adb-9267-7882e29c1082";
-const HUBSPOT_PORTAL_ID = "246627877";
-const HUBSPOT_REGION = "na2";
 
 export const metadata: Metadata = {
   title: "Get Started",
@@ -21,19 +17,16 @@ export default function BookDemo() {
       <SiteNav />
       <main className="flex-1">
         <section className="py-22">
-          <div className="mx-auto max-w-[760px] px-7 text-center">
-            <Eyebrow className="justify-center">Get started</Eyebrow>
-            <h1 className="mt-4.5 text-[clamp(30px,4.4vw,44px)] font-bold tracking-[-0.022em] text-ink">
-              Start free with your own model key — or go Enterprise with ours.
-            </h1>
+          <div className="mx-auto max-w-[1100px] px-7 text-center">
+            <div className="mx-auto max-w-[760px]">
+              <Eyebrow className="justify-center">Get started</Eyebrow>
+              <h1 className="mt-4.5 text-[clamp(30px,4.4vw,44px)] font-bold tracking-[-0.022em] text-ink">
+                Start free with your own model key — or go Enterprise with ours.
+              </h1>
+            </div>
 
-            <div className="mx-auto mt-12 max-w-[560px] rounded-lg border border-line bg-panel p-8 text-left">
-              <div
-                className="hs-form-frame"
-                data-region={HUBSPOT_REGION}
-                data-form-id={HUBSPOT_FORM_ID}
-                data-portal-id={HUBSPOT_PORTAL_ID}
-              />
+            <div className="mx-auto mt-12 h-[650px] w-full rounded-lg border border-line bg-panel p-8 text-left">
+              <BookDemoCal />
             </div>
             <p className="mt-6 text-sm text-ink-2">
               Prefer email? Reach us directly at{" "}
@@ -46,7 +39,6 @@ export default function BookDemo() {
         </section>
       </main>
       <SiteFooter />
-      <Script src={`https://js-${HUBSPOT_REGION}.hsforms.net/forms/embed/${HUBSPOT_PORTAL_ID}.js`} strategy="afterInteractive" />
     </>
   );
 }
