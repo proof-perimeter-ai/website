@@ -244,6 +244,10 @@ export default function DocumentAiV2() {
                 </FadeIn>
               ))}
             </div>
+
+            <div className="mt-10.5 flex justify-center">
+              <BtnSolid href="/book-demo">Get started for free</BtnSolid>
+            </div>
           </div>
         </section>
 
@@ -266,6 +270,10 @@ export default function DocumentAiV2() {
                   <p className="mt-2.5 text-sm text-ink-2">{cell.description}</p>
                 </FadeIn>
               ))}
+            </div>
+
+            <div className="mt-10.5 flex justify-center">
+              <BtnSolid href="/book-demo">Get started for free</BtnSolid>
             </div>
           </div>
         </section>
@@ -393,8 +401,8 @@ export default function DocumentAiV2() {
               Free document AI platform, built for outcomes.
             </h2>
             <div className="mt-8 flex flex-wrap justify-center gap-3.5">
-              <BtnSolid href="/book-demo">Start free with your API key</BtnSolid>
-              <BtnGhost href="/book-demo">Book a demo</BtnGhost>
+              <BtnSolid href="/book-demo">Get started for free</BtnSolid>
+              <BtnGhost href="/book-demo">Book demo</BtnGhost>
             </div>
             
           </div>

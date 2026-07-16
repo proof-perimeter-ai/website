@@ -237,6 +237,10 @@ export default function DocumentAiEnterprise() {
                 </FadeIn>
               ))}
             </div>
+
+            <div className="mt-10.5 flex justify-center">
+              <BtnSolid href="/book-demo">Book a demo</BtnSolid>
+            </div>
           </div>
         </section>
 
@@ -263,6 +267,10 @@ export default function DocumentAiEnterprise() {
                   <p className="m-0 text-[14.7px] text-ink-2">{persona.description}</p>
                 </FadeIn>
               ))}
+            </div>
+
+            <div className="mt-10.5 flex justify-center">
+              <BtnSolid href="/book-demo">Book a demo</BtnSolid>
             </div>
           </div>
         </section>

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { IBM_Plex_Serif, IBM_Plex_Mono } from "next/font/google";
-import { GoogleAnalytics } from "@next/third-parties/google";
+import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
 import Script from "next/script";
 import { JsonLd } from "@/components/JsonLd";
 import { siteConfig } from "@/lib/metadata";
@@ -8,6 +8,7 @@ import "./globals.css";
 
 const GA_MEASUREMENT_ID = "G-LX9SVDZ842";
 const HUBSPOT_PORTAL_ID = "246627877";
+const GTM_ID = "GTM-P22VGXKT";
 
 const plexSerif = IBM_Plex_Serif({
   variable: "--font-plex-serif",
@@ -88,7 +89,16 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={`${plexSerif.variable} ${plexMono.variable} h-full`}>
+      <GoogleTagManager gtmId={GTM_ID} />
       <body className="min-h-full flex flex-col bg-paper text-ink">
+        <noscript>
+          <iframe
+            src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}
+            height="0"
+            width="0"
+            style={{ display: "none", visibility: "hidden" }}
+          />
+        </noscript>
         <JsonLd data={organizationJsonLd} />
         <JsonLd data={websiteJsonLd} />
         {children}
