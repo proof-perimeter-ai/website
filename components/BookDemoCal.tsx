@@ -1,15 +1,24 @@
 "use client";
 
 import Cal, { getCalApi } from "@calcom/embed-react";
+import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 
 export function BookDemoCal() {
+  const router = useRouter();
+
   useEffect(() => {
     (async function () {
       const cal = await getCalApi({ namespace: "30min" });
       cal("ui", { hideEventTypeDetails: false, layout: "month_view" });
+      cal("on", {
+        action: "bookingSuccessfulV2",
+        callback: () => {
+          router.push("/book-demo/thank-you");
+        },
+      });
     })();
-  }, []);
+  }, [router]);
 
   return (
     <Cal
