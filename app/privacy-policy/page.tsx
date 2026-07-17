@@ -77,7 +77,6 @@ export default function PrivacyPolicy() {
               </p>
               <ul>
                 <li><span className="text-ink">Google Analytics</span> — pageview and usage analytics.</li>
-                <li><span className="text-ink">HubSpot</span> — visitor tracking and follow-up on demo/audit requests.</li>
               </ul>
               <p>
                 These providers may set cookies and collect data about your browsing activity on the Site in

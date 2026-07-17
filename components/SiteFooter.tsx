@@ -13,7 +13,7 @@ export function SiteFooter() {
           <div className="font-mono text-[12.5px] leading-[1.9] text-ink-2">
             <strong className="text-ink">Regions served</strong>
             <br />
-            United Kingdom · Europe · Middle East (KSA/UAE) · India · Singapore
+            United Kingdom · Europe · Gulf (KSA/UAE) · India · Singapore
             <br />
             
           </div>

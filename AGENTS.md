@@ -60,10 +60,15 @@ Do not switch the hero animation to JS-based.
 
 Placeholder page — the actual lead-capture form has not been built yet. Don't assume a form submission handler exists.
 
+### Analytics
+
+Client-side analytics (autocapture for clicks/pageviews/pageleaves, session replay) initializes via `instrumentation-client.ts` at the project root — Next.js loads this automatically before hydration; don't import it manually or re-init PostHog elsewhere. GA/GTM/HubSpot remain wired separately in `app/layout.tsx`. Two manual conversion events fire alongside the existing GA conversion pixel: `demo_booking_completed` in `components/BookDemoCal.tsx`'s Cal.com `bookingSuccessfulV2` callback, and `book_demo_thank_you_viewed` in `components/BookDemoConversion.tsx`'s mount effect. PostHog credentials live in `.env.local` (gitignored, local-only — not yet set in Vercel).
+
 ## Repo layout
 
 ```
 website/
+├── instrumentation-client.ts — PostHog client init (autocapture + session replay)
 ├── app/
 │   ├── page.tsx              — homepage (all sections)
 │   ├── book-demo/page.tsx    — demo request placeholder (form not yet implemented)

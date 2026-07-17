@@ -1,13 +1,11 @@
 import type { Metadata } from "next";
 import { IBM_Plex_Serif, IBM_Plex_Mono } from "next/font/google";
 import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
-import Script from "next/script";
 import { JsonLd } from "@/components/JsonLd";
 import { siteConfig } from "@/lib/metadata";
 import "./globals.css";
 
 const GA_MEASUREMENT_ID = "G-LX9SVDZ842";
-const HUBSPOT_PORTAL_ID = "246627877";
 const GTM_ID = "GTM-P22VGXKT";
 
 const plexSerif = IBM_Plex_Serif({
@@ -102,11 +100,6 @@ export default function RootLayout({
         <JsonLd data={organizationJsonLd} />
         <JsonLd data={websiteJsonLd} />
         {children}
-        <Script
-          id="hs-script-loader"
-          strategy="afterInteractive"
-          src={`https://js-na2.hs-scripts.com/${HUBSPOT_PORTAL_ID}.js`}
-        />
       </body>
       <GoogleAnalytics gaId={GA_MEASUREMENT_ID} />
     </html>
