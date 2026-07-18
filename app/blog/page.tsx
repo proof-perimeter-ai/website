@@ -11,7 +11,7 @@ import { getAllPosts } from "@/lib/blog";
 export const metadata: Metadata = {
   title: "Blog",
   description:
-    "Insights on AI-powered document processing, on-device inference, and compliance for regulated financial services — from the Proof Perimeter team.",
+    "Insights on AI-powered document processing for regulated industries — from the Proof Perimeter team.",
   alternates: { canonical: "/blog" },
 };
 
@@ -53,12 +53,11 @@ export default function BlogIndex() {
           <div className="mx-auto max-w-[1120px] px-7">
             <Eyebrow>Blog</Eyebrow>
             <h1 className="mt-4.5 max-w-[22ch] text-[clamp(34px,4.6vw,52px)] font-bold tracking-[-0.022em] text-ink">
-              Document AI, compliance, and the engineering behind both.
+              Insights on AI-powered document processing for regulated industries.
             </h1>
-            <p className="mt-6 max-w-[62ch] text-[19px] text-ink-2">
-              Notes on AI-powered document processing, on-device inference, and building for regulated financial
-              services.
-            </p>
+            {/* <p className="mt-6 max-w-[62ch] text-[19px] text-ink-2">
+              Insights on AI-powered document processing for regulated industries.
+            </p> */}
           </div>
         </section>
 
