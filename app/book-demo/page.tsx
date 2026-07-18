@@ -19,10 +19,7 @@ export default function BookDemo() {
         <section className="py-22">
           <div className="mx-auto max-w-[1100px] px-7 text-center">
             <div className="mx-auto max-w-[760px]">
-              <Eyebrow className="justify-center">Get started</Eyebrow>
-              <h1 className="mt-4.5 text-[clamp(30px,4.4vw,44px)] font-bold tracking-[-0.022em] text-ink">
-                Start free with your own model key — or go Enterprise with ours.
-              </h1>
+              <Eyebrow className="justify-center">Book a live demo</Eyebrow>
             </div>
 
             <div className="mx-auto mt-12 h-[650px] w-full rounded-lg border border-line bg-panel p-8 text-left">
@@ -30,8 +27,8 @@ export default function BookDemo() {
             </div>
             <p className="mt-6 text-sm text-ink-2">
               Prefer email? Reach us directly at{" "}
-              <a href="mailto:gaurav@proofperimeter.com" className="text-signal hover:underline">
-                gaurav@proofperimeter.com
+              <a href="mailto:admin@proofperimeter.com" className="text-signal hover:underline">
+                admin@proofperimeter.com
               </a>
               .
             </p>

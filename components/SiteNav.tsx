@@ -11,6 +11,7 @@ export function SiteNav() {
         <nav className="hidden gap-7 text-[15px] font-medium text-ink-2 md:flex">
           <Link href="/enterprise" className="hover:text-ink transition-colors">Enterprise</Link>
           <Link href="/pricing" className="hover:text-ink transition-colors">Pricing</Link>
+          <Link href="/blog" className="hover:text-ink transition-colors">Blog</Link>
         </nav>
         <Link
           href="/book-demo"

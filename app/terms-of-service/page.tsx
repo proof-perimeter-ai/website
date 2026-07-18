@@ -5,7 +5,7 @@ import { SiteNav } from "@/components/SiteNav";
 import { SiteFooter } from "@/components/SiteFooter";
 import { siteConfig } from "@/lib/metadata";
 
-const LAST_UPDATED = "June 30, 2026";
+const LAST_UPDATED = "July 19, 2026";
 const CONTACT_EMAIL = "admin@proofperimeter.com";
 
 export const metadata: Metadata = {
@@ -28,9 +28,9 @@ export default function TermsOfService() {
             <p className="mt-3 font-mono text-xs text-ink-2">Last updated: {LAST_UPDATED}</p>
             <p className="mt-7 text-[15.5px] leading-[1.62] text-ink-2">
               These Terms of Service (&ldquo;Terms&rdquo;) govern your access to and use of the {siteConfig.name} website at{" "}
-              <span className="text-ink">proofperimeter.com</span> (the &ldquo;Site&rdquo;) and any related demo, audit, or
-              benchmark engagements described on it (together, the &ldquo;Services&rdquo;). By accessing the Site or
-              requesting a demo, audit, or benchmark, you agree to these Terms. If you do not agree, do not use the Site.
+              <span className="text-ink">proofperimeter.com</span> (the &ldquo;Site&rdquo;) and any related demo, trial, or
+              Enterprise evaluation engagements described on it (together, the &ldquo;Services&rdquo;). By accessing the Site or
+              requesting a demo or evaluation, you agree to these Terms. If you do not agree, do not use the Site.
             </p>
 
             <LegalSection title="1. Acceptance of Terms">
@@ -43,10 +43,13 @@ export default function TermsOfService() {
 
             <LegalSection title="2. Description of Service">
               <p>
-                {siteConfig.name} is a marketing site describing an on-device document-processing AI inference
-                platform for regulated BFSI institutions. Engagements such as the Sovereign-AI-Gap Audit or a blind
-                benchmark referenced on this Site are scoped and agreed separately with each prospective customer
-                and are not automatically granted by use of the Site itself.
+                {siteConfig.name} is a marketing site describing a document AI platform for processing regulated,
+                high-risk documents — KYC packets, insurance claims files, letters of credit, loan applications, and
+                policies — for BFSI institutions. The Site describes two paths to use the platform: a free Bring
+                Your Own Key workspace, and a paid Enterprise license featuring {siteConfig.name}&rsquo;s proprietary
+                Document AI model. Enterprise engagements, including deployment, fine-tuning, and integration work,
+                are scoped and agreed separately with each prospective customer and are not automatically granted by
+                use of the Site itself.
               </p>
             </LegalSection>
 
@@ -54,7 +57,8 @@ export default function TermsOfService() {
               <p>
                 The Site is intended for business and professional use by individuals acting on behalf of an
                 organization evaluating {siteConfig.name}. You agree to provide accurate information when requesting
-                a demo, audit, or benchmark, and to keep any credentials or access we provide to you confidential.
+                a demo or Enterprise evaluation, and to keep any credentials or access we provide to you
+                confidential.
               </p>
             </LegalSection>
 
@@ -75,18 +79,19 @@ export default function TermsOfService() {
                 <li>Attempt to gain unauthorized access to the Site, our systems, or any related infrastructure;</li>
                 <li>Interfere with or disrupt the integrity or performance of the Site;</li>
                 <li>Use automated means to scrape or extract content from the Site, other than standard search-engine and AI-crawler indexing as permitted by our <span className="text-ink">robots.txt</span>; or</li>
-                <li>Misrepresent your identity or affiliation when requesting a demo, audit, or benchmark.</li>
+                <li>Misrepresent your identity or affiliation when requesting a demo or Enterprise evaluation.</li>
               </ul>
             </LegalSection>
 
             <LegalSection title="6. Confidentiality">
               <p>
-                If you share documents, data, or other materials with us as part of a Sovereign-AI-Gap Audit, blind
-                benchmark, or demo (for example, sample documents used to evaluate field-level accuracy), we will
-                treat those materials as confidential and use them solely to perform the requested evaluation, unless
-                a separate written agreement between us states otherwise. We recommend that any sensitive or
-                regulated documents shared for evaluation be de-identified or anonymized where practicable, and that
-                a mutual non-disclosure agreement be executed before sharing production data.
+                If you share documents, data, or other materials with us as part of a demo, Bring Your Own Key
+                trial, or Enterprise evaluation (for example, sample documents used to evaluate field-level
+                accuracy), we will treat those materials as confidential and use them solely to perform the
+                requested evaluation, unless a separate written agreement between us states otherwise. We recommend
+                that any sensitive or regulated documents shared for evaluation be de-identified or anonymized
+                where practicable, and that a mutual non-disclosure agreement be executed before sharing production
+                data.
               </p>
             </LegalSection>
 
@@ -103,8 +108,9 @@ export default function TermsOfService() {
                 The Site and its content are provided &ldquo;as is&rdquo; and &ldquo;as available,&rdquo; without
                 warranties of any kind, whether express or implied, including warranties of merchantability, fitness
                 for a particular purpose, or non-infringement. Statistics, benchmarks, and figures referenced on the
-                Site (such as cost or latency comparisons) are illustrative, drawn from cited reference deployments
-                unless stated otherwise, and are not a guarantee of results for any specific organization.
+                Site (such as accuracy or token-consumption comparisons) are illustrative, drawn from internal
+                benchmarking unless stated otherwise, and are not a guarantee of results for any specific
+                organization.
               </p>
             </LegalSection>
 

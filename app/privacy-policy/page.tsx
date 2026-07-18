@@ -5,7 +5,7 @@ import { SiteNav } from "@/components/SiteNav";
 import { SiteFooter } from "@/components/SiteFooter";
 import { siteConfig } from "@/lib/metadata";
 
-const LAST_UPDATED = "June 30, 2026";
+const LAST_UPDATED = "July 19, 2026";
 const CONTACT_EMAIL = "admin@proofperimeter.com";
 
 export const metadata: Metadata = {
@@ -29,17 +29,18 @@ export default function PrivacyPolicy() {
             <p className="mt-7 text-[15.5px] leading-[1.62] text-ink-2">
               This Privacy Policy explains how {siteConfig.name} (&ldquo;we,&rdquo; &ldquo;us,&rdquo; or
               &ldquo;our&rdquo;) collects, uses, and protects information when you visit{" "}
-              <span className="text-ink">proofperimeter.com</span> (the &ldquo;Site&rdquo;) or request a demo, audit,
-              or benchmark.
+              <span className="text-ink">proofperimeter.com</span> (the &ldquo;Site&rdquo;), request a demo, or start
+              a Bring Your Own Key workspace.
             </p>
 
             <LegalSection title="1. Overview & Scope">
               <p>
                 This Policy applies to information collected through the Site, including when you fill out a contact
-                or demo-request form, email us, or simply browse the Site. It does not apply to any data we process
-                on a customer&rsquo;s behalf inside their own VPC or sovereign-cloud environment as part of a paid
-                engagement — that processing is governed by the separate commercial and data-processing agreement
-                entered into with that customer, not by this Site Policy.
+                or demo-request form, email us, or simply browse the Site. It does not apply to the documents you
+                process through the product itself: under Bring Your Own Key, document processing is governed by
+                your chosen model provider&rsquo;s (e.g. OpenAI, Anthropic, or Google) own terms and privacy policy,
+                not by us; under an Enterprise deployment, document processing is governed by the separate
+                commercial and data-processing agreement entered into with that customer — not by this Site Policy.
               </p>
             </LegalSection>
 
@@ -48,8 +49,8 @@ export default function PrivacyPolicy() {
               <ul>
                 <li>
                   <span className="text-ink">Information you provide directly</span> — such as your name, work email,
-                  company, and any message details when you request a demo, audit, or benchmark, or otherwise contact
-                  us.
+                  company, and any message details when you request a demo or Enterprise evaluation, or otherwise
+                  contact us.
                 </li>
                 <li>
                   <span className="text-ink">Information collected automatically</span> — such as IP address,
@@ -62,7 +63,7 @@ export default function PrivacyPolicy() {
             <LegalSection title="3. How We Use Information">
               <p>We use the information described above to:</p>
               <ul>
-                <li>Respond to demo, audit, and benchmark requests and other inquiries;</li>
+                <li>Respond to demo, Bring Your Own Key, and Enterprise evaluation requests and other inquiries;</li>
                 <li>Operate, maintain, and improve the Site;</li>
                 <li>Understand aggregate usage of the Site and which content is useful to visitors;</li>
                 <li>Communicate with you about {siteConfig.name}, where you have consented to receive such communications; and</li>

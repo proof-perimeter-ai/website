@@ -2,9 +2,9 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://proofperimeter.com"
 
 export const siteConfig = {
   name: "Proof Perimeter",
-  tagline: "On-device document AI that runs where your regulator can see it",
+  tagline: "Frontier AI for regulated document processing",
   description:
-    "Proof Perimeter runs small, fine-tuned models on your most sensitive financial documents — entirely inside your environment, on commodity CPUs, live in weeks. It proves, document by document, that the inference never left the perimeter.",
+    "Proof Perimeter is a document AI platform for regulated, high-risk documents — KYC packets, claims files, letters of credit, loan applications, and policies. Start free with your own model key, or go Enterprise for a fine-tuned Document AI model with zero-egress deployment, SSO, RBAC, and maker-checker controls.",
   url: siteUrl,
   ogImage: `${siteUrl}/opengraph-image`,
   twitterHandle: "@proofperimeter",

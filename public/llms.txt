@@ -1,21 +1,50 @@
 # Proof Perimeter
 
-> Proof Perimeter runs small, fine-tuned document-AI models entirely inside a financial institution's own environment — on commodity CPUs, live in weeks — and proves, document by document, that inference never left the perimeter.
+> Proof Perimeter is a document AI platform for processing highly regulated, high-risk documents — KYC packets, insurance claims files, letters of credit, loan applications, and policies. Start free with your own model key (Bring Your Own Key), or license Proof Perimeter's proprietary, fine-tuned Document AI model on the Enterprise tier for higher accuracy, lower token cost, and zero-egress deployment.
 
-Proof Perimeter targets regulated BFSI document workflows: KYC and onboarding, lending and credit files, and insurance underwriting and claims. It deploys inside a customer's VPC or sovereign cloud with no outbound calls, runs ingest/classify/extract on-device, and attaches a provenance record (model version, timestamp, where inference ran, confidence) to every extracted field. Low-confidence fields route to a human reviewer.
+Proof Perimeter provides one workspace for the full document lifecycle: classification, extraction, human-in-the-loop review, and structured export. Pre-built templates cover recurring fields, standard clauses, complex tables, and form-based layouts common to regulated industries. Every extracted field carries provenance — what the model saw, what it decided, and why — so a reviewer or auditor can trace any value back to its source.
+
+## Core workspace & capabilities
+
+- **End-to-end workflow**: classification → extraction → human-in-the-loop review queues → structured export, in one workspace.
+- **Pre-built templates**: specialized templates for KYC, claims, letters of credit, loan, and policy documents — tuned for recurring fields, standard clauses, complex tables, and form-based layouts.
+- **Batch processing**: run thousands of documents in a single job, with no per-document ceiling on either pricing path.
+- **API access**: full programmatic access for integrating extraction into a core banking system (CBS), loan origination system (LOS), or claims platform.
+- **Review**: human-in-the-loop correction queues with confidence scoring, so only low-confidence fields route to a person.
+- **Data lineage (provenance)**: field-level lineage on every extracted value — what the model saw, what it decided, and the reasoning behind it. Available on both pricing paths.
+
+## Pricing paths
+
+Proof Perimeter offers two ways to run the platform:
+
+1. **Bring Your Own Key (BYOK)** — free. No platform fee and no document limit on the workspace itself. Connect an API key from a supported model provider (OpenAI, Anthropic, or Google, with more being added) and pay that provider directly at their standard rates. Data egress is governed by the chosen provider's terms, not Proof Perimeter's.
+2. **Enterprise License** — a paid license for Proof Perimeter's proprietary, fine-tuned Document AI model. Per Proof Perimeter's internal benchmarks, this model delivers 20% higher accuracy and 50% lower token consumption than general frontier models on the same document-extraction tasks. The model is further fine-tuned on the customer's own corrections and documents. Enterprise pricing is scoped to document volume, document-type complexity, and deployment/customization requirements — not a fixed rate card.
+
+Templates, workflows, and review configurations carry over when moving from BYOK to Enterprise — customers swap the model underneath the workspace, not rebuild it.
+
+## Security and compliance (Enterprise tier)
+
+- **Zero-egress deployment**: cloud-hosted, within the customer's own infrastructure (private cloud), or fully on-premise and air-gapped, so no data leaves the chosen boundary.
+- **Access & workflow controls**: Single Sign-On (SSO), Role-Based Access Control (RBAC), and maker-checker validation workflows on every workflow.
+- **Governance reporting**: a governance dashboard with a residency map and an exportable conformity pack for audit and examiner requests.
+- **Integration**: legacy core-system connectors and system-of-record integration, so extraction results land directly in existing operational systems.
+- Designed for residency and AI-governance regimes including EU DORA/AI Act, Gulf SAMA/CBUAE, Singapore MAS, India RBI/DPDP, and ISO 42001/SOC 2.
 
 ## Pages
 
-- [Home](https://proofperimeter.com/): Free document AI platform — bring your own model key. Covers pain points with generic document AI, the workspace (templates, workflows, batch, API, review, export, provenance), accuracy/cost stats, personas, a BYOK-vs-Enterprise "Choose your path" comparison, and FAQ.
+- [Home](https://proofperimeter.com/): Free document AI platform — bring your own model key. Covers pain points with generic document AI, the workspace (templates, workflows, batch, API, review, export, provenance), the 20%-accuracy/50%-token benchmark, target personas, a BYOK-vs-Enterprise comparison, and FAQ.
+- [Pricing](https://proofperimeter.com/pricing): Feature-by-feature comparison of the Bring Your Own Key (free, usage-based on model-provider tokens) and Enterprise (custom-quoted license) plans, plus pricing FAQ.
 - [Enterprise](https://proofperimeter.com/enterprise): Document AI deployed inside your perimeter — vertical-tuned proprietary models, hosted/private-cloud/on-premises deployment with zero egress, fine-tuning on your documents, legacy core integration, and governance controls (SSO, RBAC, maker-checker review, conformity pack).
-- [Book a demo](https://proofperimeter.com/book-demo): Request a free Sovereign-AI-Gap Audit and blind benchmark on your own documents.
+- [Book a demo](https://proofperimeter.com/book-demo): Start free with a Bring Your Own Key workspace, or book a demo to evaluate the Enterprise tier.
 - [Glossary](https://proofperimeter.com/glossary): AI document processing glossary — plain-language definitions of OCR, intelligent document processing, extraction, document AI agent, compliance and evaluation terms, each at /glossary/{term}.
+- [Blog](https://proofperimeter.com/blog): Articles on AI-powered document processing, on-device inference, and compliance for regulated financial services.
 
 ## Key facts
 
-- Runs on commodity CPU hardware — no GPUs required.
-- Deploys air-gapped inside a customer's VPC or sovereign cloud; no outbound network calls.
-- Typical time to production for a focused use case: 4–11 weeks.
-- Typical latency on commodity CPU hardware: under 100ms.
+- Target documents: KYC/onboarding packets, insurance claims files, letters of credit, loan applications, and policy documents.
+- Enterprise Document AI model: 20% higher accuracy, 50% lower token consumption than general frontier models on document-extraction tasks (Proof Perimeter internal benchmark).
+- BYOK supported model providers at launch: OpenAI, Anthropic, Google.
+- Document limit on both pricing paths: none.
+- Enterprise deployment options: cloud-hosted, customer's own infrastructure/private cloud, or fully on-premise and air-gapped (zero egress).
 - Designed for residency and AI-governance regimes including EU DORA/AI Act, Gulf SAMA/CBUAE, Singapore MAS, India RBI/DPDP, and ISO 42001/SOC 2.
-- Residency/data-storage rules govern where a document sits; Proof Perimeter addresses the separate question of where the model that reads it runs.
+- Residency/data-storage rules govern where a document sits; Proof Perimeter's zero-egress option addresses the separate question of where the model that reads it runs.
