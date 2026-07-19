@@ -1,6 +1,8 @@
 # Proof Perimeter — SEO Publishing Strategy
 
-*A phased, keyword-grouped content plan for building domain authority for Proof Perimeter (proofperimeter.com), a sovereign/on-device document-AI platform for regulated BFSI (banking, financial services, insurance) institutions.*
+*A phased, keyword-grouped content plan for building domain authority for Proof Perimeter is a document AI platform for processing highly regulated, high-risk documents — KYC packets, insurance claims files, letters of credit, loan applications, and policies. Start free with your own model key (Bring Your Own Key), or license Proof Perimeter's proprietary, fine-tuned Document AI model on the Enterprise tier for higher accuracy, lower token cost, and zero-egress deployment.
+
+Proof Perimeter provides one workspace for the full document lifecycle: classification, extraction, human-in-the-loop review, and structured export. Pre-built templates cover recurring fields, standard clauses, complex tables, and form-based layouts common to regulated industries. Every extracted field carries provenance — what the model saw, what it decided, and why — so a reviewer or auditor can trace any value back to its source.*
 
 ---
 
@@ -276,7 +278,7 @@ How to use it:
 - [ ] ai document
 - [ ] ai document analysis
 - [ ] ai document reader
-- [ ] What Is Intelligent Document Processing (IDP)? A Complete Guide
+- [ ] What Is Intelligent Document Processing (IDP)? A Complete Guide(2026)
 - [ ] Document AI Platforms Compared: How to Choose One for Regulated Data
 - [ ] AI Document Copilots: What They Are and Where They Fall Short for Compliance Teams
 - [ ] The State of Document AI in Banking, Insurance, and Lending (2026)
@@ -287,6 +289,7 @@ How to use it:
 - [ ] Document AI ROI: How to Calculate Cost Savings from Automated Extraction
 - [ ] What Is an AI Document Processing Pipeline? Stages Explained
 - [ ] Document AI Case Studies: What Production Deployments Actually Look Like
+- [ ] Top Open Source document ai tools
 
 ### Cluster B — Cloud-alternative / comparison intent
 

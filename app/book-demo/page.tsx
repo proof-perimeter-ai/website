@@ -22,7 +22,7 @@ export default function BookDemo() {
               <Eyebrow className="justify-center">Book a live demo</Eyebrow>
             </div>
 
-            <div className="mx-auto mt-12 h-[650px] w-full rounded-lg border border-line bg-panel p-8 text-left">
+            <div className="mx-auto mt-12 h-[550px] w-full rounded-lg border border-line bg-panel p-8 text-left sm:h-[650px]">
               <BookDemoCal />
             </div>
             <p className="mt-6 text-sm text-ink-2">

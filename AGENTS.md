@@ -1,14 +1,15 @@
 
 
 # Proof Perimeter — proofperimeter.com
+Proof Perimeter is an frontier document AI platform for processing highly regulated, high-risk documents — KYC packets, insurance claims files, letters of credit, loan applications, and policies. Start free with your own model key (Bring Your Own Key), or license Proof Perimeter's proprietary, fine-tuned Document AI model on the Enterprise tier for higher accuracy, lower token cost, and zero-egress deployment.
 
-On-device document-processing AI inference platform for regulated BFSI (banking, financial services, insurance) institutions, targeted primarily at the EU and Asia. Proof Perimeter runs small, fine-tuned models inside a customer's own VPC or sovereign cloud — on commodity CPUs — so document inference (KYC packs, loan files, claims) never leaves their perimeter, and ships per-document provenance evidence for regulators (EU DORA / AI Act, Gulf SAMA / CBUAE, Singapore MAS, India RBI / DPDP, ISO 42001 / SOC 2).
+Proof Perimeter provides one workspace for the full document lifecycle: classification, extraction, human-in-the-loop review, and structured export. Pre-built templates cover recurring fields, standard clauses, complex tables, and form-based layouts common to regulated industries. Every extracted field carries provenance — what the model saw, what it decided, and why — so a reviewer or auditor can trace any value back to its source.
 
 This repo is the marketing site only — no product code lives here.
 
 ## Product
 
-Proof Perimeter is a document AI platform for processing highly regulated, high-risk documents — KYC packets, insurance claims files, letters of credit, loan applications, policies.
+Proof Perimeter is an frontier AI platform for processing highly regulated, high-risk documents — KYC packets, insurance claims files, letters of credit, loan applications, policies.
 
 **Core workspace & capabilities**
 - End-to-end workflow: document classification → data extraction → human-in-the-loop review queues → structured export.
