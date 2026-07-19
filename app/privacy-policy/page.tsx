@@ -10,7 +10,7 @@ const CONTACT_EMAIL = "admin@proofperimeter.com";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
-  description: `How ${siteConfig.name} collects, uses, and protects information from visitors to proofperimeter.com.`,
+  description: `How ${siteConfig.name} collects, uses, and protects information from visitors, demo requesters, and Bring Your Own Key users at proofperimeter.com.`,
   alternates: { canonical: "/privacy-policy" },
 };
 

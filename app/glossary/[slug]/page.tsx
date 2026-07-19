@@ -13,11 +13,34 @@ export function generateStaticParams() {
   return getAllTerms().map((term) => ({ slug: term.slug }));
 }
 
+const TITLE_SUFFIX_LENGTH = " | Proof Perimeter".length;
+
+/**
+ * Term names are the title by default, but that leaves some pages too short
+ * (single-word tool names like "Docling") or too long (spelled-out acronyms)
+ * once " | Proof Perimeter" is appended — this derives a page title that
+ * stays in the ~30-60 char range without inventing any new claim.
+ */
+function metaTitleFor(term: { title: string; category: string }): string {
+  let title = term.title;
+
+  if (title.length + TITLE_SUFFIX_LENGTH > 60) {
+    const abbreviated = title.match(/^.*?\(([A-Z0-9]+)\)\s*(.*)$/);
+    if (abbreviated) title = `${abbreviated[1]} ${abbreviated[2]}`.trim();
+  }
+
+  if (title.length + TITLE_SUFFIX_LENGTH < 30) {
+    title = `${title} — ${term.category}`;
+  }
+
+  return title;
+}
+
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
   const term = getTermBySlug(slug)!;
   return {
-    title: term.title,
+    title: metaTitleFor(term),
     description: term.description,
     alternates: { canonical: `/glossary/${term.slug}` },
     openGraph: {
@@ -100,9 +123,9 @@ export default async function GlossaryTermPage({ params }: { params: Promise<{ s
                       className="group bg-panel p-6 transition-colors hover:bg-paper-2"
                     >
                       <div className="font-mono text-[11px] uppercase tracking-[0.1em] text-signal">{rel.category}</div>
-                      <div className="mt-3 text-[16.5px] font-semibold tracking-[-0.01em] text-ink transition-colors group-hover:text-signal">
+                      <h2 className="mt-3 text-[16.5px] font-semibold tracking-[-0.01em] text-ink transition-colors group-hover:text-signal">
                         {rel.title}
-                      </div>
+                      </h2>
                       <p className="mt-2 text-sm text-ink-2">{rel.tagline}</p>
                     </Link>
                   ))}

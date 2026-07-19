@@ -71,7 +71,7 @@ export default function GlossaryIndex() {
             {groups.map(({ letter, terms }) => (
               <div key={letter} id={letter} className="scroll-mt-20 border-b border-line py-9 first:pt-0">
                 <div className="grid gap-6 md:grid-cols-[80px_1fr]">
-                  <div className="font-mono text-[28px] font-medium text-signal">{letter}</div>
+                  <h2 className="font-mono text-[28px] font-medium text-signal">{letter}</h2>
                   <ul className="m-0 grid list-none gap-x-8 gap-y-3 p-0 sm:grid-cols-2 lg:grid-cols-3">
                     {terms.map((term) => (
                       <li key={term.slug}>
