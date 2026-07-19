@@ -9,9 +9,9 @@ import { siteConfig } from "@/lib/metadata";
 import { getAllPosts } from "@/lib/blog";
 
 export const metadata: Metadata = {
-  title: "Blog",
+  title: "Document AI & Compliance Blog",
   description:
-    "Insights on AI-powered document processing for regulated industries — from the Proof Perimeter team.",
+    "Insights on AI-powered document processing, on-device inference, and compliance for regulated financial services — from the Proof Perimeter team.",
   alternates: { canonical: "/blog" },
 };
 

@@ -72,7 +72,6 @@ const organizationJsonLd = {
   name: siteConfig.name,
   url: siteConfig.url,
   description: siteConfig.description,
-  industry: "Financial services compliance software",
 };
 
 const websiteJsonLd = {

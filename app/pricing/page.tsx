@@ -7,7 +7,7 @@ import { SiteNav } from "@/components/SiteNav";
 import { SiteFooter } from "@/components/SiteFooter";
 
 export const metadata: Metadata = {
-  title: "Pricing",
+  title: "Document AI Pricing: BYOK vs Enterprise",
   description:
     "Compare Proof Perimeter's Bring Your Own Key and Enterprise plans feature by feature — deployment, data egress, workflows, audit logging, connectors, and support.",
   alternates: { canonical: "/pricing" },
