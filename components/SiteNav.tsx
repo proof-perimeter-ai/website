@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ChevronDown, Landmark, Briefcase, ShieldCheck, Scale, HeartPulse } from "lucide-react";
 import { BrandMark } from "@/components/BrandMark";
+import { MobileNav } from "@/components/MobileNav";
 
 const industries = [
   { slug: "banking", name: "Banking", icon: Landmark },
@@ -54,12 +55,15 @@ export function SiteNav() {
           <Link href="/enterprise" className="hover:text-ink transition-colors">Enterprise</Link>
           <Link href="/pricing" className="hover:text-ink transition-colors">Pricing</Link>
         </nav>
-        <Link
-          href="/book-demo"
-          className="rounded-[5px] bg-signal px-4.5 py-2.5 text-[15px] font-semibold text-white hover:bg-signal-deep transition-colors"
-        >
-          Book demo
-        </Link>
+        <div className="flex items-center gap-2">
+          <Link
+            href="/book-demo"
+            className="hidden rounded-[5px] bg-signal px-4.5 py-2.5 text-[15px] font-semibold text-white hover:bg-signal-deep transition-colors md:inline-flex"
+          >
+            Book demo
+          </Link>
+          <MobileNav />
+        </div>
       </div>
     </header>
   );

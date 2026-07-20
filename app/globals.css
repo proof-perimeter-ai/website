@@ -72,6 +72,29 @@ body {
   background: radial-gradient(closest-side, color-mix(in srgb, var(--signal) 16%, transparent), transparent 100%);
 }
 
+/* Mobile sticky Book demo CTA — periodic shine sweep, GPU-friendly (transform, not background-position) */
+@keyframes mobile-cta-shine {
+  0%   { transform: translateX(-150%); }
+  18%  { transform: translateX(150%); }
+  100% { transform: translateX(150%); }
+}
+
+.mobile-cta-shine::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    75deg,
+    transparent 40%,
+    color-mix(in srgb, var(--paper) 55%, transparent) 50%,
+    transparent 60%
+  );
+  transform: translateX(-150%);
+  animation: mobile-cta-shine 4.5s ease-in-out infinite;
+  will-change: transform;
+  pointer-events: none;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .hero-animate-badge,
   .hero-animate-h1,
@@ -88,5 +111,9 @@ body {
     transition: none !important;
     opacity: 1 !important;
     transform: none !important;
+  }
+  .mobile-cta-shine::after {
+    animation: none;
+    opacity: 0;
   }
 }
