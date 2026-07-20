@@ -21,6 +21,36 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
+      url: `${siteConfig.url}/solutions`,
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
+      url: `${siteConfig.url}/solutions/banking`,
+      changeFrequency: "monthly",
+      priority: 0.75,
+    },
+    {
+      url: `${siteConfig.url}/solutions/financial-services`,
+      changeFrequency: "monthly",
+      priority: 0.75,
+    },
+    {
+      url: `${siteConfig.url}/solutions/insurance`,
+      changeFrequency: "monthly",
+      priority: 0.75,
+    },
+    {
+      url: `${siteConfig.url}/solutions/legal`,
+      changeFrequency: "monthly",
+      priority: 0.75,
+    },
+    {
+      url: `${siteConfig.url}/solutions/healthcare`,
+      changeFrequency: "monthly",
+      priority: 0.75,
+    },
+    {
       url: `${siteConfig.url}/pricing`,
       changeFrequency: "monthly",
       priority: 0.85,

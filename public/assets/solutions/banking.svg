@@ -1,0 +1,361 @@
+<svg viewBox="0 0 728 680" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
+  <title>Proof Perimeter — document parsing animation (Banking)</title>
+
+  <!--
+    EDITABLE COPY — Banking variant.
+    These 8 strings are the exact text rendered in the bottom status pill
+    (see the "bottom status pill" group near the end of this file — the
+    <text class="pill-label ..."> elements there). This block is a quick
+    reference index only, not a live variable — edit the <text> elements
+    themselves to change what's shown.
+
+    Doc 1 (KYC checklist):        Extracting KYC data / Summarizing risk profile
+    Doc 2 (Account opening form): Extracting form fields / Summarizing applicants
+    Doc 3 (Government ID):        Extracting ID details / Summarizing identity
+    Shared (every doc's turn):    Analyzing layout / Reading text
+  -->
+
+  <defs>
+    <style>
+      :root { color-scheme: light; }
+
+      .header-chip { fill: url(#checkAmber); }
+      .header-bar { fill: #14467C; }
+
+      .cell { fill: #52606A; opacity: .55; }
+      .squiggle { fill: none; stroke: #52606A; stroke-width: 2.4; stroke-linecap: round; opacity: .6; }
+
+      .doc {
+        transform-origin: 150px 205px;
+        animation: docRing 36s ease-in-out infinite;
+      }
+      .doc-1 { animation-delay: 0s; }
+      .doc-2 { animation-delay: -12s; }
+      .doc-3 { animation-delay: -24s; }
+
+      .cursor { animation: cursorMove 12s ease-in-out infinite; }
+      .cursor-box { fill: #FFFFFF; stroke: #C6D1D8; stroke-width: 1.5; }
+      .cursor-ai {
+        font-family: ui-sans-serif, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        font-size: 24px; font-weight: 800; fill: #0E3460; text-anchor: middle;
+      }
+
+      .sweep { animation: sweepMove 12s ease-in-out infinite; opacity: 0; }
+
+      .confetti rect { animation-duration: 12s; animation-iteration-count: infinite; animation-timing-function: ease-in-out; opacity: 0; }
+      .c-amber { fill: url(#checkAmber); }
+      .c-teal { fill: url(#checkTeal); }
+      .c-violet { fill: url(#checkViolet); }
+
+      .pill-label { font-family: ui-sans-serif, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; font-size: 15px; font-weight: 700; fill: #FFFFFF; opacity: 0; }
+      /* Each document's 36s "turn" (doc-2: 0-12s, doc-1: 12-24s, doc-3: 24-36s — see
+         docRing) steps through the same 4 stages: Analyzing layout, Extracting
+         (its content type), Reading text, Summarizing (its content type). The two
+         generic stages repeat 3x (once per turn) on one shared keyframe each; the
+         doc-specific stages only fire once, during their own document's turn. */
+      .label-analyzing { animation: plAnalyzing 36s linear infinite; }
+      .label-reading    { animation: plReading 36s linear infinite; }
+      .label-extract-fields    { animation: plExtractFields 36s linear infinite; }
+      .label-extract-kyc       { animation: plExtractKyc 36s linear infinite; }
+      .label-extract-id        { animation: plExtractId 36s linear infinite; }
+      .label-summarize-applicant { animation: plSummarizeApplicant 36s linear infinite; }
+      .label-summarize-risk      { animation: plSummarizeRisk 36s linear infinite; }
+      .label-summarize-identity  { animation: plSummarizeIdentity 36s linear infinite; }
+
+      /* One 36s ring shared by all 3 documents (staggered via animation-delay):
+         rest in the left "queued" slot, slide to center to be scanned, slide to
+         the right "done" slot, then fade out and silently reset to the left.
+         Slots are spaced wider than the card width and queued docs shrink to
+         80% so the active (100%, fully opaque) card never overlaps a neighbor
+         — nothing can show through its sides. */
+      @keyframes docRing {
+        0%     { transform: translate(-80px,130px) scale(.8); opacity: .5; filter: blur(1.6px); }
+        27%    { transform: translate(-80px,130px) scale(.8); opacity: .5; filter: blur(1.6px); }
+        33.33% { transform: translate(214px,130px) scale(1);  opacity: 1;  filter: blur(0); }
+        60%    { transform: translate(214px,130px) scale(1);  opacity: 1;  filter: blur(0); }
+        66.67% { transform: translate(508px,130px) scale(.8); opacity: .5; filter: blur(1.6px); }
+        93%    { transform: translate(508px,130px) scale(.8); opacity: .5; filter: blur(1.6px); }
+        97%    { transform: translate(508px,130px) scale(.76); opacity: 0; filter: blur(2px); }
+        97.5%  { transform: translate(-80px,130px) scale(.76); opacity: 0; filter: blur(2px); }
+        100%   { transform: translate(-80px,130px) scale(.8); opacity: .5; filter: blur(1.6px); }
+      }
+
+      @keyframes cursorMove {
+        0%   { transform: translate(88px, 46px)  scale(1); }
+        18%  { transform: translate(158px, 96px) scale(1.06); }
+        36%  { transform: translate(112px, 168px) scale(.94); }
+        54%  { transform: translate(184px, 214px) scale(1.05); }
+        72%  { transform: translate(130px, 268px) scale(.96); }
+        88%  { transform: translate(100px, 130px) scale(1.02); }
+        100% { transform: translate(88px, 46px)  scale(1); }
+      }
+
+      @keyframes sweepMove {
+        0%   { transform: translateY(0px);   opacity: 0; }
+        21%  { transform: translateY(0px);   opacity: 0; }
+        24%  { transform: translateY(0px);   opacity: .9; }
+        50%  { transform: translateY(330px); opacity: .9; }
+        53%  { transform: translateY(330px); opacity: 0; }
+        100% { transform: translateY(330px); opacity: 0; }
+      }
+
+      @keyframes confettiPop {
+        0%   { opacity: 0; transform: translateY(6px) scale(.6); }
+        14%  { opacity: 1; transform: translateY(0) scale(1); }
+        72%  { opacity: 1; transform: translateY(0) scale(1); }
+        100% { opacity: 0; transform: translateY(-6px) scale(.7); }
+      }
+      .confetti rect { animation-name: confettiPop; }
+
+      @keyframes plAnalyzing {
+        0%     {opacity:1} 7.33%  {opacity:1} 8.33%  {opacity:0}
+        32.33% {opacity:0} 33.33% {opacity:1} 40.67% {opacity:1} 41.67% {opacity:0}
+        65.67% {opacity:0} 66.67% {opacity:1} 74%    {opacity:1} 75%    {opacity:0}
+        100%   {opacity:0}
+      }
+      @keyframes plReading {
+        0%     {opacity:0} 15.67% {opacity:0} 16.67% {opacity:1} 24%    {opacity:1} 25%    {opacity:0}
+        49%    {opacity:0} 50%    {opacity:1} 57.33% {opacity:1} 58.33% {opacity:0}
+        82.33% {opacity:0} 83.33% {opacity:1} 90.67% {opacity:1} 91.67% {opacity:0}
+        100%   {opacity:0}
+      }
+      @keyframes plExtractFields    { 0% {opacity:0} 7.33%  {opacity:0} 8.33%  {opacity:1} 15.67% {opacity:1} 16.67% {opacity:0} 100% {opacity:0} }
+      @keyframes plSummarizeApplicant { 0% {opacity:0} 24%    {opacity:0} 25%    {opacity:1} 32.33% {opacity:1} 33.33% {opacity:0} 100% {opacity:0} }
+      @keyframes plExtractKyc       { 0% {opacity:0} 40.67% {opacity:0} 41.67% {opacity:1} 49%    {opacity:1} 50%    {opacity:0} 100% {opacity:0} }
+      @keyframes plSummarizeRisk      { 0% {opacity:0} 57.33% {opacity:0} 58.33% {opacity:1} 65.67% {opacity:1} 66.67% {opacity:0} 100% {opacity:0} }
+      @keyframes plExtractId        { 0% {opacity:0} 74%    {opacity:0} 75%    {opacity:1} 82.33% {opacity:1} 83.33% {opacity:0} 100% {opacity:0} }
+      @keyframes plSummarizeIdentity  { 0% {opacity:0} 90.67% {opacity:0} 91.67% {opacity:1} 99%    {opacity:1} 100%   {opacity:0} }
+
+      @media (prefers-reduced-motion: reduce) {
+        .doc, .cursor, .sweep, .confetti rect, .pill-label {
+          animation: none !important;
+        }
+        .doc-1 { transform: translate(-80px,130px) scale(.8); opacity: .5; filter: blur(1.6px); }
+        .doc-2 { transform: translate(214px,130px) scale(1);  opacity: 1;  filter: blur(0); }
+        .doc-3 { transform: translate(508px,130px) scale(.8); opacity: .5; filter: blur(1.6px); }
+        .cursor { transform: translate(158px, 96px); }
+        .sweep { opacity: 0; }
+        .confetti rect { opacity: 0; }
+        .label-extract-fields { opacity: 1; }
+      }
+    </style>
+
+    <linearGradient id="edgeFadeGrad" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0"/>
+      <stop offset="22%" stop-color="#FFFFFF" stop-opacity="1"/>
+      <stop offset="78%" stop-color="#FFFFFF" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
+    </linearGradient>
+    <mask id="edgeFade">
+      <rect width="728" height="680" fill="url(#edgeFadeGrad)"/>
+    </mask>
+
+    <pattern id="checkAmber" width="8" height="8" patternUnits="userSpaceOnUse">
+      <rect width="8" height="8" fill="#F0B94D"/>
+      <rect width="4" height="4" fill="#FBDA96"/>
+      <rect x="4" y="4" width="4" height="4" fill="#FBDA96"/>
+    </pattern>
+    <pattern id="checkTeal" width="8" height="8" patternUnits="userSpaceOnUse">
+      <rect width="8" height="8" fill="#4ED6BE"/>
+      <rect width="4" height="4" fill="#A6ECDE"/>
+      <rect x="4" y="4" width="4" height="4" fill="#A6ECDE"/>
+    </pattern>
+    <pattern id="checkViolet" width="8" height="8" patternUnits="userSpaceOnUse">
+      <rect width="8" height="8" fill="#1E9E6A"/>
+      <rect width="4" height="4" fill="#8FD0B4"/>
+      <rect x="4" y="4" width="4" height="4" fill="#8FD0B4"/>
+    </pattern>
+    <pattern id="barcode" width="7" height="10" patternUnits="userSpaceOnUse">
+      <rect width="3" height="10" fill="#52606A" opacity=".6"/>
+    </pattern>
+
+    <filter id="cardShadow" x="-40%" y="-40%" width="180%" height="180%">
+      <feDropShadow dx="0" dy="10" stdDeviation="14" flood-color="#14467C" flood-opacity=".16"/>
+    </filter>
+    <filter id="cursorShadow" x="-60%" y="-60%" width="220%" height="220%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity=".22"/>
+    </filter>
+
+    <clipPath id="centerClip">
+      <rect width="300" height="410" rx="10"/>
+    </clipPath>
+  </defs>
+
+  <g mask="url(#edgeFade)">
+  <!-- document 1: KYC checklist -->
+  <g class="doc doc-1">
+    <rect width="300" height="410" rx="10" fill="#FFFFFF" stroke="#C6D1D8" filter="url(#cardShadow)"/>
+    <g clip-path="url(#centerClip)">
+      <rect class="header-chip" x="20" y="20" width="46" height="14" rx="2"/>
+      <line x1="20" y1="58" x2="280" y2="58" stroke="#DCE4E9" stroke-width="1"/>
+      <rect class="header-bar" x="0" y="61" width="300" height="3"/>
+
+      <g transform="translate(20,84)" class="cell">
+        <g transform="translate(0,0)">
+          <rect x="0" y="0" width="40" height="6" rx="1"/><rect x="52" y="0" width="40" height="6" rx="1"/><rect x="104" y="0" width="40" height="6" rx="1"/><rect x="156" y="0" width="40" height="6" rx="1"/><rect x="208" y="0" width="40" height="6" rx="1"/>
+        </g>
+        <g transform="translate(0,16)">
+          <rect x="0" y="0" width="40" height="6" rx="1"/><rect x="52" y="0" width="40" height="6" rx="1"/><rect x="104" y="0" width="40" height="6" rx="1"/><rect x="156" y="0" width="40" height="6" rx="1"/><rect x="208" y="0" width="40" height="6" rx="1"/>
+        </g>
+        <g transform="translate(0,32)">
+          <rect x="0" y="0" width="40" height="6" rx="1"/><rect x="52" y="0" width="40" height="6" rx="1"/><rect x="104" y="0" width="40" height="6" rx="1"/><rect x="156" y="0" width="40" height="6" rx="1"/><rect x="208" y="0" width="40" height="6" rx="1"/>
+        </g>
+        <g transform="translate(0,54)" opacity=".8">
+          <rect x="0" y="0" width="260" height="4" rx="1" fill="#DCE4E9"/>
+        </g>
+        <g transform="translate(0,66)">
+          <rect x="0" y="0" width="40" height="6" rx="1"/><rect x="52" y="0" width="40" height="6" rx="1"/><rect x="104" y="0" width="40" height="6" rx="1"/><rect x="156" y="0" width="40" height="6" rx="1"/><rect x="208" y="0" width="40" height="6" rx="1"/>
+        </g>
+        <g transform="translate(0,82)">
+          <rect x="0" y="0" width="40" height="6" rx="1"/><rect x="52" y="0" width="40" height="6" rx="1"/><rect x="104" y="0" width="40" height="6" rx="1"/><rect x="156" y="0" width="40" height="6" rx="1"/><rect x="208" y="0" width="40" height="6" rx="1"/>
+        </g>
+        <g transform="translate(0,98)">
+          <rect x="0" y="0" width="40" height="6" rx="1"/><rect x="52" y="0" width="40" height="6" rx="1"/><rect x="104" y="0" width="40" height="6" rx="1"/><rect x="156" y="0" width="40" height="6" rx="1"/><rect x="208" y="0" width="40" height="6" rx="1"/>
+        </g>
+        <g transform="translate(0,120)" opacity=".8">
+          <rect x="0" y="0" width="260" height="4" rx="1" fill="#DCE4E9"/>
+        </g>
+        <g transform="translate(0,134)">
+          <rect x="0" y="0" width="40" height="6" rx="1"/><rect x="52" y="0" width="40" height="6" rx="1"/><rect x="104" y="0" width="40" height="6" rx="1"/><rect x="156" y="0" width="40" height="6" rx="1"/><rect x="208" y="0" width="40" height="6" rx="1"/>
+        </g>
+        <g transform="translate(0,150)">
+          <rect x="0" y="0" width="40" height="6" rx="1"/><rect x="52" y="0" width="40" height="6" rx="1"/><rect x="104" y="0" width="40" height="6" rx="1"/><rect x="156" y="0" width="40" height="6" rx="1"/><rect x="208" y="0" width="40" height="6" rx="1"/>
+        </g>
+        <g transform="translate(0,166)">
+          <rect x="0" y="0" width="40" height="6" rx="1"/><rect x="52" y="0" width="40" height="6" rx="1"/><rect x="104" y="0" width="40" height="6" rx="1"/><rect x="156" y="0" width="40" height="6" rx="1"/><rect x="208" y="0" width="40" height="6" rx="1"/>
+        </g>
+        <g transform="translate(0,182)">
+          <rect x="0" y="0" width="40" height="6" rx="1"/><rect x="52" y="0" width="40" height="6" rx="1"/><rect x="104" y="0" width="40" height="6" rx="1"/><rect x="156" y="0" width="40" height="6" rx="1"/><rect x="208" y="0" width="40" height="6" rx="1"/>
+        </g>
+        <g transform="translate(0,204)" opacity=".8">
+          <rect x="0" y="0" width="260" height="4" rx="1" fill="#DCE4E9"/>
+        </g>
+        <g transform="translate(0,218)">
+          <rect x="0" y="0" width="40" height="6" rx="1"/><rect x="52" y="0" width="40" height="6" rx="1"/><rect x="104" y="0" width="40" height="6" rx="1"/><rect x="156" y="0" width="40" height="6" rx="1"/><rect x="208" y="0" width="40" height="6" rx="1"/>
+        </g>
+        <g transform="translate(0,234)">
+          <rect x="0" y="0" width="40" height="6" rx="1"/><rect x="52" y="0" width="40" height="6" rx="1"/><rect x="104" y="0" width="40" height="6" rx="1"/><rect x="156" y="0" width="40" height="6" rx="1"/><rect x="208" y="0" width="40" height="6" rx="1"/>
+        </g>
+      </g>
+    </g>
+  </g>
+
+  <!-- document 2: account opening form -->
+  <g class="doc doc-2">
+    <rect width="300" height="410" rx="10" fill="#FFFFFF" stroke="#C6D1D8" filter="url(#cardShadow)"/>
+    <g clip-path="url(#centerClip)">
+      <rect class="header-chip" x="20" y="20" width="46" height="14" rx="2"/>
+      <line x1="20" y1="58" x2="280" y2="58" stroke="#DCE4E9" stroke-width="1"/>
+      <rect class="header-bar" x="0" y="61" width="300" height="3"/>
+
+      <g transform="translate(20,90)">
+        <path class="squiggle" d="M0,0 q7,-7 14,0 q7,7 14,0 q7,-7 14,0 q7,7 14,0 q7,-7 14,0 q7,7 14,0 q7,-7 14,0 q7,7 14,0 q7,-7 14,0"/>
+        <path class="squiggle" d="M0,20 q7,-7 14,0 q7,7 14,0 q7,-7 14,0 q7,7 14,0 q7,-7 14,0 q7,7 14,0 q7,-7 14,0"/>
+        <path class="squiggle" d="M0,40 q7,-7 14,0 q7,7 14,0 q7,-7 14,0 q7,7 14,0 q7,-7 14,0"/>
+      </g>
+
+      <g transform="translate(20,164)">
+        <rect width="70" height="4" rx="2" fill="#C6D1D8"/>
+        <rect y="10" width="200" height="28" rx="5" fill="none" stroke="#C6D1D8" stroke-width="1.5"/>
+      </g>
+      <g transform="translate(20,214)">
+        <rect width="50" height="4" rx="2" fill="#C6D1D8"/>
+        <rect y="10" width="110" height="28" rx="5" fill="none" stroke="#C6D1D8" stroke-width="1.5"/>
+      </g>
+
+      <g transform="translate(20,266)">
+        <rect width="16" height="16" rx="3" fill="none" stroke="#C6D1D8" stroke-width="1.5"/>
+        <rect x="24" y="6" width="140" height="5" rx="2" fill="#C6D1D8"/>
+      </g>
+      <g transform="translate(20,292)">
+        <rect width="16" height="16" rx="3" fill="none" stroke="#C6D1D8" stroke-width="1.5"/>
+        <rect x="24" y="6" width="110" height="5" rx="2" fill="#C6D1D8"/>
+      </g>
+
+      <g transform="translate(20,344)">
+        <path class="squiggle" d="M0,10 q10,-16 20,0 q10,16 20,0 q10,-16 20,0 q6,10 14,2 q8,-8 16,0" stroke-width="2.6"/>
+        <rect y="20" width="120" height="1.5" fill="#DCE4E9"/>
+      </g>
+    </g>
+  </g>
+
+  <!-- document 3: government ID -->
+  <g class="doc doc-3">
+    <rect width="300" height="410" rx="10" fill="#FFFFFF" stroke="#C6D1D8" filter="url(#cardShadow)"/>
+    <g clip-path="url(#centerClip)">
+      <rect class="header-chip" x="20" y="20" width="46" height="14" rx="2"/>
+      <line x1="20" y1="58" x2="280" y2="58" stroke="#DCE4E9" stroke-width="1"/>
+      <rect class="header-bar" x="0" y="61" width="300" height="3"/>
+
+      <!-- portrait photo -->
+      <g transform="translate(20,90)">
+        <rect width="72" height="90" rx="6" fill="#EAF0F3" stroke="#DCE4E9" stroke-width="1"/>
+        <circle cx="36" cy="34" r="16" fill="#C6D1D8"/>
+        <path d="M14,86 q22,-26 44,0 z" fill="#C6D1D8"/>
+      </g>
+      <!-- label / value pairs -->
+      <g transform="translate(108,94)">
+        <rect width="40" height="4" rx="2" fill="#C6D1D8"/>
+        <rect y="10" width="150" height="6" rx="1" fill="#52606A" opacity=".55"/>
+        <rect y="30" width="40" height="4" rx="2" fill="#C6D1D8"/>
+        <rect y="40" width="130" height="6" rx="1" fill="#52606A" opacity=".55"/>
+        <rect y="60" width="40" height="4" rx="2" fill="#C6D1D8"/>
+        <rect y="70" width="110" height="6" rx="1" fill="#52606A" opacity=".55"/>
+      </g>
+      <!-- expiry row -->
+      <g transform="translate(20,196)">
+        <rect width="40" height="4" rx="2" fill="#C6D1D8"/>
+        <rect y="10" width="90" height="6" rx="1" fill="#52606A" opacity=".55"/>
+      </g>
+      <!-- machine-readable zone -->
+      <g transform="translate(20,250)">
+        <rect width="260" height="66" rx="4" fill="#EAF0F3"/>
+        <rect x="12" y="12" width="236" height="14" fill="url(#barcode)"/>
+        <rect x="12" y="34" width="236" height="4" rx="1" fill="#52606A" opacity=".5"/>
+        <rect x="12" y="44" width="200" height="4" rx="1" fill="#52606A" opacity=".5"/>
+      </g>
+    </g>
+  </g>
+
+  <!-- scanning activity overlay: independent of which document is currently centered -->
+  <g transform="translate(214,130)">
+    <g clip-path="url(#centerClip)">
+      <g class="sweep" transform="translate(0,84)">
+        <rect x="20" y="-10" width="260" height="16" fill="#14467C" opacity=".12"/>
+        <rect x="20" y="0" width="260" height="2" fill="#14467C"/>
+      </g>
+
+      <g class="confetti">
+        <rect class="c-amber"  x="60"  y="120" width="13" height="13" rx="2" style="animation-delay:3.4s"/>
+        <rect class="c-teal"   x="150" y="100" width="13" height="13" rx="2" style="animation-delay:3.9s"/>
+        <rect class="c-violet" x="210" y="150" width="13" height="13" rx="2" style="animation-delay:4.4s"/>
+        <rect class="c-amber"  x="90"  y="200" width="13" height="13" rx="2" style="animation-delay:4.9s"/>
+        <rect class="c-teal"   x="230" y="230" width="13" height="13" rx="2" style="animation-delay:5.4s"/>
+        <rect class="c-amber"  x="140" y="260" width="13" height="13" rx="2" style="animation-delay:5.9s"/>
+        <rect class="c-violet" x="60"  y="280" width="13" height="13" rx="2" style="animation-delay:6.4s"/>
+        <rect class="c-teal"   x="190" y="180" width="13" height="13" rx="2" style="animation-delay:6.9s"/>
+        <rect class="c-amber"  x="110" y="310" width="13" height="13" rx="2" style="animation-delay:7.4s"/>
+      </g>
+    </g>
+
+    <g class="cursor" filter="url(#cursorShadow)">
+      <rect class="cursor-box" width="66" height="66" rx="9"/>
+      <text class="cursor-ai" x="33" y="42">AI</text>
+    </g>
+  </g>
+
+  <!-- bottom status pill -->
+  <g transform="translate(224,596)">
+    <rect width="280" height="44" rx="22" fill="#0E3460"/>
+    <rect x="244" y="12" width="20" height="20" rx="4" fill="url(#checkAmber)"/>
+    <text class="pill-label label-analyzing" x="20" y="27">Analyzing layout</text>
+    <text class="pill-label label-extract-fields" x="20" y="27">Extracting form fields</text>
+    <text class="pill-label label-reading" x="20" y="27">Reading text</text>
+    <text class="pill-label label-summarize-applicant" x="20" y="27">Summarizing applicants</text>
+    <text class="pill-label label-extract-kyc" x="20" y="27">Extracting KYC data</text>
+    <text class="pill-label label-summarize-risk" x="20" y="27">Summarizing risk profile</text>
+    <text class="pill-label label-extract-id" x="20" y="27">Extracting ID details</text>
+    <text class="pill-label label-summarize-identity" x="20" y="27">Summarizing identity</text>
+  </g>
+  </g>
+</svg>
