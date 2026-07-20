@@ -11,7 +11,7 @@ Proof Perimeter provides one workspace for the full document lifecycle: classifi
 | Asset | State |
 |---|---|
 | `/glossary` | **376 published MDX terms** (of 778 defined in `docs/seo-content/glossary.md`) — a large definitional/programmatic-SEO base already live, covering everything from "Agentic OCR" to "Zonal OCR" |
-| `/blog` | **Live**, MDX-powered, built and shipped since this strategy was first drafted (see §4 for the implementation). **1 published post** so far: "What Is OCR AI?" (`content/blog/what-is-ocr-ai.mdx`) — an educational explainer sitting in Cluster A/G territory (head-term "document ai"/"ocr ai" education, OCR-fundamentals framing), with the Proof Perimeter pitch worked into its "Why OCR AI Matters More in Regulated Industries" section. No pillar page, comparison page, or regulatory deep-dive published yet. |
+| `/blog` | **Live**, MDX-powered, built and shipped since this strategy was first drafted (see §4 for the implementation). **2 published posts** so far: "What Is OCR AI?" (`content/blog/what-is-ocr-ai.mdx`) — an educational explainer sitting in Cluster A/G territory (head-term "document ai"/"ocr ai" education, OCR-fundamentals framing) — and "KYC Document Automation: From Manual Review to AI-Assisted Onboarding" (`content/blog/kyc-document-automation.mdx`) — the first Phase 1 pillar page (Cluster A/E), anchoring "KYC & Onboarding Document AI". Both fold the Proof Perimeter pitch into a body section rather than a bolted-on close. 3 of 4 Phase 1 pillars and all comparison/regulatory content remain unpublished. |
 | Technical SEO | Strong groundwork: `Organization`/`WebSite`/`FAQPage`/`BlogPosting`/`Blog`/`BreadcrumbList` JSON-LD, `llms.txt`, AI-crawler-friendly `robots.ts` (GPTBot, ClaudeBot, PerplexityBot, Google-Extended, CCBot explicitly allowed), sitemap auto-generated from both glossary terms and blog posts (`app/sitemap.ts` now wires in `getAllPosts()` alongside `getAllTerms()`) |
 | Known technical gaps | Per `docs/seo-content/seo-audit.md`: canonical host inconsistency (`www.` vs bare domain), missing `SoftwareApplication` schema, thin regional-regulator content, no dedicated per-region landing pages (DORA, MAS, RBI, SAMA) |
 | Positioning | Proof Perimeter is a document AI platform for processing highly regulated, high-risk documents. Proof Perimeter's proprietary, fine-tuned Document AI model. Per internal benchmarks: 20% higher accuracy and 50% lower token consumption than general frontier models on document-extraction tasks  — targeting UK/EU (DORA, EU AI Act), Gulf (SAMA, CBUAE), India (RBI, DPDP), Singapore (MAS) |
@@ -354,7 +354,7 @@ How to use it:
 
 ### Cluster E — Compliance & regulated-workflow
 
-- [ ] KYC Document Automation: From Manual Review to AI-Assisted Onboarding
+- [x] KYC Document Automation: From Manual Review to AI-Assisted Onboarding — published as `kyc-document-automation` (2026-07-19), Phase 1 pillar #1 ("KYC & Onboarding Document AI")
 - [ ] KYB (Know Your Business) Document Verification: What AI Can and Can't Automate
 - [ ] AML Document Screening: How AI Flags Suspicious Patterns Across KYC Packets
 - [ ] Sanctions and Watchlist Screening: Where Document AI Fits the AML Stack
