@@ -12,7 +12,7 @@ tags: ["KYC document automation", "KYC", "AML", "onboarding automation", "docume
 authorId: "gaurav"
 createdAt: "2026-07-19"
 updatedAt: "2026-07-19"
-relatedPosts: ["what-is-ocr-ai", "ai-bank-statement-analysis-loan-underwriting"]
+relatedPosts: ["sovereign-ai-gap", "what-is-ocr-ai", "ai-bank-statement-analysis-loan-underwriting"]
 status: "published"
 primaryKeyword: "KYC document automation"
 cluster: "E"
@@ -76,7 +76,7 @@ Generic document AI — a model trained broadly on invoices, contracts, and form
 
 There's a second, less visible gap that matters just as much for this specific document set: KYC files concentrate the most sensitive identity data an institution holds — passport numbers, dates of birth, source-of-wealth records — and many document AI products are delivered as a cloud API, where every one of those documents leaves the institution's own environment to be processed. For KYC specifically, that's often not a convenience trade-off a compliance team can wave through; it's a data-residency and third-party-risk question in its own right, separate from whether the extraction is accurate.
 
-This is the specific gap Proof Perimeter is built to close. Its fine-tuned document AI models run inside a bank or fintech's own environment — cloud-hosted, within customer infrastructure, or fully on-premise on commodity CPUs — so passports, proof-of-address documents, and beneficial-ownership filings never have to leave the institution's own perimeter to be read. On Proof Perimeter's internal benchmarks, that fine-tuned model delivers 20% higher accuracy and 50% lower token consumption than general-purpose frontier models on the same document-extraction tasks, with field-level provenance attached to every extracted value — the "what did the model see, and why did it decide this" record a KYC file needs to survive an examiner's questions, not just an onboarding SLA.
+This is the specific gap Proof Perimeter is built to close. Its fine-tuned document AI models run inside a bank or fintech's own environment — cloud-hosted, within customer infrastructure, or fully on-premise on commodity CPUs — so passports, proof-of-address documents, and beneficial-ownership filings never have to leave the institution's own perimeter to be read. On Proof Perimeter's internal benchmarks, that fine-tuned model delivers 20% higher accuracy and 50% lower token consumption than general-purpose frontier models on the same document-extraction tasks, with field-level provenance attached to every extracted value — the "what did the model see, and why did it decide this" record a KYC file needs to survive an examiner's questions, not just an onboarding SLA. This distinction — between where a document is stored and where the model actually reads it — is exactly what we mean by the [sovereign AI gap](/blog/sovereign-ai-gap), and it's worth understanding on its own terms before it shows up in a vendor review.
 
 ## How to Evaluate a KYC Automation Vendor
 

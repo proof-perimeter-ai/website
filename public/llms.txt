@@ -40,6 +40,7 @@ Templates, workflows, and review configurations carry over when moving from BYOK
 - [Blog](https://proofperimeter.com/blog): Articles on AI-powered document processing, on-device inference, and compliance for regulated financial services.
 - [KYC Document Automation](https://proofperimeter.com/blog/kyc-document-automation): How AI-assisted document classification, extraction, and cross-checking speeds up KYC onboarding while meeting FATF Recommendation 10 and EU AMLR Article 20 due diligence requirements.
 - [AI Bank Statement Analysis for Loan Underwriting](https://proofperimeter.com/blog/ai-bank-statement-analysis-loan-underwriting): How automated transaction extraction, balance reconciliation, and income-regularity analysis speed up loan underwriting while meeting Regulation Z's third-party record verification standard.
+- [The Sovereign AI Gap](https://proofperimeter.com/blog/sovereign-ai-gap): Why data residency (where a document is stored) and inference residency (where the AI model reads it) are different requirements, and what DORA Article 28 and the EU AI Act's high-risk classification actually require of document AI deployments.
 
 ## Key facts
 

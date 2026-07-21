@@ -1,0 +1,107 @@
+---
+title: "The Sovereign AI Gap: Why Data Residency Doesn't Guarantee Inference Residency"
+slug: "sovereign-ai-gap"
+description: "Data residency rules govern where a document sits — not where the AI model reads it. DORA Article 28 holds financial institutions responsible either way."
+banner:
+  src: "/assets/blog/sovereign-ai-gap/banner.png"
+  alt: "Split diagram contrasting a document stored in-region with the same document's contents leaving for AI inference on a foreign server"
+  width: 1600
+  height: 900
+category: "Compliance"
+tags: ["sovereign AI", "data residency in document ai", "zero-egress deployment", "DORA", "EU AI Act"]
+authorId: "gaurav"
+createdAt: "2026-07-21"
+updatedAt: "2026-07-21"
+relatedPosts: ["kyc-document-automation", "ai-bank-statement-analysis-loan-underwriting", "what-is-ocr-ai"]
+status: "published"
+primaryKeyword: "sovereign AI gap"
+cluster: "E"
+---
+
+Ask a bank's infrastructure team where their KYC documents live, and they'll usually give you a confident answer: a specific region, a specific data center, sometimes a specific rack. Ask them where the AI model that just read those documents actually ran the inference, and the answer gets a lot less confident. That gap — between where data is stored and where the model that processes it actually executes — is the sovereign AI gap, and it's becoming the central compliance question for any regulated institution adopting document AI. Data residency programs have spent years solving the first question. Almost none of them have solved the second, and increasingly, regulators are asking about both.
+
+## What Is the Sovereign AI Gap?
+
+The sovereign AI gap is the difference between two things that sound like the same requirement but aren't: **data residency** (where a document is stored at rest) and **inference residency** (where the AI model actually runs when it reads, classifies, or extracts data from that document). A financial institution can satisfy the first while completely failing the second, and most compliance programs aren't built to catch it.
+
+### Data Residency vs. Inference Residency: What's Actually Different
+
+Data residency is the requirement most institutions already have controls for: documents are stored in an approved region, in an approved data center, under an approved provider's storage terms. It's a well-understood, well-audited requirement, and most cloud document AI vendors can check that box.
+
+Inference residency is a separate, less-audited question: when a document AI model actually processes a document — reads the pixels, runs the extraction, returns structured fields — where does that computation physically happen? A document can sit in an EU data center at rest and still be sent, document by document, to an inference endpoint running in a different jurisdiction, operated by a different company, subject to a different legal regime. The document "resided" correctly. The processing didn't.
+
+### Why the Distinction Gets Missed
+
+The gap gets missed because most procurement and security reviews are built around a data-at-rest mental model inherited from database and file-storage compliance — "where does the data live?" — that predates AI inference as a distinct workload. A vendor's data residency page, SOC 2 report, or DPA addendum can be entirely accurate about storage location while saying nothing about where the model runs the actual inference call, because until recently, almost no one was asking that question separately.
+
+## How Cloud Document AI Creates the Gap
+
+### The Typical Architecture Behind a "Cloud API" Call
+
+Most document AI products marketed to regulated industries work the same way underneath: a document is uploaded, optionally stored in a customer's chosen region, and then sent — usually as an API payload — to a model-serving endpoint that runs the actual extraction. That endpoint is frequently a general frontier model hosted by a third party, and its physical location, sub-processor chain, and jurisdiction are often not the same as the storage layer's. The marketing material says "your data stays in-region." The fine print, if it exists at all, is quieter about where the inference actually runs.
+
+### Sub-Processors, Model Providers, and Where Inference Actually Happens
+
+This gets more layered once a vendor's own model provider is added to the chain. A document AI platform built on top of a general-purpose frontier model is, functionally, a reseller of that model provider's inference — and the sub-processor terms governing where that inference runs are the model provider's, not necessarily the platform vendor's. For KYC packets, loan files, or claims documents, that's a meaningfully longer chain of custody than most institutions realize they've agreed to when they signed a single vendor's data processing addendum.
+
+## What Regulators Actually Require
+
+### DORA Article 28: Full Responsibility Doesn't Transfer to the Vendor
+
+The clearest statement of this problem in force today is [Regulation (EU) 2022/2554](https://eur-lex.europa.eu/eli/reg/2022/2554/oj/eng), the Digital Operational Resilience Act (DORA). Article 28(1)(a) states that financial entities using ICT services to run their business operations "shall, at all times, remain fully responsible for compliance with, and the discharge of, all obligations under this Regulation and applicable financial services law" — regardless of what's been outsourced. DORA doesn't ask where a vendor says data resides; it holds the institution accountable for the entire ICT third-party chain, inference included, and requires that risk to be assessed and registered in proportion to how critical the service is.
+
+### The EU AI Act: High-Risk Classification Doesn't Care Where the Model Runs
+
+[Regulation (EU) 2024/1689](https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng), the EU AI Act, adds a second layer specific to what document AI is actually deciding. Annex III, point 5(b) classifies AI systems used "to evaluate the creditworthiness of natural persons or establish their credit score" as high-risk — which captures loan origination and underwriting extraction pipelines directly, not just the scoring model downstream of them. A high-risk classification triggers documented risk-management obligations, data governance requirements, and audit logging regardless of whether the underlying inference happens on a bank's own infrastructure or a third party's cloud endpoint on another continent. The classification follows the decision, not the server.
+
+### Why "In-Region Storage" Isn't a Compliance Answer by Itself
+
+Put together, DORA and the AI Act describe a standard neither one satisfies with a data residency certificate alone: an institution has to be able to show what happened to a document at the point of inference — not just where it was filed before and after. A vendor's regional storage guarantee answers a real question. It just isn't the question these two regulations are actually asking.
+
+### The Gap Isn't Only an EU Problem
+
+DORA and the AI Act are simply the most codified version of a pattern showing up across every region regulated institutions actually operate in. Gulf regulators (SAMA, CBUAE), Singapore's MAS, and India's RBI and DPDP framework are all converging on the same underlying expectation — that a regulated institution can account for where sensitive customer and financial documents are processed, not just stored — even where the rule isn't yet written with DORA's specificity. An inference-residency gap opened by a cloud vendor headquartered outside any one of these jurisdictions doesn't close just because the paperwork says the data warehouse is local.
+
+## The Analyst View: Sovereignty Is Moving From Preference to Requirement
+
+This isn't a niche compliance-team concern anymore — it's showing up in mainstream analyst forecasting. Gartner [predicts that by 2027, 35% of countries will be locked into region-specific AI platforms](https://www.gartner.com/en/newsroom/press-releases/2026-01-29-gartner-predicts-35-percent-of-countries-will-be-locked-into-region-specific-ai-platforms-by-2027), up from roughly 5% today, as geopolitical pressure pushes AI infrastructure toward regional and sovereign stacks. Gartner VP Analyst Gaurav Gupta frames the driver directly: "Countries with digital sovereignty goals are increasing investment in domestic AI stacks as they look for alternatives to the closed U.S. model, including computing power, data centers, infrastructure and models aligned with local laws, culture and region." For a regulated institution, that trend converts what used to be a forward-looking risk question — "should we worry about where our AI vendor's inference runs?" — into a near-term procurement requirement, not a hypothetical one to revisit at the next contract renewal.
+
+That forecast also reframes how to read a vendor's existing compliance paperwork. A SOC 2 report or a regional-storage attestation was written to answer yesterday's question; it wasn't designed to speak to which jurisdiction's AI stack actually executed a given document's extraction. As sovereign AI platforms multiply by region, the number of plausible answers to "where did the inference happen" grows too — which makes asking the question explicitly, rather than assuming a storage certificate covers it, more important with each passing procurement cycle, not less.
+
+## Closing the Gap: What Inference Residency Actually Requires
+
+### Zero-Egress Deployment Models
+
+Closing the sovereign AI gap means treating inference location as its own deployment decision, not an assumption bundled into a storage contract. In practice, that means a document AI vendor needs to offer — and be specific about — where the model itself executes: fully cloud-hosted under a shared model, deployed within the customer's own private cloud infrastructure, or fully on-premise and air-gapped. "Zero-egress" is the term for the strict version of this: the document, and everything derived from it during inference, never leaves the boundary the institution has chosen, rather than leaving that boundary temporarily for a remote API call and coming back.
+
+### Provenance: Proving Where Inference Happened, Not Just What It Found
+
+Closing the gap operationally also means being able to prove it after the fact, not just architect it correctly up front. This is the specific problem Proof Perimeter is built to close: its fine-tuned document AI models run inside a bank, insurer, or lender's own environment — cloud-hosted, within customer infrastructure, or fully on-premise on commodity CPUs — so KYC packets, loan files, and claims documents never have to leave the institution's own perimeter for inference to happen at all. On Proof Perimeter's internal benchmarks, that fine-tuned model delivers 20% higher accuracy and 50% lower token consumption than general-purpose frontier models on the same document-extraction tasks, with field-level [provenance](/glossary/data-lineage-in-document-processing) attached to every extracted value — a record of what the model saw and decided that closes the inference-residency question the same way a regional storage certificate closes the data-residency one.
+
+## A Practical Checklist: Questions to Ask Any Document AI Vendor
+
+- **Ask where inference runs, not just where data is stored.** A regional storage guarantee and a regional inference guarantee are two different commitments — get both in writing, separately.
+- **Trace the full sub-processor chain.** If the platform is built on a third-party frontier model, that model provider's inference location and terms apply too, not just the platform vendor's.
+- **Confirm what "zero-egress" actually covers.** Ask whether it means the document, the extracted output, and any intermediate model state all stay within the chosen boundary — or just the document.
+- **Ask for a [provenance record](/glossary/document-audit-trail), not just a compliance certificate.** [SOC 2 controls](/glossary/soc-2-document-controls) and [GDPR-compliant handling](/glossary/gdpr-data-extraction-compliance) describe the program; per-field provenance is what proves a specific document's inference actually happened where the vendor claims.
+- **Model this against DORA and the AI Act specifically**, not a generic data-privacy checklist — both regulations hold the institution responsible for the full ICT and AI-system chain, inference included.
+
+Most vendors will walk through their actual deployment architecture on a [demo call](/book-demo) if you ask directly where inference runs, not just where data is stored — that's a more revealing question than any data-residency page. For the underlying extraction mechanics this piece assumes, [our guide to OCR AI](/blog/what-is-ocr-ai) covers how these models actually read a document in more technical depth. For how this gap shows up in two specific BFSI workflows, see how it plays out in [KYC onboarding](/blog/kyc-document-automation) and in [bank statement analysis for loan underwriting](/blog/ai-bank-statement-analysis-loan-underwriting).
+
+## Frequently Asked Questions
+
+### Is data residency the same as data sovereignty?
+
+No. Data residency refers narrowly to the physical or geographic location where data is stored. Data sovereignty is broader — it includes which legal jurisdiction's laws actually govern that data, who can compel access to it, and, per this article's argument, where any AI processing of it takes place. A document can have compliant residency and still fail sovereignty if the model reading it runs under a different jurisdiction's legal reach.
+
+### Does storing documents in-region satisfy DORA or the EU AI Act?
+
+Not by itself. DORA Article 28 holds the financial entity fully responsible for its entire ICT third-party chain, and the EU AI Act's high-risk obligations attach to what a system decides, not where its storage layer sits. Both require evidence covering the full lifecycle of a document, including the inference step — a regional storage guarantee alone doesn't produce that evidence.
+
+### What does "zero-egress" mean in document AI deployment?
+
+Zero-egress means a document, and everything derived from it during processing, never leaves a chosen infrastructure boundary — whether that's a customer's private cloud, their own data center, or a fully air-gapped on-premise environment. It's a stronger commitment than data residency, which only governs where data is stored, not where it's processed.
+
+## The Takeaway
+
+Data residency answers where a document sits. It has never answered where the AI reading it actually runs — and regulators, from DORA's third-party risk provisions to the EU AI Act's high-risk classification, are increasingly testing for the second question as rigorously as the first. Closing the sovereign AI gap means treating inference location as a deployment decision to specify and prove, not an assumption to inherit from a storage contract.
