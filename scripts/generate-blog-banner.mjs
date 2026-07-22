@@ -237,6 +237,89 @@ const MOTIFS = {
       ],
     }),
 
+  // A flagpole flying a flag panel with "AI" centered and a ring of stars
+  // around it, evoking national/EU flag iconography. Used for sovereignty,
+  // data-residency, and jurisdiction-framed topics.
+  "flag-stars": () => {
+    const panelW = 300;
+    const panelH = 210;
+    const cx = panelW / 2;
+    const cy = panelH / 2;
+    const starCount = 12;
+    const rx = 108;
+    const ry = 78;
+    const starPath =
+      "M12 2 L14.35 8.76 L21.51 8.91 L15.8 13.24 L17.88 20.09 L12 16 L6.12 20.09 L8.2 13.24 L2.49 8.91 L9.65 8.76 Z";
+
+    const stars = Array.from({ length: starCount }, (_, i) => {
+      const angle = (i * (360 / starCount) - 90) * (Math.PI / 180);
+      const x = cx + rx * Math.cos(angle);
+      const y = cy + ry * Math.sin(angle);
+      return rect({
+        key: i,
+        style: { position: "absolute", left: x - 9, top: y - 9 },
+        children: h(
+          "svg",
+          { width: 18, height: 18, viewBox: "0 0 24 24" },
+          h("path", { d: starPath, fill: brandColors.paper })
+        ),
+      });
+    });
+
+    return rect({
+      style: { position: "relative", width: 340, height: 280 },
+      children: [
+        rect({
+          style: {
+            position: "absolute",
+            left: 10,
+            top: 0,
+            bottom: 0,
+            width: 8,
+            background: brandColors.ink,
+            borderRadius: 4,
+          },
+        }),
+        rect({
+          style: {
+            position: "absolute",
+            left: 4,
+            top: -6,
+            width: 20,
+            height: 20,
+            borderRadius: 10,
+            background: brandColors.ink,
+          },
+        }),
+        rect({
+          style: {
+            position: "absolute",
+            left: 18,
+            top: 20,
+            width: panelW,
+            height: panelH,
+            background: brandColors.signal,
+            borderRadius: "4px 14px 14px 4px",
+            alignItems: "center",
+            justifyContent: "center",
+          },
+          children: [
+            ...stars,
+            rect({
+              style: {
+                fontSize: 64,
+                fontWeight: 800,
+                color: brandColors.paper,
+                letterSpacing: 2,
+              },
+              children: "AI",
+            }),
+          ],
+        }),
+      ],
+    });
+  },
+
   // Three connected nodes — workflow/pipeline/automation topics.
   pipeline: () =>
     rect({
@@ -267,6 +350,7 @@ function pickMotif() {
   const haystack = [category, ...(tags || []), title].join(" ").toLowerCase();
   if (/\bkyc\b|\bkyb\b|identity|onboard|passport|customer verification/.test(haystack)) return "id-scan";
   if (/invoice|bank statement|financial statement|payment|line.?item|accounts payable/.test(haystack)) return "line-item-table";
+  if (/sovereign|jurisdiction|residency/.test(haystack)) return "flag-stars";
   if (/complian|audit|regulat|sanction|\baml\b|governance|dora|gdpr|hipaa|soc ?2/.test(haystack)) return "shield-check";
   if (/workflow|pipeline|automation|routing|orchestrat/.test(haystack)) return "pipeline";
   return "document-stack";
