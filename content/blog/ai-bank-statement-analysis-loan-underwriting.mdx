@@ -12,7 +12,7 @@ tags: ["bank statement analysis", "income verification", "loan underwriting", "b
 authorId: "gaurav"
 createdAt: "2026-07-20"
 updatedAt: "2026-07-20"
-relatedPosts: ["kyc-document-automation", "what-is-ocr-ai"]
+relatedPosts: ["sovereign-ai-gap", "kyc-document-automation", "what-is-ocr-ai"]
 status: "published"
 primaryKeyword: "bank statement analysis"
 cluster: "D"
@@ -72,7 +72,7 @@ A general-purpose document AI model can extract text and tables from a bank stat
 
 There's a second, less visible gap specific to this document type: bank statements are arguably the single richest financial-surveillance document a lender can hold on an applicant — every deposit, every merchant, every account they hold money in. Many document AI products process this as a cloud API call, meaning months of an applicant's full transaction history leaves the lender's environment to be read by a third party's infrastructure. That's not a convenience trade-off many lending compliance teams can wave through once they think it through — it's a data-residency and third-party-risk question in its own right, independent of extraction accuracy.
 
-This is the specific gap Proof Perimeter is built to close for lending document AI. Its fine-tuned document AI models run inside a lender's own environment — cloud-hosted, within customer infrastructure, or fully on-premise on commodity CPUs — so bank statements, pay stubs, and tax documents used for income verification never have to leave the lender's own perimeter to be read. On Proof Perimeter's internal benchmarks, that fine-tuned model delivers 20% higher accuracy and 50% lower token consumption than general-purpose frontier models on the same document-extraction tasks, with field-level provenance attached to every extracted transaction and income figure — the "which statement, which deposits, which calculation" record Reg Z's verification standard actually asks for, not just an underwriting recommendation.
+This is the specific gap Proof Perimeter is built to close for lending document AI. Its fine-tuned document AI models run inside a lender's own environment — cloud-hosted, within customer infrastructure, or fully on-premise on commodity CPUs — so bank statements, pay stubs, and tax documents used for income verification never have to leave the lender's own perimeter to be read. On Proof Perimeter's internal benchmarks, that fine-tuned model delivers 20% higher accuracy and 50% lower token consumption than general-purpose frontier models on the same document-extraction tasks, with field-level provenance attached to every extracted transaction and income figure — the "which statement, which deposits, which calculation" record Reg Z's verification standard actually asks for, not just an underwriting recommendation. This same distinction — data residency versus where the model actually runs — is what we call the [sovereign AI gap](/blog/sovereign-ai-gap), and it applies just as directly to a lender's bank-statement pipeline as it does to KYC.
 
 ## How to Evaluate a Vendor in This Category
 
