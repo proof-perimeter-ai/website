@@ -39,6 +39,9 @@ Templates, workflows, and review configurations carry over when moving from BYOK
 - [Glossary](https://proofperimeter.com/glossary): AI document processing glossary — plain-language definitions of OCR, intelligent document processing, extraction, document AI agent, compliance and evaluation terms, each at /glossary/{term}.
 - [Blog](https://proofperimeter.com/blog): Articles on AI-powered document processing, on-device inference, and compliance for regulated financial services.
 - [KYC Document Automation](https://proofperimeter.com/blog/kyc-document-automation): How AI-assisted document classification, extraction, and cross-checking speeds up KYC onboarding while meeting FATF Recommendation 10 and EU AMLR Article 20 due diligence requirements.
+- [AI Bank Statement Analysis for Loan Underwriting](https://proofperimeter.com/blog/ai-bank-statement-analysis-loan-underwriting): How automated transaction extraction, balance reconciliation, and income-regularity analysis speed up loan underwriting while meeting Regulation Z's third-party record verification standard.
+- [The Sovereign AI Gap](https://proofperimeter.com/blog/sovereign-ai-gap): Why data residency (where a document is stored) and inference residency (where the AI model reads it) are different requirements, and what DORA Article 28 and the EU AI Act's high-risk classification actually require of document AI deployments.
+- [Claims Processing Document AI](https://proofperimeter.com/blog/claims-processing-document-ai): How automated classification, extraction, and coverage verification speed up insurance claims handling from first notice of loss through adjudication, while meeting the NAIC's Unfair Claims Settlement Practices Act reasonable-explanation standard.
 
 ## Key facts
 
