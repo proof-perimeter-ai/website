@@ -379,7 +379,7 @@ const element = h(
         justifyContent: "center",
         width: "40%",
         height: "100%",
-        background: brandColors.paper,
+        background: `${brandColors.signal}12`,
         backgroundImage: `radial-gradient(circle, ${brandColors.lineMuted} 2px, transparent 2px)`,
         backgroundSize: "36px 36px",
       },
