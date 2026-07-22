@@ -95,6 +95,24 @@ body {
   pointer-events: none;
 }
 
+/* Customer logo marquee — continuous horizontal scroll, CSS-only (no JS/IntersectionObserver).
+   Track renders the logo list twice back-to-back; translateX(-50%) lands exactly on the
+   start of the second (identical) copy, so the loop is seamless. */
+@keyframes logo-marquee-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.logo-marquee-track {
+  animation: logo-marquee-scroll 32s linear infinite;
+  will-change: transform;
+}
+
+.logo-marquee-fade {
+  mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+}
+
 @media (prefers-reduced-motion: reduce) {
   .hero-animate-badge,
   .hero-animate-h1,
@@ -115,5 +133,8 @@ body {
   .mobile-cta-shine::after {
     animation: none;
     opacity: 0;
+  }
+  .logo-marquee-track {
+    animation: none;
   }
 }

@@ -5,6 +5,7 @@ import { FadeIn } from "@/components/FadeIn";
 import { JsonLd } from "@/components/JsonLd";
 import { SiteNav } from "@/components/SiteNav";
 import { SiteFooter } from "@/components/SiteFooter";
+import { TestimonialCarousel } from "@/components/TestimonialCarousel";
 
 export const metadata: Metadata = {
   title: "Document AI Pricing: BYOK vs Enterprise",
@@ -174,6 +175,20 @@ export default function Pricing() {
                 </FadeIn>
               ))}
             </div>
+          </div>
+        </section>
+
+        {/* Testimonials */}
+        <section className="border-t border-line py-22">
+          <div className="mx-auto max-w-[1120px] px-7 text-center">
+            <Eyebrow>Proof in production</Eyebrow>
+            <h2 className="mx-auto mt-4.5 max-w-[22ch] text-[clamp(28px,3.6vw,38px)] font-bold tracking-[-0.022em] text-ink">
+              Trusted by the GRC & Tech leaders.
+            </h2>
+
+            <FadeIn className="mt-10.5">
+              <TestimonialCarousel />
+            </FadeIn>
           </div>
         </section>
 
