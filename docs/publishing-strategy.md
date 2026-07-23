@@ -343,7 +343,7 @@ How to use it:
 - [ ] document extraction
 - [ ] data extraction from documents
 - [ ] ai document scanning
-- [ ] What Is Agentic Document Extraction? How It Differs from Single-Pass OCR
+- [x] What Is Agentic Document Extraction? How It Differs from Single-Pass OCR — published as `agentic-document-extraction` (2026-07-23), first Phase 2 post (Cluster C fast-win articles), closing out Phase 1; primary keyword "agentic document extraction" (UK, vol 70, KD 0, intent_fit 2, priority 140 — highest-scoring unchecked Cluster C candidate, tied with "ai document extraction" but chosen as the cluster's lead LlamaIndex-competing term per §5's Phase 2 guidance)
 - [ ] Best LLMs for Document Extraction in 2026: A Practical Comparison
 - [ ] Visual Grounding in Document AI: Why It Matters for Auditability
 - [ ] Self-Correcting Extraction Models: How AI Catches Its Own Mistakes
