@@ -350,7 +350,7 @@ How to use it:
 - [ ] Deep Extraction vs. Shallow OCR: What Regulated Industries Need to Know
 - [ ] How to Extract Repeating Line Items and Tables from Documents with AI
 - [ ] Document Classification AI: Automatically Sorting KYC Packets, Claims, and Loan Files
-- [ ] Zero-Shot vs. Fine-Tuned Document Extraction: Which Wins for Financial Documents?
+- [x] Zero-Shot vs. Fine-Tuned Document Extraction: Which Wins for Financial Documents? — published as `zero-shot-vs-fine-tuned-document-extraction` (2026-07-24), second Phase 2 post (Cluster C fast-win articles); primary keyword "zero-shot vs. fine-tuned document extraction" (topic candidate, nominal vol 30, intent_fit 3 — explicit "financial documents"/BFSI framing in title, priority 90 — highest-scoring unchecked Cluster C candidate not already substantially covered by the published "agentic document extraction" post's self-correction/visual-grounding ground, tied with "Document Classification AI..." at the same score but chosen for its direct tie to Proof Perimeter's fine-tuned-model differentiator)
 - [ ] Confidence Scoring in Document Extraction: How Human-in-the-Loop Actually Works
 - [ ] Agentic Document Workflows: Orchestrating Extraction, Validation, and Routing
 - [ ] Vision-Language Models for Document Understanding: A Non-Technical Explainer

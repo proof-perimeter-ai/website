@@ -11,8 +11,8 @@ category: "Lending"
 tags: ["bank statement analysis", "income verification", "loan underwriting", "bank statement analyser", "document AI"]
 authorId: "gaurav"
 createdAt: "2026-07-20"
-updatedAt: "2026-07-20"
-relatedPosts: ["sovereign-ai-gap", "kyc-document-automation", "claims-processing-document-ai"]
+updatedAt: "2026-07-24"
+relatedPosts: ["zero-shot-vs-fine-tuned-document-extraction", "sovereign-ai-gap", "kyc-document-automation"]
 status: "published"
 primaryKeyword: "bank statement analysis"
 cluster: "D"
@@ -40,7 +40,7 @@ Most of what an underwriter spends time on in a "clean" file isn't judgment — 
 
 ### Classification and Format Normalization
 
-The first step is recognizing what's actually in the file — which pages belong to which account, which bank issued the statement, and which format variant it follows — before any extraction logic runs. Because format diversity is the core difficulty in this document type, classification has to generalize across bank-specific layouts rather than relying on a template built for one issuer.
+The first step is recognizing what's actually in the file — which pages belong to which account, which bank issued the statement, and which format variant it follows — before any extraction logic runs. Because format diversity is the core difficulty in this document type, classification has to generalize across bank-specific layouts rather than relying on a template built for one issuer. This is also exactly where the underlying model matters most: a model reading an issuer's statement layout for the first time is working [zero-shot](/blog/zero-shot-vs-fine-tuned-document-extraction), while one that's seen enough of a lender's actual statement mix has been fine-tuned specifically to it — and the accuracy gap between those two states is largest on precisely the long-tail formats a generic pipeline sees least often.
 
 ### Transaction Extraction and Balance Reconciliation
 
