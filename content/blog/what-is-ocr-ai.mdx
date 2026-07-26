@@ -1,7 +1,7 @@
 ---
 title: "What Is OCR AI?"
 slug: "what-is-ocr-ai"
-description: "OCR AI combines optical character recognition with machine learning to read, understand, and extract structured data from documents for banks and insurers."
+description: "OCR AI combines optical character recognition with machine learning to read, understand, and extract structured data from regulated, document-heavy workflows."
 banner:
   src: "/assets/blog/what-is-ocr-ai/banner.png"
   alt: "Diagram of a document passing through an AI-powered OCR and extraction pipeline"
@@ -36,11 +36,11 @@ That works, until it doesn't. Change the layout of a form, swap in a new vendor'
 
 ## What Is OCR AI?
 
-OCR AI — sometimes called AI-powered OCR, and often used interchangeably with the broader term intelligent document processing (IDP) — adds a second layer on top of raw character recognition: a machine learning model that has learned what documents in a given domain actually look like and mean, not just what characters appear on the page.
+OCR AI — sometimes called AI-powered OCR, and often used interchangeably with the broader term [intelligent document processing (IDP)](/glossary/intelligent-document-processing) — adds a second layer on top of raw character recognition: a machine learning model that has learned what documents in a given domain actually look like and mean, not just what characters appear on the page.
 
 ### From Character Recognition to Document Understanding
 
-Where classic OCR outputs an unstructured stream of text, OCR AI outputs an interpretation. It's the difference between transcribing a page and reading it. The models behind OCR AI are typically vision-language models or document-specific foundation models, trained (or fine-tuned) on large corpora of real documents so they learn the visual and semantic patterns of forms, invoices, contracts, and financial statements — not just how individual characters look, but how a document of that type is typically structured, what fields it tends to contain, and how those fields relate to each other.
+Where classic OCR outputs an unstructured stream of text, OCR AI outputs an interpretation. It's the difference between transcribing a page and reading it. The models behind OCR AI are typically [vision-language models](/glossary/vision-language-model-vlm) or document-specific foundation models, trained (or fine-tuned) on large corpora of real documents so they learn the visual and semantic patterns of forms, invoices, contracts, and financial statements — not just how individual characters look, but how a document of that type is typically structured, what fields it tends to contain, and how those fields relate to each other.
 
 This is a meaningful shift in category, not just an incremental accuracy improvement. Classic OCR is a computer vision problem: turn pixels into characters. OCR AI is a document understanding problem: turn pixels into meaning.
 
@@ -66,7 +66,7 @@ Because the model has learned patterns rather than memorized a single template, 
 
 ### Confidence Scoring and Human-in-the-Loop Review
 
-Because no model is perfect, mature OCR AI systems attach a confidence score to each extracted field, not just to the document as a whole. Low-confidence fields — an ambiguous handwritten digit, a smudged stamp, a value that falls outside an expected range — get routed to a human reviewer instead of silently flowing downstream as if they were certain. This maker-checker pattern is what makes OCR AI usable in workflows where an error has real financial or compliance consequences: the model handles the bulk of straightforward extractions automatically, and a person's attention is reserved for the cases that actually need it.
+Because no model is perfect, mature OCR AI systems attach a [confidence score](/glossary/confidence-scoring-models) to each extracted field, not just to the document as a whole. Low-confidence fields — an ambiguous handwritten digit, a smudged stamp, a value that falls outside an expected range — get routed to a human reviewer instead of silently flowing downstream as if they were certain. This maker-checker pattern is what makes OCR AI usable in workflows where an error has real financial or compliance consequences: the model handles the bulk of straightforward extractions automatically, and a person's attention is reserved for the cases that actually need it.
 
 ## OCR vs. OCR AI vs. Intelligent Document Processing (IDP)
 
@@ -84,7 +84,7 @@ OCR AI has moved well past pilot projects. Here's where it's doing real producti
 
 ### Banking and KYC Verification
 
-Know-your-customer (KYC) onboarding requires pulling structured data — names, addresses, ID numbers, dates of birth — out of a mix of government IDs, passports, utility bills, and proof-of-address documents, often from customers in multiple countries with different document formats. OCR AI extracts these fields automatically and cross-checks them against submitted application data, dramatically cutting the manual review time per application while leaving a clear trail of what was extracted and matched.
+[Know-your-customer (KYC)](/glossary/kyc-know-your-customer) onboarding requires pulling structured data — names, addresses, ID numbers, dates of birth — out of a mix of government IDs, passports, utility bills, and proof-of-address documents, often from customers in multiple countries with different document formats. OCR AI extracts these fields automatically and cross-checks them against submitted application data, dramatically cutting the manual review time per application while leaving a clear trail of what was extracted and matched.
 
 ### Insurance Claims Processing
 
@@ -118,7 +118,7 @@ OCR AI isn't a solved problem, and it's worth going in with clear eyes about whe
 
 ### Hallucination and Confidence Risk
 
-Like any generative model, a vision-language model can produce a plausible-looking but wrong answer — inventing a value rather than correctly reporting that a field is missing or illegible. Without well-calibrated confidence scores and a human-in-the-loop escalation path, this kind of quiet error is far more dangerous than an OCR engine simply failing to recognize a character, because it looks like a correct answer rather than an obvious gap.
+Like any generative model, a vision-language model can produce a plausible-looking but wrong answer — inventing a value rather than correctly reporting that a field is missing or illegible. Without well-calibrated confidence scores and a [human-in-the-loop](/glossary/human-in-the-loop-verification) escalation path, this kind of quiet error is far more dangerous than an OCR engine simply failing to recognize a character, because it looks like a correct answer rather than an obvious gap.
 
 ### Data Privacy and Residency
 
@@ -138,7 +138,7 @@ A benchmark accuracy number on a generic public dataset says very little about h
 
 ### Provenance: Proving What the Model Saw and Decided
 
-Beyond getting the right answer, regulated workflows need a record of *how* the answer was reached: what the model saw, what it extracted, and why — field by field, document by document. Without that provenance trail, a correct extraction still isn't defensible in front of an examiner or auditor asking how a specific number ended up in a specific system.
+Beyond getting the right answer, regulated workflows need a record of *how* the answer was reached: what the model saw, what it extracted, and why — field by field, document by document. Without that [provenance](/glossary/data-lineage-in-document-processing) trail, a correct extraction still isn't defensible in front of an examiner or auditor asking how a specific number ended up in a specific system.
 
 ### Data Control and Zero-Egress Deployment
 

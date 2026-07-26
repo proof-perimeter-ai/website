@@ -12,7 +12,7 @@ import { TestimonialCarousel } from "@/components/TestimonialCarousel";
 export const metadata: Metadata = {
   title: "Free Document AI Platform",
   description:
-    "Frontier AI for regulated document processing. Free with your own API key — templates, workflows, batch, API, review, export, and provenance on every document. No document limit.",
+    "Frontier AI for regulated document processing — free with your own API key. Templates, workflows, batch API, review, export, and provenance. No document limit.",
   alternates: { canonical: "/" },
 };
 
