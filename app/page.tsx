@@ -6,6 +6,8 @@ import { Eyebrow } from "@/components/Eyebrow";
 import { SiteNav } from "@/components/SiteNav";
 import { SiteFooter } from "@/components/SiteFooter";
 import { siteConfig } from "@/lib/metadata";
+import { CustomerLogoMarquee } from "@/components/CustomerLogoMarquee";
+import { TestimonialCarousel } from "@/components/TestimonialCarousel";
 
 export const metadata: Metadata = {
   title: "Free Document AI Platform",
@@ -161,16 +163,23 @@ const softwareApplicationJsonLd = {
   "@type": "SoftwareApplication",
   name: siteConfig.name,
   description: siteConfig.description,
-  url: siteConfig.url,
   applicationCategory: "BusinessApplication",
   operatingSystem: "Web",
-  offers: {
-    "@type": "Offer",
-    name: "Bring Your Own Key",
-    price: "0",
-    priceCurrency: "USD",
-    description: "Free workspace access — pay your model provider directly for API usage.",
-  },
+  featureList: capabilities.map((cap) => cap.name),
+  offers: [
+    {
+      "@type": "Offer",
+      name: "Bring Your Own Key",
+      price: "0",
+      priceCurrency: "USD",
+      description: comparisonRows[0][1],
+    },
+    {
+      "@type": "Offer",
+      name: "Enterprise License",
+      description: comparisonRows[0][2],
+    },
+  ],
 };
 
 export default function DocumentAiV2() {
@@ -219,6 +228,8 @@ export default function DocumentAiV2() {
           </div>
         </section>
 
+        <CustomerLogoMarquee />
+
         {/* Pain points */}
         <section className="border-t border-line py-22">
           <div className="mx-auto max-w-[1120px] px-7">
@@ -235,6 +246,20 @@ export default function DocumentAiV2() {
                 </FadeIn>
               ))}
             </div>
+          </div>
+        </section>
+
+        {/* Testimonials */}
+        <section className="border-t border-line py-22">
+          <div className="mx-auto max-w-[1120px] px-7 text-center">
+            <Eyebrow>Proof in production</Eyebrow>
+            <h2 className="mx-auto mt-4.5 max-w-[22ch] text-[clamp(28px,3.6vw,38px)] font-bold tracking-[-0.022em] text-ink">
+              Trusted by the GRC & Tech leaders.
+            </h2>
+
+            <FadeIn className="mt-10.5">
+              <TestimonialCarousel />
+            </FadeIn>
           </div>
         </section>
 

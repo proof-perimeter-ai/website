@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { IBM_Plex_Serif, IBM_Plex_Mono } from "next/font/google";
 import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
 import { JsonLd } from "@/components/JsonLd";
+import { MobileBookDemoCta } from "@/components/MobileBookDemoCta";
 import { siteConfig } from "@/lib/metadata";
 import "./globals.css";
 
@@ -99,6 +100,7 @@ export default function RootLayout({
         <JsonLd data={organizationJsonLd} />
         <JsonLd data={websiteJsonLd} />
         {children}
+        <MobileBookDemoCta />
       </body>
       <GoogleAnalytics gaId={GA_MEASUREMENT_ID} />
     </html>

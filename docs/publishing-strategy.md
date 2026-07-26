@@ -1,6 +1,8 @@
 # Proof Perimeter — SEO Publishing Strategy
 
-*A phased, keyword-grouped content plan for building domain authority for Proof Perimeter (proofperimeter.com), a sovereign/on-device document-AI platform for regulated BFSI (banking, financial services, insurance) institutions.*
+*A phased, keyword-grouped content plan for building domain authority for Proof Perimeter is a document AI platform for processing highly regulated, high-risk documents — KYC packets, insurance claims files, letters of credit, loan applications, and policies. Start free with your own model key (Bring Your Own Key), or license Proof Perimeter's proprietary, fine-tuned Document AI model on the Enterprise tier for higher accuracy, lower token cost, and zero-egress deployment.
+
+Proof Perimeter provides one workspace for the full document lifecycle: classification, extraction, human-in-the-loop review, and structured export. Pre-built templates cover recurring fields, standard clauses, complex tables, and form-based layouts common to regulated industries. Every extracted field carries provenance — what the model saw, what it decided, and why — so a reviewer or auditor can trace any value back to its source.*
 
 ---
 
@@ -9,7 +11,7 @@
 | Asset | State |
 |---|---|
 | `/glossary` | **376 published MDX terms** (of 778 defined in `docs/seo-content/glossary.md`) — a large definitional/programmatic-SEO base already live, covering everything from "Agentic OCR" to "Zonal OCR" |
-| `/blog` | **Live**, MDX-powered, built and shipped since this strategy was first drafted (see §4 for the implementation). **1 published post** so far: "What Is OCR AI?" (`content/blog/what-is-ocr-ai.mdx`) — an educational explainer sitting in Cluster A/G territory (head-term "document ai"/"ocr ai" education, OCR-fundamentals framing), with the Proof Perimeter pitch worked into its "Why OCR AI Matters More in Regulated Industries" section. No pillar page, comparison page, or regulatory deep-dive published yet. |
+| `/blog` | **Live**, MDX-powered, built and shipped since this strategy was first drafted (see §4 for the implementation). **5 published posts** so far: "What Is OCR AI?" (`content/blog/what-is-ocr-ai.mdx`) — an educational explainer sitting in Cluster A/G territory (head-term "document ai"/"ocr ai" education, OCR-fundamentals framing) — "KYC Document Automation: From Manual Review to AI-Assisted Onboarding" (`content/blog/kyc-document-automation.mdx`) — the first Phase 1 pillar page (Cluster A/E), anchoring "KYC & Onboarding Document AI" — "AI Bank Statement Analysis for Loan Underwriting: Automating Income Verification" (`content/blog/ai-bank-statement-analysis-loan-underwriting.mdx`) — the second Phase 1 pillar page (Cluster D), anchoring "Sovereign AI for Lending Document Processing" — "Claims Processing Document AI: From First Notice of Loss to Adjudication" (`content/blog/claims-processing-document-ai.mdx`) — the third Phase 1 pillar page (Cluster D/G), anchoring "Claims Processing Document AI" — and "The Sovereign AI Gap: Why Data Residency Doesn't Guarantee Inference Residency" (`content/blog/sovereign-ai-gap.mdx`) — the fourth Phase 1 pillar page (Cluster E), the flagship positioning piece every other page links back to. All five fold the Proof Perimeter pitch into a body section rather than a bolted-on close. **All four Phase 1 pillars are now published** — only comparison/regulatory content (Phases 2-4) remains unpublished. |
 | Technical SEO | Strong groundwork: `Organization`/`WebSite`/`FAQPage`/`BlogPosting`/`Blog`/`BreadcrumbList` JSON-LD, `llms.txt`, AI-crawler-friendly `robots.ts` (GPTBot, ClaudeBot, PerplexityBot, Google-Extended, CCBot explicitly allowed), sitemap auto-generated from both glossary terms and blog posts (`app/sitemap.ts` now wires in `getAllPosts()` alongside `getAllTerms()`) |
 | Known technical gaps | Per `docs/seo-content/seo-audit.md`: canonical host inconsistency (`www.` vs bare domain), missing `SoftwareApplication` schema, thin regional-regulator content, no dedicated per-region landing pages (DORA, MAS, RBI, SAMA) |
 | Positioning | Proof Perimeter is a document AI platform for processing highly regulated, high-risk documents. Proof Perimeter's proprietary, fine-tuned Document AI model. Per internal benchmarks: 20% higher accuracy and 50% lower token consumption than general frontier models on document-extraction tasks  — targeting UK/EU (DORA, EU AI Act), Gulf (SAMA, CBUAE), India (RBI, DPDP), Singapore (MAS) |
@@ -40,7 +42,7 @@ Where a cluster term has no measured UK/DE volume, that's noted — it's still w
 | ai document analysis | 90 | 45 | $3.72 |
 | ai document reader | 90 | 57 | $2.05 |
 
-**Extend with (unmeasured, from glossary/topics.md):** intelligent document processing, IDP software, document AI platform, AI document copilots, document understanding.
+**Extend with (unmeasured, from glossary/topics.md):** document AI platform, AI document copilots, document understanding. *(Note: "intelligent document processing" and "IDP software" were originally listed here but have been broken out into their own dedicated Cluster J below — that category term carries enough distinct competitive weight, and enough of its own analyst/vendor ecosystem, to warrant separate treatment rather than being folded into general "document ai" head-term content.)*
 
 ### Cluster B — Cloud-alternative / comparison intent
 *Directly reinforces the "sovereign vs. cloud API" differentiator — this is Proof Perimeter's strongest wedge into head-term competition.*
@@ -128,6 +130,24 @@ Note the outlier CPC ($43.21) on "document management workflow" — high commerc
 
 `ai medical documentation` (UK, 50 vol, KD 0) plus glossary terms: clinical notes analysis, HIPAA-compliant document processing, medical coding automation (ICD-10), discharge summary extraction, EHR data extraction. Same Phase-5 treatment as Cluster H.
 
+### Cluster J — Intelligent Document Processing (IDP) category *(high difficulty — low priority)*
+*"Intelligent document processing" is the umbrella analyst/vendor category Proof Perimeter technically competes in, but it's one of the most heavily contested terms in this entire space — a decade of SEO investment from Hyperscience, Rossum, ABBYY Vantage, Kofax, IBM, and Microsoft, plus dedicated analyst coverage (Gartner, Everest Group's IDP PEAK Matrix). No row for it exists in `eu-keywords.md`, but treat it as effectively very high KD (assume 70+) when scoring — don't let the "unmeasured = nominal volume 30" rule from §6/§8 make this cluster look more winnable than it is. Worth owning eventually, since it's the category-defining term for the whole space, but not worth resourcing before Cluster A–G authority is established. See §5 for sequencing.*
+
+- intelligent document processing *(unmeasured — assume high KD)*
+- IDP software *(unmeasured — assume high KD)*
+- IDP platform
+- what is IDP
+
+**Extend with (topic candidates, not measured keywords):** IDP vs. OCR, IDP buyer's guide, IDP vendor comparison, IDP total cost of ownership, IDP implementation timeline, IDP market consolidation/LLM disruption.
+
+### Cluster K — Robotic Process Automation (RPA) *(high difficulty — low priority)*
+*RPA is an adjacent, not core, category — UiPath, Automation Anywhere, Blue Prism/SS&C, Microsoft Power Automate, and Pega have built enormous, well-funded content moats around these terms, and Proof Perimeter isn't an RPA platform. The reason this cluster exists at all is the genuine adjacency: RPA bots are frequently the "hands" that act on data an IDP/document-AI layer has to supply as the "eyes" first, and RPA buyers in BFSI ops teams are a real, overlapping audience. Same treatment as Cluster J — assume high KD (70+) despite no measured volume, and prioritize the comparison/complementary angle over chasing RPA head terms directly, since that's the angle Proof Perimeter can actually win rather than out-spending incumbents on "robotic process automation" itself.*
+
+- robotic process automation *(unmeasured — assume high KD)*
+- RPA software *(unmeasured — assume high KD)*
+
+**Extend with (topic candidates, not measured keywords):** RPA vs. IDP, document AI as the "last mile" RPA can't automate, IDP + RPA hyperautomation stacks, RPA vendor comparisons for BFSI, RPA ROI in financial services.
+
 ### Explicitly excluded
 
 **"pdf to word ocr"** — 720 volume (UK), by far the highest-volume term in the entire dataset — is deliberately **not** targeted. Search intent here is a consumer/prosumer file-conversion tool ("convert my PDF to an editable Word doc"), not enterprise regulated-document processing. Ranking for it would pull in the wrong audience, do nothing for buyer-intent conversion, and actively dilute the topical entity a B2B compliance-focused domain needs to build with Google and AI answer engines. Chasing this number would be a vanity-metric mistake.
@@ -206,7 +226,7 @@ Content published before indexability/trust signals are fixed underperforms. Bef
 3–4 pillar pages, one per core use case, each anchored to a Cluster A/D head term and heavily internal-linked to existing glossary terms:
 1. **"KYC & Onboarding Document AI"** — anchors Cluster A + E (document ai, KYC, AML)
 2. **"Sovereign AI for Lending Document Processing"** — anchors Cluster D (bank statement analyser, income verification, loan origination)
-3. **"Claims Processing Document AI"** — anchors Cluster D/G, sets up Phase 5 insurance-adjacent content
+3. **"Claims Processing Document AI"** — anchors Cluster D/G, sets up Phase 5 insurance-adjacent content — **published** as `claims-processing-document-ai` (2026-07-22)
 4. **"The Sovereign AI Gap"** — a positioning/explainer pillar, not keyword-first, that every other page links back to (this is the entity-defining page for the whole domain)
 
 ### Phase 2 — Fast-win long-tail cluster articles (months 2–4, overlapping Phase 1)
@@ -220,6 +240,9 @@ Dedicated pages for **DORA** (EU/UK), **MAS** (Singapore), **RBI/DPDP** (India),
 
 ### Phase 5 — Vertical expansion: Legal & Healthcare (months 6+)
 Once the BFSI cluster shows measurable ranking/topical authority, open Cluster H (Legal AI) and Cluster I (Healthcare AI), drawing directly on the already-written vertical detail in `docs/messaging.md` and `docs/use-cases.md`. Sequence Legal before Healthcare — Legal has higher measured CPC ($9.27 on "ai for legal documents") and closer buyer-persona overlap with existing BFSI compliance content (privilege, discovery, regulatory review are conceptually adjacent to KYC/AML).
+
+### Cluster J (IDP) & Cluster K (RPA), opportunistic only
+These two clusters are gated by **competitive difficulty** — a different axis than Phase 5's vertical gate. Don't schedule a dedicated phase for them; instead, treat them as opportunistic backfill once Phases 1–4 have established real domain authority (rough guide: after 20+ published pieces across Clusters A–G), and even then at a low rate — 1–2 pieces per quarter, not a campaign. The one exception worth prioritizing earlier than the rest of the cluster: a well-researched, genuinely useful "Top IDP Tools" or "Top RPA Software" listicle (§8) can function as a standalone link-magnet/citation asset in its own right, independent of whether it ever ranks for the head term — that's a reasonable candidate to pull forward if the ongoing off-page work below is short on link-bait material.
 
 ### Ongoing — Domain-authority / off-page tactics
 Content alone doesn't build domain authority; it needs to be earned externally:
@@ -239,6 +262,8 @@ priority = (volume × intent_fit) / (1 + KD/10)
 ```
 
 Where `intent_fit` is a 1–3 multiplier (1 = generic/educational, 2 = category/comparison, 3 = direct BFSI operational term) — this keeps Cluster D/E terms prioritized over Cluster A/G terms even when raw volume is lower, since buyer-intent fit matters more than traffic for a platform this specialized.
+
+**Cluster J/K exception:** for these two clusters, override the usual "unmeasured = nominal volume 30" convention — use `KD = 70` (not the unmeasured default) to reflect their genuinely high real-world competitiveness, and cap `intent_fit` at 2 even for comparison-style entries (never 3 — nothing in these clusters is a direct BFSI-operational term). Run the formula anyway rather than hand-waving them out entirely, since a correctly-scored Cluster J/K candidate should come out well below Cluster A–G candidates on its own, which is the point — the formula should confirm the deprioritization (§5), not need to be skipped to enforce it.
 
 **Cadence:** 2–4 published pieces/month is sustainable and realistic — this is a specialized B2B topic where depth beats frequency; a shallow twice-weekly cadence would compete poorly against LlamaIndex's clearly well-resourced program. Pillar pages (Phase 1) warrant more editorial investment per piece than cluster/supporting articles (Phase 2–4) — treat pillars as living documents updated as the regulatory landscape shifts (DORA/EU AI Act enforcement dates, new SAMA/MAS guidance), not one-and-done posts.
 
@@ -267,7 +292,7 @@ How to use it:
 - Check off an item once a post covering it is published (or note the post's slug next to it) — this is the single source of truth for "already covered" alongside the live inventory scan in the routine's Step 1.
 - Items are a mix of directly measured keywords (lowercase, matching `eu-keywords.md`'s casing) and topic/title candidates (title case) derived from `topics.md`, `glossary.md`, `messaging.md`, and `use-cases.md` — both are valid targets; a topic candidate's "primary keyword" for SEO purposes is whatever head phrase it most naturally targets (state it when drafting, per the routine's Step 2).
 - This list is not fixed — add to it as new keyword research or competitor content surfaces something worth covering; don't treat 100% coverage as a finish line that closes the cluster.
-- Within a cluster, use the §6 priority formula to break ties on order; across clusters, follow the §5 phase gating (don't reach into Cluster H/I candidates before Phase 5 unlocks).
+- Within a cluster, use the §6 priority formula to break ties on order; across clusters, follow the §5 phase gating (don't reach into Cluster H/I candidates before Phase 5 unlocks, and treat Cluster J/K as opportunistic-only per §5's difficulty gate — not before ~20 pieces are live across Clusters A–G, and even then sparingly).
 
 ### Cluster A — Category / head terms
 
@@ -276,7 +301,7 @@ How to use it:
 - [ ] ai document
 - [ ] ai document analysis
 - [ ] ai document reader
-- [ ] What Is Intelligent Document Processing (IDP)? A Complete Guide
+- [ ] What Is Intelligent Document Processing (IDP)? A Complete Guide(2026)
 - [ ] Document AI Platforms Compared: How to Choose One for Regulated Data
 - [ ] AI Document Copilots: What They Are and Where They Fall Short for Compliance Teams
 - [ ] The State of Document AI in Banking, Insurance, and Lending (2026)
@@ -287,6 +312,7 @@ How to use it:
 - [ ] Document AI ROI: How to Calculate Cost Savings from Automated Extraction
 - [ ] What Is an AI Document Processing Pipeline? Stages Explained
 - [ ] Document AI Case Studies: What Production Deployments Actually Look Like
+- [ ] Top Open Source document ai tools
 
 ### Cluster B — Cloud-alternative / comparison intent
 
@@ -297,12 +323,13 @@ How to use it:
 - [ ] Proof Perimeter vs. Azure AI Document Intelligence for Banking Documents
 - [ ] Proof Perimeter vs. Amazon Textract: Data Residency and Cost Compared
 - [ ] On-Premise Alternatives to Cloud OCR APIs for Regulated Data
-- [ ] ABBYY FineReader vs. Modern AI Document Platforms: Is Legacy OCR Still Worth It?
 - [ ] Open-Source OCR Models (Docling, EasyOCR, PaddleOCR) vs. Fine-Tuned Document AI
 - [ ] Why Cloud Document AI APIs Are a Compliance Risk for Banks and Insurers
 - [ ] Tesseract OCR in Production: Where It Breaks Down for Regulated Documents
 - [ ] Choosing Between Cloud, VPC, and On-Premise Document AI Deployment
-- [ ] Open Vision-Language Models (Qwen-VL and Peers) for Document Extraction: Enterprise-Ready or Not?
+- [ ] Open Vision-Language Models for Document Extraction: Enterprise-Ready or Not?
+- [ ] What is Padddle OCR -  Features and Capabilities
+- [ ] Top Open Source OCR AI Tools (2026)
 
 ### Cluster C — Agentic & LLM-based extraction
 
@@ -316,14 +343,14 @@ How to use it:
 - [ ] document extraction
 - [ ] data extraction from documents
 - [ ] ai document scanning
-- [ ] What Is Agentic Document Extraction? How It Differs from Single-Pass OCR
+- [x] What Is Agentic Document Extraction? How It Differs from Single-Pass OCR — published as `agentic-document-extraction` (2026-07-23), first Phase 2 post (Cluster C fast-win articles), closing out Phase 1; primary keyword "agentic document extraction" (UK, vol 70, KD 0, intent_fit 2, priority 140 — highest-scoring unchecked Cluster C candidate, tied with "ai document extraction" but chosen as the cluster's lead LlamaIndex-competing term per §5's Phase 2 guidance)
 - [ ] Best LLMs for Document Extraction in 2026: A Practical Comparison
 - [ ] Visual Grounding in Document AI: Why It Matters for Auditability
 - [ ] Self-Correcting Extraction Models: How AI Catches Its Own Mistakes
 - [ ] Deep Extraction vs. Shallow OCR: What Regulated Industries Need to Know
 - [ ] How to Extract Repeating Line Items and Tables from Documents with AI
-- [ ] Document Classification AI: Automatically Sorting KYC Packets, Claims, and Loan Files
-- [ ] Zero-Shot vs. Fine-Tuned Document Extraction: Which Wins for Financial Documents?
+- [x] Document Classification AI: Automatically Sorting KYC Packets, Claims, and Loan Files — published as `document-classification-ai` (2026-07-25), third Phase 2 post (Cluster C fast-win articles); primary keyword "document classification AI" (topic candidate from §2's Cluster C extend-list, nominal vol 30, intent_fit 3 — explicit KYC/claims/loan-file BFSI framing in title, priority 90 — tied with the zero-shot post's score and the highest-scoring unchecked Cluster C candidate not already substantially covered by the published agentic-extraction post's self-correction/visual-grounding ground); retroactively added to `relatedPosts` and linked in-body from all three Phase 1 pillars it references (`kyc-document-automation`, `claims-processing-document-ai`, `ai-bank-statement-analysis-loan-underwriting`)
+- [x] Zero-Shot vs. Fine-Tuned Document Extraction: Which Wins for Financial Documents? — published as `zero-shot-vs-fine-tuned-document-extraction` (2026-07-24), second Phase 2 post (Cluster C fast-win articles); primary keyword "zero-shot vs. fine-tuned document extraction" (topic candidate, nominal vol 30, intent_fit 3 — explicit "financial documents"/BFSI framing in title, priority 90 — highest-scoring unchecked Cluster C candidate not already substantially covered by the published "agentic document extraction" post's self-correction/visual-grounding ground, tied with "Document Classification AI..." at the same score but chosen for its direct tie to Proof Perimeter's fine-tuned-model differentiator)
 - [ ] Confidence Scoring in Document Extraction: How Human-in-the-Loop Actually Works
 - [ ] Agentic Document Workflows: Orchestrating Extraction, Validation, and Routing
 - [ ] Vision-Language Models for Document Understanding: A Non-Technical Explainer
@@ -335,7 +362,9 @@ How to use it:
 - [ ] vendor invoice processing
 - [ ] bank statement analyser
 - [ ] document extraction for finance
-- [ ] How AI Bank Statement Analysis Works for Loan Underwriting
+- [ ] loan origination software
+- [ ] mortgage origination software
+- [x] How AI Bank Statement Analysis Works for Loan Underwriting — published as `ai-bank-statement-analysis-loan-underwriting` (2026-07-20), Phase 1 pillar #2 ("Sovereign AI for Lending Document Processing"); primary keyword "bank statement analyser" (vol 50 UK, KD 0 — highest-scoring unchecked Cluster D candidate, priority 150)
 - [ ] Automating Income Verification from Pay Stubs and Bank Statements
 - [ ] AI-Powered Invoice Processing: OCR vs. Full Extraction vs. Agentic Approaches
 - [ ] Vendor Invoice Processing at Scale: What Breaks in Manual AP Workflows
@@ -348,10 +377,11 @@ How to use it:
 - [ ] Underwriting Automation: How Document AI Speeds Up Credit Decisions
 - [ ] Letter of Credit Digitization: Automating Trade Finance Paperwork
 - [ ] Loan Origination AI: Where Extraction Fits in the Origination Stack
+- [x] Claims Processing Document AI: From First Notice of Loss to Adjudication — published as `claims-processing-document-ai` (2026-07-22), Phase 1 pillar #3 (final remaining Phase 1 pillar — see §5); primary keyword "claims processing document ai" (topic candidate, nominal vol 30, intent_fit 3 as a Phase 1 pillar anchor, same treatment as the sovereign-ai-gap flagship pick in Cluster E) — closes out Phase 1, unlocking Phase 2 (Cluster C fast-win articles) for the next cycle
 
 ### Cluster E — Compliance & regulated-workflow
 
-- [ ] KYC Document Automation: From Manual Review to AI-Assisted Onboarding
+- [x] KYC Document Automation: From Manual Review to AI-Assisted Onboarding — published as `kyc-document-automation` (2026-07-19), Phase 1 pillar #1 ("KYC & Onboarding Document AI")
 - [ ] KYB (Know Your Business) Document Verification: What AI Can and Can't Automate
 - [ ] AML Document Screening: How AI Flags Suspicious Patterns Across KYC Packets
 - [ ] Sanctions and Watchlist Screening: Where Document AI Fits the AML Stack
@@ -362,7 +392,7 @@ How to use it:
 - [ ] SOC 2 and Document AI: What Controls Actually Matter for Vendor Due Diligence
 - [ ] GDPR-Compliant Document Extraction: Data Minimization in Practice
 - [ ] Provenance and Explainability in AI Document Decisions: What Regulators Ask For
-- [ ] The Sovereign AI Gap: Why Data Residency Doesn't Guarantee Inference Residency *(flagship/pillar anchor — see Phase 1)*
+- [x] The Sovereign AI Gap: Why Data Residency Doesn't Guarantee Inference Residency *(flagship/pillar anchor — see Phase 1)* — published as `sovereign-ai-gap` (2026-07-21), Phase 1 pillar #4 (final pillar); primary keyword "sovereign AI gap" (topic candidate, nominal vol 30, intent_fit 3 as the flagship positioning term — see §6), unchecked and flagged as flagship in this list, so picked over remaining Cluster D/E candidates at the same nominal score
 - [ ] Transaction Monitoring and Document AI: Where the Two Systems Meet
 - [ ] Suspicious Activity Report (SAR) Prep: What Can and Can't Be Automated
 
@@ -419,3 +449,33 @@ How to use it:
 - [ ] Discharge Summary Extraction: Automating Patient Handoff Documentation
 - [ ] Prior Authorization Automation: Matching Clinical Notes to Payer Criteria
 - [ ] EHR Data Extraction: Turning Unstructured Clinical Notes into Structured Records
+
+### Cluster J — Intelligent Document Processing (IDP) category *(high difficulty — low priority; see §5 for opportunistic-only sequencing)*
+
+- [ ] intelligent document processing
+- [ ] IDP software
+- [ ] IDP platform
+- [ ] what is IDP
+- [ ] Top Intelligent Document Processing (IDP) Tools in 2026
+- [ ] What Is Intelligent Document Processing? IDP vs. OCR vs. Document AI, Explained
+- [ ] A Buyer's Guide to IDP Software for Banking and Insurance
+- [ ] IDP Total Cost of Ownership: What Analyst Reports Don't Show You
+- [ ] How to Evaluate an IDP Vendor for Regulated Data
+- [ ] IDP Implementation Timelines: What "Weeks, Not Months" Actually Requires
+- [ ] The IDP Market in 2026: Consolidation, LLMs, and What's Actually Changing
+- [ ] IDP for Financial Services: Why Generic Platforms Struggle with KYC and Loan Files
+
+### Cluster K — Robotic Process Automation (RPA) *(high difficulty — low priority; see §5 for opportunistic-only sequencing)*
+
+- [ ] robotic process automation
+- [ ] RPA software
+- [ ] ai business process automation tools​
+- [ ] Top RPA Software in 2026: 
+- [ ] RPA vs. IDP: What's the Difference (and Why You Usually Need Both)
+- [ ] Why RPA Bots Still Need Document AI: Closing the Unstructured-Data Gap
+- [ ] RPA for KYC and Loan Processing: Where It Breaks Down on Unstructured Documents
+- [ ] Document AI + RPA: Building an End-to-End Automation Stack for Regulated Workflows
+- [ ] Best RPA Tools for Banks and Insurers: A Buyer's Overview
+- [ ] RPA ROI in Financial Services: What the Case Studies Don't Tell You
+- [ ] Document Understanding vs. Purpose-Built Document AI: A Comparison
+- [ ] Hyperautomation Explained: Where RPA, IDP, and AI Agents Actually Fit Together

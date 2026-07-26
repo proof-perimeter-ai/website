@@ -21,9 +21,9 @@ export function BlogCard({ post }: { post: BlogPost }) {
       </div>
       <div className="flex flex-1 flex-col p-6">
         <Eyebrow>{post.category}</Eyebrow>
-        <h3 className="mt-3 text-[16.5px] font-semibold tracking-[-0.01em] text-ink transition-colors group-hover:text-signal">
+        <h2 className="mt-3 text-[16.5px] font-semibold tracking-[-0.01em] text-ink transition-colors group-hover:text-signal">
           {post.title}
-        </h3>
+        </h2>
         <p className="mt-2 line-clamp-3 text-sm text-ink-2">{post.description}</p>
         <div className="mt-4 flex items-center gap-2 pt-4 font-mono text-[11.5px] text-ink-2">
           <span>{post.author.name}</span>

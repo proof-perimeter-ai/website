@@ -1,0 +1,94 @@
+---
+title: "What Is Agentic Document Extraction? How It Differs from Single-Pass OCR"
+slug: "agentic-document-extraction"
+description: "Agentic document extraction adds a self-correcting reasoning loop OCR never had — catching its own errors before they reach a regulated workflow."
+banner:
+  src: "/assets/blog/agentic-document-extraction/banner.png"
+  alt: "Split diagram contrasting single-pass OCR output with an agentic extraction loop that detects and corrects its own errors"
+  width: 1600
+  height: 900
+category: "Document AI"
+tags: ["agentic document extraction", "document extraction ai", "document AI", "vision-language models", "self-correcting OCR"]
+authorId: "gaurav"
+createdAt: "2026-07-23"
+updatedAt: "2026-07-23"
+relatedPosts: ["what-is-ocr-ai", "sovereign-ai-gap", "claims-processing-document-ai"]
+status: "published"
+primaryKeyword: "agentic document extraction"
+cluster: "C"
+---
+
+Run the same messy scan through a single-pass OCR engine twice and you'll get the same answer twice — even if that answer is wrong. The engine has no way to notice its own mistake, because it never looks back at what it produced. Agentic document extraction is the alternative that's rapidly displacing that model: instead of one forward pass from pixels to text, an agent reasons over its own output, flags what it isn't sure about, and takes another look before handing anything downstream. This guide covers how the approach differs mechanically from single-pass OCR, where it still needs a human in the loop, and what changes when the documents in question are KYC packets and loan files rather than general business paperwork.
+
+## What Is Agentic Document Extraction?
+
+Agentic document extraction treats reading a document as a reasoning task rather than a one-shot classification problem. A conventional extraction pipeline runs once: image in, text and fields out, whatever confidence the model happens to land on. An agentic pipeline wraps that same extraction step in a loop — it evaluates its own output, decides whether a given field is trustworthy, and if it isn't, takes a corrective action: re-processing a crop at higher resolution, trying a different recognition path, cross-checking a value against a known format like a date pattern or an account-number checksum, or escalating the field to a person. The output isn't just a set of extracted values; it's a set of values the system has actively tried to break and failed to.
+
+This matters because the two failure modes look completely different in practice. A single-pass system that misreads a smudged "8" as a "3" reports the wrong digit with moderate confidence and moves on — nothing downstream necessarily notices until a balance doesn't reconcile or a payment bounces. An agentic system treats that same moderate confidence as a trigger to keep working the problem before it ever leaves the pipeline.
+
+## Single-Pass OCR vs. an Agentic Approach: What Actually Changes
+
+### Where Single-Pass Extraction Breaks Down
+
+Classic OCR and most first-generation "OCR AI" systems are still fundamentally forward-only: a page goes in, a model runs inference once, and whatever comes out is final. As [our guide to OCR AI](/blog/what-is-ocr-ai) covers in more depth, that architecture is good at recognizing characters but has no built-in mechanism for questioning its own recognition. A low-confidence field is still just an output with a lower number attached — it flows downstream exactly like a high-confidence one unless something else in the pipeline is explicitly built to intercept it.
+
+### What an Agent Loop Adds
+
+This approach changes the unit of work from "read this page" to "get this field right." Vision-language models make this practical because the same model that reads a region can also reason about whether that reading is plausible in context — does "Sort Code" contain something that actually matches a sort-code format, does a table's row total match the sum of its line items. That reasoning step is what [agentic OCR](/glossary/agentic-ocr) adds on top of raw recognition, and it's the mechanical difference between a pipeline and an agent: a pipeline executes a fixed sequence regardless of what it finds; an agent decides what to do next based on what it just saw.
+
+## How an Agentic Extraction Loop Works
+
+### Detecting Uncertainty Before It Becomes an Error
+
+The loop starts with a fast first pass across the whole document, the same as any extraction system. What's different is what happens next: rather than treating that first pass as final, the system scores every field for how confident it actually is, and routes only the uncertain ones — a blurred digit, a field that fails a format check, a total that doesn't reconcile — into a second round of scrutiny. This keeps the approach's cost close to a single-pass system on the easy majority of a document while concentrating extra compute exactly where errors are actually likely.
+
+### Self-Correction and Re-Verification
+
+For each flagged field, the agent has a set of moves available: re-read the same crop at higher resolution, try a different model or prompt on the same region, check the value against known constraints, or compare it against a related field elsewhere in the document. [Agentic document processing](/glossary/agentic-document-processing) extends this same pattern beyond individual fields to the whole document: deciding not just how to re-read an uncertain value, but what the document as a whole still needs — a missing page, a cross-document reconciliation, a validation against a business rule — before it's actually complete.
+
+### Visual Grounding: Tying Every Value Back to the Page
+
+A second property that matters as much as the correction loop itself is [document grounding](/glossary/document-grounding): every extracted value should be traceable back to the specific region of the page that produced it, not just asserted as text. That link is what lets a reviewer glance at a highlighted bounding box instead of re-reading an entire page to check one number, and it's what turns a corrected field into an auditable one — the record shows not just what the system landed on, but where it looked and what it tried.
+
+### Escalation, Not Full Autonomy
+
+The honest caveat: "self-correcting" doesn't mean "self-sufficient." A well-built agentic pipeline still escalates genuinely ambiguous cases to a person rather than forcing a guess, the same way [self-healing extraction models](/glossary/self-healing-extraction-models) are better understood as automated detection-and-escalation than fully autonomous correction. The point isn't to remove human review — it's to make sure human attention lands on the fields that actually need it, instead of being spread evenly across a document regardless of where the real risk sits.
+
+## Why This Is Gaining Analyst Attention Now
+
+Agentic approaches to document work aren't a niche technical curiosity anymore — they're showing up in mainstream enterprise-software forecasting. Gartner [predicts that 40% of enterprise applications will feature task-specific AI agents by the end of 2026](https://www.gartner.com/en/newsroom/press-releases/2025-08-26-gartner-predicts-40-percent-of-enterprise-apps-will-feature-task-specific-ai-agents-by-2026-up-from-less-than-5-percent-in-2025), up from under 5% in 2025 — an eightfold jump in a single year. Document extraction is one of the clearest places that shift shows up in practice, precisely because "read this document and decide what it means" is a task with a natural loop built into it: read, check, correct, escalate. Gartner's own [Peer Insights coverage of the intelligent document processing market](https://www.gartner.com/reviews/market/intelligent-document-processing-solutions) — the same market its inaugural Magic Quadrant for IDP began formally evaluating in September 2025 — increasingly frames extraction quality, not just OCR throughput, as the differentiator vendors are judged on, which is exactly the ground agentic approaches are built to compete on.
+
+## Where Agentic Extraction Still Needs a Human
+
+None of this makes extraction infallible. User reviews on G2 are a useful reality check here: reviewers of [Docsumo](https://www.g2.com/products/docsumo-docsumo/reviews) note that even accuracy-focused extraction can still stumble on documents with intricate or highly variable layouts, requiring a person to review and clean up a share of the output as new formats show up — the correction loop reduces manual work, but doesn't eliminate the need for a reviewer. The honest promise of agentic document extraction is fewer, better-targeted escalations, not zero human involvement.
+
+## The Compliance Question Agentic Extraction Raises for Regulated Documents
+
+Most of what's published on this topic — including LlamaIndex's own writing on agentic OCR and visual grounding, which covers the territory in real technical depth — is framed around a developer building a pipeline: which model to call, how to chain the correction steps, how to measure straight-through-processing gains. That's a legitimate framing, but it isn't the whole question for a bank, insurer, or lender adopting this approach on KYC packets or claims files. For those documents, the more consequential question is where the reasoning loop actually runs, since every re-read and intermediate candidate value is itself a pass over sensitive customer data. Proof Perimeter's fine-tuned document AI models run the entire extraction and correction loop inside a bank or insurer's own environment — cloud-hosted, within customer infrastructure, or fully on-premise on commodity CPUs — so none of those intermediate passes leave the institution's perimeter, with field-level provenance attached to every value the loop touches. On Proof Perimeter's internal benchmarks, that fine-tuned model delivers 20% higher accuracy and 50% lower token consumption than general-purpose frontier models on the same document-extraction tasks — the operating-model question is what actually decides whether agentic extraction is deployable on a regulated document set at all.
+
+## How to Evaluate Agentic Extraction Claims from a Vendor
+
+- **Ask what triggers a second look**, specifically — a vague "the model is confident" answer is weaker than a concrete list of checks (format validation, cross-field reconciliation, known-pattern matching).
+- **Ask to see the correction trail**, not just the final answer, and confirm escalation actually reaches a person for cases the agent can't resolve on its own.
+- **Ask where the correction loop physically runs**, not just where the document is stored — every re-read and intermediate candidate is a pass over the same sensitive data as the original document.
+- **Test on your own hard cases**, not a vendor's demo set — the value of an agent loop shows up on documents that would have failed a single pass.
+
+Most vendors will walk through their actual correction logic and deployment architecture on a [demo call](/book-demo) if you bring genuinely difficult documents from your own mix — that's a far more revealing test than a headline accuracy number.
+
+## Frequently Asked Questions
+
+### Is agentic document extraction the same as agentic OCR?
+
+They describe overlapping ideas. [Agentic OCR](/glossary/agentic-ocr) usually refers narrowly to the self-correction loop applied to text recognition itself. Agentic document extraction is the broader application of that same reasoning-and-correction pattern to full field extraction — recognizing text, understanding structure, and validating the result against context, not just re-reading characters.
+
+### Does agentic extraction eliminate the need for human review?
+
+No, and treating it that way is a mistake. The realistic gain is a sharp reduction in how much a person needs to review, concentrated on the fields the system genuinely can't resolve on its own, rather than removing review entirely.
+
+### Is this approach only useful with LLM-based pipelines?
+
+It's most practical with vision-language models specifically, because the same model that reads a region can also reason about whether the reading makes sense — but the underlying idea, detect uncertainty and correct before finalizing, isn't tied to any one model architecture.
+
+## The Takeaway
+
+Single-pass OCR gives you an answer. Agentic document extraction gives you an answer the system has already tried to disprove — and, for the fields it can't resolve on its own, a clear signal that a person needs to look. For document-heavy regulated workflows, that correction loop is only as trustworthy as the environment it runs in, which is why where the loop executes matters as much as how well it corrects.

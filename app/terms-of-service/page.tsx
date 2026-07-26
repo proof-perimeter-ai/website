@@ -10,7 +10,7 @@ const CONTACT_EMAIL = "admin@proofperimeter.com";
 
 export const metadata: Metadata = {
   title: "Terms of Service",
-  description: `The terms governing use of the ${siteConfig.name} website and the services described on it.`,
+  description: `The Terms of Service governing use of the ${siteConfig.name} website, demo requests, and Bring Your Own Key or Enterprise evaluation engagements.`,
   alternates: { canonical: "/terms-of-service" },
 };
 

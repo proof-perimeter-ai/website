@@ -11,7 +11,8 @@ export function BookDemoCal() {
   useEffect(() => {
     (async function () {
       const cal = await getCalApi({ namespace: "30min" });
-      cal("ui", { hideEventTypeDetails: false, layout: "month_view" });
+      const isSmallScreen = window.matchMedia("(max-width: 639px)").matches;
+      cal("ui", { hideEventTypeDetails: isSmallScreen, layout: "month_view" });
       cal("on", {
         action: "bookingSuccessfulV2",
         callback: () => {
