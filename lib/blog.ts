@@ -10,6 +10,11 @@ export type TocItem = {
   level: 2 | 3;
 };
 
+export type FaqItem = {
+  question: string;
+  answer: string;
+};
+
 export type BlogPostFrontmatter = {
   title: string;
   slug: string;
@@ -33,6 +38,7 @@ export type BlogPost = BlogPostFrontmatter & {
   author: Author;
   readingTimeMinutes: number;
   toc: TocItem[];
+  faqs: FaqItem[];
 };
 
 const BLOG_DIR = path.join(process.cwd(), "content", "blog");
@@ -58,6 +64,42 @@ function readingTime(body: string): number {
   return Math.max(1, Math.ceil(words / WORDS_PER_MINUTE));
 }
 
+/** Strip markdown link syntax to plain text, for schema.org fields that expect plain text. */
+function toPlainText(markdown: string): string {
+  return markdown
+    .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1")
+    .replace(/\*\*([^*]+)\*\*/g, "$1")
+    .replace(/\*([^*]+)\*/g, "$1")
+    .replace(/`([^`]+)`/g, "$1")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+/**
+ * FAQ Q&As are extracted from the same "## Frequently Asked Questions" section that
+ * renders on the page, so FAQPage schema can never drift from what's actually visible.
+ */
+function extractFaqs(body: string): FaqItem[] {
+  const heading = "## Frequently Asked Questions";
+  const start = body.indexOf(`${heading}\n`);
+  if (start === -1) return [];
+
+  const afterHeading = start + heading.length;
+  const nextSectionIdx = body.indexOf("\n## ", afterHeading);
+  const section = nextSectionIdx === -1 ? body.slice(afterHeading) : body.slice(afterHeading, nextSectionIdx);
+
+  const faqs: FaqItem[] = [];
+  const qaRegex = /^### (.+)\n\n([\s\S]*?)(?=\n### |$)/gm;
+  let match: RegExpExecArray | null;
+  while ((match = qaRegex.exec(section)) !== null) {
+    faqs.push({
+      question: toPlainText(match[1]),
+      answer: toPlainText(match[2]),
+    });
+  }
+  return faqs;
+}
+
 function loadPosts(): BlogPost[] {
   const files = fs.readdirSync(BLOG_DIR).filter((f) => f.endsWith(".mdx"));
 
@@ -79,6 +121,7 @@ function loadPosts(): BlogPost[] {
       author: getAuthor(post.authorId),
       readingTimeMinutes: readingTime(content),
       toc: extractToc(content),
+      faqs: extractFaqs(content),
     };
   });
 
