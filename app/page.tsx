@@ -5,11 +5,12 @@ import { FadeIn } from "@/components/FadeIn";
 import { Eyebrow } from "@/components/Eyebrow";
 import { SiteNav } from "@/components/SiteNav";
 import { SiteFooter } from "@/components/SiteFooter";
+import { siteConfig } from "@/lib/metadata";
 
 export const metadata: Metadata = {
   title: "Free Document AI Platform",
   description:
-    "Frontier AI for regulated document processing. Free with your own API key — templates, workflows, batch, API, review, export, and provenance on every document. No document limit.",
+    "Frontier AI for regulated document processing — free with your own API key. Templates, workflows, batch API, review, export, and provenance. No document limit.",
   alternates: { canonical: "/" },
 };
 
@@ -155,10 +156,28 @@ const faqJsonLd = {
   })),
 };
 
+const softwareApplicationJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  name: siteConfig.name,
+  description: siteConfig.description,
+  url: siteConfig.url,
+  applicationCategory: "BusinessApplication",
+  operatingSystem: "Web",
+  offers: {
+    "@type": "Offer",
+    name: "Bring Your Own Key",
+    price: "0",
+    priceCurrency: "USD",
+    description: "Free workspace access — pay your model provider directly for API usage.",
+  },
+};
+
 export default function DocumentAiV2() {
   return (
     <>
       <JsonLd data={faqJsonLd} />
+      <JsonLd data={softwareApplicationJsonLd} />
       <SiteNav />
       <main className="flex-1">
         {/* Hero — centered */}

@@ -10,7 +10,7 @@ import { BtnSolid } from "@/components/Button";
 export const metadata: Metadata = {
   title: "Document AI for Enterprise",
   description:
-    "Vertical-tuned document AI, deployed hosted, in a private cloud, or fully on-premises with zero egress. Fine-tuned on your documents, with the governance and controls your regulator asks to see.",
+    "Vertical-tuned document AI deployed hosted, in your private cloud, or fully on-premises with zero egress and fine-tuned on your own documents.",
   alternates: { canonical: "/enterprise" },
 };
 

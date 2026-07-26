@@ -5,9 +5,9 @@ import { SiteNav } from "@/components/SiteNav";
 import { SiteFooter } from "@/components/SiteFooter";
 
 export const metadata: Metadata = {
-  title: "Get Started",
+  title: "Get Started: Book a Demo or Start Free",
   description:
-    "Get started for free with your own LLM model key, or move to the Enterprise tier for Proof Perimeter's proprietary document-processing models with enterprise-grade security, deployment and support.",
+    "Get started for free with your own LLM key, or move to Enterprise for Proof Perimeter's proprietary models with zero-egress deployment and governance controls.",
   alternates: { canonical: "/book-demo" },
 };
 
@@ -19,7 +19,9 @@ export default function BookDemo() {
         <section className="py-22">
           <div className="mx-auto max-w-[1100px] px-7 text-center">
             <div className="mx-auto max-w-[760px]">
-              <Eyebrow className="justify-center">Book a live demo</Eyebrow>
+              <h1>
+                <Eyebrow className="justify-center">Book a live demo</Eyebrow>
+              </h1>
             </div>
 
             <div className="mx-auto mt-12 h-[650px] w-full rounded-lg border border-line bg-panel p-8 text-left">
