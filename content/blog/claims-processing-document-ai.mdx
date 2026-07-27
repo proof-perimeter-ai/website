@@ -11,8 +11,8 @@ category: "Insurance"
 tags: ["claims processing document ai", "insurance claims", "FNOL automation", "claims adjudication", "document AI"]
 authorId: "gaurav"
 createdAt: "2026-07-22"
-updatedAt: "2026-07-25"
-relatedPosts: ["sovereign-ai-gap", "kyc-document-automation", "document-classification-ai"]
+updatedAt: "2026-07-27"
+relatedPosts: ["sovereign-ai-gap", "document-classification-ai", "deep-extraction-vs-shallow-ocr"]
 status: "published"
 primaryKeyword: "claims processing document ai"
 cluster: "D"
@@ -44,7 +44,7 @@ The first step is recognizing what a given document actually is — an FNOL form
 
 ### Field Extraction Across a Claim's Document Mix
 
-Once classified, extraction pulls the fields each document type actually carries — claimed amount, loss date, injury or damage description, provider and invoice line items — and, just as importantly, checks whether those fields agree with the rest of the file. Does the claimed amount on the intake form match the itemized repair estimate? Does the loss date on the police report match what the claimant reported at FNOL? Manual review catches these inconsistencies unevenly, depending on how carefully a given handler reads a given document; automated cross-checking catches them on every claim, every time.
+Once classified, extraction pulls the fields each document type actually carries — claimed amount, loss date, injury or damage description, provider and invoice line items — and, just as importantly, checks whether those fields agree with the rest of the file. Getting those line items right in the first place depends on [deep extraction rather than shallow OCR](/blog/deep-extraction-vs-shallow-ocr), since a repair estimate's nested line-item schedule or an adjuster's handwritten annotation is exactly the content a single forward-pass OCR read tends to flatten or misplace. Does the claimed amount on the intake form match the itemized repair estimate? Does the loss date on the police report match what the claimant reported at FNOL? Manual review catches these inconsistencies unevenly, depending on how carefully a given handler reads a given document; automated cross-checking catches them on every claim, every time.
 
 ### Coverage Verification Against the Policy
 
