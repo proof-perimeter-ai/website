@@ -12,7 +12,7 @@ tags: ["agentic document extraction", "document extraction ai", "document AI", "
 authorId: "gaurav"
 createdAt: "2026-07-23"
 updatedAt: "2026-07-23"
-relatedPosts: ["what-is-ocr-ai", "sovereign-ai-gap", "claims-processing-document-ai"]
+relatedPosts: ["what-is-ocr-ai", "confidence-scoring-document-extraction", "claims-processing-document-ai"]
 status: "published"
 primaryKeyword: "agentic document extraction"
 cluster: "C"
@@ -40,7 +40,7 @@ This approach changes the unit of work from "read this page" to "get this field 
 
 ### Detecting Uncertainty Before It Becomes an Error
 
-The loop starts with a fast first pass across the whole document, the same as any extraction system. What's different is what happens next: rather than treating that first pass as final, the system scores every field for how confident it actually is, and routes only the uncertain ones — a blurred digit, a field that fails a format check, a total that doesn't reconcile — into a second round of scrutiny. This keeps the approach's cost close to a single-pass system on the easy majority of a document while concentrating extra compute exactly where errors are actually likely.
+The loop starts with a fast first pass across the whole document, the same as any extraction system. What's different is what happens next: rather than treating that first pass as final, the system scores every field for how confident it actually is — the mechanics of [confidence scoring](/blog/confidence-scoring-document-extraction) are their own topic — and routes only the uncertain ones — a blurred digit, a field that fails a format check, a total that doesn't reconcile — into a second round of scrutiny. This keeps the approach's cost close to a single-pass system on the easy majority of a document while concentrating extra compute exactly where errors are actually likely.
 
 ### Self-Correction and Re-Verification
 
