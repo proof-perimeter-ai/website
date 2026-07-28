@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { IBM_Plex_Serif, IBM_Plex_Mono } from "next/font/google";
 import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
 import { JsonLd } from "@/components/JsonLd";
@@ -101,6 +102,13 @@ export default function RootLayout({
         <JsonLd data={websiteJsonLd} />
         {children}
         <MobileBookDemoCta />
+        <Script
+          id="vtag-ai-js"
+          src="https://r2.leadsy.ai/tag.js"
+          data-pid="HMacQ2I658iEDymL"
+          data-version="062024"
+          strategy="lazyOnload"
+        />
       </body>
       <GoogleAnalytics gaId={GA_MEASUREMENT_ID} />
     </html>
