@@ -21,7 +21,7 @@ const testimonials: Testimonial[] = [
   {
     quote:
       "With Proof Perimeter, we found what we were looking for: high accuracy, fast performance, and zero data egress. Integration took less than a week, and we were processing live customer documents by the end of it.",
-    attribution: "CEO, Insurance Tech",
+    attribution: "Chief Risk Officer, Insurance Tech",
   },
 ];
 
