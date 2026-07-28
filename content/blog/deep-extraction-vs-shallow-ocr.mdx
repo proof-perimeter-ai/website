@@ -1,0 +1,82 @@
+---
+title: "Deep Extraction vs. Shallow OCR: What Regulated Industries Need to Know"
+slug: "deep-extraction-vs-shallow-ocr"
+description: "Deep extraction reasons over a document's structure before committing to an answer; shallow OCR reads once and stops. Here's where the gap actually shows up."
+banner:
+  src: "/assets/blog/deep-extraction-vs-shallow-ocr/banner.png"
+  alt: "Split diagram contrasting a single flat OCR text dump against a deep extraction pass that reconstructs a nested table and links each value back to its source region"
+  width: 1600
+  height: 900
+category: "Document AI"
+tags: ["deep extraction", "shallow ocr", "document extraction ai", "table extraction", "document AI"]
+authorId: "gaurav"
+createdAt: "2026-07-27"
+updatedAt: "2026-07-27"
+relatedPosts: ["agentic-document-extraction", "zero-shot-vs-fine-tuned-document-extraction", "sovereign-ai-gap"]
+status: "published"
+primaryKeyword: "deep extraction vs shallow ocr"
+cluster: "C"
+---
+
+Run a nested table through most OCR engines and you'll get back exactly what you asked for: text, in roughly the right order, with no idea that a table was ever there. That's shallow OCR — a single forward pass from pixels to characters, with no mechanism for checking whether what came out actually reflects the document's structure. Deep extraction is the alternative gaining ground fast: instead of stopping at recognition, it reasons about a document's layout, cross-checks what it read against what the structure implies, and only commits to an answer once it can defend it. The difference sounds academic until you watch the two approaches handle the same bank statement, claims form, or loan file — one produces a wall of plausible-looking text, the other produces values a reviewer can actually trust without re-checking the source page.
+
+## What Is Shallow OCR?
+
+Shallow OCR is the traditional model: an engine locates glyphs, classifies each against a known character set, and reconstructs a text string in reading order. It's a genuinely hard computer vision problem, and decades of engineering have made it very good at exactly that narrow job. What it doesn't do is reason about what it produced. A shallow pipeline has no way to notice that a table's column totals don't sum correctly, that a date fell outside a plausible range, or that a value it extracted sits in a region the schema didn't actually ask for. Whatever comes out of the first pass is final — correct or not, the pipeline has no built-in way to tell the difference.
+
+## What Is Deep Extraction?
+
+Deep extraction treats reading a document as an evaluation problem, not a one-shot transcription. A deep pipeline reconstructs a document's actual structure — which cells belong to which row, which line item's total should match which subtotal, which field a handwritten annotation modifies — and checks its own output against that structure before it's considered final. Where a shallow pass asks "what characters are here," a deep pass asks "does what I just extracted make sense given everything else on this page," and takes a corrective action — re-reading a region, trying an alternate parse, escalating to a person — when the answer is no.
+
+## Deep Extraction vs. Shallow OCR: Where the Line Actually Falls
+
+The distinction isn't abstract. It shows up in three specific places, repeatedly, across the document types regulated industries actually process.
+
+### Nested Tables and Multi-Column Layouts
+
+A shallow OCR pass reads a nested table left to right, top to bottom, flattening rows and sub-rows into an undifferentiated stream — it has no concept of "this row belongs inside that section." [Table extraction from documents](/glossary/table-extraction-from-documents) is precisely the capability shallow OCR lacks and deep extraction is built around: recovering the logical relationship between a header, its rows, and any merged or spanning cells, not just the characters that happen to sit inside them. A financial statement's nested subtotal-within-subtotal structure, or a claims schedule with per-coverage line items, is exactly where this gap turns from a curiosity into a real accuracy problem.
+
+### Low-Quality Scans and Mixed Handwriting
+
+Branch-scanned loan files and adjuster-annotated claims forms routinely mix typed and handwritten content on the same page. [Handwritten table extraction](/glossary/handwritten-table-extraction) requires reasoning about which handwritten mark modifies which printed field — a correction written over a typed amount, a checkbox filled by hand next to a printed label — something a single forward pass has no mechanism to disambiguate. A deep pass can weigh the handwritten content against the surrounding printed structure before deciding what it means; a shallow pass reads both streams flat and hopes the reading order happens to preserve the relationship.
+
+### Auditability, Not Just Accuracy
+
+The gap that matters most for a regulated workflow isn't even accuracy on its own — it's whether an extracted value comes with evidence. [Visual grounding](/glossary/visual-grounding) is what lets a deep extraction system point back to the exact region of the page a value came from, so a reviewer can check the claim against the source in seconds rather than re-reading the whole document. Paired with a [confidence score](/glossary/confidence-scoring-models) attached to the specific field rather than the document as a whole, that's what turns "the model says $4,860.00" into something a compliance team can actually verify and sign off on — a distinction shallow OCR was never built to support, because it never produced a confidence signal worth routing on in the first place.
+
+## What G2 and Gartner Are Already Telling Us About This Split
+
+This isn't just a vendor talking point — buyers are reporting the same gap directly. User reviews of Azure AI Document Intelligence on G2 describe accuracy dropping specifically on heavily nested tables, multi-column PDFs, and pages that mix handwritten notes with print, even though the same product performs well on straightforward single-column documents — the exact failure pattern a shallow, single-pass architecture predicts. By contrast, [reviews of LandingAI's Agentic Document Extraction product on G2](https://www.g2.com/products/landingai-agentic-document-extraction/reviews) — a tool built explicitly around the deep-extraction approach — describe consistently strong results on multi-column tables, nested clauses, and inconsistently formatted scanned PDFs, the same document categories where shallow tools struggle. [G2's Intelligent Document Processing category](https://www.g2.com/categories/intelligent-document-processing-idp), which now aggregates over 16,000 verified reviews, lists data validation and accuracy checking as a baseline category requirement rather than a differentiator — a sign that the market has already moved past "does it read text" to "does it check its own work."
+
+Gartner's own coverage points the same direction: the analyst firm published its [first-ever Magic Quadrant for Intelligent Document Processing Solutions in September 2025](https://www.gartner.com/reviews/market/intelligent-document-processing-solutions), formally evaluating 18 vendors — a signal that IDP has matured from an emerging capability into infrastructure serious enough to warrant a dedicated, structured evaluation, with reasoning and validation increasingly treated as core to what "document AI" means rather than an add-on.
+
+## Why This Matters More for KYC Packets, Claims Files, and Loan Documents
+
+For a general business invoice, a shallow OCR error that a person catches on a quick glance is a minor annoyance. For a KYC packet, a claims bundle, or a loan file, an unverified extraction error can flow straight into a compliance decision, and the question an examiner eventually asks isn't just "was the number right" — it's "how do you know it was right, and who checked." That's the specific gap Proof Perimeter is built to close: its fine-tuned document AI models run the full extraction and evaluation loop — table reconstruction, handwriting disambiguation, field-level grounding — inside a bank, insurer, or lender's own environment, cloud-hosted, within customer infrastructure, or fully on-premise on commodity CPUs, so none of the intermediate re-reads or corrective passes a deep extraction loop performs ever leave the institution's perimeter. On Proof Perimeter's internal benchmarks, that fine-tuned model delivers 20% higher accuracy and 50% lower token consumption than general-purpose frontier models on the same document-extraction tasks, with field-level provenance attached to every value the loop touches — the record a reviewer needs to trust a deep extraction result without re-deriving it from scratch. Most vendors will walk through their actual verification loop and deployment architecture on a [demo call](/book-demo) if you bring your own nested-table and mixed-handwriting documents — that's a far more revealing test than a headline accuracy number.
+
+## How Do You Tell Whether a Vendor Is Doing Deep Extraction or Just Better OCR?
+
+A few direct questions separate the two in a vendor conversation:
+
+- **Ask what happens after the first read.** If the answer is "nothing — the first pass is the output," that's shallow OCR regardless of how the marketing describes it.
+- **Ask for field-level, not document-level, confidence.** A single confidence score for an entire page can't tell a reviewer which specific value needs a second look.
+- **Ask whether extracted values are grounded to a source region.** If a vendor can't show you the exact pixels a value came from, verifying its output means re-reading the original document anyway.
+- **Test it on your actual nested tables and mixed-handwriting pages**, not a demo dataset of clean single-column invoices — that's exactly where the gap between shallow and deep approaches shows up.
+
+## Frequently Asked Questions
+
+### Is deep extraction the same as agentic document extraction?
+
+They overlap heavily. [Agentic document extraction](/blog/agentic-document-extraction) is the specific architecture — a reasoning loop that re-checks its own output — that makes deep extraction possible in practice. Deep extraction is the outcome (structure-aware, self-verified results); agentic extraction is one of the main ways vendors currently build toward it.
+
+### Does deep extraction cost more than shallow OCR?
+
+Per-document compute cost is usually higher, since a deep pass may re-read a region or run an additional verification step that a shallow pass skips entirely. In practice this is offset by lower downstream cost from caught errors — a value a deep pass corrects before it reaches a reviewer doesn't turn into a manual correction, a reconciliation break, or a compliance exception later.
+
+### Can shallow OCR ever be the right choice?
+
+Yes — for clean, single-column, low-stakes documents where a misread character has no real consequence, shallow OCR is faster and cheaper, and the accuracy gap with deep extraction narrows to nearly nothing. The case for deep extraction gets stronger specifically as documents get messier and the cost of an unverified error goes up, which is exactly the profile of most regulated-industry paperwork.
+
+## The Takeaway
+
+Shallow OCR and deep extraction aren't different tiers of the same technology — they're different answers to the question of what a document AI system owes you after it reads a page. A shallow pass owes you its best single guess. A deep pass owes you a guess it has actively tried to disprove, evidence for why it didn't, and a path to a human reviewer for the cases where it still isn't sure. For nested tables, mixed handwriting, and any document where an error has a real downstream cost, that difference is the whole ballgame.
