@@ -1,0 +1,84 @@
+---
+title: "Cutting Manual Review Time by 60–100% in Background Screening"
+slug: "cutting-manual-review-time-automated-background-screening"
+description: "How a UK-based automated background checking platform used Proof Perimeter to process millions of global screening documents, cutting manual review time by 60–100% while matching human accuracy."
+banner:
+  src: "/assets/case-studies/cutting-manual-review-time-automated-background-screening/banner.png"
+  alt: "Cutting manual review time in background screening"
+  width: 1600
+  height: 900
+company:
+  name: "UK-Based Automated Background Checking Platform"
+  industry: "Background Screening"
+quote:
+  text: "Many of our document workflows are 95%+ accurate, with some near 100%. We've seen significant improvements in the accuracy of our document workflows since we started using Proof Perimeter, and the accuracy we get from the platform is on par with or better than our human operations accuracy at scale."
+  attribution: "Staff Software Engineer, UK-Based Automated Background Checking Platform"
+metrics:
+  - label: "Human review time"
+    value: "-60% to -100%"
+  - label: "Document accuracy"
+    value: "95–100%"
+  - label: "New workflow rollout"
+    value: "Hours to days"
+category: "Background Screening"
+tags: ["background screening", "compliance", "human-in-the-loop", "global documents"]
+authorId: "gaurav"
+createdAt: "2026-07-15"
+updatedAt: "2026-07-15"
+status: "published"
+---
+
+import { CaseStudyMetrics } from '@/components/CaseStudyMetrics'
+import { CaseStudyQuote } from '@/components/CaseStudyQuote'
+
+This platform is an AI verification service that decodes messy, fragmented, hard-to-verify information about people and delivers clear answers about a person's identity, background, and credentials. Trusted by more than 140,000 customers globally across employment screening, income verification, and tenant screening, it helps businesses and individuals make high-stakes decisions with confidence — and it uses Proof Perimeter to process millions of documents across its screening workflows accurately, quickly, and scalably.
+
+<CaseStudyQuote quote={props.quote} />
+
+<CaseStudyMetrics metrics={props.metrics} />
+
+## The challenge: global document variation without sacrificing accuracy or speed
+
+Court extracts, police certificates, education transcripts, and identity documents directly influence how quickly a screening moves forward and what its outcome is. Every document touched in a screening either advances a candidate or holds them up — speed and accuracy matter equally. A delay can keep a candidate from starting work; an incorrect result can wrongly flag or clear someone.
+
+Maintaining quality, scale, and speed is especially hard for international screenings, which involve a long tail of documents from every jurisdiction in the world — Canadian driver's abstracts, UK proof-of-address documents, identity documents from hundreds of countries. Formats, languages, layouts, and authenticity signals vary widely: unfamiliar scripts, stamped or handwritten certifications, low-quality scans, details buried in free text, government templates that change, and missing fields in candidate uploads. Historically, processing these meant a combination of vendor-specific integrations, human operations review, and bespoke OCR pipelines that broke whenever a country changed its document template — and even a small accuracy regression on a common document type could affect many screenings.
+
+## The solution: a complete document platform for production screening workflows
+
+The team considered general OCR providers, cloud document AI services, specialized vendors, and building internally on foundation models. It needed more than a performant model — it needed a platform the engineering team could live in for years, across an expanding set of document types and schemas. The key criteria:
+
+- **Built-in evaluation tooling** to continuously measure workflow performance, run regression tests as schemas changed, and quantify accuracy on held-out sets.
+- **Long-tail document coverage** for uncommon formats, languages, layouts, scans, and changing templates without turning every document type into a new engineering project.
+- **Confidence-calibrated review routing**, so high-confidence extractions clear automatically while ambiguous cases enter a first-class human-review state.
+- **Iteration speed**, so onboarding a new document workflow is a configuration and evaluation exercise, not an engineering project.
+- **Security and data handling** that meets exceptionally high standards for protecting sensitive screening documents.
+
+> Proof Perimeter stood out because it met our key criteria, but also because of the partnership we felt. The team was willing to engage deeply with us — jumping on calls at short notice, rapidly iterating based on our feedback. Their responsiveness gave us confidence we'd be able to evolve together as our requirements grew.
+>
+> — Staff Software Engineer, UK-Based Automated Background Checking Platform
+
+## Implementation: from extraction to decision
+
+Proof Perimeter sits inside the platform's screening orchestration layer: a candidate or partner submits a document, Proof Perimeter classifies, extracts, and validates it, then returns structured outputs and confidence scores. High-confidence results proceed automatically; low-confidence or ambiguous results move to human review. Evaluation sets monitor performance and catch regressions along the way.
+
+The first workflow supported document review for employment verification. The platform has since expanded Proof Perimeter across more document types and screening workflows.
+
+## The results: millions of pages processed, review time down 60–100%
+
+- **Volume:** millions of pages processed and growing
+- **Accuracy:** average 95–100% across document workflows
+- **Human review:** average reduction of 60–100% in human document review time
+- **Deployment:** new document workflows operationalized in hours or days rather than weeks
+
+> We can onboard a new document type as a configuration and evaluation exercise rather than as an engineering project. That decouples document coverage from engineering capacity and helps democratize document intelligence across our organization, empowering subject matter experts to build and iterate on our document workflows. The result is a faster, more accurate product for our customers and candidates, more efficient operations, and more engineering capacity to build new features.
+>
+> — Staff Software Engineer, UK-Based Automated Background Checking Platform
+
+## Four principles for mission-critical document workflows
+
+Based on this experience, four recurring principles generalize to other teams building document workflows:
+
+- **Start with an eval set.** Before building the workflow, build the way you'll measure it — an eval set forces you to be concrete about what "correct" means for each document type and what the edge cases look like.
+- **Design for human-in-the-loop from day one.** In a regulated industry, review is a permanent, first-class state in every workflow — not a fallback for when the model fails.
+- **Treat latency and accuracy as a real trade-off.** A single linear extract-then-validate pipeline rarely satisfies both; parallelizing across pages or fields and optimizing for time-to-first-insight is often the better design.
+- **Partner with your subject matter experts.** The people who look at these documents every day know more about them than anyone on the engineering team — design workflows alongside them, not from a spec.

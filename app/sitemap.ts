@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { siteConfig } from "@/lib/metadata";
 import { getAllTerms } from "@/lib/glossary";
 import { getAllPosts } from "@/lib/blog";
+import { getAllCaseStudies } from "@/lib/case-studies";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
@@ -84,6 +85,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...getAllPosts().map((post) => ({
       url: `${siteConfig.url}/blog/${post.slug}`,
       lastModified: new Date(post.updatedAt),
+      changeFrequency: "monthly" as const,
+      priority: 0.6,
+    })),
+    {
+      url: `${siteConfig.url}/case-studies`,
+      changeFrequency: "weekly",
+      priority: 0.7,
+    },
+    ...getAllCaseStudies().map((caseStudy) => ({
+      url: `${siteConfig.url}/case-studies/${caseStudy.slug}`,
+      lastModified: new Date(caseStudy.updatedAt),
       changeFrequency: "monthly" as const,
       priority: 0.6,
     })),

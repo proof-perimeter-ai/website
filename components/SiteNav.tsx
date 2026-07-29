@@ -19,9 +19,10 @@ export function SiteNav() {
           <BrandMark />
         </Link>
         <nav className="hidden gap-7 text-[15px] font-medium text-ink-2 md:flex">
+          <Link href="/enterprise" className="hover:text-ink transition-colors">Enterprise</Link>
           <div className="group relative">
             <Link href="/solutions" className="flex items-center gap-1 hover:text-ink transition-colors">
-              Solutions
+              Industries
               <ChevronDown className="h-3.5 w-3.5 transition-transform duration-200 group-hover:rotate-180" />
             </Link>
             <div className="invisible absolute top-full left-1/2 w-72 -translate-x-1/2 pt-3 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100">
@@ -52,7 +53,7 @@ export function SiteNav() {
               </div>
             </div>
           </div>
-          <Link href="/enterprise" className="hover:text-ink transition-colors">Enterprise</Link>
+          <Link href="/case-studies" className="hover:text-ink transition-colors">Customers</Link>
           <Link href="/pricing" className="hover:text-ink transition-colors">Pricing</Link>
         </nav>
         <div className="flex items-center gap-2">

@@ -1,0 +1,74 @@
+---
+title: "Reviewing Insurance Claims 16x Faster"
+slug: "reviewing-insurance-claims-16x-faster"
+description: "How a commercial P&C claims management platform used Proof Perimeter to process claims files of all shapes and sizes, cutting audit time by 16x compared to traditional methods."
+banner:
+  src: "/assets/case-studies/reviewing-insurance-claims-16x-faster/banner.png"
+  alt: "Reviewing insurance claims 16x faster"
+  width: 1600
+  height: 900
+company:
+  name: "Commercial Property & Casualty (P&C) Claims Management Platform"
+  industry: "Insurance Claims"
+quote:
+  text: "Document processing was one of the foundational problems we had to solve and build upon."
+  attribution: "Founding Engineer, Commercial P&C Claims Management Platform"
+metrics:
+  - label: "Faster claims audit"
+    value: "16x"
+  - label: "Claims per adjuster"
+    value: "150–200"
+  - label: "Pages per claim"
+    value: "5,400+"
+category: "Insurance"
+tags: ["insurance", "claims processing", "compliance", "provenance"]
+authorId: "gaurav"
+createdAt: "2026-07-24"
+updatedAt: "2026-07-24"
+status: "published"
+---
+
+import { CaseStudyMetrics } from '@/components/CaseStudyMetrics'
+import { CaseStudyQuote } from '@/components/CaseStudyQuote'
+
+This platform is an AI-native third-party administrator for commercial claims, built by a team with deep insurance and technical expertise as a "results-as-a-service" provider for high-complexity, high-dollar claims — typically in commercial liability. Rather than building another point solution in a fragmented market, its engineers built the platform from the ground up alongside a team of veteran claims adjusters, pairing human judgment with agentic automation, analytics, and compliance management.
+
+<CaseStudyQuote quote={props.quote} />
+
+<CaseStudyMetrics metrics={props.metrics} />
+
+## The challenge: drowning in documents
+
+Insurance adjusters, particularly those handling commercial claims, are drowning in work. The average commercial insurance adjuster oversees 150–200 claims at a time, and that number keeps rising across the industry. Each claim can contain hundreds to thousands of attachments that grow daily, and missing anything can carry six- to seven-figure consequences.
+
+Every insurance claim is a puzzle of scattered evidence — policies, incident reports, medical records, photos, repair estimates, legal correspondence, expert evaluations — arriving at different times and in inconsistent formats. The average claim runs over 5,400 pages of dense information. Adjusters must synthesize all of it to determine coverage, assess liability, spot fraud, and negotiate settlements, but with hundreds of active files, constant context switching overwhelms even the best adjusters, and critical details get missed while investigations drag on for months.
+
+## The document intelligence challenge
+
+Document processing was the foundational problem the platform was built to solve — not just a feature, but the baseline challenge. Insurance documents present unique complexities: multi-hundred-page policies with wildly varying structures, entire hard drives of poorly scanned documents, and decades-old faxes that may still be referenced as evidence daily.
+
+The regulatory environment adds another layer of complexity, demanding complete auditability where every AI decision must be traceable back to its exact source. The system needs to process massive volumes while maintaining perfect accuracy and transparency.
+
+## Finding the right platform
+
+The team evaluated every major document processing solution, including the leading cloud providers' document intelligence services, which emerged as the best of the traditional options but still fell short for production needs. They experimented with other products as vision models evolved but found them unreliable for their requirements.
+
+After testing Proof Perimeter extensively, the decision ultimately hinged on two critical production requirements: coherence and verifiability. Beyond accurate OCR, Proof Perimeter delivered LLM-friendly structural interpretation paired with reliable bounding boxes the team could use as grounding provenance for their citation system — every extracted value traceable back to exactly where it came from in the source document.
+
+## Innovation from internal needs: a claims intelligence engine
+
+Beyond the core claims platform, the team's next breakthrough emerged from solving its own operational challenge: rigorously tracking and analyzing adjuster performance in real time.
+
+> We needed to know, at any given time, exactly how our adjusters were doing — whether they were following best practices, and how that was impacting claim outcomes. Every week, every day, overnight, we wanted to know immediately.
+>
+> — Founding Engineer, Commercial P&C Claims Management Platform
+
+To make this possible, the team built AI agents on top of their core claims platform that monitor adjuster activity and performance in real time, extracting bespoke data points from every claim and tracking adherence to best practices as claims are handled. When the team demonstrated the resulting analytics to prospective clients, the reaction was immediate — customers wanted the same visibility even without outsourcing claims handling, turning an internal analytics engine into a standalone offering for qualitative claim review.
+
+## The results
+
+Claims can now be analyzed and audited up to 16x faster than traditional methods, letting customers rapidly identify trends, improve adjuster performance, and make more informed underwriting decisions — a level of operational transparency and feedback that hadn't previously been available in commercial claims.
+
+## Looking forward
+
+With recent seed funding, the team is moving well beyond claims automation, integrating claims analytics with underwriting modeling to close the loop between claims, risk, and pricing. Connecting unstructured qualitative claim evidence directly to underwriting decisions hasn't been possible until now, largely due to the complexity of messy, unstructured data — a gap the platform's foundation in AI-driven claims analysis, powered by Proof Perimeter's ground-level mastery of the messiest documents, makes it possible to bridge for the first time.

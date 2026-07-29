@@ -1,0 +1,75 @@
+---
+title: "Shipping Low-Latency Document Processing for 300K+ Users"
+slug: "low-latency-document-processing-business-banking"
+description: "How a top EU business banking platform shipped real-time document validation into onboarding for 300K+ users, cutting p90 latency to under 7 seconds with Proof Perimeter."
+banner:
+  src: "/assets/case-studies/low-latency-document-processing-business-banking/banner.png"
+  alt: "Shipping low-latency document processing for 300K+ users"
+  width: 1600
+  height: 900
+company:
+  name: "Top EU Business Banking Platform"
+  industry: "Business Banking"
+quote:
+  text: "We tested cloud providers, foundation models, and newer vendors, and evaluated options on latency, accuracy, and developer experience. Proof Perimeter was the only one that could hit our performance bar, with the tooling we needed to scale."
+  attribution: "Senior Software Engineer, Top EU Business Banking Platform"
+metrics:
+  - label: "p90 latency"
+    value: "< 7 sec"
+  - label: "Users onboarded"
+    value: "300K+"
+  - label: "Edge-case accuracy"
+    value: "98%"
+category: "Banking"
+tags: ["banking", "onboarding", "latency", "identity verification"]
+authorId: "gaurav"
+createdAt: "2026-07-20"
+updatedAt: "2026-07-20"
+status: "published"
+---
+
+import { CaseStudyMetrics } from '@/components/CaseStudyMetrics'
+import { CaseStudyQuote } from '@/components/CaseStudyQuote'
+
+This platform merges premium software with banking to help 300K+ entrepreneurs accomplish everything they want with their money, hitting $650M in annualized revenue and more than $20 billion in monthly transaction volume. Every customer starts by onboarding onto the platform, which requires formation documents, identity verification, and more — documents that are extremely varied, have infinite formats, and demand a high bar for accuracy, all while low latency is critical during user-facing flows where customers risk dropping off if validation takes too long.
+
+<CaseStudyQuote quote={props.quote} />
+
+<CaseStudyMetrics metrics={props.metrics} />
+
+Here's how the engineering team shipped real-time document upload in their onboarding flow, delighting users and saving weeks of engineering effort.
+
+## The challenge
+
+The variety of documents onboarding candidates submit is huge, arriving in dozens of languages — non-Latin alphabets, right-to-left text, and wildly different formats across hundreds of countries. Any approach relying solely on traditional OCR couldn't handle the long tail of edge cases in a truly global document set.
+
+p90 latency also had to be fast enough for a real-time product experience: onboarding is the first thing a user experiences, and it shapes how they see the entire product. If document verification is slow, the user is stuck staring at a spinner, unable to move forward.
+
+## Evaluating every option on the market
+
+- **Cloud providers.** The team already used a major cloud provider for most of its stack, so that provider's OCR service was the obvious first try — but performance didn't hold up against the diversity of document types.
+- **Direct to foundation models.** Foundation model APIs worked at first, but performance issues, high latency, and the lack of bounding boxes eventually made them unsuitable for production. Bounding boxes matter a lot when processing sensitive financial data and needing source citations for every extracted field, powering efficient downstream human-review workflows.
+- **Other startups.** Some didn't clear the required accuracy threshold; others were API-only and lacked the tooling needed for production.
+- **Proof Perimeter.** Advanced vision-language models showed state-of-the-art accuracy on varied document layouts. The team could toggle between a fast mode enabling a sub-7-second p90 and a performance mode for async jobs. Bounding box coordinates and citations enabled an intuitive user experience embedded directly in the product, and schema optimization tooling removed the need for manual prompt engineering while built-in eval tooling prevented regressions as new edge cases emerged.
+
+> Integration was smooth and the docs were great. We even generated our own bindings and published an open-source SDK for integrating with Proof Perimeter.
+>
+> — Senior Software Engineer, Top EU Business Banking Platform
+
+## What happened in production
+
+The team shipped document validation into the onboarding flow, and the approval rate went up — users get instant feedback and can fix issues live instead of waiting days for a follow-up, and the onboarding funnel got healthier.
+
+> Our approval rate went up. Users get instant feedback and can fix issues live instead of waiting days for a followup. The onboarding funnel got healthier.
+>
+> — Senior Software Engineer, Top EU Business Banking Platform
+
+The work didn't stop there. Further optimizations reduced latency to 5–7 seconds on average, schema tuning improved performance on one of the hardest document types to 98%, and when the team requested support for a new file format, it shipped within a week.
+
+> The team was hands-on from day one, from setup to schema tuning to speed improvements. Anytime we flag something, it gets fixed fast. That kind of support is rare.
+>
+> — Senior Software Engineer, Top EU Business Banking Platform
+
+## Looking forward
+
+Having recently launched personal banking, the platform continues to grow its product suite to cover more financial tools and offerings. Many of these products will require document processing, and Proof Perimeter will be there to help handle any document type, edge case, or layout that comes their way.

@@ -1,0 +1,89 @@
+---
+title: "Reaching 99% Accuracy Across Millions of Financial Documents"
+slug: "reaching-99-percent-accuracy-financial-documents"
+description: "How a digital banking platform migrated millions of documents off legacy OCR vendors and reached 99% accuracy across invoices, receipts, bank statements, and tax forms with Proof Perimeter."
+banner:
+  src: "/assets/case-studies/reaching-99-percent-accuracy-financial-documents/banner.png"
+  alt: "Reaching 99% accuracy across millions of financial documents"
+  width: 1600
+  height: 900
+company:
+  name: "Digital Banking Platform"
+  industry: "Digital Banking"
+quote:
+  text: "Proof Perimeter outperformed every solution we tested — other vendors, open source, and even going direct to foundation models. It now powers key document workflows across 30,000 customers, helping us build the most intelligent and modern financial platform out there."
+  attribution: "CEO, Digital Banking Platform"
+metrics:
+  - label: "Extraction accuracy"
+    value: "99%"
+  - label: "Customers served"
+    value: "30,000+"
+  - label: "New use cases"
+    value: "Weeks, not months"
+category: "Banking"
+tags: ["banking", "financial documents", "OCR", "onboarding"]
+authorId: "gaurav"
+createdAt: "2026-07-13"
+updatedAt: "2026-07-13"
+status: "published"
+---
+
+import { CaseStudyMetrics } from '@/components/CaseStudyMetrics'
+import { CaseStudyQuote } from '@/components/CaseStudyQuote'
+
+This digital banking platform is one of the fastest-growing fintech companies of all time, with products spanning corporate cards, expense management, bill pay, travel, and banking. Behind the scenes, there's a deceptively hard problem that shows up in almost every product surface: documents. Invoices, receipts, bank statements, and W-9s are the system of record for financial workflows, and a single error can lead to downstream mistakes that erode customer trust.
+
+<CaseStudyQuote quote={props.quote} />
+
+<CaseStudyMetrics metrics={props.metrics} />
+
+Here's how the team tested every option in the market, migrated millions of documents off legacy OCR vendors, and raised the industry bar with 99% accuracy.
+
+## The challenge
+
+From day one, this platform's products depended on documents, with each surface presenting a different challenge:
+
+- **Bill Pay** required low latency, so users weren't stuck waiting to upload invoices.
+- **Expense Management** needed custom parsing logic to power features like detecting alcohol purchases on receipts and flagging them as out-of-policy.
+- **Tax and onboarding flows** demanded near-perfect accuracy on bank statements and W-9s.
+
+> Before Proof Perimeter, document processing was fragmented across four different vendors. Accuracy was mixed, and when things went wrong, we heard about it from customers immediately. We wanted to provide users with a state-of-the-art experience for document uploads — something that felt as seamless and modern as the rest of the platform... but fragmented vendors and mixed accuracy made that impossible to deliver.
+>
+> — Senior Product Manager, Digital Banking Platform
+
+## Benchmarking every option on the market
+
+When the team set out to solve document processing once and for all, the goal was clear: raise the industry bar for document upload flows across every part of the product. They ran a comprehensive benchmark focused on accuracy, latency, cost, and customization.
+
+### Building in-house with foundation models
+
+Foundation models provided a strong baseline out of the box — feeding in raw PDFs often got 80–90% of the way there. But the team wanted to raise the bar beyond "good enough," targeting 99% accuracy on multiple document types with low latency. Pushing foundation models that far required heavy context engineering: layout-aware parsing, smart chunking, vision models for messy handwriting, and handling edge cases across lengthy tables and inconsistent layouts — plus infrastructure the team didn't yet have, like automated prompt engineering, built-in evals, bounding boxes for traceability, and consistent latency at scale. Building all of that in-house would have taken months and left engineering on the hook for maintaining it forever.
+
+### Open source and other vendors
+
+Open-source options would have required extensive fine-tuning to hit production-grade accuracy, plus additional infrastructure burden to deploy reliably at scale. Other startup vendors showed promise in controlled settings but struggled to keep up on accuracy in larger tests, and lacked the product tooling needed to stand up new use cases quickly.
+
+### Proof Perimeter
+
+Proof Perimeter's pre-processing pipelines, powered by OCR and vision models, handled all the context engineering necessary for LLMs to be effective on messy, real-world edge cases. To meet the platform's latency requirements without sacrificing accuracy, dedicated fine-tuned models were deployed on private GPU infrastructure — avoiding latency spikes, keeping costs low, and reaching the highest accuracy the team had ever seen, with many document tasks hitting 99%+.
+
+The product experience sealed it: evaluation suites to track performance across formats as documents evolve, first-class support for classification, extraction, and document splitting, and flexible processing modes to trade off between low-latency user-facing tasks and high-performance async work.
+
+## The results
+
+The platform has now standardized on Proof Perimeter for document processing across the company:
+
+- 99% accuracy across messy, real-world documents
+- New use cases go live in weeks
+- Engineers freed up to focus on downstream product experiences instead of maintaining document pipelines
+- For 30,000+ customers, documents now feel as seamless and polished as the rest of the platform
+
+It started with invoices in Bill Pay. Then came receipts, where low-latency models made real-time reimbursement logic possible — instantly categorizing expenses and flagging out-of-policy purchases like alcohol. From there, the team rolled out support for bank statements in onboarding and W-9s for tax flows, with each rollout following the same pattern: production-ready in weeks, with the highest accuracy the team had ever seen.
+
+> Proof Perimeter has continued to be more and more core to a lot of different parts of our platform. We've heard a lot fewer user complaints about bad experiences with our product because the accuracy rates have improved. It felt like we suddenly had a whole in-house team dedicated to documents without having to staff it — the flexibility of an in-house build, with better accuracy, lower costs, and no maintenance burden.
+>
+> — Senior Product Manager, Digital Banking Platform
+
+## Looking forward
+
+As the platform expands into new markets under new regulatory licenses, Proof Perimeter makes the transition seamless. New document formats, languages, and compliance rules don't require new OCR systems or re-engineered pipelines — every document, from an invoice to a receipt to a bank statement, runs with the same low latency and 99% accuracy customers already trust.

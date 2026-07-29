@@ -20,6 +20,11 @@ const components: MDXComponents = {
     <ol className="mt-5 max-w-[70ch] list-decimal space-y-2 pl-6 text-[17px] leading-[1.75] text-ink-2">{children}</ol>
   ),
   li: ({ children }) => <li>{children}</li>,
+  blockquote: ({ children }) => (
+    <blockquote className="mt-5 max-w-[70ch] border-l-2 border-line pl-5 text-[17px] italic leading-[1.75] text-ink-2">
+      {children}
+    </blockquote>
+  ),
   strong: ({ children }) => <strong className="font-semibold text-ink">{children}</strong>,
   a: ({ href, children }) => (
     <Link href={href ?? "#"} className="text-signal underline decoration-signal/40 underline-offset-2 transition-colors hover:decoration-signal">

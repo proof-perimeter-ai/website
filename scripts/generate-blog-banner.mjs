@@ -110,6 +110,65 @@ const MOTIFS = {
       ],
     }),
 
+  // A landscape government-ID / passport card: photo + chip + field lines on
+  // top, an MRZ-style dashed strip and a seal watermark below. Distinct from
+  // id-scan's vertical mid-scan card — this one is a literal, at-rest ID.
+  "gov-id": () => {
+    const mrzRow = (n) =>
+      rect({
+        style: { flexDirection: "row", gap: 3 },
+        children: Array.from({ length: n }, (_, i) =>
+          rect({ key: i, style: { width: 8, height: 4, background: brandColors.inkMuted, borderRadius: 1 } })
+        ),
+      });
+    return rect({
+      style: {
+        position: "relative",
+        flexDirection: "column",
+        width: 340,
+        height: 220,
+        background: brandColors.paper,
+        border: `2px solid ${brandColors.ink}`,
+        borderRadius: 14,
+        padding: 20,
+        gap: 16,
+      },
+      children: [
+        rect({
+          style: { flexDirection: "row", gap: 18, alignItems: "flex-start" },
+          children: [
+            rect({ style: { width: 76, height: 96, background: brandColors.lineMuted, borderRadius: 6 } }),
+            rect({
+              style: { flexDirection: "column", gap: 10, flex: 1, marginTop: 6 },
+              children: [
+                rect({ style: { width: "75%", height: 9, background: brandColors.lineMuted, borderRadius: 2 } }),
+                rect({ style: { width: "55%", height: 9, background: brandColors.lineMuted, borderRadius: 2 } }),
+                rect({ style: { width: "62%", height: 9, background: brandColors.lineMuted, borderRadius: 2 } }),
+                rect({ style: { width: "40%", height: 9, background: brandColors.lineMuted, borderRadius: 2 } }),
+              ],
+            }),
+            rect({ style: { width: 32, height: 22, background: brandColors.signal, borderRadius: 4 } }),
+          ],
+        }),
+        rect({ style: { flexDirection: "column", gap: 6 }, children: [mrzRow(26), mrzRow(26)] }),
+        rect({
+          style: {
+            position: "absolute",
+            bottom: 16,
+            left: 20,
+            width: 26,
+            height: 26,
+            borderRadius: 13,
+            border: `2px solid ${brandColors.signal}`,
+            alignItems: "center",
+            justifyContent: "center",
+          },
+          children: [rect({ style: { width: 8, height: 8, borderRadius: 4, background: brandColors.signal } })],
+        }),
+      ],
+    });
+  },
+
   // A stack of slightly rotated documents — generic document AI / OCR /
   // extraction fallback.
   "document-stack": () =>
@@ -167,8 +226,8 @@ const MOTIFS = {
       ],
     }),
 
-  // A document with a table/grid — invoice, bank statement, and other
-  // finance-document extraction topics.
+  // A document with a table/grid — generic finance-document extraction
+  // topics not covered by the more literal bank-statement/invoice motifs below.
   "line-item-table": () =>
     rect({
       style: {
@@ -202,6 +261,132 @@ const MOTIFS = {
               ],
             })
           ),
+        }),
+      ],
+    }),
+
+  // A literal bank statement: letterhead + account-balance strip + a
+  // 4-column transaction ledger (date, description, amount, running balance)
+  // — banking-industry topics distinct from the generic line-item-table.
+  "bank-statement": () =>
+    rect({
+      style: {
+        flexDirection: "column",
+        width: 320,
+        height: 380,
+        background: brandColors.paper,
+        border: `2px solid ${brandColors.ink}`,
+        borderRadius: 10,
+        padding: 26,
+        gap: 14,
+      },
+      children: [
+        rect({
+          style: { flexDirection: "row", alignItems: "center", gap: 10 },
+          children: [
+            rect({ style: { width: 26, height: 26, background: brandColors.signal, borderRadius: 6 } }),
+            rect({ style: { width: "55%", height: 12, background: brandColors.ink, borderRadius: 2 } }),
+          ],
+        }),
+        rect({
+          style: {
+            flexDirection: "row",
+            justifyContent: "space-between",
+            alignItems: "center",
+            paddingBottom: 12,
+            borderBottom: `1px solid ${brandColors.lineMuted}`,
+          },
+          children: [
+            rect({ style: { width: "35%", height: 8, background: brandColors.lineMuted, borderRadius: 2 } }),
+            rect({ style: { width: 70, height: 14, background: brandColors.signal, borderRadius: 2 } }),
+          ],
+        }),
+        rect({
+          style: { flexDirection: "column", gap: 12, flex: 1 },
+          children: [0, 1, 2, 3].map((i) =>
+            rect({
+              key: i,
+              style: { flexDirection: "row", alignItems: "center", gap: 10 },
+              children: [
+                rect({ style: { width: 34, height: 8, background: brandColors.lineMuted, borderRadius: 2 } }),
+                rect({ style: { flex: 1, height: 8, background: brandColors.lineMuted, borderRadius: 2 } }),
+                rect({ style: { width: 30, height: 8, background: brandColors.inkMuted, borderRadius: 2 } }),
+                rect({ style: { width: 44, height: 8, background: brandColors.signal, borderRadius: 2 } }),
+              ],
+            })
+          ),
+        }),
+      ],
+    }),
+
+  // A literal invoice: title bar + invoice-number/date field pair + itemized
+  // rows + a highlighted "total due" strip — insurance/billing topics.
+  invoice: () =>
+    rect({
+      style: {
+        flexDirection: "column",
+        width: 300,
+        height: 380,
+        background: brandColors.paper,
+        border: `2px solid ${brandColors.ink}`,
+        borderRadius: 10,
+        padding: 28,
+        gap: 18,
+      },
+      children: [
+        rect({ style: { width: "45%", height: 14, background: brandColors.ink, borderRadius: 2 } }),
+        rect({
+          style: { flexDirection: "row", gap: 24 },
+          children: [
+            rect({
+              style: { flexDirection: "column", gap: 6 },
+              children: [
+                rect({ style: { width: 60, height: 6, background: brandColors.lineMuted, borderRadius: 2 } }),
+                rect({ style: { width: 80, height: 8, background: brandColors.inkMuted, borderRadius: 2 } }),
+              ],
+            }),
+            rect({
+              style: { flexDirection: "column", gap: 6 },
+              children: [
+                rect({ style: { width: 60, height: 6, background: brandColors.lineMuted, borderRadius: 2 } }),
+                rect({ style: { width: 70, height: 8, background: brandColors.inkMuted, borderRadius: 2 } }),
+              ],
+            }),
+          ],
+        }),
+        rect({
+          style: {
+            flexDirection: "column",
+            gap: 12,
+            borderTop: `1px solid ${brandColors.lineMuted}`,
+            paddingTop: 16,
+            flex: 1,
+          },
+          children: [0, 1, 2].map((i) =>
+            rect({
+              key: i,
+              style: { flexDirection: "row", justifyContent: "space-between" },
+              children: [
+                rect({ style: { width: "60%", height: 8, background: brandColors.lineMuted, borderRadius: 2 } }),
+                rect({ style: { width: 46, height: 8, background: brandColors.inkMuted, borderRadius: 2 } }),
+              ],
+            })
+          ),
+        }),
+        rect({
+          style: {
+            flexDirection: "row",
+            justifyContent: "space-between",
+            alignItems: "center",
+            background: `${brandColors.signal}12`,
+            border: `2px solid ${brandColors.signal}`,
+            borderRadius: 8,
+            padding: "10px 16px",
+          },
+          children: [
+            rect({ style: { width: 70, height: 9, background: brandColors.signal, borderRadius: 2 } }),
+            rect({ style: { width: 60, height: 14, background: brandColors.signal, borderRadius: 2 } }),
+          ],
         }),
       ],
     }),
@@ -320,6 +505,194 @@ const MOTIFS = {
     });
   },
 
+  // A document card with two field-lines called out via a highlighter tint —
+  // confidence-scored fields, or a document's sections/fields being identified.
+  "field-highlight": () =>
+    rect({
+      style: {
+        flexDirection: "column",
+        width: 300,
+        height: 380,
+        background: brandColors.paper,
+        border: `2px solid ${brandColors.ink}`,
+        borderRadius: 10,
+        padding: 28,
+        gap: 16,
+      },
+      children: [
+        rect({ style: { width: "60%", height: 14, background: brandColors.signal, borderRadius: 2 } }),
+        rect({ style: { width: "85%", height: 9, background: brandColors.lineMuted, borderRadius: 2 } }),
+        rect({
+          style: { position: "relative", width: "78%", height: 9 },
+          children: [
+            rect({
+              style: {
+                position: "absolute",
+                top: -5,
+                left: -8,
+                right: -8,
+                bottom: -5,
+                background: `${brandColors.signal}22`,
+                borderRadius: 4,
+              },
+            }),
+            rect({ style: { width: "100%", height: 9, background: brandColors.signal, borderRadius: 2 } }),
+          ],
+        }),
+        rect({ style: { width: "65%", height: 9, background: brandColors.lineMuted, borderRadius: 2 } }),
+        rect({
+          style: { position: "relative", width: "70%", height: 9 },
+          children: [
+            rect({
+              style: {
+                position: "absolute",
+                top: -5,
+                left: -8,
+                right: -8,
+                bottom: -5,
+                background: `${brandColors.signal}22`,
+                borderRadius: 4,
+              },
+            }),
+            rect({ style: { width: "100%", height: 9, background: brandColors.signal, borderRadius: 2 } }),
+          ],
+        }),
+        rect({ style: { width: "50%", height: 9, background: brandColors.lineMuted, borderRadius: 2 } }),
+      ],
+    }),
+
+  // A plain document framed by 4 viewfinder corner brackets — generic OCR /
+  // document-scanning topics. Distinct from id-scan's horizontal scan bar,
+  // which stays reserved for identity documents.
+  "document-scan": () => {
+    const cardTop = 60;
+    const cardLeft = 60;
+    const cardW = 220;
+    const cardH = 260;
+    const bracket = (top, left, w, h) =>
+      rect({ style: { position: "absolute", top, left, width: w, height: h, background: brandColors.signal, borderRadius: 2 } });
+    return rect({
+      style: { position: "relative", width: 340, height: 380 },
+      children: [
+        rect({
+          style: {
+            position: "absolute",
+            top: cardTop,
+            left: cardLeft,
+            width: cardW,
+            height: cardH,
+            background: brandColors.paper,
+            border: `2px solid ${brandColors.ink}`,
+            borderRadius: 10,
+            flexDirection: "column",
+            padding: 24,
+            gap: 14,
+          },
+          children: [
+            rect({ style: { width: "55%", height: 12, background: brandColors.signal, borderRadius: 2 } }),
+            rect({ style: { width: "90%", height: 8, background: brandColors.lineMuted, borderRadius: 2 } }),
+            rect({ style: { width: "70%", height: 8, background: brandColors.lineMuted, borderRadius: 2 } }),
+            rect({ style: { width: "85%", height: 8, background: brandColors.lineMuted, borderRadius: 2 } }),
+            rect({ style: { width: "55%", height: 8, background: brandColors.lineMuted, borderRadius: 2 } }),
+          ],
+        }),
+        bracket(cardTop - 18, cardLeft - 18, 34, 4),
+        bracket(cardTop - 18, cardLeft - 18, 4, 34),
+        bracket(cardTop - 18, cardLeft + cardW - 16, 34, 4),
+        bracket(cardTop - 18, cardLeft + cardW + 14, 4, 34),
+        bracket(cardTop + cardH + 14, cardLeft - 18, 34, 4),
+        bracket(cardTop + cardH - 16, cardLeft - 18, 4, 34),
+        bracket(cardTop + cardH + 14, cardLeft + cardW - 16, 34, 4),
+        bracket(cardTop + cardH - 16, cardLeft + cardW + 14, 4, 34),
+      ],
+    });
+  },
+
+  // A claim folder (back tab + field lines) with a rotated adjudication stamp
+  // overlapping its corner — insurance claims / FNOL / adjudication topics.
+  "claims-file": () => {
+    const stampSize = 108;
+    const ringSize = stampSize - 24;
+    return rect({
+      style: { position: "relative", width: 320, height: 400 },
+      children: [
+        rect({
+          style: {
+            position: "absolute",
+            top: 38,
+            left: 18,
+            width: 100,
+            height: 26,
+            background: brandColors.paper,
+            border: `2px solid ${brandColors.ink}`,
+            borderRadius: "8px 8px 0 0",
+          },
+        }),
+        rect({
+          style: {
+            position: "absolute",
+            top: 58,
+            left: 10,
+            width: 280,
+            height: 300,
+            background: brandColors.paper,
+            border: `2px solid ${brandColors.ink}`,
+            borderRadius: 10,
+            flexDirection: "column",
+            padding: 28,
+            gap: 14,
+          },
+          children: [
+            rect({ style: { width: "55%", height: 13, background: brandColors.signal, borderRadius: 2 } }),
+            rect({ style: { width: "80%", height: 8, background: brandColors.lineMuted, borderRadius: 2 } }),
+            rect({ style: { width: "65%", height: 8, background: brandColors.lineMuted, borderRadius: 2 } }),
+            rect({ style: { width: "72%", height: 8, background: brandColors.lineMuted, borderRadius: 2 } }),
+            rect({ style: { width: "50%", height: 8, background: brandColors.lineMuted, borderRadius: 2 } }),
+          ],
+        }),
+        rect({
+          style: {
+            position: "absolute",
+            top: 268,
+            left: 186,
+            width: stampSize,
+            height: stampSize,
+            borderRadius: stampSize / 2,
+            border: `4px solid ${brandColors.signal}`,
+            background: brandColors.paper,
+            alignItems: "center",
+            justifyContent: "center",
+            transform: "rotate(-14deg)",
+          },
+          children: [
+            rect({
+              style: {
+                width: ringSize,
+                height: ringSize,
+                borderRadius: ringSize / 2,
+                border: `2px solid ${brandColors.signal}`,
+                alignItems: "center",
+                justifyContent: "center",
+              },
+              children: [
+                rect({
+                  style: {
+                    width: 20,
+                    height: 34,
+                    borderRight: `4px solid ${brandColors.signal}`,
+                    borderBottom: `4px solid ${brandColors.signal}`,
+                    transform: "rotate(35deg)",
+                    marginTop: -6,
+                  },
+                }),
+              ],
+            }),
+          ],
+        }),
+      ],
+    });
+  },
+
   // Three connected nodes — workflow/pipeline/automation topics.
   pipeline: () =>
     rect({
@@ -348,10 +721,21 @@ const MOTIFS = {
 function pickMotif() {
   if (forcedMotif && MOTIFS[forcedMotif]) return forcedMotif;
   const haystack = [category, ...(tags || []), title].join(" ").toLowerCase();
+  // Checked ahead of the generic rules below: "compliance" and "regulated" show up
+  // as filler tags/phrasing across nearly every post in this niche, so a bare
+  // complian/regulat match used to swallow unrelated posts into shield-check.
+  if (/confidence scor|human.in.the.loop|human review|document classification|\bclassif/.test(haystack))
+    return "field-highlight";
+  if (/shallow ocr|deep extraction/.test(haystack) || /^what is ocr\b/.test(title.toLowerCase()))
+    return "document-scan";
+  if (/government id|driver.s licen[sc]e|national id/.test(haystack)) return "gov-id";
   if (/\bkyc\b|\bkyb\b|identity|onboard|passport|customer verification/.test(haystack)) return "id-scan";
-  if (/invoice|bank statement|financial statement|payment|line.?item|accounts payable/.test(haystack)) return "line-item-table";
+  if (/invoice|billing/.test(haystack)) return "invoice";
+  if (/\bbanking\b|checking account|savings account|routing number/.test(haystack)) return "bank-statement";
+  if (/bank statement|financial statement|payment|line.?item|accounts payable/.test(haystack)) return "line-item-table";
   if (/sovereign|jurisdiction|residency/.test(haystack)) return "flag-stars";
-  if (/complian|audit|regulat|sanction|\baml\b|governance|dora|gdpr|hipaa|soc ?2/.test(haystack)) return "shield-check";
+  if (/\baudit\b|sanction|\baml\b|governance|\bdora\b|\bgdpr\b|\bhipaa\b|soc ?2/.test(haystack)) return "shield-check";
+  if (/claims? processing|claims? adjudication|\bfnol\b|insurance claims?/.test(haystack)) return "claims-file";
   if (/workflow|pipeline|automation|routing|orchestrat/.test(haystack)) return "pipeline";
   return "document-stack";
 }

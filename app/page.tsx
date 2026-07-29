@@ -254,7 +254,7 @@ export default function DocumentAiV2() {
           <div className="mx-auto max-w-[1120px] px-7 text-center">
             <Eyebrow>Proof in production</Eyebrow>
             <h2 className="mx-auto mt-4.5 max-w-[22ch] text-[clamp(28px,3.6vw,38px)] font-bold tracking-[-0.022em] text-ink">
-              Trusted by the GRC & Tech leaders.
+              Loved for our accuracy, speed, and ease of use
             </h2>
 
             <FadeIn className="mt-10.5">

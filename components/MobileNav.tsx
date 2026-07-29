@@ -83,7 +83,7 @@ export function MobileNav() {
               aria-expanded={solutionsExpanded}
               className="flex w-full items-center justify-between rounded-md px-2 py-3 hover:bg-paper-2 hover:text-ink transition-colors"
             >
-              Solutions
+              Industries
               <ChevronDown
                 className={`h-4 w-4 transition-transform duration-200 ${solutionsExpanded ? "rotate-180" : ""}`}
               />
@@ -115,6 +115,14 @@ export function MobileNav() {
               </div>
             ) : null}
           </div>
+
+          <Link
+            href="/case-studies"
+            onClick={() => setIsOpen(false)}
+            className="rounded-md px-2 py-3 hover:bg-paper-2 hover:text-ink transition-colors"
+          >
+            Customers
+          </Link>
 
           <Link
             href="/pricing"
