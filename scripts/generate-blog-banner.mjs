@@ -716,6 +716,59 @@ const MOTIFS = {
         )
       ),
     }),
+
+  // A card of "key": value rows (JSON object shape) with a nested, indented
+  // repeating group beneath it, flanked by large brace glyphs — schema-based
+  // extraction / structured JSON / API-output topics.
+  "json-schema": () => {
+    const kvRow = (keyW, valW) =>
+      rect({
+        style: { flexDirection: "row", alignItems: "center", gap: 10 },
+        children: [
+          rect({ style: { width: keyW, height: 9, background: brandColors.inkMuted, borderRadius: 2 } }),
+          rect({ style: { width: valW, height: 9, background: brandColors.signal, borderRadius: 2 } }),
+        ],
+      });
+    return rect({
+      style: { position: "relative", width: 380, height: 360, alignItems: "center" },
+      children: [
+        rect({
+          style: { position: "absolute", left: -34, top: -10, fontSize: 96, fontWeight: 300, color: brandColors.signal },
+          children: "{",
+        }),
+        rect({
+          style: {
+            flexDirection: "column",
+            width: 290,
+            background: brandColors.paper,
+            border: `2px solid ${brandColors.ink}`,
+            borderRadius: 10,
+            padding: 26,
+            gap: 16,
+          },
+          children: [
+            kvRow(90, 130),
+            kvRow(70, 100),
+            kvRow(100, 70),
+            rect({
+              style: {
+                flexDirection: "column",
+                gap: 10,
+                marginTop: 4,
+                paddingLeft: 20,
+                borderLeft: `2px solid ${brandColors.lineMuted}`,
+              },
+              children: [kvRow(60, 90), kvRow(60, 60)],
+            }),
+          ],
+        }),
+        rect({
+          style: { position: "absolute", right: -34, bottom: -34, fontSize: 96, fontWeight: 300, color: brandColors.signal },
+          children: "}",
+        }),
+      ],
+    });
+  },
 };
 
 function pickMotif() {
@@ -726,6 +779,7 @@ function pickMotif() {
   // complian/regulat match used to swallow unrelated posts into shield-check.
   if (/confidence scor|human.in.the.loop|human review|document classification|\bclassif/.test(haystack))
     return "field-highlight";
+  if (/schema|json|structured (data|json|output)/.test(haystack)) return "json-schema";
   if (/shallow ocr|deep extraction/.test(haystack) || /^what is ocr\b/.test(title.toLowerCase()))
     return "document-scan";
   if (/government id|driver.s licen[sc]e|national id/.test(haystack)) return "gov-id";

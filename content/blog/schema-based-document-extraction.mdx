@@ -1,0 +1,80 @@
+---
+title: "Schema-Based Extraction: Turning Documents into Structured JSON"
+slug: "schema-based-document-extraction"
+description: "Schema-based extraction lets you define fields once and get structured JSON from any layout — but G2 reviewers flag legacy-system integration as the real gap."
+banner:
+  src: "/assets/blog/schema-based-document-extraction/banner.png"
+  alt: "A document card next to a structured JSON output block showing key-value fields and nested line items"
+  width: 1600
+  height: 900
+category: "Document AI"
+tags: ["schema-based extraction", "document extraction ai", "structured data output", "API-first document processing", "document AI"]
+authorId: "gaurav"
+createdAt: "2026-07-29"
+updatedAt: "2026-07-29"
+relatedPosts: ["document-classification-ai", "agentic-document-extraction", "sovereign-ai-gap"]
+status: "published"
+primaryKeyword: "schema-based extraction"
+cluster: "C"
+---
+
+Ask ten document AI vendors how their extraction works and most will describe the same starting point: you define the fields you want, and the model finds them, regardless of what the document actually looks like. That's schema-based extraction — the pattern that replaced building a distinct template for every invoice layout, every insurer's claim form, every lender's loan file. It's less a single feature than the operating assumption behind almost every modern extraction API. What varies enormously between vendors isn't whether they support it — nearly all do — but what happens to the structured JSON once it leaves the model and has to survive contact with a bank's core system, a claims platform, or a loan origination stack that was never designed around a schema that changes.
+
+## What Is Schema-Based Extraction?
+
+[Schema-based extraction](/glossary/schema-based-extraction) is the pattern where you specify a target structure — field names, types, and a description of what each one means — and a sufficiently capable model locates and extracts matching content from a document, regardless of its specific layout. That's a genuine inversion of how extraction used to work. Template-based systems needed a distinct configuration, and often a distinct trained model, per document layout: a hundred invoice formats meant a hundred setups, each one breaking the moment a vendor tweaked its own template. This approach collapses that into one definition — "invoice number, vendor name, line items, total" — that applies across every invoice a vision-language model is capable of reading, because the model is locating content by meaning rather than by fixed position on the page.
+
+## How Does the Extraction Process Actually Work?
+
+### Writing the Schema: Field Names, Types, and Descriptions
+
+The schema itself becomes the primary engineering artifact in this approach. [JSON schema extraction](/glossary/json-schema-extraction) is the specific, now-common implementation: a developer defines field names, types, required-versus-optional status, enums, and nested objects for line items or multiple parties, and the model returns a JSON instance conforming to that shape. Field descriptions do real work here — `"policy_expiry_date": "the date coverage ends, ISO 8601"` steers the model toward the right value and the right format in a single pass, which is why writing precise, disambiguating descriptions has become something close to a new form of prompt engineering. For a genuinely unfamiliar document type, [schema inference from documents](/glossary/schema-inference-from-documents) can propose a draft schema from a sample set before a person refines it — turning what used to be a multi-day manual analysis into a review task.
+
+### From Schema to Structured JSON Output
+
+What comes back isn't a text dump to be re-parsed — it's a JSON object a downstream system can consume directly: `borrower_name`, `loan_amount`, `line_items: [...]`, each mapped to the value the model found, often alongside a confidence score and a grounding reference back to the source region of the page. [Structured data output](/glossary/structured-data-output) is what actually plugs into a loan origination system, a claims queue, or a KYC review screen without a human retyping values out of a blob of text — the entire point of [API-first document processing](/glossary/api-first-document-processing) as an architecture is that this JSON is the product, not a report a person reads before manually keying data elsewhere.
+
+## Why Does the Schema Matter More Once JSON Hits a Core Banking or Claims System?
+
+### Nested Objects and Repeating Line Items
+
+Financial documents are rarely flat key-value pairs. A loan file's income section, a claims schedule's per-coverage line items, an invoice's itemized rows — all of these need a schema that supports repeating groups and nested objects, not just a flat list of fields. As [our comparison of deep extraction and shallow OCR](/blog/deep-extraction-vs-shallow-ocr) covers, a model that can't reconstruct which row belongs to which section will flatten a nested table into an undifferentiated stream regardless of how well the schema was written — schema design and extraction depth are two separate requirements that both have to hold for the output to actually be usable.
+
+### Schema Drift: What Breaks When the Output Format Changes
+
+A schema is a contract, and contracts change. Add a field, split one field into two, rename a key to match a downstream system's own naming convention, and every consumer of that JSON — a core banking integration, a claims adjudication rule, a BI dashboard — has to handle the new shape or break silently. Versioned schemas, tested against benchmark documents per version, are what keep a model or prompt update from becoming an unannounced breaking change for whatever system is parsing the output on the other end. This is the part of schema-based extraction that a demo never surfaces, because a demo doesn't run for the eighteen months it takes a schema to actually need its first revision in production.
+
+## What Do Buyers Actually Say About These APIs in Practice?
+
+The gap between "the API returns JSON" and "the JSON integrates cleanly" shows up directly in how buyers describe these products. [G2 reviews of Docsumo](https://www.g2.com/products/docsumo-docsumo/reviews) describe a genuinely strong case: one reviewer needed the platform to process tens of thousands of PDFs daily and return extracted data through an API so their own system could parse it and match it against records in Salesforce — exactly the API-first, schema-in/JSON-out pattern this piece describes, working as intended at real volume. But integration experience isn't uniform across the IDP category. [G2 reviews of Nanonets](https://www.g2.com/products/nanonets/reviews) note that while the platform connects to a wide range of ERP, accounting, and CRM systems out of the box, certain connections to legacy systems require additional configuration rather than working out of the box — a pattern that shows up most often exactly where a bank or insurer's own core systems sit, since those are rarely the same modern, API-friendly stack a vendor's standard connector library was built against. A schema that's clean and well-typed on paper still has to clear that last-mile integration gap before it's actually doing useful work. Analyst coverage points at the same shift: [Gartner's Peer Insights coverage of the intelligent document processing market](https://www.gartner.com/reviews/market/intelligent-document-processing-solutions) — the same market its first-ever Magic Quadrant for IDP began formally evaluating in September 2025 — increasingly treats integration and downstream connectivity as a distinct evaluation axis from raw extraction accuracy, which matches what buyers are reporting directly: a schema can be extracted correctly and still be a poor fit for the system it's supposed to feed.
+
+## Where Does Schema Enforcement Actually Need to Run for Regulated Documents?
+
+Most vendor documentation on schema-based extraction is written for a developer wiring up a pipeline: define the schema, call the API, get JSON back. That's a fair description of the mechanics, but it skips the question that actually matters once the schema in question describes a KYC packet, a claims file, or a loan document — every field in that JSON, and every intermediate candidate value the model considered before settling on it, is itself a pass over sensitive customer data. Proof Perimeter's fine-tuned document AI models run schema validation and extraction inside a bank, insurer, or lender's own environment — cloud-hosted, within customer infrastructure, or fully on-premise on commodity CPUs — so the structured JSON a loan origination system or claims platform consumes is generated without that data ever leaving the institution's perimeter, with field-level provenance attached to every value in the schema. On Proof Perimeter's internal benchmarks, that fine-tuned model delivers 20% higher accuracy and 50% lower token consumption than general-purpose frontier models on the same document-extraction tasks — the difference that decides whether a well-designed schema actually holds up at the volumes a regulated institution processes, not just in a demo call.
+
+## How to Evaluate an Extraction Vendor's Schema Handling
+
+- **Ask how schema changes are versioned and rolled out**, not just whether the API supports custom schemas — an unannounced field rename or type change is a breaking change for whatever consumes the JSON downstream.
+- **Ask specifically about your legacy systems**, not just the modern ERPs and CRMs in the connector list — the gap between "we integrate with SAP and Salesforce" and "we integrate with your twenty-year-old core banking system" is exactly where buyers report the most friction.
+- **Ask for field-level grounding, not just a well-typed schema** — a JSON object with the right shape but no link back to the source page still requires a human to re-verify every value by hand.
+- **Ask where schema validation actually runs**, not just where the document is stored — every candidate value the model considers before finalizing an answer is a pass over the same sensitive data as the original document.
+
+Most vendors will walk through their actual schema versioning process and integration architecture on a [demo call](/book-demo) if you bring a real downstream system to test against, rather than a clean demo schema.
+
+## Frequently Asked Questions
+
+### Is schema-based extraction the same as JSON schema extraction?
+
+They're closely related but not identical. Schema-based extraction is the general paradigm — defining a target structure and letting a model locate matching content regardless of layout. JSON schema extraction is the specific, now-dominant implementation of that paradigm using JSON Schema as the specification format for field names, types, and constraints.
+
+### Do I have to design the schema myself?
+
+Not necessarily. For a familiar document type, most teams write the schema directly. For a genuinely new or unfamiliar document type, schema inference can propose a draft schema from a small sample of real documents, which a person then reviews and refines before it goes into production — a faster starting point than hand-authoring a schema from scratch.
+
+### Can it handle repeating line items and tables?
+
+Yes, through nested objects and repeating groups in the schema definition — an invoice's line items or a claims schedule's per-coverage entries are typically modeled as an array of objects, not flattened into individual top-level fields. Whether the underlying model can actually reconstruct that structure accurately, rather than just accepting a schema that describes it, is a separate question worth testing directly on your own documents.
+
+## The Takeaway
+
+Schema-based extraction solved the problem that made template-based systems unmanageable at scale: define what you want once, and get it back regardless of layout. What it didn't automatically solve is everything downstream of the API call — versioning a schema without breaking its consumers, integrating cleanly with the legacy systems that regulated institutions actually run, and proving that every value in that JSON is grounded in something a reviewer can verify. For a bank, insurer, or lender, the schema getting the shape right is table stakes; what decides whether the extraction is actually usable is what happens to that JSON, and the data behind it, after the API call returns.
