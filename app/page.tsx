@@ -8,6 +8,8 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { siteConfig } from "@/lib/metadata";
 import { CustomerLogoMarquee } from "@/components/CustomerLogoMarquee";
 import { TestimonialCarousel } from "@/components/TestimonialCarousel";
+import { BtnSolid } from "@/components/Button";
+import { GET_STARTED_EVENT, BOOK_DEMO_EVENT } from "@/lib/analytics";
 
 export const metadata: Metadata = {
   title: "Free Document AI Platform",
@@ -18,28 +20,6 @@ export const metadata: Metadata = {
 
 const cardHover =
   "transition-all duration-300 hover:-translate-y-1 hover:border-signal/40 hover:shadow-[0_20px_40px_-30px_rgba(20,70,124,0.45)]";
-
-function BtnSolid({ href, children }: { href: string; children: React.ReactNode }) {
-  return (
-    <Link
-      href={href}
-      className="inline-flex items-center justify-center gap-2 rounded-[5px] bg-signal px-4.5 py-2.75 text-[15px] font-semibold text-white transition-colors hover:bg-signal-deep"
-    >
-      {children}
-    </Link>
-  );
-}
-
-function BtnGhost({ href, children }: { href: string; children: React.ReactNode }) {
-  return (
-    <Link
-      href={href}
-      className="inline-flex items-center justify-center gap-2 rounded-[5px] border border-line-2 bg-transparent px-4.5 py-2.75 text-[15px] font-semibold text-ink transition-colors hover:border-ink"
-    >
-      {children}
-    </Link>
-  );
-}
 
 const heroPills = ["Free with your own API key", "Higher accuracy, lesser tokens", "Unlimited documents"];
 
@@ -212,8 +192,8 @@ export default function DocumentAiV2() {
               ))}
             </div>
             <div className="hero-animate-cta mt-9 flex flex-wrap justify-center gap-3.5">
-              <BtnSolid href="/book-demo">Get started for free</BtnSolid>
-              <BtnGhost href="/book-demo">Book a demo</BtnGhost>
+              <BtnSolid href="/book-demo" trackEvent={GET_STARTED_EVENT} hidden>Get started for free</BtnSolid>
+              <BtnSolid href="/book-demo" trackEvent={BOOK_DEMO_EVENT}>Book Demo</BtnSolid>
             </div>
           </div>
           <div className="hero-animate-image relative mx-auto mt-13 max-w-[960px] px-7">
@@ -290,7 +270,7 @@ export default function DocumentAiV2() {
             </div>
 
             <div className="mt-10.5 flex justify-center">
-              <BtnSolid href="/book-demo">Get started for free</BtnSolid>
+              <BtnSolid href="/book-demo" trackEvent={BOOK_DEMO_EVENT}>Book Demo</BtnSolid>
             </div>
           </div>
         </section>
@@ -317,7 +297,7 @@ export default function DocumentAiV2() {
             </div>
 
             <div className="mt-10.5 flex justify-center">
-              <BtnSolid href="/book-demo">Get started for free</BtnSolid>
+              <BtnSolid href="/book-demo" trackEvent={BOOK_DEMO_EVENT}>Book Demo</BtnSolid>
             </div>
           </div>
         </section>
@@ -371,10 +351,10 @@ export default function DocumentAiV2() {
               <div className="grid grid-cols-[1fr_1.3fr_1.3fr] items-center border-t border-line">
                 <div className="p-4.5 text-[13.5px] font-semibold text-ink-2"></div>
                 <div className="p-4.5">
-                  <BtnSolid href="/book-demo">Get started for free</BtnSolid>
+                  <BtnSolid href="/book-demo" trackEvent={GET_STARTED_EVENT} hidden>Get started for free</BtnSolid>
                 </div>
                 <div className="p-4.5">
-                  <BtnGhost href="/book-demo">Book Demo</BtnGhost>
+                  <BtnSolid href="/book-demo" trackEvent={BOOK_DEMO_EVENT}>Book Demo</BtnSolid>
                 </div>
               </div>
             </FadeIn>
@@ -445,8 +425,8 @@ export default function DocumentAiV2() {
               Free document AI platform, built for outcomes.
             </h2>
             <div className="mt-8 flex flex-wrap justify-center gap-3.5">
-              <BtnSolid href="/book-demo">Get started for free</BtnSolid>
-              <BtnGhost href="/book-demo">Book demo</BtnGhost>
+              <BtnSolid href="/book-demo" trackEvent={GET_STARTED_EVENT} hidden>Get started for free</BtnSolid>
+              <BtnSolid href="/book-demo" trackEvent={BOOK_DEMO_EVENT}>Book Demo</BtnSolid>
             </div>
             
           </div>

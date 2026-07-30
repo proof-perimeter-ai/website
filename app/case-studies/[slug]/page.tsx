@@ -5,8 +5,10 @@ import { SiteNav } from "@/components/SiteNav";
 import { SiteFooter } from "@/components/SiteFooter";
 import { CaseStudyHeader } from "@/components/CaseStudyHeader";
 import { TableOfContents } from "@/components/TableOfContents";
+import { BtnSolid } from "@/components/Button";
 import { siteConfig } from "@/lib/metadata";
 import { getAllCaseStudies, getCaseStudyBySlug } from "@/lib/case-studies";
+import { BOOK_DEMO_EVENT } from "@/lib/analytics";
 
 export const dynamicParams = false;
 
@@ -100,12 +102,9 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
               <p className="m-0 text-[15.5px] text-ink-2">
                 Proof Perimeter runs document AI inside your own perimeter — with a provenance record on every field.
               </p>
-              <Link
-                href="/book-demo"
-                className="inline-flex items-center justify-center gap-2 rounded-[5px] bg-signal px-4.5 py-2.75 text-[15px] font-semibold text-white transition-colors hover:bg-signal-deep"
-              >
-                Book a demo
-              </Link>
+              <BtnSolid href="/book-demo" trackEvent={BOOK_DEMO_EVENT}>
+                Book Demo
+              </BtnSolid>
             </div>
           </div>
         </article>

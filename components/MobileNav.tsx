@@ -4,6 +4,8 @@ import { useEffect, useState, useSyncExternalStore } from "react";
 import { createPortal } from "react-dom";
 import Link from "next/link";
 import { Menu, X, ChevronDown, Landmark, Briefcase, ShieldCheck, Scale, HeartPulse } from "lucide-react";
+import posthog from "posthog-js";
+import { BOOK_DEMO_EVENT } from "@/lib/analytics";
 
 const industries = [
   { slug: "banking", name: "Banking", icon: Landmark },
@@ -136,10 +138,13 @@ export function MobileNav() {
         <div className="border-t border-line p-5">
           <Link
             href="/book-demo"
-            onClick={() => setIsOpen(false)}
+            onClick={() => {
+              setIsOpen(false);
+              posthog.capture(BOOK_DEMO_EVENT);
+            }}
             className="flex w-full items-center justify-center rounded-[5px] bg-signal px-4.5 py-3 text-[15px] font-semibold text-white hover:bg-signal-deep transition-colors"
           >
-            Book demo
+            Book Demo
           </Link>
         </div>
       </div>

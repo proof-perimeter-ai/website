@@ -107,7 +107,7 @@ export default function RootLayout({
           src="https://r2.leadsy.ai/tag.js"
           data-pid="HMacQ2I658iEDymL"
           data-version="062024"
-          strategy="lazyOnload"
+          strategy="beforeInteractive"
         />
       </body>
       <GoogleAnalytics gaId={GA_MEASUREMENT_ID} />

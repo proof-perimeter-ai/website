@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { JsonLd } from "@/components/JsonLd";
 import { FadeIn } from "@/components/FadeIn";
 import { Eyebrow } from "@/components/Eyebrow";
@@ -8,6 +7,8 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { BtnSolid } from "@/components/Button";
 import { TestimonialCarousel } from "@/components/TestimonialCarousel";
 import { CustomerLogoMarquee } from "@/components/CustomerLogoMarquee";
+import { TrackedLink } from "@/components/TrackedLink";
+import { GET_STARTED_EVENT, BOOK_DEMO_EVENT } from "@/lib/analytics";
 
 export const metadata: Metadata = {
   title: "Document AI for Enterprise",
@@ -46,13 +47,13 @@ const features = [
     num: "DEPLOYMENT",
     title: "Deploy Anywhere — Including Nowhere Online",
     description:
-      "Hosted, private cloud, or fully on-premises and air-gapped — zero egress whenever that's the requirement, not the exception.",
+      "Hosted, private cloud, or fully on-premises and air-gapped with zero egress.",
   },
   {
     num: "FINE-TUNING",
     title: "Fine-Tuned on Your Documents",
     description:
-      "Every correction your team makes feeds back into the model, so accuracy improves on your document mix, not someone else's benchmark.",
+      "Every correction your team makes feeds back into the model, so accuracy improves on your documents.",
   },
   {
     num: "INTEGRATION",
@@ -186,7 +187,7 @@ export default function DocumentAiEnterprise() {
             </div>
 
             <div className="hero-animate-trust mt-9 flex justify-center">
-              <BtnSolid href="/book-demo">Book a demo</BtnSolid>
+              <BtnSolid href="/book-demo" trackEvent={BOOK_DEMO_EVENT}>Book Demo</BtnSolid>
             </div>
           </div>
         </section>
@@ -257,7 +258,7 @@ export default function DocumentAiEnterprise() {
             </div>
 
             <div className="mt-10.5 flex justify-center">
-              <BtnSolid href="/book-demo">Book a demo</BtnSolid>
+              <BtnSolid href="/book-demo" trackEvent={BOOK_DEMO_EVENT}>Book Demo</BtnSolid>
             </div>
           </div>
         </section>
@@ -288,7 +289,7 @@ export default function DocumentAiEnterprise() {
             </div>
 
             <div className="mt-10.5 flex justify-center">
-              <BtnSolid href="/book-demo">Book a demo</BtnSolid>
+              <BtnSolid href="/book-demo" trackEvent={BOOK_DEMO_EVENT}>Book Demo</BtnSolid>
             </div>
           </div>
         </section>
@@ -329,14 +330,23 @@ export default function DocumentAiEnterprise() {
                   <tr>
                     <td className="p-4.5" />
                     <td className="border-l border-line p-4.5">
-                      <Link href="/#choose-your-path" className="text-[14.5px] font-semibold text-signal hover:text-signal-deep">
-                        Start free with your API key →
-                      </Link>
+                      <TrackedLink
+                        href="/#choose-your-path"
+                        trackEvent={GET_STARTED_EVENT}
+                        className="text-[14.5px] font-semibold text-signal hover:text-signal-deep"
+                        hidden
+                      >
+                        Get started for free
+                      </TrackedLink>
                     </td>
                     <td className="border-l border-signal/30 bg-signal/[0.03] p-4.5">
-                      <Link href="/book-demo" className="text-[14.5px] font-semibold text-signal hover:text-signal-deep">
-                        Book Demo →
-                      </Link>
+                      <TrackedLink
+                        href="/book-demo"
+                        trackEvent={BOOK_DEMO_EVENT}
+                        className="text-[14.5px] font-semibold text-signal hover:text-signal-deep"
+                      >
+                        Book Demo
+                      </TrackedLink>
                     </td>
                   </tr>
                 </tbody>
@@ -403,7 +413,7 @@ export default function DocumentAiEnterprise() {
               Frontier AI for regulated document processing
             </h2>
             <div className="mt-8 flex flex-wrap justify-center gap-3.5">
-              <BtnSolid href="/book-demo">Book a demo</BtnSolid>
+              <BtnSolid href="/book-demo" trackEvent={BOOK_DEMO_EVENT}>Book Demo</BtnSolid>
             </div>
             
           </div>

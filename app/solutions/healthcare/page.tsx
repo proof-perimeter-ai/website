@@ -6,6 +6,7 @@ import { Eyebrow } from "@/components/Eyebrow";
 import { SiteNav } from "@/components/SiteNav";
 import { SiteFooter } from "@/components/SiteFooter";
 import { BtnSolid, BtnGhost } from "@/components/Button";
+import { GET_STARTED_EVENT, BOOK_DEMO_EVENT } from "@/lib/analytics";
 import { CustomerLogoMarquee } from "@/components/CustomerLogoMarquee";
 import { TestimonialCarousel } from "@/components/TestimonialCarousel";
 
@@ -158,8 +159,8 @@ export default function HealthcareSolutionPage() {
                 Unify patient history, accelerate prior authorization, and catch denials before they happen.
               </p>
               <div className="hero-animate-cta mt-8 flex flex-wrap gap-3.5">
-                <BtnSolid href="/book-demo">Book a demo</BtnSolid>
-                <BtnGhost href="/book-demo">Get started free</BtnGhost>
+                <BtnSolid href="/book-demo" trackEvent={BOOK_DEMO_EVENT}>Book Demo</BtnSolid>
+                <BtnGhost href="/book-demo" trackEvent={GET_STARTED_EVENT} hidden>Get started free</BtnGhost>
               </div>
             </div>
             <div className="hero-animate-image aspect-[728/680]">
@@ -240,7 +241,7 @@ export default function HealthcareSolutionPage() {
             </div>
 
             <div className="mt-10.5 flex justify-center">
-              <BtnSolid href="/book-demo">Book a demo</BtnSolid>
+              <BtnSolid href="/book-demo" trackEvent={BOOK_DEMO_EVENT}>Book Demo</BtnSolid>
             </div>
           </div>
         </section>
@@ -298,8 +299,8 @@ export default function HealthcareSolutionPage() {
               Document AI built for clinical and claims documentation.
             </h2>
             <div className="mt-8 flex flex-wrap justify-center gap-3.5">
-              <BtnSolid href="/book-demo">Book a demo</BtnSolid>
-              <BtnGhost href="/book-demo">Get started free</BtnGhost>
+              <BtnSolid href="/book-demo" trackEvent={BOOK_DEMO_EVENT}>Book Demo</BtnSolid>
+              <BtnGhost href="/book-demo" trackEvent={GET_STARTED_EVENT} hidden>Get started free</BtnGhost>
             </div>
           </FadeIn>
         </section>

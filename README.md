@@ -54,6 +54,8 @@ public/llms.txt              — site summary for AI/answer-engine crawlers
 
 See [AGENTS.md](./AGENTS.md) for more detailed architecture notes (animation patterns, design tokens, SEO/AEO conventions) aimed at coding agents working in this repo.
 
+"Get started for free" CTAs are currently hidden site-wide in favor of "Book Demo" as the sole primary CTA — see [docs/re-enable-get-started-cta.md](./docs/re-enable-get-started-cta.md) for how to bring them back.
+
 ## Deployment
 
 Deploys to Vercel as static-rendered (SSG) pages — no `output: 'export'`, so `next/image` optimization and future server features (Server Actions, ISR) stay available if needed.

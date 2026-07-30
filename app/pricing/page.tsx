@@ -6,6 +6,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { SiteNav } from "@/components/SiteNav";
 import { SiteFooter } from "@/components/SiteFooter";
 import { TestimonialCarousel } from "@/components/TestimonialCarousel";
+import { GET_STARTED_EVENT, BOOK_DEMO_EVENT } from "@/lib/analytics";
 
 export const metadata: Metadata = {
   title: "Document AI Pricing: BYOK vs Enterprise",
@@ -49,7 +50,8 @@ const plans = [
     name: "Bring Your Own Key",
     price: priceRow[1],
     fit: fitRow[1],
-    ctaLabel: "Get started for free",
+    ctaLabel: "Book Demo",
+    ctaEvent: BOOK_DEMO_EVENT,
     highlight: false,
   },
   {
@@ -57,6 +59,7 @@ const plans = [
     price: priceRow[2],
     fit: fitRow[2],
     ctaLabel: "Book Demo",
+    ctaEvent: BOOK_DEMO_EVENT,
     highlight: true,
   },
 ] as const;
@@ -156,9 +159,9 @@ export default function Pricing() {
 
                   <div className="mt-6">
                     {plan.highlight ? (
-                      <BtnSolid href="/book-demo">{plan.ctaLabel}</BtnSolid>
+                      <BtnSolid href="/book-demo" trackEvent={plan.ctaEvent}>{plan.ctaLabel}</BtnSolid>
                     ) : (
-                      <BtnGhost href="/book-demo">{plan.ctaLabel}</BtnGhost>
+                      <BtnGhost href="/book-demo" trackEvent={plan.ctaEvent}>{plan.ctaLabel}</BtnGhost>
                     )}
                   </div>
 
@@ -223,8 +226,8 @@ export default function Pricing() {
               Pay for outcomes, not seats.
             </h2>
             <div className="mt-8 flex flex-wrap justify-center gap-3.5">
-              <BtnSolid href="/book-demo">Get started for free</BtnSolid>
-              <BtnGhost href="/book-demo">Book a demo</BtnGhost>
+              <BtnSolid href="/book-demo" trackEvent={GET_STARTED_EVENT} hidden>Get started for free</BtnSolid>
+              <BtnSolid href="/book-demo" trackEvent={BOOK_DEMO_EVENT}>Book Demo</BtnSolid>
             </div>
           </div>
         </section>

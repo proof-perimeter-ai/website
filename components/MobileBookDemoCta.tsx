@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import posthog from "posthog-js";
+import { BOOK_DEMO_EVENT } from "@/lib/analytics";
 
 export function MobileBookDemoCta() {
   const pathname = usePathname();
@@ -36,10 +37,13 @@ export function MobileBookDemoCta() {
     >
       <Link
         href="/book-demo"
-        onClick={() => posthog.capture("mobile_sticky_cta_clicked")}
+        onClick={() => {
+          posthog.capture("mobile_sticky_cta_clicked");
+          posthog.capture(BOOK_DEMO_EVENT);
+        }}
         className="mobile-cta-shine relative isolate flex w-full items-center justify-center overflow-hidden rounded-[5px] bg-signal px-4.5 py-3 text-[15px] font-semibold text-white shadow-[0_-4px_20px_-6px_rgba(20,70,124,0.35)] transition-colors hover:bg-signal-deep"
       >
-        <span className="relative z-10">Get started for free</span>
+        <span className="relative z-10">Book Demo</span>
       </Link>
     </div>
   );
