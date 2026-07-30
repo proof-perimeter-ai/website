@@ -1,0 +1,68 @@
+---
+title: "Proof Perimeter vs. Google Document AI: Which Fits Regulated BFSI Workflows?"
+slug: "proof-perimeter-vs-google-document-ai"
+description: "Google Document AI's custom extractor runs $30 per 1,000 pages and processes in Google's cloud. Here's how that compares for regulated BFSI document workflows."
+banner:
+  src: "/assets/blog/proof-perimeter-vs-google-document-ai/banner.png"
+  alt: "Split diagram comparing a document routed through a cloud API against one processed inside a bank's own infrastructure perimeter"
+  width: 1600
+  height: 900
+category: "Comparison"
+tags: ["google document ai", "document ai comparison", "data residency in document ai", "zero-egress deployment", "cloud document ai"]
+authorId: "gaurav"
+createdAt: "2026-07-30"
+updatedAt: "2026-07-30"
+relatedPosts: ["sovereign-ai-gap", "what-is-ocr-ai", "deep-extraction-vs-shallow-ocr"]
+status: "published"
+primaryKeyword: "google document ai"
+cluster: "B"
+---
+
+Google Document AI is the default first stop for a lot of banks and insurers shopping for document extraction — it's fast to provision, backed by Google's OCR research, and priced per page rather than per license. It's also, underneath, a cloud API: every document you send it leaves your environment for a Google-operated endpoint before it comes back as structured data. For a general business workflow, that's a non-issue. For a KYC packet, a loan file, or a claims bundle, it's the exact question a compliance review has to answer before procurement even gets to accuracy numbers. This is a direct, factual comparison of Google Document AI and Proof Perimeter on the dimensions that actually matter for regulated BFSI document processing: real-world accuracy, cost at volume, where processing happens, and what each platform can prove about it afterward.
+
+## What Is Google Document AI?
+
+[Google Document AI](/glossary/google-document-ai) is Google Cloud's managed document processing platform: a catalog of "processors" — general OCR, pretrained parsers for invoices, receipts, IDs, and tax forms, plus a custom-extractor path teams can train on their own labeled documents. It returns a structured `Document` object (text, detected entities, tables, per-element confidence) and slots naturally into the rest of GCP — Cloud Storage triggers, BigQuery destinations, Vertex AI adjacency. As a general-purpose extraction API, it's genuinely broad, and that breadth is the whole pitch: one platform, dozens of document types, no model to host yourself. For the underlying mechanics of how any OCR-plus-model system like this actually reads a page, see [our guide to OCR AI](/blog/what-is-ocr-ai).
+
+## How Accurate Is It, According to Real Users?
+
+[Reviews of Google Cloud Document AI on G2](https://www.g2.com/products/google-cloud-document-ai/reviews) put the product at roughly 4.2 out of 5 across 36 reviews at the time of writing, with a consistent pattern in the critical feedback: users report the OCR performing well on clean, single-column documents but note accuracy and formatting problems specifically on tabular data, and describe extracted output as not consistently reliable enough to skip a verification step. That's the same failure shape [a shallow, non-fine-tuned extraction pass predicts](/blog/deep-extraction-vs-shallow-ocr) — strong on the common case, inconsistent on the messier nested tables and mixed layouts a bank's or insurer's actual document mix is disproportionately made of. It's a useful signal precisely because it isn't a vendor talking point: it's the pattern actual buyers are reporting after production use, not a benchmark run on a clean demo set — and it's exactly why a [human-in-the-loop](/glossary/human-in-the-loop-verification) review step, not just a raw accuracy claim, is the thing to evaluate.
+
+## What Does It Actually Cost at Regulated-BFSI Volume?
+
+Google's own [pricing page](https://cloud.google.com/document-ai/pricing) lists the Custom Extractor and Form Parser processors — the ones a bank would actually use for KYC packets or loan files, since the pretrained invoice/ID parsers don't cover bespoke layouts — at $30 per 1,000 pages for the first million pages a month, dropping to $20 per 1,000 pages beyond that. Enterprise Document OCR runs separately, at $1.50 per 1,000 pages up to five million pages a month. That's a genuinely reasonable rate for a pilot. At the volume a mid-sized bank's onboarding or claims operation actually processes — hundreds of thousands to millions of pages monthly, compounding across every document type in the pipeline — it becomes a running per-page bill with no ceiling, on top of the Cloud Storage, networking, and integration overhead G2 reviewers separately flag as adding to the total cost of running it in production.
+
+## Where Does Processing Actually Happen?
+
+Google Document AI requires every processor to be deployed to a specific region, and Google's own [regional-support documentation](https://cloud.google.com/document-ai/docs/regions) is explicit that this binding is immutable — sending a document to the EU multi-region endpoint keeps that call within EU member states, but a processor built for one region can't simply be repointed to another; it has to be redeployed. That's real, auditable regional processing. It's also a different claim than what regulated institutions increasingly have to answer for around [data residency in document AI](/glossary/data-residency-in-document-ai). [DORA Article 28](https://eur-lex.europa.eu/eli/reg/2022/2554/oj/eng) holds a financial entity fully responsible for its entire ICT third-party chain regardless of what's been outsourced — which means a bank still has to account for the fact that a regional API endpoint is, underneath, still a third-party cloud service the document has to leave the institution's own perimeter to reach. Regional processing answers "which Google data center." It doesn't answer "did this document ever leave our own infrastructure at all" — see [our deeper look at the sovereign AI gap](/blog/sovereign-ai-gap) for why those are two separate compliance questions.
+
+## Feature-by-Feature: Proof Perimeter vs. the Cloud API Model
+
+- **Model.** Google Document AI runs general-purpose processors, not tuned to your specific document mix. Proof Perimeter runs a fine-tuned document AI model, further tuned on your own corrections and documents over time.
+- **Deployment.** Google Document AI is a Google-operated cloud endpoint only, with regional selection but no option to keep processing entirely inside your own infrastructure. Proof Perimeter deploys cloud-hosted, within your private infrastructure, or fully on-premise and air-gapped.
+- **Pricing.** Google Document AI bills per page, uncapped as volume scales. Proof Perimeter offers a free BYOK path priced at your own model provider's rates, or an Enterprise license scoped to volume and deployment.
+- **Provenance.** Google Document AI returns per-element confidence in its output object. Proof Perimeter attaches field-level provenance — what the model saw and why — to every extracted value.
+
+Where this actually lands for a bank, insurer, or lender is the deployment point, not the feature list — a document-processing API that's excellent on paper still requires every KYC packet or claims file to transit Google's infrastructure to get read at all. Proof Perimeter's fine-tuned document AI models run inside the customer's own environment instead — cloud-hosted, within private infrastructure, or fully on-premise on commodity CPUs — so KYC packets, loan files, and claims documents never leave the institution's own perimeter for inference to happen. On Proof Perimeter's internal benchmarks, that fine-tuned model delivers 20% higher accuracy and 50% lower token consumption than general frontier models on the same document-extraction tasks, which is the concrete answer to the tabular-accuracy gap G2 reviewers report on general-purpose processors — plus the field-level [provenance](/glossary/data-lineage-in-document-processing) that lets an examiner trace any extracted value back to what the model actually saw. Most teams walk through the actual deployment architecture and fine-tuning process on a [demo call](/book-demo) if they bring their own hardest documents rather than relying on either vendor's headline accuracy number.
+
+## Which Should You Choose?
+
+Google Document AI is a reasonable choice for teams that need broad document coverage fast, are comfortable with per-page cloud pricing, and don't have a hard requirement that documents never leave a third-party endpoint — internal operations documents, low-sensitivity vendor invoices, anything where "regional processing" already clears the compliance bar. Proof Perimeter fits the workflows where it doesn't: KYC onboarding, loan files, and claims documents where a compliance or risk team needs to answer not just "where is this stored" but "did this ever leave our perimeter, and can we prove it" — and where accuracy on your own messiest document formats, not a general benchmark, is what the extraction actually gets judged on.
+
+## Frequently Asked Questions
+
+### Can Google Document AI run on-premise?
+
+No. Google Document AI is delivered exclusively as a Google Cloud API — every processor runs on Google-operated infrastructure, with regional endpoint selection controlling which Google data center handles the call, not whether the call leaves Google's cloud at all.
+
+### Is Google Document AI accurate enough for KYC or claims documents?
+
+It depends heavily on document type. G2 reviewers report solid results on clean, standard-layout documents but consistently flag accuracy and formatting problems on tabular and non-standard layouts — exactly the profile of many KYC packets and claims bundles. Testing against your own document mix, not a demo dataset, is the only reliable way to know.
+
+### Does Proof Perimeter support the same document types as Google Document AI?
+
+Yes, with a narrower and deeper focus: Proof Perimeter's pre-built templates target the recurring fields, standard clauses, complex tables, and form-based layouts specific to KYC packets, insurance claims files, letters of credit, loan applications, and policies, rather than Google's broader general-business catalog.
+
+## The Takeaway
+
+Google Document AI and Proof Perimeter solve overlapping problems with different architectures. Google's platform is a broad, well-engineered cloud API priced for flexibility; Proof Perimeter is a fine-tuned model built to run inside a regulated institution's own perimeter. For general document workflows, that difference may not matter. For KYC, lending, and claims documents where a compliance team has to prove where a document was actually read, not just where it was stored, it's the whole decision.

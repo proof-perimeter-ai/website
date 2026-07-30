@@ -317,9 +317,9 @@ How to use it:
 ### Cluster B — Cloud-alternative / comparison intent
 
 - [ ] ocr ai
-- [ ] google document ai
+- [x] google document ai — published as `proof-perimeter-vs-google-document-ai` (2026-07-30), first Phase 3 post (Cluster B comparison content), opening the phase per §5 now that Cluster C closed at 6 published posts; primary keyword "google document ai" (vol 260 UK, KD 28, CPC $3.13, intent_fit 2, priority ≈136.8 — highest-scoring unchecked Cluster B candidate, well above "azure ai document intelligence" at ≈60.7 and above any nominal-30 title candidate elsewhere in the cluster); perspective angle combines a named specific comparison, a sourced G2 buyer-pain finding (reviewers reporting accuracy/formatting problems on tabular data despite a 4.2/5 average rating), a specific regulatory citation (DORA Article 28), and the "operating model, not toolkit capability" reframe applied to Google's regional-endpoint architecture; retroactively added to `relatedPosts` and linked in-body from `sovereign-ai-gap` (replacing its `claims-processing-document-ai` slot, which remains reachable via shared tags)
 - [ ] azure ai document intelligence
-- [ ] Proof Perimeter vs. Google Document AI: Which Fits Regulated BFSI Workflows?
+- [x] Proof Perimeter vs. Google Document AI: Which Fits Regulated BFSI Workflows? — published as `proof-perimeter-vs-google-document-ai` (2026-07-30), same post as the "google document ai" keyword row above
 - [ ] Proof Perimeter vs. Azure AI Document Intelligence for Banking Documents
 - [ ] Proof Perimeter vs. Amazon Textract: Data Residency and Cost Compared
 - [ ] On-Premise Alternatives to Cloud OCR APIs for Regulated Data
