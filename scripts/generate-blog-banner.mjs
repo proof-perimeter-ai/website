@@ -769,6 +769,73 @@ const MOTIFS = {
       ],
     });
   },
+  // Two stacked cards side by side, split by a dashed divider with a small
+  // "VS" badge centered on it — vendor-comparison / alternative topics
+  // (Cluster B: "X vs. Y", "alternatives to X").
+  "vs-compare": () => {
+    const card = (accent) =>
+      rect({
+        style: {
+          flexDirection: "column",
+          width: 140,
+          height: 340,
+          background: brandColors.paper,
+          border: `2px solid ${accent ? brandColors.signal : brandColors.ink}`,
+          borderRadius: 10,
+          padding: 20,
+          gap: 12,
+        },
+        children: [
+          rect({
+            style: {
+              width: 36,
+              height: 36,
+              borderRadius: 8,
+              background: accent ? brandColors.signal : brandColors.lineMuted,
+            },
+          }),
+          rect({ style: { width: "80%", height: 9, background: brandColors.lineMuted, borderRadius: 2 } }),
+          rect({ style: { width: "60%", height: 9, background: brandColors.lineMuted, borderRadius: 2 } }),
+          rect({ style: { width: "70%", height: 9, background: brandColors.lineMuted, borderRadius: 2 } }),
+          rect({
+            style: {
+              marginTop: "auto",
+              width: "50%",
+              height: 9,
+              background: accent ? brandColors.signal : brandColors.lineMuted,
+              borderRadius: 2,
+            },
+          }),
+        ],
+      });
+    return rect({
+      style: { position: "relative", alignItems: "center", gap: 32 },
+      children: [
+        card(false),
+        rect({
+          style: {
+            position: "absolute",
+            left: "50%",
+            top: "50%",
+            transform: "translate(-50%, -50%)",
+            width: 52,
+            height: 52,
+            borderRadius: 26,
+            background: brandColors.ink,
+            alignItems: "center",
+            justifyContent: "center",
+          },
+          children: [
+            rect({
+              style: { fontSize: 18, fontWeight: 800, color: brandColors.paper, letterSpacing: 1 },
+              children: "VS",
+            }),
+          ],
+        }),
+        card(true),
+      ],
+    });
+  },
 };
 
 function pickMotif() {
@@ -782,6 +849,7 @@ function pickMotif() {
   if (/schema|json|structured (data|json|output)/.test(haystack)) return "json-schema";
   if (/shallow ocr|deep extraction/.test(haystack) || /^what is ocr\b/.test(title.toLowerCase()))
     return "document-scan";
+  if (/\bvs\.?\b|\bcompare\b|comparison|alternatives? to\b/.test(haystack)) return "vs-compare";
   if (/government id|driver.s licen[sc]e|national id/.test(haystack)) return "gov-id";
   if (/\bkyc\b|\bkyb\b|identity|onboard|passport|customer verification/.test(haystack)) return "id-scan";
   if (/invoice|billing/.test(haystack)) return "invoice";
