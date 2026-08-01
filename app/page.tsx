@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
+import { preload } from "react-dom";
 import { JsonLd } from "@/components/JsonLd";
 import { FadeIn } from "@/components/FadeIn";
 import { Eyebrow } from "@/components/Eyebrow";
@@ -163,6 +165,8 @@ const softwareApplicationJsonLd = {
 };
 
 export default function DocumentAiV2() {
+  preload("/assets/videos/document-ai-v3-poster.webp", { as: "image", fetchPriority: "high" });
+
   return (
     <>
       <JsonLd data={faqJsonLd} />
@@ -198,12 +202,16 @@ export default function DocumentAiV2() {
           </div>
           <div className="hero-animate-image relative mx-auto mt-13 max-w-[960px] px-7">
             <video
-              className="w-full rounded-lg border border-line-2 bg-panel shadow-[0_24px_60px_-38px_rgba(20,70,124,0.55)]"
+              className="aspect-[1389/933] w-full rounded-lg border border-line-2 bg-panel shadow-[0_24px_60px_-38px_rgba(20,70,124,0.55)]"
               src="/assets/videos/document-ai-v3.mp4"
+              poster="/assets/videos/document-ai-v3-poster.webp"
+              width={1389}
+              height={933}
               autoPlay
               loop
               muted
               playsInline
+              preload="metadata"
             />
           </div>
         </section>
@@ -386,9 +394,12 @@ export default function DocumentAiV2() {
                 </Link>
               </div>
               <FadeIn className="flex items-center justify-center">
-                <img
+                <Image
                   src="/assets/compliance/banner.png"
                   alt="HIPAA, AICPA SOC, GDPR and ISO 27001 compliance certifications"
+                  width={1690}
+                  height={931}
+                  loading="lazy"
                   className="h-auto w-full max-w-[420px] object-contain"
                 />
               </FadeIn>

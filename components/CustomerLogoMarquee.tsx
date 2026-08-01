@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export type Logo = { src: string; alt: string; width: number; height: number };
 
 export const logos: Logo[] = [
@@ -20,7 +22,7 @@ export function CustomerLogoMarquee() {
         <div className="logo-marquee-fade mt-10 overflow-hidden">
           <div className="logo-marquee-track flex w-max items-center gap-16">
             {[...logos, ...logos].map((logo, i) => (
-              <img
+              <Image
                 key={`${logo.alt}-${i}`}
                 src={logo.src}
                 alt={logo.alt}

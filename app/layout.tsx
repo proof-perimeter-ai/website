@@ -102,13 +102,13 @@ export default function RootLayout({
         <JsonLd data={websiteJsonLd} />
         {children}
         <MobileBookDemoCta />
-        <Script
+        {/* <Script
           id="vtag-ai-js"
           src="https://r2.leadsy.ai/tag.js"
           data-pid="HMacQ2I658iEDymL"
           data-version="062024"
           strategy="beforeInteractive"
-        />
+        /> */}
       </body>
       <GoogleAnalytics gaId={GA_MEASUREMENT_ID} />
     </html>

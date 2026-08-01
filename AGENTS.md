@@ -98,3 +98,5 @@ website/
 ├── lib/metadata.ts             — site-wide brand/SEO config
 └── public/llms.txt             — AEO summary for AI crawlers
 ```
+
+Ignore the older pages that are not being used right now on the website like home-v1, home-v2 and book-demo-v2.

@@ -13,7 +13,7 @@ export function BookDemoIntro() {
         Book a Free Product Demo
       </h1>
       <p className="mt-4 max-w-[46ch] text-[15.5px] leading-[1.62] text-ink-2">
-        Schedule 30-minute personalized demo with our experts.
+        Schedule a 30-minute personalized demo with our experts.
       </p>
 
       <ul className="mt-3 list-none p-0">

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { JsonLd } from "@/components/JsonLd";
 import { FadeIn } from "@/components/FadeIn";
 import { Eyebrow } from "@/components/Eyebrow";
@@ -374,9 +375,12 @@ export default function DocumentAiEnterprise() {
                 </ul>
               </div>
               <FadeIn className="flex items-center justify-center ">
-                <img
+                <Image
                   src="/assets/compliance/banner.png"
                   alt="HIPAA, AICPA SOC, GDPR and ISO 27001 compliance certifications"
+                  width={1690}
+                  height={931}
+                  loading="lazy"
                   className="h-auto w-full max-w-[420px] object-contain"
                 />
               </FadeIn>
