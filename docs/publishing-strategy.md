@@ -44,8 +44,8 @@ Where a cluster term has no measured UK/DE volume, that's noted — it's still w
 
 **Extend with (unmeasured, from glossary/topics.md):** document AI platform, AI document copilots, document understanding. *(Note: "intelligent document processing" and "IDP software" were originally listed here but have been broken out into their own dedicated Cluster J below — that category term carries enough distinct competitive weight, and enough of its own analyst/vendor ecosystem, to warrant separate treatment rather than being folded into general "document ai" head-term content.)*
 
-### Cluster B — Cloud-alternative / comparison intent
-*Directly reinforces the "sovereign vs. cloud API" differentiator — this is Proof Perimeter's strongest wedge into head-term competition.*
+### Cluster B — Cloud-alternative / comparison intent *(on hold — see Phase 3 note in §5)*
+*Directly reinforces the "sovereign vs. cloud API" differentiator — this is Proof Perimeter's strongest wedge into head-term competition. On hold for now: it's still early for the site to publish comparison content — revisit once Phases 1–2 have established more topical authority.*
 
 | Keyword | Vol (UK) | KD | CPC |
 |---|---|---|---|
@@ -232,7 +232,9 @@ Content published before indexability/trust signals are fixed underperforms. Bef
 ### Phase 2 — Fast-win long-tail cluster articles (months 2–4, overlapping Phase 1)
 Target the zero/low-KD terms in Cluster C first — these are the fastest realistic ranking wins and the clearest head-to-head opportunity against LlamaIndex's own content investment: "agentic document extraction," "document extraction llm," "best llm for document extraction," "ai document extraction." Pair each with a Cluster D operational term (bank statement analyser, vendor invoice processing) as a supporting post under the relevant Phase 1 pillar.
 
-### Phase 3 — Comparison/alternative content (months 3–5)
+### Phase 3 — Comparison/alternative content (months 3–5) *(currently on hold)*
+**On hold as of 2026-08-01 — do not draft Cluster B pieces yet.** It's still early for the site to publish comparison content; revisit once Phase 1/2 have built up more topical authority and the site has a stronger base to publish against named competitors from. Do not pull Cluster B candidates forward in the interim, even opportunistically.
+
 "Proof Perimeter vs. Azure AI Document Intelligence," "... vs. Google Document AI," "... vs. Amazon Textract," "on-premise alternatives to [cloud OCR vendor] for regulated data." This is Cluster B — directly reinforces the sovereignty differentiator, captures switcher intent, and is realistically winnable because these comparison queries reward specificity (a named, credible alternative) over raw domain authority.
 
 **Paused as of 2026-08-01, per operator directive:** it's still early for the site to publish named "X vs. Y" comparison content. Until this lifts, cover Cluster B keywords with vendor-neutral educational/explainer posts ("What Is X? How It Works, Strengths, and Weaknesses") instead — see §8's Cluster B section for the live status and the first post published under this framing (`what-is-google-document-ai`).
@@ -316,20 +318,20 @@ How to use it:
 - [ ] Document AI Case Studies: What Production Deployments Actually Look Like
 - [ ] Top Open Source document ai tools
 
-### Cluster B — Cloud-alternative / comparison intent
+### Cluster B — Cloud-alternative / comparison intent *(on hold — see Phase 3 note in §5; do not draft yet)*
 
 **Operator directive (2026-08-01): comparison-titled posts ("X vs. Y") are paused** — it's still early for the site to publish head-to-head vendor comparison content. Until this is lifted, target Cluster B keywords with vendor-neutral educational/explainer framing ("What Is X? How It Works, Strengths, and Weaknesses") instead of the "Proof Perimeter vs. X" title candidates below. The named-comparison title candidates stay in the backlog, unchecked, for whenever comparison content resumes.
 
 - [ ] ocr ai
 - [x] google document ai — published as `what-is-google-document-ai` (2026-07-31); primary keyword "google document ai" (UK vol 260, KD 28, priority 136.8, highest-scoring unchecked Cluster B candidate, ahead of "ocr ai" at 85.2 and "azure ai document intelligence" at 60.7). First cycle drafted this as a named comparison (`proof-perimeter-vs-google-document-ai`) per the original Phase 3 framing below, then revised same-cycle per the operator directive above to a vendor-neutral "What Is Google Document AI? How It Works, Strengths, and Weaknesses" explainer instead — what/how-it-works/strengths/weaknesses structure, with a single closing pitch paragraph rather than a feature-by-feature vendor comparison; perspective angle is sourced G2 (4.2/5, 36 reviews, pricing/accuracy complaints) and Gartner Peer Insights buyer-pain findings plus a primary-source fact from Google's own regions documentation (nine total fixed GCP locations, no on-premise/VPC path); retroactively added to `sovereign-ai-gap`'s relatedPosts (replacing its `claims-processing-document-ai` slot, which remains reachable via shared tags) plus one contextual in-body link
 - [ ] azure ai document intelligence
-- [ ] Proof Perimeter vs. Google Document AI: Which Fits Regulated BFSI Workflows? — **paused per the 2026-08-01 operator directive above**; the `google document ai` keyword was instead covered this cycle by the vendor-neutral `what-is-google-document-ai` explainer (see the checked row above) — leave this title candidate unchecked until comparison content resumes
-- [ ] Proof Perimeter vs. Azure AI Document Intelligence for Banking Documents
-- [ ] Proof Perimeter vs. Amazon Textract: Data Residency and Cost Compared
+- [ ] Amazon Textract tesseract ocr
+- [ ] tesseract ocr
 - [ ] On-Premise Alternatives to Cloud OCR APIs for Regulated Data
-- [ ] Open-Source OCR Models (Docling, EasyOCR, PaddleOCR) vs. Fine-Tuned Document AI
+- [ ] Top Free OCR Tools 
 - [ ] Why Cloud Document AI APIs Are a Compliance Risk for Banks and Insurers
-- [ ] Tesseract OCR in Production: Where It Breaks Down for Regulated Documents
+- [ ] Tesseract OCR unlimited ocr
+- [ ] unlimited ocr
 - [ ] Choosing Between Cloud, VPC, and On-Premise Document AI Deployment
 - [ ] Open Vision-Language Models for Document Extraction: Enterprise-Ready or Not?
 - [ ] What is Padddle OCR -  Features and Capabilities
@@ -347,6 +349,7 @@ How to use it:
 - [ ] document extraction
 - [ ] data extraction from documents
 - [ ] ai document scanning
+- [ ] Top Document Processing AI Models 
 - [x] What Is Agentic Document Extraction? How It Differs from Single-Pass OCR — published as `agentic-document-extraction` (2026-07-23), first Phase 2 post (Cluster C fast-win articles), closing out Phase 1; primary keyword "agentic document extraction" (UK, vol 70, KD 0, intent_fit 2, priority 140 — highest-scoring unchecked Cluster C candidate, tied with "ai document extraction" but chosen as the cluster's lead LlamaIndex-competing term per §5's Phase 2 guidance)
 - [ ] Best LLMs for Document Extraction in 2026: A Practical Comparison
 - [ ] Visual Grounding in Document AI: Why It Matters for Auditability

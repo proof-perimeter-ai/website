@@ -22,8 +22,7 @@ export function SiteFooter() {
           <Link href="/#regulators" className="hover:text-ink transition-colors">Security &amp; compliance</Link>
           <Link href="/glossary" className="hover:text-ink transition-colors">Glossary</Link>
           <Link href="/blog" className="hover:text-ink transition-colors">Blog</Link>
-          <Link href="/case-studies" className="hover:text-ink transition-colors">Case Studies</Link>
-          <a href="mailto:gaurav@proofperimeter.com" className="hover:text-ink transition-colors">Contact</a>
+          <a href="mailto:admin@proofperimeter.com" className="hover:text-ink transition-colors">Contact</a>
           <Link href="/terms-of-service" className="hover:text-ink transition-colors">Terms of Service</Link>
           <Link href="/privacy-policy" className="hover:text-ink transition-colors">Privacy Policy</Link>
         </nav>
