@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
+import { Check } from "lucide-react";
 import { BookDemoConversion } from "@/components/BookDemoConversion";
-import { Eyebrow } from "@/components/Eyebrow";
 import { SiteNav } from "@/components/SiteNav";
 import { SiteFooter } from "@/components/SiteFooter";
 
@@ -19,7 +19,11 @@ export default function BookDemoThankYou() {
       <main className="flex-1">
         <section className="py-22">
           <div className="mx-auto max-w-[600px] px-7 text-center">
-            <Eyebrow className="justify-center">Meeting booked</Eyebrow>
+            <div className="mx-auto mb-7 flex h-24 w-24 items-center justify-center rounded-full bg-live/15">
+              <div className="flex h-16 w-16 items-center justify-center rounded-full bg-live">
+                <Check className="h-9 w-9 text-white" strokeWidth={3} aria-hidden="true" />
+              </div>
+            </div>
             <h1 className="mt-4.5 text-[clamp(30px,4.4vw,44px)] font-bold tracking-[-0.022em] text-ink">
               We&rsquo;re looking forward to talking with you.
             </h1>

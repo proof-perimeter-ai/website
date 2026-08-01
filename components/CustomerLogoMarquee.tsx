@@ -1,6 +1,6 @@
-type Logo = { src: string; alt: string; width: number; height: number };
+export type Logo = { src: string; alt: string; width: number; height: number };
 
-const logos: Logo[] = [
+export const logos: Logo[] = [
   { src: "/assets/logos/customer-1.png", alt: "Customer logo", width: 88, height: 40 },
   { src: "/assets/logos/customer-2.png", alt: "Customer logo", width: 76, height: 40 },
   { src: "/assets/logos/customer-3.png", alt: "Customer logo", width: 120, height: 40 },
