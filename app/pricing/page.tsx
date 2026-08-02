@@ -11,7 +11,7 @@ import { GET_STARTED_EVENT, BOOK_DEMO_EVENT } from "@/lib/analytics";
 export const metadata: Metadata = {
   title: "Document AI Pricing: BYOK vs Enterprise",
   description:
-    "Compare Proof Perimeter's Bring Your Own Key and Enterprise plans feature by feature — deployment, data egress, workflows, audit logging, connectors, and support.",
+    "Compare Proof Perimeter's Bring Your Own Key and Enterprise plans feature by feature — deployment, data egress, workflows, audit logging, and support.",
   alternates: { canonical: "/pricing" },
 };
 

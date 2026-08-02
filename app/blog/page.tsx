@@ -27,9 +27,12 @@ export default function BlogIndex() {
       blogPost: posts.map((post) => ({
         "@type": "BlogPosting",
         headline: post.title,
+        description: post.description,
+        image: `${siteConfig.url}${post.banner.src}`,
         url: `${siteConfig.url}/blog/${post.slug}`,
         datePublished: post.createdAt,
         dateModified: post.updatedAt,
+        author: { "@type": "Person", name: post.author.name },
       })),
     },
     {

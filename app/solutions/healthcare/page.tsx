@@ -9,10 +9,12 @@ import { BtnSolid, BtnGhost } from "@/components/Button";
 import { GET_STARTED_EVENT, BOOK_DEMO_EVENT } from "@/lib/analytics";
 import { CustomerLogoMarquee } from "@/components/CustomerLogoMarquee";
 import { TestimonialCarousel } from "@/components/TestimonialCarousel";
+import { siteConfig } from "@/lib/metadata";
 
 export const metadata: Metadata = {
-  title: "Document AI for Healthcare | Proof Perimeter",
-  description: "Unify patient history, accelerate prior authorization, and catch denials before they happen.",
+  title: "Document AI for Healthcare",
+  description:
+    "Unify patient history, accelerate prior authorization, and catch denials before they happen — with field-level provenance on every extracted value.",
   alternates: { canonical: "/solutions/healthcare" },
 };
 
@@ -134,10 +136,21 @@ const faqJsonLd = {
   })),
 };
 
+const breadcrumbJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: siteConfig.url },
+    { "@type": "ListItem", position: 2, name: "Solutions", item: `${siteConfig.url}/solutions` },
+    { "@type": "ListItem", position: 3, name: "Healthcare", item: `${siteConfig.url}/solutions/healthcare` },
+  ],
+};
+
 export default function HealthcareSolutionPage() {
   return (
     <>
       <JsonLd data={faqJsonLd} />
+      <JsonLd data={breadcrumbJsonLd} />
       <SiteNav />
       <main className="flex-1">
         {/* Hero */}

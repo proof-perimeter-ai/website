@@ -9,10 +9,12 @@ import { BtnSolid, BtnGhost } from "@/components/Button";
 import { GET_STARTED_EVENT, BOOK_DEMO_EVENT } from "@/lib/analytics";
 import { CustomerLogoMarquee } from "@/components/CustomerLogoMarquee";
 import { TestimonialCarousel } from "@/components/TestimonialCarousel";
+import { siteConfig } from "@/lib/metadata";
 
 export const metadata: Metadata = {
-  title: "Document AI for Insurance | Proof Perimeter",
-  description: "Classify, extract, and reconcile claims packets automatically — from FNOL to settlement.",
+  title: "Document AI for Insurance",
+  description:
+    "Classify, extract, and reconcile claims packets automatically from FNOL to settlement — with field-level provenance on every extracted value.",
   alternates: { canonical: "/solutions/insurance" },
 };
 
@@ -138,10 +140,21 @@ const faqJsonLd = {
   })),
 };
 
+const breadcrumbJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: siteConfig.url },
+    { "@type": "ListItem", position: 2, name: "Solutions", item: `${siteConfig.url}/solutions` },
+    { "@type": "ListItem", position: 3, name: "Insurance", item: `${siteConfig.url}/solutions/insurance` },
+  ],
+};
+
 export default function InsuranceSolutionPage() {
   return (
     <>
       <JsonLd data={faqJsonLd} />
+      <JsonLd data={breadcrumbJsonLd} />
       <SiteNav />
       <main className="flex-1">
         {/* Hero */}

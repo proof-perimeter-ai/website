@@ -4,11 +4,13 @@ import { FadeIn } from "@/components/FadeIn";
 import { Eyebrow } from "@/components/Eyebrow";
 import { SiteNav } from "@/components/SiteNav";
 import { SiteFooter } from "@/components/SiteFooter";
+import { JsonLd } from "@/components/JsonLd";
+import { siteConfig } from "@/lib/metadata";
 
 export const metadata: Metadata = {
-  title: "Solutions | Proof Perimeter",
+  title: "Solutions",
   description:
-    "Document AI for regulated, high-risk document workflows across banking, financial services, insurance, legal, and healthcare.",
+    "Document AI for regulated, high-risk document workflows across banking, financial services, insurance, legal, and healthcare — with field-level provenance.",
   alternates: { canonical: "/solutions" },
 };
 
@@ -44,8 +46,34 @@ const industries = [
 ];
 
 export default function SolutionsPage() {
+  const jsonLd = [
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      name: `Solutions | ${siteConfig.name}`,
+      url: `${siteConfig.url}/solutions`,
+      mainEntity: industries.map((industry) => ({
+        "@type": "Thing",
+        name: industry.name,
+        description: industry.description,
+        url: `${siteConfig.url}/solutions/${industry.slug}`,
+      })),
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: siteConfig.url },
+        { "@type": "ListItem", position: 2, name: "Solutions", item: `${siteConfig.url}/solutions` },
+      ],
+    },
+  ];
+
   return (
     <>
+      {jsonLd.map((data, i) => (
+        <JsonLd key={i} data={data} />
+      ))}
       <SiteNav />
       <main className="flex-1">
         {/* Hero */}

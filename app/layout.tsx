@@ -74,6 +74,7 @@ const organizationJsonLd = {
   name: siteConfig.name,
   url: siteConfig.url,
   description: siteConfig.description,
+  logo: `${siteConfig.url}/assets/brand/logo.png`,
 };
 
 const websiteJsonLd = {

@@ -9,10 +9,12 @@ import { BtnSolid, BtnGhost } from "@/components/Button";
 import { GET_STARTED_EVENT, BOOK_DEMO_EVENT } from "@/lib/analytics";
 import { CustomerLogoMarquee } from "@/components/CustomerLogoMarquee";
 import { TestimonialCarousel } from "@/components/TestimonialCarousel";
+import { siteConfig } from "@/lib/metadata";
 
 export const metadata: Metadata = {
-  title: "Document AI for Legal | Proof Perimeter",
-  description: "Extract clauses, separate document productions, and redact at scale — without losing meaning-critical formatting.",
+  title: "Document AI for Legal",
+  description:
+    "Extract clauses, separate document productions, and redact at scale — without losing meaning-critical formatting, and with full provenance on every field.",
   alternates: { canonical: "/solutions/legal" },
 };
 
@@ -137,10 +139,21 @@ const faqJsonLd = {
   })),
 };
 
+const breadcrumbJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: siteConfig.url },
+    { "@type": "ListItem", position: 2, name: "Solutions", item: `${siteConfig.url}/solutions` },
+    { "@type": "ListItem", position: 3, name: "Legal", item: `${siteConfig.url}/solutions/legal` },
+  ],
+};
+
 export default function LegalSolutionPage() {
   return (
     <>
       <JsonLd data={faqJsonLd} />
+      <JsonLd data={breadcrumbJsonLd} />
       <SiteNav />
       <main className="flex-1">
         {/* Hero */}
