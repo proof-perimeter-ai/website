@@ -329,7 +329,7 @@ How to use it:
 - [ ] tesseract ocr
 - [ ] On-Premise Alternatives to Cloud OCR APIs for Regulated Data
 - [ ] Top Free OCR Tools 
-- [ ] Why Cloud Document AI APIs Are a Compliance Risk for Banks and Insurers
+- [x] Why Cloud Document AI APIs Are a Compliance Risk for Banks and Insurers — published as `cloud-document-ai-compliance-risk-banks-insurers` (2026-08-04), third Cluster B post (Phase 3, non-comparison vendor-neutral framing continues to comply with the 2026-08-01 operator directive pausing named "X vs. Y" titles — this is a risk/compliance-framing piece, not a named-vendor comparison); primary keyword "cloud document ai compliance risk" (topic candidate, nominal vol 30, intent_fit 3 — explicit "Banks and Insurers" BFSI framing distinguishes it from the cluster's default intent_fit 2, priority 90, highest-scoring unchecked Cluster B candidate after ruling out "ocr ai" per §1's already-covered note and the malformed/ambiguous "Amazon Textract tesseract ocr" and "Tesseract OCR unlimited ocr" rows); perspective angle is a specific regulatory citation (DORA Article 30's subcontracting-disclosure and service-location requirements — distinct from the Article 28 citation already used in `sovereign-ai-gap`) paired with GDPR Article 44's onward-transfer obligation and a sourced Gartner press release (worldwide sovereign cloud IaaS spend, $80B in 2026; European spend $6.9B→$12.6B→$23.1B, 2025–2027); retroactively added to `sovereign-ai-gap`'s relatedPosts (replacing its `kyc-document-automation` slot, which remains reachable via shared tags) plus one contextual in-body link
 - [ ] Tesseract OCR unlimited ocr
 - [ ] unlimited ocr
 - [ ] Choosing Between Cloud, VPC, and On-Premise Document AI Deployment
