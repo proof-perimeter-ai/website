@@ -1,7 +1,6 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import posthog from "posthog-js";
 import { leadFormSchema, getLeadFormFieldErrors, type LeadFormFieldErrors } from "@/lib/validation/lead";
 import {
   LEAD_FORM_STARTED_EVENT,
@@ -9,6 +8,7 @@ import {
   LEAD_HUBSPOT_REQUEST_STARTED_EVENT,
   LEAD_HUBSPOT_RESPONSE_RECEIVED_EVENT,
 } from "@/lib/analytics";
+import { capturePosthogEvent, identifyPosthogUser } from "@/lib/posthog";
 
 const STORAGE_KEY = "pp_lead_form_state";
 const GENERIC_ERROR = "Unable to continue. Please try again.";
@@ -77,14 +77,14 @@ export function useLeadForm() {
   const updateField = useCallback((field: keyof LeadFormValues, value: string) => {
     if (!hasStartedRef.current) {
       hasStartedRef.current = true;
-      posthog.capture(LEAD_FORM_STARTED_EVENT);
+      capturePosthogEvent(LEAD_FORM_STARTED_EVENT);
     }
     setValues((prev) => ({ ...prev, [field]: value }));
     setFieldErrors((prev) => (prev[field] ? { ...prev, [field]: undefined } : prev));
   }, []);
 
   const handleEmailBlur = useCallback(() => {
-    posthog.capture(LEAD_FORM_EMAIL_BLURRED_EVENT, {
+    capturePosthogEvent(LEAD_FORM_EMAIL_BLURRED_EVENT, {
       first_name: values.firstName,
       last_name: values.lastName,
       email: values.email,
@@ -112,7 +112,7 @@ export function useLeadForm() {
       setFieldErrors({});
 
       try {
-        posthog.capture(LEAD_HUBSPOT_REQUEST_STARTED_EVENT, { payload: parsed.data });
+        capturePosthogEvent(LEAD_HUBSPOT_REQUEST_STARTED_EVENT, { payload: parsed.data });
 
         const response = await fetch("/api/lead", {
           method: "POST",
@@ -121,7 +121,7 @@ export function useLeadForm() {
         });
         const data = await response.json().catch(() => null);
 
-        posthog.capture(LEAD_HUBSPOT_RESPONSE_RECEIVED_EVENT, { response: data, status: response.status });
+        capturePosthogEvent(LEAD_HUBSPOT_RESPONSE_RECEIVED_EVENT, { response: data, status: response.status });
 
         if (!response.ok || !data?.success) {
           setStatus("error");
@@ -129,7 +129,7 @@ export function useLeadForm() {
           return { ok: false };
         }
 
-        posthog.identify(parsed.data.email, {
+        identifyPosthogUser(parsed.data.email, {
           email: parsed.data.email,
           first_name: parsed.data.firstName,
           last_name: parsed.data.lastName,

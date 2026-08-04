@@ -3,9 +3,11 @@
 import { useEffect, useState, useSyncExternalStore } from "react";
 import { createPortal } from "react-dom";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Menu, X, ChevronDown, Landmark, Briefcase, ShieldCheck, Scale, HeartPulse } from "lucide-react";
-import posthog from "posthog-js";
+import { APP_CTA_EVENT, APP_CTA_HREF, APP_CTA_LABEL } from "@/lib/cta";
 import { BOOK_DEMO_EVENT } from "@/lib/analytics";
+import { capturePosthogEvent } from "@/lib/posthog";
 
 const industries = [
   { slug: "banking", name: "Banking", icon: Landmark },
@@ -18,8 +20,10 @@ const industries = [
 const emptySubscribe = () => () => {};
 
 export function MobileNav() {
+  const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const [solutionsExpanded, setSolutionsExpanded] = useState(true);
+  const isEnterprisePage = pathname === "/enterprise";
   const mounted = useSyncExternalStore(
     emptySubscribe,
     () => true,
@@ -136,16 +140,43 @@ export function MobileNav() {
         </nav>
 
         <div className="border-t border-line p-5">
-          <Link
-            href="/book-demo"
-            onClick={() => {
-              setIsOpen(false);
-              posthog.capture(BOOK_DEMO_EVENT);
-            }}
-            className="flex w-full items-center justify-center rounded-[5px] bg-signal px-4.5 py-3 text-[15px] font-semibold text-white hover:bg-signal-deep transition-colors"
-          >
-            Book Demo
-          </Link>
+          <div className="flex flex-col gap-3">
+            {isEnterprisePage ? (
+              <Link
+                href="/book-demo"
+                onClick={() => {
+                  setIsOpen(false);
+                  capturePosthogEvent(BOOK_DEMO_EVENT);
+                }}
+                className="flex w-full items-center justify-center rounded-[5px] bg-signal px-4.5 py-3 text-[15px] font-semibold text-white hover:bg-signal-deep transition-colors"
+              >
+                Book Demo
+              </Link>
+            ) : (
+              <>
+                <Link
+                  href={APP_CTA_HREF}
+                  onClick={() => {
+                    setIsOpen(false);
+                    capturePosthogEvent(APP_CTA_EVENT);
+                  }}
+                  className="flex w-full items-center justify-center rounded-[5px] bg-signal px-4.5 py-3 text-[15px] font-semibold text-white hover:bg-signal-deep transition-colors"
+                >
+                  {APP_CTA_LABEL}
+                </Link>
+                <Link
+                  href="/book-demo"
+                  onClick={() => {
+                    setIsOpen(false);
+                    capturePosthogEvent(BOOK_DEMO_EVENT);
+                  }}
+                  className="flex w-full items-center justify-center rounded-[5px] border border-line-2 bg-transparent px-4.5 py-3 text-[15px] font-semibold text-ink hover:border-ink transition-colors"
+                >
+                  Book Demo
+                </Link>
+              </>
+            )}
+          </div>
         </div>
       </div>
     </>

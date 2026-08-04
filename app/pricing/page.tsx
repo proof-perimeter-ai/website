@@ -6,6 +6,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { SiteNav } from "@/components/SiteNav";
 import { SiteFooter } from "@/components/SiteFooter";
 import { TestimonialCarousel } from "@/components/TestimonialCarousel";
+import { APP_CTA_HREF, APP_CTA_LABEL } from "@/lib/cta";
 import { GET_STARTED_EVENT, BOOK_DEMO_EVENT } from "@/lib/analytics";
 
 export const metadata: Metadata = {
@@ -50,8 +51,9 @@ const plans = [
     name: "Bring Your Own Key",
     price: priceRow[1],
     fit: fitRow[1],
-    ctaLabel: "Book Demo",
-    ctaEvent: BOOK_DEMO_EVENT,
+    ctaLabel: APP_CTA_LABEL,
+    ctaEvent: GET_STARTED_EVENT,
+    ctaHref: APP_CTA_HREF,
     highlight: false,
   },
   {
@@ -60,6 +62,7 @@ const plans = [
     fit: fitRow[2],
     ctaLabel: "Book Demo",
     ctaEvent: BOOK_DEMO_EVENT,
+    ctaHref: "/book-demo",
     highlight: true,
   },
 ] as const;
@@ -158,10 +161,10 @@ export default function Pricing() {
                   <div className="mt-6 text-[26px] font-bold tracking-[-0.02em] text-ink">{plan.price}</div>
 
                   <div className="mt-6">
-                    {plan.highlight ? (
-                      <BtnSolid href="/book-demo" trackEvent={plan.ctaEvent}>{plan.ctaLabel}</BtnSolid>
+                    {plan.ctaEvent === GET_STARTED_EVENT ? (
+                      <BtnSolid href={plan.ctaHref} trackEvent={plan.ctaEvent}>{plan.ctaLabel}</BtnSolid>
                     ) : (
-                      <BtnGhost href="/book-demo" trackEvent={plan.ctaEvent}>{plan.ctaLabel}</BtnGhost>
+                      <BtnGhost href={plan.ctaHref} trackEvent={plan.ctaEvent}>{plan.ctaLabel}</BtnGhost>
                     )}
                   </div>
 
@@ -226,8 +229,8 @@ export default function Pricing() {
               Pay for outcomes, not seats.
             </h2>
             <div className="mt-8 flex flex-wrap justify-center gap-3.5">
-              <BtnSolid href="/book-demo" trackEvent={GET_STARTED_EVENT} hidden>Get started for free</BtnSolid>
-              <BtnSolid href="/book-demo" trackEvent={BOOK_DEMO_EVENT}>Book Demo</BtnSolid>
+              <BtnSolid href={APP_CTA_HREF} trackEvent={GET_STARTED_EVENT}>{APP_CTA_LABEL}</BtnSolid>
+              <BtnGhost href="/book-demo" trackEvent={BOOK_DEMO_EVENT}>Book Demo</BtnGhost>
             </div>
           </div>
         </section>
