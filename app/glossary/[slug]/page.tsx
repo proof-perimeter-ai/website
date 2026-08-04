@@ -51,6 +51,11 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       url: `${siteConfig.url}/glossary/${term.slug}`,
       type: "article",
     },
+    twitter: {
+      card: "summary_large_image",
+      title: `${term.title} | ${siteConfig.name}`,
+      description: term.description,
+    },
   };
 }
 

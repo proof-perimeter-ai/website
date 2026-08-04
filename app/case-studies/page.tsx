@@ -9,7 +9,7 @@ import { siteConfig } from "@/lib/metadata";
 import { getAllCaseStudies } from "@/lib/case-studies";
 
 export const metadata: Metadata = {
-  title: "Case Studies: Proof Perimeter in Regulated Industries",
+  title: "Case Studies: Regulated Industries",
   description:
     "How banks, insurers, and lenders use Proof Perimeter to automate document classification, extraction, and review — with field-level provenance on every value.",
   alternates: { canonical: "/case-studies" },
@@ -24,6 +24,12 @@ export default function CaseStudiesIndex() {
       "@type": "CollectionPage",
       name: `${siteConfig.name} Case Studies`,
       url: `${siteConfig.url}/case-studies`,
+      mainEntity: caseStudies.map((caseStudy) => ({
+        "@type": "Article",
+        headline: caseStudy.title,
+        description: caseStudy.description,
+        url: `${siteConfig.url}/case-studies/${caseStudy.slug}`,
+      })),
     },
     {
       "@context": "https://schema.org",

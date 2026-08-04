@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const caseStudy = getCaseStudyBySlug(slug)!;
   return {
-    title: `${caseStudy.title} | Case Study`,
+    title: caseStudy.title,
     description: caseStudy.description,
     alternates: { canonical: `/case-studies/${caseStudy.slug}` },
     openGraph: {
@@ -30,6 +30,13 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       type: "article",
       publishedTime: caseStudy.createdAt,
       modifiedTime: caseStudy.updatedAt,
+      images: [`${siteConfig.url}${caseStudy.banner.src}`],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${caseStudy.title} | ${siteConfig.name}`,
+      description: caseStudy.description,
+      images: [`${siteConfig.url}${caseStudy.banner.src}`],
     },
   };
 }
@@ -49,6 +56,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
       datePublished: caseStudy.createdAt,
       dateModified: caseStudy.updatedAt,
       about: { "@type": "Organization", name: caseStudy.company.name },
+      author: { "@type": "Person", name: caseStudy.author.name },
       publisher: { "@type": "Organization", name: siteConfig.name },
       mainEntityOfPage: `${siteConfig.url}/case-studies/${caseStudy.slug}`,
     },

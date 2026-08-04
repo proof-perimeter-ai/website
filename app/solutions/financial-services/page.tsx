@@ -9,10 +9,12 @@ import { BtnSolid, BtnGhost } from "@/components/Button";
 import { GET_STARTED_EVENT, BOOK_DEMO_EVENT } from "@/lib/analytics";
 import { CustomerLogoMarquee } from "@/components/CustomerLogoMarquee";
 import { TestimonialCarousel } from "@/components/TestimonialCarousel";
+import { siteConfig } from "@/lib/metadata";
 
 export const metadata: Metadata = {
-  title: "Document AI for Financial Services | Proof Perimeter",
-  description: "Automate underwriting, credit agreement, and research extraction — with every figure traced back to its source.",
+  title: "Document AI for Financial Services",
+  description:
+    "Automate underwriting, credit agreement, and research extraction — with every figure traced to source and 20% higher accuracy than general models.",
   alternates: { canonical: "/solutions/financial-services" },
 };
 
@@ -140,10 +142,21 @@ const faqJsonLd = {
   })),
 };
 
+const breadcrumbJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: siteConfig.url },
+    { "@type": "ListItem", position: 2, name: "Solutions", item: `${siteConfig.url}/solutions` },
+    { "@type": "ListItem", position: 3, name: "Financial Services", item: `${siteConfig.url}/solutions/financial-services` },
+  ],
+};
+
 export default function FinancialServicesSolutionPage() {
   return (
     <>
       <JsonLd data={faqJsonLd} />
+      <JsonLd data={breadcrumbJsonLd} />
       <SiteNav />
       <main className="flex-1">
         {/* Hero */}

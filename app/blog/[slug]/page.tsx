@@ -33,6 +33,11 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       modifiedTime: post.updatedAt,
       authors: [post.author.name],
     },
+    twitter: {
+      card: "summary_large_image",
+      title: `${post.title} | ${siteConfig.name}`,
+      description: post.description,
+    },
   };
 }
 

@@ -32,9 +32,19 @@ export default function GlossaryIndex() {
     })),
   };
 
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: siteConfig.url },
+      { "@type": "ListItem", position: 2, name: "Glossary", item: `${siteConfig.url}/glossary` },
+    ],
+  };
+
   return (
     <>
       <JsonLd data={definedTermSetJsonLd} />
+      <JsonLd data={breadcrumbJsonLd} />
       <SiteNav />
       <main className="flex-1">
         {/* Hero */}
