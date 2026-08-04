@@ -1,5 +1,5 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import { verifyRecaptchaToken } from "./recaptcha";
+import { shouldBypassRecaptcha, verifyRecaptchaToken } from "./recaptcha";
 
 const originalSecret = process.env.RECAPTCHA_SECRET_KEY;
 
@@ -71,5 +71,17 @@ describe("verifyRecaptchaToken", () => {
 
       expect(result).toEqual({ ok: false, reason: "request_failed" });
     });
+  });
+});
+
+describe("shouldBypassRecaptcha", () => {
+  it("returns true for localhost hosts", () => {
+    expect(shouldBypassRecaptcha("localhost")).toBe(true);
+    expect(shouldBypassRecaptcha("127.0.0.1")).toBe(true);
+  });
+
+  it("returns false for non-local hosts", () => {
+    expect(shouldBypassRecaptcha("proofperimeter.com")).toBe(false);
+    expect(shouldBypassRecaptcha("preview.proofperimeter.com")).toBe(false);
   });
 });

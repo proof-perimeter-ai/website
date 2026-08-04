@@ -9,6 +9,10 @@ export type RecaptchaVerification =
       score?: number;
     };
 
+export function shouldBypassRecaptcha(hostname: string): boolean {
+  return hostname === "localhost" || hostname === "127.0.0.1";
+}
+
 // v3 is score-based and never blocks a legitimate user with a challenge, so a
 // failure here always means "reject the submission" — never "ask the user to
 // prove they're human." If RECAPTCHA_SECRET_KEY isn't set yet, verification is

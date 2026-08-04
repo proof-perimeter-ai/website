@@ -23,6 +23,12 @@ export type UpsertContactResult = {
   operation: "created" | "updated";
 };
 
+type WebhookPayload = UpsertContactInput & {
+  hubspot_contact_id: string;
+  hubspot_contact_url: string;
+  hubspot_operation: UpsertContactResult["operation"];
+};
+
 function getAccessToken(): string {
   const token = process.env.HUBSPOT_ACCESS_TOKEN;
   if (!token) {
@@ -33,6 +39,14 @@ function getAccessToken(): string {
     );
   }
   return token;
+}
+
+function getWebhookUrl(): string | null {
+  return process.env.LEAD_WEBHOOK_URL ?? null;
+}
+
+function getHubspotContactUrlPrefix(): string | null {
+  return process.env.HUBSPOT_CONTACT_URL_PREFIX ?? null;
 }
 
 async function hubspotFetch(path: string, init: RequestInit): Promise<unknown> {
@@ -98,14 +112,71 @@ async function updateContact(contactId: string, input: UpsertContactInput): Prom
   })) as { id: string };
 }
 
+function buildWebhookPayload(
+  input: UpsertContactInput,
+  result: UpsertContactResult,
+): WebhookPayload | null {
+  const webhookUrl = getWebhookUrl();
+  const contactUrlPrefix = getHubspotContactUrlPrefix();
+
+  if (!webhookUrl) {
+    console.error("[hubspot] LEAD_WEBHOOK_URL is not configured; skipping lead webhook");
+    return null;
+  }
+
+  if (!contactUrlPrefix) {
+    console.error("[hubspot] HUBSPOT_CONTACT_URL_PREFIX is not configured; skipping lead webhook");
+    return null;
+  }
+
+  return {
+    ...input,
+    hubspot_contact_id: result.contactId,
+    hubspot_contact_url: `${contactUrlPrefix}${result.contactId}`,
+    hubspot_operation: result.operation,
+  };
+}
+
+async function sendLeadWebhook(input: UpsertContactInput, result: UpsertContactResult): Promise<void> {
+  const webhookUrl = getWebhookUrl();
+  const payload = buildWebhookPayload(input, result);
+
+  if (!webhookUrl || !payload) {
+    return;
+  }
+
+  try {
+    const response = await fetch(webhookUrl, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    });
+
+    if (!response.ok) {
+      const body = await response.text().catch(() => "");
+      console.error(
+        "[hubspot] Lead webhook request failed:",
+        response.status,
+        body || "No response body",
+      );
+    }
+  } catch (error) {
+    console.error("[hubspot] Lead webhook request failed:", error);
+  }
+}
+
 export async function upsertContact(input: UpsertContactInput): Promise<UpsertContactResult> {
   const existing = await searchContactByEmail(input.email);
 
   if (existing) {
     const updated = await updateContact(existing.id, input);
-    return { contactId: updated.id, operation: "updated" };
+    const result = { contactId: updated.id, operation: "updated" } as const;
+    await sendLeadWebhook(input, result);
+    return result;
   }
 
   const created = await createContact(input);
-  return { contactId: created.id, operation: "created" };
+  const result = { contactId: created.id, operation: "created" } as const;
+  await sendLeadWebhook(input, result);
+  return result;
 }

@@ -92,7 +92,7 @@ export function LeadForm({
           </Field>
         </div>
 
-        <Field id="lead-email" label="Work Email" error={fieldErrors.email}>
+        <Field id="lead-email" label="Email" error={fieldErrors.email}>
           <input
             id="lead-email"
             name="email"

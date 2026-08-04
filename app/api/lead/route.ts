@@ -1,7 +1,7 @@
 import { leadFormSchema, getLeadFormFieldErrors } from "@/lib/validation/lead";
 import { sanitizeSingleLine } from "@/lib/sanitize";
 import { upsertContact, HubspotError } from "@/lib/hubspot";
-import { verifyRecaptchaToken } from "@/lib/recaptcha";
+import { shouldBypassRecaptcha, verifyRecaptchaToken } from "@/lib/recaptcha";
 
 type LeadApiSuccess = { success: true; contactId: string };
 type LeadApiFailure = {
@@ -15,6 +15,7 @@ function failure(code: string, message: string, status: number, fieldErrors?: Re
 }
 
 export async function POST(request: Request) {
+  const requestUrl = new URL(request.url);
   let rawBody: unknown;
   try {
     rawBody = await request.json();
@@ -48,7 +49,7 @@ export async function POST(request: Request) {
   // penalizing legitimate users for that — see hooks/useRecaptcha.ts. A token
   // that *was* sent but fails verification is always rejected.
   const recaptchaToken = typeof raw.recaptchaToken === "string" ? raw.recaptchaToken : null;
-  if (recaptchaToken) {
+  if (recaptchaToken && !shouldBypassRecaptcha(requestUrl.hostname)) {
     const verification = await verifyRecaptchaToken(recaptchaToken);
     if (!verification.ok && verification.reason !== "not_configured") {
       console.error("[api/lead] reCAPTCHA verification failed:", verification.reason);
