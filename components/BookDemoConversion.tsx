@@ -1,13 +1,13 @@
 "use client";
 
-import { sendGAEvent } from "@next/third-parties/google";
+import { sendGTMEvent } from "@next/third-parties/google";
 import { useEffect } from "react";
 import { capturePosthogEvent } from "@/lib/posthog";
 
 export function BookDemoConversion() {
   useEffect(() => {
-    sendGAEvent("event", "conversion", {
-      send_to: "AW-18327393246/CheQCMCutdEcEN6nl6NE",
+    sendGTMEvent({
+      event: "book_demo_conversion",
       value: 10.0,
       currency: "INR",
     });
