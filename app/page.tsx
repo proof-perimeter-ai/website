@@ -10,7 +10,8 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { siteConfig } from "@/lib/metadata";
 import { CustomerLogoMarquee } from "@/components/CustomerLogoMarquee";
 import { TestimonialCarousel } from "@/components/TestimonialCarousel";
-import { BtnSolid } from "@/components/Button";
+import { BtnGhost, BtnSolid } from "@/components/Button";
+import { APP_CTA_HREF, APP_CTA_LABEL } from "@/lib/cta";
 import { GET_STARTED_EVENT, BOOK_DEMO_EVENT } from "@/lib/analytics";
 
 export const metadata: Metadata = {
@@ -196,8 +197,8 @@ export default function DocumentAiV2() {
               ))}
             </div>
             <div className="hero-animate-cta mt-9 flex flex-wrap justify-center gap-3.5">
-              <BtnSolid href="/book-demo" trackEvent={GET_STARTED_EVENT} hidden>Get started for free</BtnSolid>
-              <BtnSolid href="/book-demo" trackEvent={BOOK_DEMO_EVENT}>Book Demo</BtnSolid>
+              <BtnSolid href={APP_CTA_HREF} trackEvent={GET_STARTED_EVENT}>{APP_CTA_LABEL}</BtnSolid>
+              <BtnGhost href="/book-demo" trackEvent={BOOK_DEMO_EVENT}>Book Demo</BtnGhost>
             </div>
           </div>
           <div className="hero-animate-image relative mx-auto mt-13 max-w-[960px] px-7">
@@ -278,7 +279,7 @@ export default function DocumentAiV2() {
             </div>
 
             <div className="mt-10.5 flex justify-center">
-              <BtnSolid href="/book-demo" trackEvent={BOOK_DEMO_EVENT}>Book Demo</BtnSolid>
+              <BtnSolid href={APP_CTA_HREF} trackEvent={GET_STARTED_EVENT}>{APP_CTA_LABEL}</BtnSolid>
             </div>
           </div>
         </section>
@@ -305,7 +306,7 @@ export default function DocumentAiV2() {
             </div>
 
             <div className="mt-10.5 flex justify-center">
-              <BtnSolid href="/book-demo" trackEvent={BOOK_DEMO_EVENT}>Book Demo</BtnSolid>
+              <BtnSolid href={APP_CTA_HREF} trackEvent={GET_STARTED_EVENT}>{APP_CTA_LABEL}</BtnSolid>
             </div>
           </div>
         </section>
@@ -359,10 +360,10 @@ export default function DocumentAiV2() {
               <div className="grid grid-cols-[1fr_1.3fr_1.3fr] items-center border-t border-line">
                 <div className="p-4.5 text-[13.5px] font-semibold text-ink-2"></div>
                 <div className="p-4.5">
-                  <BtnSolid href="/book-demo" trackEvent={GET_STARTED_EVENT} hidden>Get started for free</BtnSolid>
+                  <BtnSolid href={APP_CTA_HREF} trackEvent={GET_STARTED_EVENT}>{APP_CTA_LABEL}</BtnSolid>
                 </div>
                 <div className="p-4.5">
-                  <BtnSolid href="/book-demo" trackEvent={BOOK_DEMO_EVENT}>Book Demo</BtnSolid>
+                  <BtnGhost href="/book-demo" trackEvent={BOOK_DEMO_EVENT}>Book Demo</BtnGhost>
                 </div>
               </div>
             </FadeIn>
@@ -436,8 +437,8 @@ export default function DocumentAiV2() {
               Free document AI platform, built for outcomes.
             </h2>
             <div className="mt-8 flex flex-wrap justify-center gap-3.5">
-              <BtnSolid href="/book-demo" trackEvent={GET_STARTED_EVENT} hidden>Get started for free</BtnSolid>
-              <BtnSolid href="/book-demo" trackEvent={BOOK_DEMO_EVENT}>Book Demo</BtnSolid>
+              <BtnSolid href={APP_CTA_HREF} trackEvent={GET_STARTED_EVENT}>{APP_CTA_LABEL}</BtnSolid>
+              <BtnGhost href="/book-demo" trackEvent={BOOK_DEMO_EVENT}>Book Demo</BtnGhost>
             </div>
             
           </div>

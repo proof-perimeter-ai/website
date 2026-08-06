@@ -3,11 +3,11 @@
 import { useRouter } from "next/navigation";
 import { useCallback } from "react";
 import Script from "next/script";
-import posthog from "posthog-js";
 import { useLeadForm } from "@/hooks/useLeadForm";
 import { useCalPopup } from "@/hooks/useCalPopup";
 import { useRecaptcha } from "@/hooks/useRecaptcha";
 import { LeadForm } from "@/components/LeadForm";
+import { capturePosthogEvent } from "@/lib/posthog";
 
 const CAL_NAMESPACE = "book-demo";
 const RECAPTCHA_SITE_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
@@ -23,7 +23,7 @@ export function BookDemoFlow({ calLink }: { calLink: string }) {
     namespace: CAL_NAMESPACE,
     calLink,
     onBookingSuccess: () => {
-      posthog.capture("demo_booking_completed");
+      capturePosthogEvent("demo_booking_completed");
       router.push("/book-demo/thank-you");
     },
     onAbandoned: () => {

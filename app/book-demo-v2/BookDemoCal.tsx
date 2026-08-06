@@ -3,7 +3,7 @@
 import Cal, { getCalApi } from "@calcom/embed-react";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
-import posthog from "posthog-js";
+import { capturePosthogEvent } from "@/lib/posthog";
 
 export function BookDemoCal() {
   const router = useRouter();
@@ -16,7 +16,7 @@ export function BookDemoCal() {
       cal("on", {
         action: "bookingSuccessfulV2",
         callback: () => {
-          posthog.capture("demo_booking_completed");
+          capturePosthogEvent("demo_booking_completed");
           router.push("/book-demo/thank-you");
         },
       });

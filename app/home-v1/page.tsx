@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { JsonLd } from "@/components/JsonLd";
 import { FadeIn } from "@/components/FadeIn";
 import { Eyebrow } from "@/components/Eyebrow";
 import { SiteNav } from "@/components/SiteNav";
 import { SiteFooter } from "@/components/SiteFooter";
 import { BtnSolid } from "@/components/Button";
+import { TrackedLink } from "@/components/TrackedLink";
+import { APP_CTA_HREF, APP_CTA_LABEL } from "@/lib/cta";
+import { GET_STARTED_EVENT } from "@/lib/analytics";
 import { siteConfig } from "@/lib/metadata";
 
 export const metadata: Metadata = {
@@ -201,7 +203,7 @@ export default function Home() {
                 Proof Perimeter runs small, fine-tuned models on your most sensitive financial documents — entirely inside your environment, on commodity CPUs, live in weeks. 
               </p>
               <div className="hero-animate-cta mt-8 flex flex-wrap gap-3.5">
-                <BtnSolid href="/book-demo">Request a demo</BtnSolid>
+                <BtnSolid href={APP_CTA_HREF} trackEvent={GET_STARTED_EVENT}>{APP_CTA_LABEL}</BtnSolid>
                 {/* <BtnGhost href="#how">Free POC on your hardest documents</BtnGhost> */}
               </div>
               <div className="hero-animate-trust mt-8.5 flex flex-wrap gap-x-5 gap-y-2.5 pt-6">
@@ -284,7 +286,7 @@ export default function Home() {
               </div>
             </div>
             <div className="mt-10">
-              <BtnSolid href="/book-demo">Request a demo</BtnSolid>
+              <BtnSolid href={APP_CTA_HREF} trackEvent={GET_STARTED_EVENT}>{APP_CTA_LABEL}</BtnSolid>
             </div>
           </div>
         </section>
@@ -309,7 +311,7 @@ export default function Home() {
               </div>
             </div>
             <div className="mt-10">
-              <BtnSolid href="/book-demo">Request a demo</BtnSolid>
+              <BtnSolid href={APP_CTA_HREF} trackEvent={GET_STARTED_EVENT}>{APP_CTA_LABEL}</BtnSolid>
             </div>
           </div>
         </section>
@@ -331,7 +333,7 @@ export default function Home() {
               ))}
             </div>
             <div className="mt-10">
-              <BtnSolid href="/book-demo">Request a demo</BtnSolid>
+              <BtnSolid href={APP_CTA_HREF} trackEvent={GET_STARTED_EVENT}>{APP_CTA_LABEL}</BtnSolid>
             </div>
           </div>
         </section>
@@ -355,7 +357,7 @@ export default function Home() {
               Extraction accuracy is the price of entry. Proving where the model ran is the reason to buy.
             </blockquote>
             <div className="mt-10">
-              <BtnSolid href="/book-demo">Request a demo</BtnSolid>
+              <BtnSolid href={APP_CTA_HREF} trackEvent={GET_STARTED_EVENT}>{APP_CTA_LABEL}</BtnSolid>
             </div>
           </div>
         </section>
@@ -383,7 +385,7 @@ export default function Home() {
               ))}
             </div>
             <div className="mt-10">
-              <BtnSolid href="/book-demo">Request a demo</BtnSolid>
+              <BtnSolid href={APP_CTA_HREF} trackEvent={GET_STARTED_EVENT}>{APP_CTA_LABEL}</BtnSolid>
             </div>
           </div>
         </section>
@@ -412,7 +414,7 @@ export default function Home() {
               ))}
             </div>
             <div className="mt-10">
-              <BtnSolid href="/book-demo">Request a demo</BtnSolid>
+              <BtnSolid href={APP_CTA_HREF} trackEvent={GET_STARTED_EVENT}>{APP_CTA_LABEL}</BtnSolid>
             </div>
           </div>
         </section>
@@ -433,7 +435,7 @@ export default function Home() {
               ))}
             </div>
             <div className="mt-10">
-              <BtnSolid href="/book-demo">Request a demo</BtnSolid>
+              <BtnSolid href={APP_CTA_HREF} trackEvent={GET_STARTED_EVENT}>{APP_CTA_LABEL}</BtnSolid>
             </div>
           </div>
         </section>
@@ -476,7 +478,7 @@ export default function Home() {
               </ul>
             </div>
             <div className="mt-10">
-              <BtnSolid href="/book-demo">Request a demo</BtnSolid>
+              <BtnSolid href={APP_CTA_HREF} trackEvent={GET_STARTED_EVENT}>{APP_CTA_LABEL}</BtnSolid>
             </div>
           </div>
         </section>
@@ -494,12 +496,13 @@ export default function Home() {
                   Most vendors show you a demo on <em className="not-italic font-semibold">their</em> documents. We start with yours. The Sovereign-AI-Gap Audit gives you the figure no one can currently produce. The free blind benchmark shows we can close it. Neither requires moving a single document outside your environment.
                 </p>
                 <div className="mt-7 flex flex-wrap gap-3.5">
-                  <Link
-                    href="/book-demo"
+                  <TrackedLink
+                    href={APP_CTA_HREF}
+                    trackEvent={GET_STARTED_EVENT}
                     className="inline-flex items-center justify-center gap-2 rounded-[5px] bg-white px-4.5 py-2.75 text-[15px] font-semibold text-signal transition-colors hover:bg-[#E7F0F8]"
                   >
-                    Request a demo
-                  </Link>
+                    {APP_CTA_LABEL}
+                  </TrackedLink>
                 </div>
                 <p className="mt-4.5 font-mono text-xs text-[#A9C6E5]">
                   Both run on your data, in your environment, at no cost. A diagnostic, not a demo.
@@ -555,7 +558,7 @@ export default function Home() {
               Run the Sovereign-AI-Gap Audit, see your number, and watch a blind benchmark clear the accuracy bar on your worst documents — all without a single file leaving your environment. Then keep the inference where it belongs: on-device, with proof per document.
             </p> */}
             <div className="mt-8 flex flex-wrap justify-center gap-3.5">
-              <BtnSolid href="/book-demo">Request a demo</BtnSolid>
+              <BtnSolid href={APP_CTA_HREF} trackEvent={GET_STARTED_EVENT}>{APP_CTA_LABEL}</BtnSolid>
               {/* <BtnGhost href="#how">Free POC on your hardest documents</BtnGhost> */}
             </div>
           </div>

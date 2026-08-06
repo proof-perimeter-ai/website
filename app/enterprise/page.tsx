@@ -9,6 +9,7 @@ import { BtnSolid } from "@/components/Button";
 import { TestimonialCarousel } from "@/components/TestimonialCarousel";
 import { CustomerLogoMarquee } from "@/components/CustomerLogoMarquee";
 import { TrackedLink } from "@/components/TrackedLink";
+import { APP_CTA_HREF, APP_CTA_LABEL } from "@/lib/cta";
 import { GET_STARTED_EVENT, BOOK_DEMO_EVENT } from "@/lib/analytics";
 
 export const metadata: Metadata = {
@@ -332,12 +333,11 @@ export default function DocumentAiEnterprise() {
                     <td className="p-4.5" />
                     <td className="border-l border-line p-4.5">
                       <TrackedLink
-                        href="/#choose-your-path"
+                        href={APP_CTA_HREF}
                         trackEvent={GET_STARTED_EVENT}
                         className="text-[14.5px] font-semibold text-signal hover:text-signal-deep"
-                        hidden
                       >
-                        Get started for free
+                        {APP_CTA_LABEL}
                       </TrackedLink>
                     </td>
                     <td className="border-l border-signal/30 bg-signal/[0.03] p-4.5">

@@ -6,6 +6,7 @@ import { SiteNav } from "@/components/SiteNav";
 import { SiteFooter } from "@/components/SiteFooter";
 import { DeploymentTierTabs } from "@/components/DeploymentTierTabs";
 import { BtnSolid, BtnGhost } from "@/components/Button";
+import { APP_CTA_HREF, APP_CTA_LABEL } from "@/lib/cta";
 import { GET_STARTED_EVENT, BOOK_DEMO_EVENT } from "@/lib/analytics";
 
 export const metadata: Metadata = {
@@ -113,8 +114,9 @@ const tiers = [
       "Full provenance log on every document",
       "Community support",
     ],
-    cta: "Book Demo",
-    ctaEvent: BOOK_DEMO_EVENT,
+    cta: APP_CTA_LABEL,
+    ctaEvent: GET_STARTED_EVENT,
+    ctaHref: APP_CTA_HREF,
     feature: false,
   },
   {
@@ -132,6 +134,7 @@ const tiers = [
     ],
     cta: "Get in touch",
     ctaEvent: undefined,
+    ctaHref: "/book-demo",
     feature: true,
   },
 ];
@@ -224,8 +227,8 @@ export default function DocumentAi() {
                 Free with your own model key. Templates, workflows, confidence gates, human review, batch and API.
               </p>
               <div className="hero-animate-cta mt-8 flex flex-wrap gap-3.5">
-                <BtnSolid href="/book-demo" trackEvent={GET_STARTED_EVENT} hidden>Start free</BtnSolid>
-                <BtnSolid href="/book-demo" trackEvent={BOOK_DEMO_EVENT}>Book Demo</BtnSolid>
+                <BtnSolid href={APP_CTA_HREF} trackEvent={GET_STARTED_EVENT}>{APP_CTA_LABEL}</BtnSolid>
+                <BtnGhost href="/book-demo" trackEvent={BOOK_DEMO_EVENT}>Book Demo</BtnGhost>
               </div>
               <div className="hero-animate-trust mt-8.5 flex flex-wrap gap-x-5 gap-y-2.5 pt-6">
                 {["Free with your LLM Model key", "No document retention", "On-prem when you need it"].map((item) => (
@@ -375,9 +378,9 @@ export default function DocumentAi() {
                   </ul>
                   <div className="mt-6">
                     {tier.feature ? (
-                      <BtnSolid href="/book-demo" trackEvent={tier.ctaEvent}>{tier.cta}</BtnSolid>
+                      <BtnSolid href={tier.ctaHref} trackEvent={tier.ctaEvent}>{tier.cta}</BtnSolid>
                     ) : (
-                      <BtnGhost href="/book-demo" trackEvent={tier.ctaEvent}>{tier.cta}</BtnGhost>
+                      <BtnGhost href={tier.ctaHref} trackEvent={tier.ctaEvent}>{tier.cta}</BtnGhost>
                     )}
                   </div>
                 </div>
@@ -430,8 +433,8 @@ export default function DocumentAi() {
               Know where every document was processed.
             </h2>
             <div className="mt-8 flex flex-wrap justify-center gap-3.5">
-              <BtnSolid href="/book-demo" trackEvent={GET_STARTED_EVENT} hidden>Start free with your own key</BtnSolid>
-              <BtnSolid href="/book-demo" trackEvent={BOOK_DEMO_EVENT}>Book Demo</BtnSolid>
+              <BtnSolid href={APP_CTA_HREF} trackEvent={GET_STARTED_EVENT}>{APP_CTA_LABEL}</BtnSolid>
+              <BtnGhost href="/book-demo" trackEvent={BOOK_DEMO_EVENT}>Book Demo</BtnGhost>
             </div>
             <div className="mt-6.5 flex flex-wrap justify-center gap-x-5 gap-y-2.5">
               {["Free with your LLM Model key", "No document retention", "On-prem when you need it"].map((item) => (

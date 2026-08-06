@@ -3,8 +3,9 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import posthog from "posthog-js";
-import { BOOK_DEMO_EVENT } from "@/lib/analytics";
+import { APP_CTA_HREF, APP_CTA_LABEL } from "@/lib/cta";
+import { GET_STARTED_EVENT } from "@/lib/analytics";
+import { capturePosthogEvent } from "@/lib/posthog";
 
 export function MobileBookDemoCta() {
   const pathname = usePathname();
@@ -36,14 +37,14 @@ export function MobileBookDemoCta() {
       aria-hidden={!isPastFold}
     >
       <Link
-        href="/book-demo"
+        href={APP_CTA_HREF}
         onClick={() => {
-          posthog.capture("mobile_sticky_cta_clicked");
-          posthog.capture(BOOK_DEMO_EVENT);
+          capturePosthogEvent("mobile_sticky_cta_clicked");
+          capturePosthogEvent(GET_STARTED_EVENT);
         }}
         className="mobile-cta-shine relative isolate flex w-full items-center justify-center overflow-hidden rounded-[5px] bg-signal px-4.5 py-3 text-[15px] font-semibold text-white shadow-[0_-4px_20px_-6px_rgba(20,70,124,0.35)] transition-colors hover:bg-signal-deep"
       >
-        <span className="relative z-10">Book Demo</span>
+        <span className="relative z-10">{APP_CTA_LABEL}</span>
       </Link>
     </div>
   );

@@ -1,23 +1,21 @@
 "use client";
 
 import Link from "next/link";
-import posthog from "posthog-js";
+import { capturePosthogEvent } from "@/lib/posthog";
 
 export function TrackedLink({
   href,
   trackEvent,
   className,
-  hidden,
   children,
 }: {
   href: string;
   trackEvent: string;
   className?: string;
-  hidden?: boolean;
   children: React.ReactNode;
 }) {
   return (
-    <Link href={href} className={hidden ? "hidden" : className} onClick={() => posthog.capture(trackEvent)}>
+    <Link href={href} className={className} onClick={() => capturePosthogEvent(trackEvent)}>
       {children}
     </Link>
   );

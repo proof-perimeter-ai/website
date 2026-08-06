@@ -2,12 +2,12 @@
 
 import { getCalApi } from "@calcom/embed-react";
 import { useCallback, useEffect, useRef } from "react";
-import posthog from "posthog-js";
 import {
   CAL_POPUP_OPEN_INITIATED_EVENT,
   CAL_POPUP_OPENED_EVENT,
   CAL_POPUP_OPEN_FAILED_EVENT,
 } from "@/lib/analytics";
+import { capturePosthogEvent } from "@/lib/posthog";
 
 // If the user doesn't pick a slot within this window, treat the popup as
 // abandoned and move on (see plan: lead capture itself is the tracked
@@ -82,12 +82,12 @@ export function useCalPopup({ namespace, calLink, onBookingSuccess, onAbandoned 
       // for whether the popup actually opened.
       cal("on", {
         action: "linkReady",
-        callback: () => posthog.capture(CAL_POPUP_OPENED_EVENT),
+        callback: () => capturePosthogEvent(CAL_POPUP_OPENED_EVENT),
       });
       cal("on", {
         action: "linkFailed",
         callback: (event) =>
-          posthog.capture(CAL_POPUP_OPEN_FAILED_EVENT, {
+          capturePosthogEvent(CAL_POPUP_OPEN_FAILED_EVENT, {
             code: event.detail.data.code,
             message: event.detail.data.msg,
           }),
@@ -113,7 +113,7 @@ export function useCalPopup({ namespace, calLink, onBookingSuccess, onAbandoned 
       const isSmallScreen = window.matchMedia("(max-width: 639px)").matches;
       cal("ui", { hideEventTypeDetails: isSmallScreen, layout: "month_view" });
 
-      posthog.capture(CAL_POPUP_OPEN_INITIATED_EVENT, { email, cal_link: calLink });
+      capturePosthogEvent(CAL_POPUP_OPEN_INITIATED_EVENT, { email, cal_link: calLink });
 
       const name = `${firstName} ${lastName}`.trim();
       cal("modal", { calLink, config: { name, email, layout: "month_view" } });

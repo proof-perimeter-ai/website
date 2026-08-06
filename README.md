@@ -15,6 +15,8 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000).
 
+Set `NEXT_PUBLIC_APP_URL` if the website should send "Get Started for Free" CTAs to a non-default app onboarding URL.
+
 ## Commands
 
 | Command         | Description                  |
@@ -54,7 +56,7 @@ public/llms.txt              — site summary for AI/answer-engine crawlers
 
 See [AGENTS.md](./AGENTS.md) for more detailed architecture notes (animation patterns, design tokens, SEO/AEO conventions) aimed at coding agents working in this repo.
 
-"Get started for free" CTAs are currently hidden site-wide in favor of "Book Demo" as the sole primary CTA — see [docs/re-enable-get-started-cta.md](./docs/re-enable-get-started-cta.md) for how to bring them back.
+"Get Started for Free" CTAs route to the app onboarding flow via `NEXT_PUBLIC_APP_URL`, while Enterprise-specific CTAs continue to use `/book-demo`.
 
 ## Deployment
 

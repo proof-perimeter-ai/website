@@ -7,9 +7,10 @@ import { BlogHeader } from "@/components/BlogHeader";
 import { TableOfContents } from "@/components/TableOfContents";
 import { RelatedPosts } from "@/components/RelatedPosts";
 import { BtnSolid } from "@/components/Button";
+import { APP_CTA_HREF, APP_CTA_LABEL } from "@/lib/cta";
 import { siteConfig } from "@/lib/metadata";
 import { getAllPosts, getPostBySlug, getRelatedPosts } from "@/lib/blog";
-import { BOOK_DEMO_EVENT } from "@/lib/analytics";
+import { GET_STARTED_EVENT } from "@/lib/analytics";
 
 export const dynamicParams = false;
 
@@ -128,8 +129,8 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
               <p className="m-0 text-[15.5px] text-ink-2">
                 Proof Perimeter runs document AI inside your own perimeter — with a provenance record on every field.
               </p>
-              <BtnSolid href="/book-demo" trackEvent={BOOK_DEMO_EVENT}>
-                Book Demo
+              <BtnSolid href={APP_CTA_HREF} trackEvent={GET_STARTED_EVENT}>
+                {APP_CTA_LABEL}
               </BtnSolid>
             </div>
           </div>

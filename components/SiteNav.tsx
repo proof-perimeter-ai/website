@@ -1,8 +1,12 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { ChevronDown, Landmark, Briefcase, ShieldCheck, Scale, HeartPulse } from "lucide-react";
 import { BrandMark } from "@/components/BrandMark";
 import { MobileNav } from "@/components/MobileNav";
 import { TrackedLink } from "@/components/TrackedLink";
+import { APP_CTA_EVENT, APP_CTA_HREF, APP_CTA_LABEL } from "@/lib/cta";
 import { BOOK_DEMO_EVENT } from "@/lib/analytics";
 
 const industries = [
@@ -14,6 +18,9 @@ const industries = [
 ];
 
 export function SiteNav() {
+  const pathname = usePathname();
+  const isEnterprisePage = pathname === "/enterprise";
+
   return (
     <header className="sticky top-0 z-50 border-b border-line bg-paper/85 backdrop-blur-sm">
       <div className="mx-auto flex h-[68px] max-w-[1120px] items-center justify-between px-7">
@@ -60,11 +67,11 @@ export function SiteNav() {
         </nav>
         <div className="flex items-center gap-2">
           <TrackedLink
-            href="/book-demo"
-            trackEvent={BOOK_DEMO_EVENT}
-            className="hidden rounded-[5px] bg-signal px-4.5 py-2.5 text-[15px] font-semibold text-white hover:bg-signal-deep transition-colors md:inline-flex"
+            href={isEnterprisePage ? "/book-demo" : APP_CTA_HREF}
+            trackEvent={isEnterprisePage ? BOOK_DEMO_EVENT : APP_CTA_EVENT}
+            className="hidden shrink-0 items-center justify-center self-center rounded-[5px] bg-signal px-3.5 py-2 text-[13.5px] font-semibold leading-none text-white transition-colors hover:bg-signal-deep md:inline-flex lg:px-4 lg:py-2.25 lg:text-[14px]"
           >
-            Book Demo
+            {isEnterprisePage ? "Book Demo" : APP_CTA_LABEL}
           </TrackedLink>
           <MobileNav />
         </div>
