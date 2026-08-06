@@ -1,0 +1,89 @@
+---
+title: "Why Cloud Document AI APIs Are a Compliance Risk for Banks and Insurers"
+slug: "cloud-document-ai-compliance-risk"
+description: "DORA, RBI's outsourcing rules, and SAMA's Cloud Computing Framework all reach past where a document is stored to where the AI reading it actually runs."
+banner:
+  src: "/assets/blog/cloud-document-ai-compliance-risk/banner.png"
+  alt: "Split diagram of a document routed to an external cloud API endpoint, flagged against a shield representing regulatory compliance"
+  width: 1600
+  height: 900
+category: "Compliance"
+tags: ["cloud document ai", "compliance risk", "data residency", "zero-egress deployment", "regulated documents"]
+authorId: "gaurav"
+createdAt: "2026-08-05"
+updatedAt: "2026-08-05"
+relatedPosts: ["sovereign-ai-gap", "what-is-azure-ai-document-intelligence", "what-is-google-document-ai"]
+status: "published"
+primaryKeyword: "cloud document ai compliance risk"
+cluster: "B"
+---
+
+A bank's procurement team can spend months vetting a document AI vendor's SOC 2 report, its data processing addendum, and its regional storage guarantee — and still sign a contract that creates a genuine cloud document AI compliance risk, because none of those documents answer the one question that actually matters: where does the model run when it reads a KYC packet or a loan file? Cloud document AI APIs are built to answer "is my data stored securely," not "who else's infrastructure touched this document, and under which jurisdiction's law." For a bank, insurer, or lender, that gap is not a hypothetical. It is exactly the kind of chain-of-custody question regulators from Brussels to Riyadh to Mumbai are now asking directly.
+
+## Why Is a Cloud Document AI API a Compliance Risk for Regulated Industries?
+
+The risk isn't that cloud document AI is inaccurate or unreliable — most cloud vendors' extraction quality is genuinely strong. The risk is architectural: a cloud API, by design, sends a document (or its rendered pixels) to infrastructure the customer doesn't control, operated by a company the customer may not have a direct contract with at all.
+
+### The Architecture Behind Every "Cloud API" Call
+
+Underneath the marketing, most cloud document AI products work the same way: a document is uploaded, optionally staged in a customer's chosen region, then sent — usually as an API payload — to a model-serving endpoint that performs the actual extraction. That endpoint's physical location, operator, and sub-processor chain are frequently not disclosed at the same level of detail as the storage layer's. If the platform is itself built on a third-party frontier model, the platform vendor is functionally reselling that model provider's inference, and the model provider's terms — not necessarily the platform's — govern where the computation runs.
+
+### Storage Compliance Isn't Inference Compliance
+
+This is the same distinction we cover in more depth in [our explainer on the sovereign AI gap](/blog/sovereign-ai-gap): data residency describes where a document sits at rest, and inference residency describes where the model actually executes when it reads that document. A vendor can satisfy the first while never being asked about the second — which is precisely how a technically "compliant" cloud document AI deployment can still create real regulatory exposure.
+
+## What Do Regulators Actually Require Once a Document Reaches a Cloud API?
+
+Four regulatory regimes, across four different regions, are converging on the same underlying expectation: an institution has to account for where a document is processed, not just where it's filed.
+
+### The EU: DORA Holds the Institution Responsible, Not the Vendor
+
+Under [Regulation (EU) 2022/2554](https://eur-lex.europa.eu/eli/reg/2022/2554/oj/eng), the Digital Operational Resilience Act, Article 28(1)(a) states that financial entities using ICT services "shall, at all times, remain fully responsible for compliance with, and the discharge of, all obligations" — regardless of what's been outsourced. A cloud document AI vendor's own compliance posture doesn't transfer to the bank that hired it; the full third-party chain, inference included, stays the institution's problem to document and defend.
+
+### India: RBI's Outsourcing Rules Treat Cross-Border Processing as the Exception, Not the Default
+
+The Reserve Bank of India's Master Direction on Outsourcing of Information Technology Services takes a stricter starting position: cross-border storage or duplication of regulated data is prohibited by default, permitted only under specifically approved exceptional circumstances, as [legal analysis of the 2023 direction](https://treelife.in/legal/rbi-outsourcing-of-information-technology-services-master-directions-2023/) lays out. A US- or EU-hosted cloud document AI endpoint processing an Indian bank's KYC documents sits squarely inside that restriction — and the RBI's 2025 directions extending the same outsourcing-risk framework to NBFCs make clear this isn't a one-off rule, it's the regulator's standing posture on where regulated data can be sent for processing.
+
+### Saudi Arabia: SAMA's Cloud Computing Framework Makes In-Kingdom Hosting the Default
+
+Saudi Arabia's central bank goes further still. Under SAMA's Cloud Computing Framework, banks and other supervised financial institutions are expected to keep customer data, transaction records, and business-continuity backups on infrastructure physically located within Saudi Arabia, with cross-border transfers permitted only where an institution can demonstrate operational necessity and document the transfer in a risk register reviewed during regulatory examinations, per a [compliance analysis of the framework's in-Kingdom hosting requirements](https://www.kiteworks.com/regulatory-compliance/sama-data-sovereignty-hosting-compliance/). A cloud document AI API routing a Saudi bank's loan file to an offshore inference endpoint isn't a gray area under this framework — it's the exception SAMA expects an institution to justify, not the default it can assume.
+
+### Singapore: MAS Is Making AI Risk Its Own Compliance Domain
+
+The Monetary Authority of Singapore's revised Outsourcing Guidelines, effective December 2024, already require stronger due diligence and a maintained register of third-party data flows for anything routed through cloud infrastructure. In November 2025, MAS went a step further with a consultation paper on Guidelines for Artificial Intelligence Risk Management that names data governance — lineage and provenance specifically — as a foundational AI risk domain in its own right, separate from general outsourcing risk. That's a regulator explicitly signaling that "where did this document go for AI processing" is becoming its own line item, not a subset of a broader cloud-vendor review.
+
+## How Do Analysts Rate Cloud-First Document AI Vendors on Deployment Flexibility?
+
+Gartner's [inaugural Magic Quadrant for Intelligent Document Processing Solutions](https://www.gartner.com/en/documents/6912666), published September 2025, evaluated 18 vendors and is worth reading with this exact question in mind. As covered in our [Azure AI Document Intelligence](/blog/what-is-azure-ai-document-intelligence) and [Google Document AI](/blog/what-is-google-document-ai) explainers, both hyperscalers land as Challengers rather than Leaders in that report — and both offer, at best, a gated or partial on-premise path rather than a zero-egress default. That's not a coincidence: a document AI product built cloud-first has to retrofit deployment flexibility after the fact, and retrofits show up as friction — request forms, commitment tiers, disconnected-container purchases — exactly where a bank's compliance team needs a clean answer.
+
+Most vendor documentation is written to answer a developer's question: which endpoint to call, how to parse the response, how to chain API calls together. It rarely answers the question a compliance officer actually needs answered: what happens to this document, physically, between upload and structured output. Proof Perimeter's fine-tuned document AI models are built to close that specific gap — they run classification, extraction, and validation inside a bank, insurer, or lender's own environment as the default deployment, whether that's cloud-hosted, within the customer's own infrastructure, or fully on-premise on commodity CPUs, so there's no cross-border inference call to justify to an examiner in the first place.
+
+On Proof Perimeter's internal benchmarks, that fine-tuned model also delivers 20% higher accuracy and 50% lower token consumption than general-purpose frontier models on the same document-extraction tasks — so closing the compliance gap doesn't come at the cost of the accuracy a KYC or underwriting workflow actually needs. Every extracted field carries [provenance](/glossary/data-lineage-in-document-processing): a record of what the model saw and decided, which is the artifact an examiner asks for when a regional storage certificate isn't the question being asked.
+
+## A Practical Checklist: Evaluating Cloud API Compliance Risk Before You Sign
+
+- **Ask where inference physically runs**, separately from where data is stored — get both commitments in writing, not just the storage one.
+- **Trace the full sub-processor chain.** If the platform is built on a third-party frontier model, that provider's [data residency](/glossary/data-residency-in-document-ai) terms apply too, not just the platform vendor's.
+- **Check your regulator's specific posture on cross-border processing**, not a generic privacy checklist — RBI, SAMA, and MAS each treat it differently, and "GDPR-compliant" doesn't automatically satisfy any of the three.
+- **Ask for a [provenance record](/glossary/document-audit-trail), not just a [SOC 2 report](/glossary/soc-2-document-controls).** A control framework describes the program; a per-document, per-field record is what proves a specific document's inference actually happened where the vendor claims.
+- **Confirm whether on-premise is a default architecture or an approved exception** — the difference between the two shows up in your contract negotiation, not just your technical review.
+
+A [demo call](/book-demo) is a more direct way to get these answers than a vendor's compliance FAQ page — bring a real KYC packet or claims file and ask, specifically, where the extraction runs.
+
+## Frequently Asked Questions
+
+### Is storing documents in-region enough if the AI processing itself runs elsewhere?
+
+No, for most regulators covered above. Data residency governs where a document is stored; it says nothing about where the model that reads it actually executes. DORA, RBI's outsourcing rules, SAMA's Cloud Computing Framework, and MAS's emerging AI risk guidance all extend accountability to the processing step, not just storage.
+
+### Does using a cloud document AI API always violate compliance rules?
+
+Not automatically — regulators generally permit cloud processing with the right safeguards, documented exceptions, or approved cross-border transfer justification. The risk is assuming a storage-focused compliance review already covers inference; in most of the frameworks above, it explicitly doesn't.
+
+### What's the fastest way to check a vendor's actual compliance exposure?
+
+Ask directly where inference runs, request the full sub-processor chain if the platform is built on a third-party model, and ask for a per-field provenance record rather than relying on a SOC 2 report or regional-storage attestation alone — those documents were written to answer a narrower question than the one your regulator is now asking.
+
+## The Takeaway
+
+A cloud document AI API's compliance risk isn't about accuracy — it's about architecture. Every document sent to a third-party inference endpoint is a chain-of-custody question a regulator can ask about later, and a regional storage guarantee doesn't answer it. DORA, RBI, SAMA, and MAS all reach further than storage location, each in its own way, and that reach is the actual thing to evaluate before signing — not the accuracy demo.
