@@ -1,13 +1,12 @@
 import type { Metadata } from "next";
 import Script from "next/script";
 import { IBM_Plex_Serif, IBM_Plex_Mono } from "next/font/google";
-import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
+import { GoogleTagManager } from "@next/third-parties/google";
 import { JsonLd } from "@/components/JsonLd";
 import { MobileBookDemoCta } from "@/components/MobileBookDemoCta";
 import { siteConfig } from "@/lib/metadata";
 import "./globals.css";
 
-const GA_MEASUREMENT_ID = "G-LX9SVDZ842";
 const GTM_ID = "GTM-P22VGXKT";
 
 const plexSerif = IBM_Plex_Serif({
@@ -104,7 +103,6 @@ export default function RootLayout({
         {children}
         <MobileBookDemoCta />
       </body>
-      <GoogleAnalytics gaId={GA_MEASUREMENT_ID} />
     </html>
   );
 }

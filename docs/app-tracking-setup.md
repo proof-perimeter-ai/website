@@ -4,7 +4,7 @@ This is a copy-paste guide for wiring up conversion/analytics tracking on the **
 
 Everything below is vanilla HTML/JS (`<script>` tags), since the app's framework isn't known yet — adapt the placement to wherever the app's root `<head>` is (root layout, `index.html`, `_document`, etc.) if it turns out to be a framework with its own script-injection convention.
 
-Your prepared list of in-app funnel events (signup, activation, etc.) is out of scope here — this doc only covers the three tags to install and the one new Google Ads conversion action for signup.
+Your prepared list of in-app funnel events (signup, activation, etc.) is out of scope here — this doc only covers the two tags to install and the one new Google Ads conversion action for signup. GA4 is not covered separately below — it's already configured as a tag inside the GTM container, so it needs no code of its own; just make sure the GTM container's GA4 configuration tag fires on `app.proofperimeter.com` too (and that a data stream for that hostname exists under the GA4 property).
 
 ## 1. Google Tag Manager (GTM)
 
@@ -33,28 +33,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 ```
 
-## 2. Google Analytics 4 (GA4)
-
-Reuses the marketing site's property/measurement ID: **`G-LX9SVDZ842`**.
-
-> Before deploying: in GA4 admin, add a new **data stream** for `app.proofperimeter.com` under this same property (Admin → Data Streams → Add stream), so app traffic is attributed to its own hostname while still counting toward the same property/user journey.
-
-Add after the GTM snippet in `<head>`:
-
-```html
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-LX9SVDZ842"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-LX9SVDZ842');
-</script>
-```
-
-(If GTM is already firing a GA4 config tag internally, this direct snippet is redundant — either configure GA4 as a tag inside the GTM container, or use this direct snippet and skip the GTM-side GA4 config. Don't do both, or pageviews double-count.)
-
-## 3. Google Ads conversion — Signup
+## 2. Google Ads conversion — Signup
 
 This needs a **new conversion action** in Google Ads, kept separate from the existing "Book a Demo" conversion (`AW-18327393246/CheQCMCutdEcEN6nl6NE`, value 10.0 INR) so Ads can report and bid on signup and demo-booking independently.
 
@@ -68,19 +47,7 @@ This needs a **new conversion action** in Google Ads, kept separate from the exi
 
 ### Fire it on signup completion
 
-Place this call at the moment a signup is confirmed (e.g. right after account creation succeeds, same spot your PostHog `app_signup_completed`-equivalent event fires):
-
-```html
-<script>
-  gtag('event', 'conversion', {
-    'send_to': 'AW-18327393246/REPLACE_WITH_NEW_SIGNUP_LABEL',
-    'value': 5.0,
-    'currency': 'INR'
-  });
-</script>
-```
-
-If GTM is the source of truth instead of calling `gtag` directly, push a custom event to the `dataLayer` and set up a GTM trigger + "Google Ads Conversion Tracking" tag off it instead:
+Since GA4/Ads run through GTM here (no direct `gtag.js` include, so no global `gtag()` function to call), push a custom event to the `dataLayer` instead, at the moment a signup is confirmed (e.g. right after account creation succeeds, same spot your PostHog `app_signup_completed`-equivalent event fires):
 
 ```html
 <script>
@@ -93,7 +60,9 @@ If GTM is the source of truth instead of calling `gtag` directly, push a custom 
 </script>
 ```
 
-## 4. PostHog — init script only
+Then in GTM: add a trigger that fires on the custom event `app_signup_completed`, and a **"Google Ads Conversion Tracking"** tag using that trigger, with Conversion ID `AW-18327393246` and the label copied from the conversion action created above.
+
+## 3. PostHog — init script only
 
 Reuses the marketing site's PostHog **project** (same `NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN` / `NEXT_PUBLIC_POSTHOG_HOST` values from `website/.env.local`, so anonymous marketing-site sessions merge with authenticated app sessions under one project). Pull the actual token/host values from `.env.local` — they're gitignored and not reproduced here.
 
@@ -117,6 +86,5 @@ Paste in `<head>`, as early as possible:
 |---|---|
 | GTM head snippet | Top of `<head>`, before everything else |
 | GTM noscript iframe | Immediately after opening `<body>` |
-| GA4 gtag.js | `<head>`, after GTM (skip if GA4 is configured as a tag inside GTM instead) |
-| Google Ads signup conversion | Fired in app code at signup-success, not a static tag |
+| Google Ads signup conversion | `dataLayer.push` fired in app code at signup-success; picked up by a GTM trigger/tag, not a static `<head>` script |
 | PostHog init | `<head>`, as early as possible |
