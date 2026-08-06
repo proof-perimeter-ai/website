@@ -71,7 +71,7 @@ export function SiteNav() {
             trackEvent={isEnterprisePage ? BOOK_DEMO_EVENT : APP_CTA_EVENT}
             className="hidden shrink-0 items-center justify-center self-center rounded-[5px] bg-signal px-3.5 py-2 text-[13.5px] font-semibold leading-none text-white transition-colors hover:bg-signal-deep md:inline-flex lg:px-4 lg:py-2.25 lg:text-[14px]"
           >
-            {isEnterprisePage ? "Book Demo" : "Sign Up"}
+            {isEnterprisePage ? "Book Demo" : APP_CTA_LABEL}
           </TrackedLink>
           <MobileNav />
         </div>
