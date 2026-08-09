@@ -1,5 +1,6 @@
 import { ImageResponse } from "next/og";
 import { siteConfig } from "@/lib/metadata";
+import { brandColors } from "@/lib/colors";
 
 export const alt = siteConfig.name;
 export const size = {
@@ -19,9 +20,8 @@ export default function Image() {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          background: "#F7FAFB",
-          backgroundImage:
-            "radial-gradient(circle, #C6D1D8 2px, transparent 2px)",
+          background: brandColors.paper,
+          backgroundImage: `radial-gradient(circle, ${brandColors.lineMuted} 2px, transparent 2px)`,
           backgroundSize: "40px 40px",
         }}
       >
@@ -30,7 +30,7 @@ export default function Image() {
             display: "flex",
             fontSize: 72,
             fontWeight: 700,
-            color: "#12161A",
+            color: brandColors.ink,
           }}
         >
           {siteConfig.name}
@@ -40,7 +40,7 @@ export default function Image() {
             display: "flex",
             marginTop: 24,
             fontSize: 32,
-            color: "#52606A",
+            color: brandColors.inkMuted,
           }}
         >
           {siteConfig.tagline}
