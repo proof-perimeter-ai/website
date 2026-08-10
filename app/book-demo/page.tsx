@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
+import { JsonLd } from "@/components/JsonLd";
 import { BookDemoFlow } from "@/components/BookDemoFlow";
 import { BookDemoIntro } from "@/components/BookDemoIntro";
 import { SiteNav } from "@/components/SiteNav";
 import { SiteFooter } from "@/components/SiteFooter";
+import { siteConfig } from "@/lib/metadata";
 
 const DEFAULT_CAL_LINK = "gaurav-bu/30min";
 
@@ -13,11 +15,21 @@ export const metadata: Metadata = {
   alternates: { canonical: "/book-demo" },
 };
 
+const breadcrumbJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: siteConfig.url },
+    { "@type": "ListItem", position: 2, name: "Book a Demo", item: `${siteConfig.url}/book-demo` },
+  ],
+};
+
 export default function BookDemo() {
   const calLink = process.env.CAL_LINK || DEFAULT_CAL_LINK;
 
   return (
     <>
+      <JsonLd data={breadcrumbJsonLd} />
       <SiteNav />
       <main className="flex-1">
         <section className="py-22">

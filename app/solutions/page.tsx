@@ -8,7 +8,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { siteConfig } from "@/lib/metadata";
 
 export const metadata: Metadata = {
-  title: "Solutions",
+  title: "Document AI Solutions by Industry",
   description:
     "Document AI for regulated, high-risk document workflows across banking, financial services, insurance, legal, and healthcare — with field-level provenance.",
   alternates: { canonical: "/solutions" },
