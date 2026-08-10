@@ -1,0 +1,89 @@
+---
+title: "DORA Compliance for Document AI: What EU and UK Financial Institutions Must Prove"
+slug: "dora-compliance-document-ai"
+description: "DORA's Article 30 and its new subcontracting RTS reach past data storage into where a document AI vendor's model actually runs — here's what to prove."
+banner:
+  src: "/assets/blog/dora-compliance-document-ai/banner.png"
+  alt: "Shield-and-checklist diagram representing DORA regulatory compliance for a document AI vendor contract"
+  width: 1600
+  height: 900
+category: "Compliance"
+tags: ["DORA", "document AI compliance", "ICT third-party risk", "regulated documents", "EU AI Act"]
+authorId: "gaurav"
+createdAt: "2026-08-10"
+updatedAt: "2026-08-10"
+relatedPosts: ["cloud-document-ai-compliance-risk", "sovereign-ai-gap", "document-ai-deployment-models"]
+status: "published"
+primaryKeyword: "DORA compliance for document AI"
+cluster: "E"
+---
+
+Since January 17, 2025, DORA compliance for document AI hasn't been optional for any bank, insurer, or lender operating in the EU or UK — the Digital Operational Resilience Act is in full force, and it treats a document AI vendor exactly like any other ICT third party. That reclassification changes what a procurement team has to get in writing before signing. A vendor's SOC 2 report and a data-residency clause used to be the finish line for a compliance review; under DORA, they're the starting point. This guide walks through what Regulation (EU) 2022/2554 actually requires from a document AI vendor, article by article, and what a financial institution has to be able to prove if a supervisor asks.
+
+## What Is DORA, and Why Does It Cover Document AI Vendors?
+
+[Regulation (EU) 2022/2554](https://eur-lex.europa.eu/eli/reg/2022/2554/oj/eng), the Digital Operational Resilience Act, entered into force in January 2023 and became fully applicable on January 17, 2025. It rests on a simple premise: a bank's operational resilience is only as strong as the ICT providers it depends on, so the regulation extends oversight requirements onto that third-party layer rather than leaving it to each institution's discretion.
+
+A document AI platform — anything that classifies, extracts, or reads a KYC packet, a loan file, or a claims bundle — is an ICT service under DORA's definition the moment it touches a regulated document for a bank, insurer, investment firm, or payment institution operating in the EU or UK. There's no carve-out for "just an AI feature." If the function supports the institution's business, the vendor providing it sits inside DORA's third-party risk framework, and the institution — not the vendor — carries the compliance obligation. The burden of proof sits with the bank, not the vendor's marketing page.
+
+## What Does DORA Compliance for Document AI Actually Require in a Contract?
+
+Article 30 is where DORA gets specific about what has to be in writing, structured as two tiers rather than one flat checklist.
+
+### The Baseline Every Document AI Contract Needs
+
+Every ICT service contract has to specify, at minimum: a complete description of the functions and services provided, whether subcontracting is permitted, the locations where the service is performed and **where data is processed and stored**, and provisions guaranteeing data availability, authenticity, integrity, and confidentiality. Procurement teams most often gloss over that third point: "where data is processed" is a distinct, separately required disclosure from "where data is stored" — a vendor that can name a storage region but not an inference region hasn't met this baseline, even if its sales team treats the two as interchangeable.
+
+### The Enhanced Tier for "Critical or Important" Functions
+
+If the document AI function supports something DORA classifies as critical or important — most KYC, underwriting, and claims-adjudication workflows do — the contract has to go further: exit strategies if the relationship ends, full audit and inspection rights for the institution and its regulators, defined service levels, and participation in the institution's testing and incident-response programs. A vendor that can't commit to audit access for a regulator, not just the customer, doesn't meet this bar — standard cloud API terms were rarely written with that clause in mind.
+
+## What Is the DORA Register of Information, and Why Does It Matter Here?
+
+Article 28(3) requires every in-scope financial entity to maintain and annually update a register of information covering every contractual arrangement with every ICT third-party provider, distinguishing which support critical or important functions. That register isn't an internal spreadsheet — since 2025, entities submit it in a structured, machine-readable format to their national competent authority, which reports it onward to the European Supervisory Authorities. A document AI vendor a bank hasn't formally logged is a live compliance gap the moment the annual submission is due, independent of whether the vendor has done anything wrong — and where "shadow AI" turns into direct liability: a business unit's unapproved document AI tool is a register entry that doesn't exist yet.
+
+## How Does the New Subcontracting RTS Affect Platforms Built on a Third-Party Model?
+
+Article 30(5) tasked the European Supervisory Authorities with writing binding technical standards for subcontracting ICT services that support critical or important functions. That process finished in 2025: the [ESAs' joint final report on the subcontracting RTS](https://www.eba.europa.eu/publications-and-media/press-releases/esas-published-joint-final-report-draft-technical-standards-subcontracting-under-dora) was published in July 2024, and the European Commission formally adopted the standard the following spring. It requires a financial entity to assess subcontracting risk during pre-contractual due diligence and keep visibility into the full subcontracting chain, not just its direct vendor.
+
+That standard matters more for document AI than for most ICT categories, because so much of the market is built on a reselling layer: a platform vendor wraps a general-purpose frontier model from a separate provider and sells the combination as its own product. Under the finalized RTS, that frontier-model provider is a subcontractor the institution now has to map and keep current — and the platform's own terms don't automatically cover what the model provider's terms say about data handling or where inference executes. A one-line "we use industry-leading AI models" disclosure doesn't satisfy a subcontracting assessment; it's the start of one.
+
+## Does DORA's Audit Right Actually Reach a Cloud Document AI Vendor's Sub-Processors?
+
+On paper, yes — Article 30's enhanced tier extends audit and inspection rights through the subcontracting chain for critical functions, not just the first vendor. In practice, this is where most document AI contracts fall short. A platform built on a licensed frontier model typically can't grant audit access to that model provider's infrastructure, because it doesn't have that access itself — it's reselling an API relationship, not operating the inference layer it's promising to make auditable. That's the "operating model, not toolkit capability" question worth asking before a vendor goes into the register at all: does it actually operate the environment the document is processed in, or is "our AI model" a euphemism for a subcontractor it can't fully open up when a regulator asks?
+
+Proof Perimeter's fine-tuned document AI models are built so that question has a direct answer: inference runs inside the bank, insurer, or lender's own environment — cloud-hosted, within the customer's infrastructure, or fully on-premise on commodity CPUs — so there's no third-party model subcontractor between the institution and the document being read, and no chain to map. On Proof Perimeter's internal benchmarks, that fine-tuned model delivers 20% higher accuracy and 50% lower token consumption than general-purpose frontier models on the same document-extraction tasks, with field-level [provenance](/glossary/data-lineage-in-document-processing) attached to every extracted value — the record that satisfies Article 30's audit and inspection provisions directly, rather than negotiating access to a subcontractor an institution may never even learn the identity of.
+
+## How Does DORA Interact With the EU AI Act for a Document AI Deployment?
+
+DORA and the EU AI Act run on separate legal tracks — different triggers, different authorities, different timelines — but for a document AI system used in a regulated decision, they converge on one artifact: a record of what the system did and why. DORA's ICT risk framework asks an institution to demonstrate operational control over systems it depends on; the AI Act's human-oversight and logging obligations for high-risk systems ask for much the same evidence, from a different angle. A vendor that treats [audit-ready documentation](/glossary/audit-ready-document-workflows) and [confidence scoring](/blog/confidence-scoring-document-extraction) as first-class output answers both regulations with one underlying record, instead of building two compliance layers for one deployment.
+
+## A Practical DORA Readiness Checklist for Document AI Procurement
+
+A short checklist covers most of what DORA compliance for document AI actually comes down to in a vendor contract:
+
+- **Get the processing location in writing, separately from the storage location** — a vendor that discloses only one hasn't met Article 30's baseline.
+- **Confirm which tier applies.** Most KYC, underwriting, and claims workflows count as critical or important, triggering audit rights and exit-strategy commitments.
+- **Ask for the full subcontracting chain**, including any underlying frontier-model provider, before the vendor goes into the register of information — not after an examiner asks.
+- **Verify the audit right is real.** Can the vendor grant inspection access to where inference actually happens, or only to the layer it directly controls?
+- **Check whether [SOC 2 controls](/glossary/soc-2-document-controls) and [data-residency](/glossary/data-residency-in-document-ai) commitments cover inference, not just storage** — DORA reaches further than either document typically does alone.
+
+A [demo call](/book-demo) is a faster way to test these answers than a compliance FAQ — bring a KYC packet or claims file and ask, specifically, who the subcontracting chain includes and where the model runs. For the broader architecture question, [the sovereign AI gap](/blog/sovereign-ai-gap) and [our checklist for cloud document AI compliance risk](/blog/cloud-document-ai-compliance-risk) cover related ground in more depth.
+
+## Frequently Asked Questions
+
+### Does DORA apply to a document AI vendor even if it's not itself a regulated financial entity?
+
+Yes. DORA regulates financial entities directly, but requires them to impose specific contractual and oversight obligations on every ICT third party they use — document AI vendors included, regardless of the vendor's own regulatory status.
+
+### Is a SOC 2 report enough to satisfy DORA's requirements for a document AI vendor?
+
+No. SOC 2 speaks to security controls and operations; it doesn't address DORA's contractual requirements around processing location, subcontracting-chain visibility, or audit rights reaching through to sub-processors. Institutions need those provisions in the contract itself, not inferred from a certification.
+
+### What happens if a bank hasn't logged a document AI vendor in its register of information?
+
+It's a direct compliance gap under Article 28(3), independent of whether the vendor itself is performing well. Financial institutions must submit a complete, annually updated register of all ICT third-party arrangements to their competent authority — an unlogged vendor is a finding waiting to happen, not a hypothetical risk.
+
+## The Takeaway
+
+DORA compliance for document AI isn't a single document a vendor can hand over — it's a contract structure: processing location disclosed separately from storage, subcontracting chains mapped and assessed under the finalized RTS, and audit rights that actually reach the environment where a document is read, not just the layer a vendor is willing to show. A platform that runs inference inside the institution's own perimeter closes most of these questions by removing the subcontracting chain rather than trying to make it auditable after the fact — a simpler compliance story than negotiating access to infrastructure a vendor doesn't control in the first place.
