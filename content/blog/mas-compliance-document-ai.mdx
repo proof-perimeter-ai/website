@@ -1,0 +1,87 @@
+---
+title: "MAS Compliance for Document AI: What Singapore Financial Institutions Must Prove"
+slug: "mas-compliance-document-ai"
+description: "MAS Notice 658 mandates a semi-annual outsourcing register; its 2025 AI Risk Management Guidelines add data lineage as a named control — what to prove."
+banner:
+  src: "/assets/blog/mas-compliance-document-ai/banner.png"
+  alt: "Split diagram of a document routed through Singapore's MAS outsourcing register and AI risk management review, flagged against a compliance checklist"
+  width: 1600
+  height: 900
+category: "Compliance"
+tags: ["MAS", "document AI compliance", "outsourcing guidelines", "regulated documents", "AI risk management"]
+authorId: "gaurav"
+createdAt: "2026-08-13"
+updatedAt: "2026-08-13"
+relatedPosts: ["cloud-document-ai-compliance-risk", "dora-compliance-document-ai", "sovereign-ai-gap"]
+status: "published"
+primaryKeyword: "MAS compliance for document AI"
+cluster: "E"
+---
+
+Since December 11, 2024, MAS compliance for document AI hasn't been a theoretical question for any bank or merchant bank operating in Singapore — that's when [MAS Notice 658](https://www.mas.gov.sg/regulation/notices/notice-658) took effect, folding every AI-driven document tool into the Monetary Authority of Singapore's outsourcing risk regime. A year later, MAS went further: a November 2025 consultation on AI-specific risk management guidance names data lineage and provenance as a control in their own right, not a subset of general vendor due diligence. Together, the two regimes ask a procurement team to answer a question a storage-region attestation was never built to answer: not just where a KYC packet or loan file sits, but what happens to it once an AI model reads it, and who can prove that after the fact.
+
+## What Is MAS, and Why Does It Regulate Document AI Vendors?
+
+The Monetary Authority of Singapore is both the country's central bank and its integrated financial regulator, overseeing banks, insurers, payment institutions, and capital markets services firms under one roof. That combined mandate is why MAS's outsourcing rules reach further than a typical banking regulator's: any document-processing tool that classifies, extracts, or reads a regulated document on behalf of a Singapore financial institution is, by MAS's own definition, an outsourced relevant service — regardless of whether the vendor itself holds any license. A document AI platform doesn't need to be a fintech to fall inside MAS's scope; it just needs to touch a KYC packet, a claims file, or a loan document that an MAS-regulated entity is responsible for. That's the starting premise behind MAS compliance for document AI: the obligation sits with the institution, but the evidence has to come from the vendor.
+
+## What Do MAS's Outsourcing Notices Require From a Document AI Vendor's Contract?
+
+MAS Notice 658 governs banks; the near-identical Notice 1121 covers merchant banks. Both became effective December 11, 2024, after being issued a year earlier, and both replace the older, more general outsourcing guidelines with binding requirements a contract has to meet.
+
+### The Baseline: Due Diligence and the Outsourcing Register
+
+Every institution has to maintain an Outsourcing Register — a structured record, built against MAS's own Outsourcing Register Template, of every outsourced relevant service and the provider behind it. That register isn't filed once: institutions submit it to MAS semi-annually and upon request, which means a document AI vendor's contractual details, subcontracting arrangements, and data-handling commitments are reviewed by the regulator on a recurring cycle, not just at onboarding. A vendor that can't produce clean, current answers to those questions becomes a standing item on a bank's own compliance workload, twice a year.
+
+### Material Ongoing Outsourced Relevant Services (MOORS): The Higher Bar
+
+Notice 658 splits obligations by materiality. A relevant service classified as a Material Ongoing Outsourced Relevant Service — MOORS — is subject to the full requirement set: enhanced due diligence before signing, stronger contractual protections, business continuity and exit planning, and prior notification to MAS before the arrangement begins. Most production document AI deployments — the ones actually running KYC onboarding or claims intake at volume, not a pilot — are exactly the kind of ongoing, business-critical arrangement MOORS was written to capture. A procurement team assessing a document AI vendor should default to the MOORS bar, not the lighter set of protections that apply to services limited to disclosing customer information.
+
+## What Does MAS's New AI Risk Management Guidance Add Beyond Outsourcing?
+
+Outsourcing rules were written for vendor relationships generally; they weren't written with AI-specific failure modes in mind. MAS's [Consultation Paper on Guidelines on Artificial Intelligence Risk Management](https://www.mas.gov.sg/publications/consultations/2025/consultation-paper-on-guidelines-on-artificial-intelligence-risk-management), published November 13, 2025, closes that gap. The consultation runs through January 31, 2026, with a proposed 12-month transition period once the guidelines are finalized, and it applies across all financial institutions, complementing MAS's existing FEAT principles (Fairness, Ethics, Accountability, Transparency) and the national IMDA Model AI Governance Framework.
+
+Data governance is one of the guidance's named risk domains, and it's specific in a way general outsourcing rules aren't: data provenance and quality across the full AI lifecycle, lineage and traceability from source to model input, protections for personal and sensitive data used in training and inference, and bias detection rooted in data representativeness. The guidance also expects institutions to maintain a complete, up-to-date AI inventory covering scope, purpose, inputs, outputs, data lineage, and third-party dependencies for every AI system in use — a document AI deployment included.
+
+## How Does MAS's AI Risk Management Guidance Treat Third-Party and Vendor Risk?
+
+The consultation names third-party and vendor risk as a domain of its own, with concrete expectations: due diligence on a vendor's AI capabilities before procurement, contractual protections covering data handling and model performance standards, regular review of third-party AI performance rather than a one-time assessment, and a documented exit strategy if the relationship deteriorates. It goes further on lifecycle documentation than most vendor contracts anticipate, expecting model cards, data lineage records, and test reports, plus version control and rollback mechanisms for the models in production.
+
+That's a materially higher bar than "our AI model is accurate" or a generic model card written for a different regulator. It's the same question DORA's audit-right provisions ask in the EU: does the vendor actually operate the environment the document is processed in, or is "our document AI model" a euphemism for a resold frontier-model subscription it can document only at the API-call level, not the inference level?
+
+## Does a Document AI Vendor Built on a Resold Frontier Model Satisfy This Bar?
+
+Not cleanly, for most of the market — and that gap is exactly where MAS compliance for document AI gets harder to satisfy than a general vendor-security review. A platform that wraps a third-party frontier model can describe what it sends to that model and what comes back, but it can't produce a data lineage record for computation it doesn't operate, and it can't commit to the version-control and rollback guarantees MAS's guidance expects for a model it doesn't control the release cycle of.
+
+Proof Perimeter's fine-tuned document AI models are built so that gap doesn't exist: inference runs inside the bank, insurer, or lender's own environment — cloud-hosted, within the customer's infrastructure, or fully on-premise on commodity CPUs — with field-level [provenance](/glossary/data-lineage-in-document-processing) attached to every extracted value, satisfying the "data lineage records" expectation as a byproduct of how the platform runs, not as a report generated after the fact. On Proof Perimeter's internal benchmarks, that same fine-tuned model delivers 20% higher accuracy and 50% lower token consumption than general-purpose frontier models on the same document-extraction tasks — so a Singapore institution doesn't trade compliance depth for extraction quality when it removes the resold-model layer from its outsourcing register.
+
+## How Does MAS Compliance for Document AI Compare to DORA, RBI, and SAMA?
+
+MAS is the first of the four regimes covered on this site to name data lineage and provenance as an explicit AI risk domain in its own guidance text, rather than folding the question into general cloud or outsourcing rules. [DORA's Article 30](/blog/dora-compliance-document-ai) reaches the same conclusion through contractual audit rights over ICT third parties; RBI's outsourcing rules and SAMA's Cloud Computing Framework reach it through cross-border data restrictions. [Our comparison of all four regimes](/blog/cloud-document-ai-compliance-risk) covers the storage-versus-inference distinction each one draws in more depth — MAS's contribution is making AI-specific lifecycle documentation, not just data location, a named supervisory expectation.
+
+## A Practical MAS Readiness Checklist for Document AI Procurement
+
+- **Confirm which notice applies** — Notice 658 for banks, Notice 1121 for merchant banks — and assess against the MOORS bar by default for any production-volume deployment.
+- **Ask for the vendor's entry in your own Outsourcing Register**, including subcontracting details, before it's due for the next semi-annual submission.
+- **Request the AI-specific lifecycle documentation** the 2025 guidance names directly: model cards, data lineage records, test reports, and version-control/rollback commitments — not a generic security whitepaper.
+- **Check whether provenance is a per-field record or a marketing claim.** A [document audit trail](/glossary/document-audit-trail) that reconstructs what the model saw and decided is what an AI inventory entry actually needs.
+- **Verify [data residency](/glossary/data-residency-in-document-ai) and [SOC 2 controls](/glossary/soc-2-document-controls) cover inference, not just storage** — the same gap DORA and SAMA reach from their own angles.
+
+A [demo call](/book-demo) is a faster way to test these answers than a vendor's compliance deck — bring a KYC packet or loan file and ask, specifically, whether the model card and lineage record you'd need for your AI inventory already exist, or whether they'd be written for the first time to answer your question.
+
+## Frequently Asked Questions
+
+### Does MAS Notice 658 apply to a document AI vendor that isn't itself MAS-licensed?
+
+Yes. Notice 658 regulates the bank or merchant bank using the service, and requires that institution to impose specific contractual and register obligations on any provider of an outsourced relevant service — document AI vendors included, regardless of the vendor's own licensing status.
+
+### Is a SOC 2 report enough to satisfy MAS's AI risk management expectations?
+
+No. SOC 2 addresses security controls and operations; it doesn't produce the model cards, data lineage records, or version-control commitments MAS's 2025 AI Risk Management Guidelines name as separate deliverables. Institutions need those artifacts directly from the vendor, not inferred from a certification written for a different purpose.
+
+### When does MAS's AI Risk Management Guidance actually take effect?
+
+The consultation closed for public comment on January 31, 2026. MAS has proposed a 12-month transition period once the guidelines are finalized and issued, giving institutions a defined runway to implement — but the underlying outsourcing obligations under Notice 658 and 1121 are already in force today.
+
+## The Takeaway
+
+MAS compliance for document AI now runs on two tracks that converge on the same evidence: an Outsourcing Register that has to name the provider and its subcontracting chain, and AI-specific guidance that expects model cards, data lineage records, and version control for the system reading the document, not just the system storing it. A platform that operates inference inside the institution's own perimeter can hand over that lifecycle documentation directly, because it generated it by running the model — a simpler answer than assembling records for a resold frontier-model subscription it never controlled in the first place.
