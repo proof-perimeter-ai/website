@@ -1,5 +1,5 @@
 ---
-title: "Choosing Between Cloud, VPC, and On-Premise Document AI Deployment"
+title: "Cloud vs VPC vs On-Premise Document AI"
 slug: "document-ai-deployment-models"
 description: "Cloud, VPC, and on-premise document AI deployment models trade off cost, latency, and control differently — here's how to choose for regulated documents."
 banner:
@@ -62,13 +62,13 @@ This isn't a niche preference — enterprise deployment choices broadly are shif
 
 ## How Do IDP Vendors Rate on Deployment Flexibility?
 
-Gartner's [inaugural Magic Quadrant for Intelligent Document Processing Solutions](https://www.gartner.com/en/documents/6912666), published September 2025, is worth reading with deployment architecture in mind. The vendors it names as Leaders — including ABBYY and Tungsten Automation — offer genuine cloud, private-cloud, and on-premise deployment as parallel options, not a cloud-first product with a bolted-on exception path. The major hyperscaler platforms, by contrast, land as Challengers rather than Leaders in the same report, and — as our explainers on [Azure AI Document Intelligence](/blog/what-is-azure-ai-document-intelligence) and [Google Document AI](/blog/what-is-google-document-ai) both cover — offer at best a gated or partial on-premise route, not a zero-egress default. Deployment flexibility is one of the traits that separates leaders from challengers in the market's own analyst coverage.
+Gartner's [inaugural Magic Quadrant for Intelligent Document Processing Solutions](https://www.gartner.com/en/documents/6912666), published September 2025, is worth reading with deployment architecture in mind. The vendors it names as Leaders — including ABBYY and Tungsten Automation — offer genuine cloud, private-cloud, and on-premise deployment as parallel options, not a cloud-first product with a bolted-on exception path. The major hyperscaler platforms, by contrast, land as Challengers rather than Leaders in the same report, and — as our explainers on Azure AI Document Intelligence and [Google Document AI](/blog/what-is-google-document-ai) both cover — offer at best a gated or partial on-premise route, not a zero-egress default. Deployment flexibility is one of the traits that separates leaders from challengers in the market's own analyst coverage.
 
 ## How Should a Regulated Institution Choose a Document AI Deployment Model?
 
 A short framework, in the order it's usually worth working through:
 
-- **Start with the regulatory question, not the feature list.** If a regulator's outsourcing or AI-risk framework treats cross-border inference as an exception rather than a default — as several regimes in our [cloud compliance risk breakdown](/blog/cloud-document-ai-compliance-risk) do — that constraint should narrow the deployment options before cost or latency enters the conversation.
+- **Start with the regulatory question, not the feature list.** If a regulator's outsourcing or AI-risk framework treats cross-border inference as an exception rather than a default — as several regimes in our cloud compliance risk breakdown do — that constraint should narrow the deployment options before cost or latency enters the conversation.
 - **Model cost at production volume, not pilot volume.** Cloud's per-call pricing and on-premise's upfront infrastructure cost cross over at different volumes for every institution; a pilot rarely reveals where.
 - **Separate "where data is stored" from "where inference runs" in every vendor conversation.** A vendor can answer the first question confidently and the second vaguely — that gap is the actual signal to press on.
 - **Ask what "on-premise" or "VPC" costs in implementation time**, not just infrastructure spend. As the G2 comparison above shows, deployment flexibility and deployment speed aren't the same thing.

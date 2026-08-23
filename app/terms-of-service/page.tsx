@@ -8,10 +8,24 @@ import { siteConfig } from "@/lib/metadata";
 const LAST_UPDATED = "July 19, 2026";
 const CONTACT_EMAIL = "admin@proofperimeter.com";
 
+const pageTitle = "Terms of Service";
+const pageDescription = `The Terms of Service governing use of the ${siteConfig.name} website, demo requests, and Bring Your Own Key or Enterprise evaluation engagements.`;
+
 export const metadata: Metadata = {
-  title: "Terms of Service",
-  description: `The Terms of Service governing use of the ${siteConfig.name} website, demo requests, and Bring Your Own Key or Enterprise evaluation engagements.`,
+  title: pageTitle,
+  description: pageDescription,
   alternates: { canonical: "/terms-of-service" },
+  openGraph: {
+    title: `${pageTitle} | ${siteConfig.name}`,
+    description: pageDescription,
+    url: `${siteConfig.url}/terms-of-service`,
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${pageTitle} | ${siteConfig.name}`,
+    description: pageDescription,
+  },
 };
 
 export default function TermsOfService() {

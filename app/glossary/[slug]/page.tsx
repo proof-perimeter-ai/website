@@ -29,7 +29,15 @@ function metaTitleFor(term: { title: string; category: string }): string {
 
   if (title.length + TITLE_SUFFIX_LENGTH > 60) {
     const abbreviated = title.match(/^.*?\(([A-Z0-9]+)\)\s*(.*)$/);
-    if (abbreviated) title = `${abbreviated[1]} ${abbreviated[2]}`.trim();
+    if (abbreviated) {
+      title = `${abbreviated[1]} ${abbreviated[2]}`.trim();
+    } else {
+      // Titles like "Document RAG (Retrieval-Augmented Generation)" have the
+      // acronym up front and a spelled-out expansion in parens — drop the
+      // trailing parenthetical rather than leave the title over length.
+      const withoutTrailingParen = title.replace(/\s*\([^)]*\)\s*$/, "").trim();
+      if (withoutTrailingParen) title = withoutTrailingParen;
+    }
   }
 
   if (title.length + TITLE_SUFFIX_LENGTH < 30) {

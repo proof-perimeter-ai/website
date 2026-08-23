@@ -8,11 +8,25 @@ import { siteConfig } from "@/lib/metadata";
 
 const DEFAULT_CAL_LINK = "gaurav-bu/30min";
 
+const pageTitle = "Get Started: Book a Demo or Start Free";
+const pageDescription =
+  "Get started for free with your own LLM key, or move to Enterprise for Proof Perimeter's proprietary models with zero-egress deployment and governance controls.";
+
 export const metadata: Metadata = {
-  title: "Get Started: Book a Demo or Start Free",
-  description:
-    "Get started for free with your own LLM key, or move to Enterprise for Proof Perimeter's proprietary models with zero-egress deployment and governance controls.",
+  title: pageTitle,
+  description: pageDescription,
   alternates: { canonical: "/book-demo" },
+  openGraph: {
+    title: `${pageTitle} | ${siteConfig.name}`,
+    description: pageDescription,
+    url: `${siteConfig.url}/book-demo`,
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${pageTitle} | ${siteConfig.name}`,
+    description: pageDescription,
+  },
 };
 
 const breadcrumbJsonLd = {

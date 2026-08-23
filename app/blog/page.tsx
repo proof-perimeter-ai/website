@@ -8,11 +8,25 @@ import { BlogCard } from "@/components/BlogCard";
 import { siteConfig } from "@/lib/metadata";
 import { getAllPosts } from "@/lib/blog";
 
+const pageTitle = "Blog: AI Document Processing Insights";
+const pageDescription =
+  "Insights on AI document processing for regulated industries — KYC, claims, and lending — from the Proof Perimeter team, covering OCR, extraction, compliance.";
+
 export const metadata: Metadata = {
-  title: "Blog: AI Document Processing Insights",
-  description:
-    "Insights on AI document processing for regulated industries — KYC, claims, and lending — from the Proof Perimeter team, covering OCR, extraction, compliance.",
+  title: pageTitle,
+  description: pageDescription,
   alternates: { canonical: "/blog" },
+  openGraph: {
+    title: `${pageTitle} | ${siteConfig.name}`,
+    description: pageDescription,
+    url: `${siteConfig.url}/blog`,
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${pageTitle} | ${siteConfig.name}`,
+    description: pageDescription,
+  },
 };
 
 export default function BlogIndex() {

@@ -8,10 +8,24 @@ import { siteConfig } from "@/lib/metadata";
 const LAST_UPDATED = "July 19, 2026";
 const CONTACT_EMAIL = "admin@proofperimeter.com";
 
+const pageTitle = "Privacy Policy";
+const pageDescription = `How ${siteConfig.name} collects, uses, and protects information from visitors, demo requesters, and Bring Your Own Key users at proofperimeter.com.`;
+
 export const metadata: Metadata = {
-  title: "Privacy Policy",
-  description: `How ${siteConfig.name} collects, uses, and protects information from visitors, demo requesters, and Bring Your Own Key users at proofperimeter.com.`,
+  title: pageTitle,
+  description: pageDescription,
   alternates: { canonical: "/privacy-policy" },
+  openGraph: {
+    title: `${pageTitle} | ${siteConfig.name}`,
+    description: pageDescription,
+    url: `${siteConfig.url}/privacy-policy`,
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${pageTitle} | ${siteConfig.name}`,
+    description: pageDescription,
+  },
 };
 
 export default function PrivacyPolicy() {

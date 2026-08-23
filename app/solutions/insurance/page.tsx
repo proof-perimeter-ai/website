@@ -12,11 +12,25 @@ import { CustomerLogoMarquee } from "@/components/CustomerLogoMarquee";
 import { TestimonialCarousel } from "@/components/TestimonialCarousel";
 import { siteConfig } from "@/lib/metadata";
 
+const pageTitle = "Document AI for Insurance";
+const pageDescription =
+  "Classify, extract, and reconcile claims packets automatically from FNOL to settlement — with field-level provenance on every extracted value.";
+
 export const metadata: Metadata = {
-  title: "Document AI for Insurance",
-  description:
-    "Classify, extract, and reconcile claims packets automatically from FNOL to settlement — with field-level provenance on every extracted value.",
+  title: pageTitle,
+  description: pageDescription,
   alternates: { canonical: "/solutions/insurance" },
+  openGraph: {
+    title: `${pageTitle} | ${siteConfig.name}`,
+    description: pageDescription,
+    url: `${siteConfig.url}/solutions/insurance`,
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${pageTitle} | ${siteConfig.name}`,
+    description: pageDescription,
+  },
 };
 
 const cardHover =

@@ -7,11 +7,25 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { siteConfig } from "@/lib/metadata";
 import { getAllTerms, getTermsByLetter } from "@/lib/glossary";
 
+const pageTitle = "AI Document Processing Glossary";
+const pageDescription =
+  "Plain-language definitions of AI document processing terms — OCR, intelligent document processing, extraction, document AI agents, compliance and more.";
+
 export const metadata: Metadata = {
-  title: "AI Document Processing Glossary",
-  description:
-    "Plain-language definitions of AI document processing terms — OCR, intelligent document processing, extraction, document AI agents, compliance and more.",
+  title: pageTitle,
+  description: pageDescription,
   alternates: { canonical: "/glossary" },
+  openGraph: {
+    title: `${pageTitle} | ${siteConfig.name}`,
+    description: pageDescription,
+    url: `${siteConfig.url}/glossary`,
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${pageTitle} | ${siteConfig.name}`,
+    description: pageDescription,
+  },
 };
 
 export default function GlossaryIndex() {
