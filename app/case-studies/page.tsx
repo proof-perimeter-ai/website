@@ -8,11 +8,25 @@ import { CaseStudyCard } from "@/components/CaseStudyCard";
 import { siteConfig } from "@/lib/metadata";
 import { getAllCaseStudies } from "@/lib/case-studies";
 
+const pageTitle = "Case Studies: Regulated Industries";
+const pageDescription =
+  "How banks, insurers, and lenders use Proof Perimeter to automate document classification, extraction, and review — with field-level provenance on every value.";
+
 export const metadata: Metadata = {
-  title: "Case Studies: Regulated Industries",
-  description:
-    "How banks, insurers, and lenders use Proof Perimeter to automate document classification, extraction, and review — with field-level provenance on every value.",
+  title: pageTitle,
+  description: pageDescription,
   alternates: { canonical: "/case-studies" },
+  openGraph: {
+    title: `${pageTitle} | ${siteConfig.name}`,
+    description: pageDescription,
+    url: `${siteConfig.url}/case-studies`,
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${pageTitle} | ${siteConfig.name}`,
+    description: pageDescription,
+  },
 };
 
 export default function CaseStudiesIndex() {

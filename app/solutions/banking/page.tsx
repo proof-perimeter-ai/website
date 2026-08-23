@@ -12,11 +12,25 @@ import { CustomerLogoMarquee } from "@/components/CustomerLogoMarquee";
 import { TestimonialCarousel } from "@/components/TestimonialCarousel";
 import { siteConfig } from "@/lib/metadata";
 
+const pageTitle = "Document AI for Banking";
+const pageDescription =
+  "Automate KYC, loan-closing, and compliance document processing across every branch, channel, and partner network — 20% more accurate than general models.";
+
 export const metadata: Metadata = {
-  title: "Document AI for Banking",
-  description:
-    "Automate KYC, loan-closing, and compliance document processing across every branch, channel, and partner network — 20% more accurate than general models.",
+  title: pageTitle,
+  description: pageDescription,
   alternates: { canonical: "/solutions/banking" },
+  openGraph: {
+    title: `${pageTitle} | ${siteConfig.name}`,
+    description: pageDescription,
+    url: `${siteConfig.url}/solutions/banking`,
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${pageTitle} | ${siteConfig.name}`,
+    description: pageDescription,
+  },
 };
 
 const cardHover =

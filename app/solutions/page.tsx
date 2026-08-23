@@ -7,11 +7,25 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { JsonLd } from "@/components/JsonLd";
 import { siteConfig } from "@/lib/metadata";
 
+const pageTitle = "Document AI Solutions by Industry";
+const pageDescription =
+  "Document AI for regulated, high-risk document workflows across banking, financial services, insurance, legal, and healthcare — with field-level provenance.";
+
 export const metadata: Metadata = {
-  title: "Document AI Solutions by Industry",
-  description:
-    "Document AI for regulated, high-risk document workflows across banking, financial services, insurance, legal, and healthcare — with field-level provenance.",
+  title: pageTitle,
+  description: pageDescription,
   alternates: { canonical: "/solutions" },
+  openGraph: {
+    title: `${pageTitle} | ${siteConfig.name}`,
+    description: pageDescription,
+    url: `${siteConfig.url}/solutions`,
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${pageTitle} | ${siteConfig.name}`,
+    description: pageDescription,
+  },
 };
 
 const cardHover =

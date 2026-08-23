@@ -13,11 +13,25 @@ import { siteConfig } from "@/lib/metadata";
 import { APP_CTA_HREF, APP_CTA_LABEL } from "@/lib/cta";
 import { GET_STARTED_EVENT, BOOK_DEMO_EVENT } from "@/lib/analytics";
 
+const pageTitle = "Document AI for Enterprise";
+const pageDescription =
+  "Vertical-tuned document AI deployed hosted, in your private cloud, or fully on-premises with zero egress and fine-tuned on your own documents.";
+
 export const metadata: Metadata = {
-  title: "Document AI for Enterprise",
-  description:
-    "Vertical-tuned document AI deployed hosted, in your private cloud, or fully on-premises with zero egress and fine-tuned on your own documents.",
+  title: pageTitle,
+  description: pageDescription,
   alternates: { canonical: "/enterprise" },
+  openGraph: {
+    title: `${pageTitle} | ${siteConfig.name}`,
+    description: pageDescription,
+    url: `${siteConfig.url}/enterprise`,
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${pageTitle} | ${siteConfig.name}`,
+    description: pageDescription,
+  },
 };
 
 const pills = ["Vertical-tuned models", "Zero egress AI", "AI Governance & Controls"];

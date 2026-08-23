@@ -10,11 +10,25 @@ import { siteConfig } from "@/lib/metadata";
 import { APP_CTA_HREF, APP_CTA_LABEL } from "@/lib/cta";
 import { GET_STARTED_EVENT, BOOK_DEMO_EVENT } from "@/lib/analytics";
 
+const pageTitle = "Document AI Pricing: BYOK vs Enterprise";
+const pageDescription =
+  "Compare Proof Perimeter's Bring Your Own Key and Enterprise plans feature by feature — deployment, data egress, workflows, audit logging, and support.";
+
 export const metadata: Metadata = {
-  title: "Document AI Pricing: BYOK vs Enterprise",
-  description:
-    "Compare Proof Perimeter's Bring Your Own Key and Enterprise plans feature by feature — deployment, data egress, workflows, audit logging, and support.",
+  title: pageTitle,
+  description: pageDescription,
   alternates: { canonical: "/pricing" },
+  openGraph: {
+    title: `${pageTitle} | ${siteConfig.name}`,
+    description: pageDescription,
+    url: `${siteConfig.url}/pricing`,
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${pageTitle} | ${siteConfig.name}`,
+    description: pageDescription,
+  },
 };
 
 const priceRow: [string, string, string] = ["Cost", "Free — pay your LLM token costs", "Enterprise license"];

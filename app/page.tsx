@@ -14,11 +14,25 @@ import { BtnGhost, BtnSolid } from "@/components/Button";
 import { APP_CTA_HREF, APP_CTA_LABEL } from "@/lib/cta";
 import { GET_STARTED_EVENT, BOOK_DEMO_EVENT } from "@/lib/analytics";
 
+const pageTitle = "Free Document AI Platform";
+const pageDescription =
+  "Frontier AI for regulated document processing — free with your own API key. Templates, workflows, batch API, review, export, and provenance. No document limit.";
+
 export const metadata: Metadata = {
-  title: "Free Document AI Platform",
-  description:
-    "Frontier AI for regulated document processing — free with your own API key. Templates, workflows, batch API, review, export, and provenance. No document limit.",
+  title: pageTitle,
+  description: pageDescription,
   alternates: { canonical: "/" },
+  openGraph: {
+    title: `${pageTitle} | ${siteConfig.name}`,
+    description: pageDescription,
+    url: siteConfig.url,
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${pageTitle} | ${siteConfig.name}`,
+    description: pageDescription,
+  },
 };
 
 const cardHover =
