@@ -1,0 +1,83 @@
+---
+title: "RBI and DPDP Compliance for Document AI: What Indian Financial Institutions Must Prove"
+slug: "rbi-dpdp-compliance-document-ai"
+description: "RBI's 2025 outsourcing directions carry an April 10, 2026 deadline, and DPDP's permissive cross-border default doesn't override India's stricter sector rules."
+banner:
+  src: "/assets/blog/rbi-dpdp-compliance-document-ai/banner.png"
+  alt: "Shield outline representing RBI and DPDP regulatory compliance requirements for a document AI vendor operating in India"
+  width: 1600
+  height: 900
+category: "Compliance"
+tags: ["RBI", "DPDP Act", "India financial regulation", "document AI compliance", "AI governance"]
+authorId: "gaurav"
+createdAt: "2026-08-22"
+updatedAt: "2026-08-22"
+relatedPosts: ["dora-compliance-document-ai", "mas-compliance-document-ai", "cloud-document-ai-compliance-risk"]
+status: "published"
+primaryKeyword: "RBI and DPDP compliance for document AI"
+cluster: "E"
+---
+
+RBI and DPDP compliance for document AI in India isn't one rulebook — it's two, and they don't ask the same question. The Reserve Bank of India has spent since 2023 tightening what a bank, NBFC, or payments bank must get in writing from any IT outsourcing vendor, with a new round of directions carrying an April 10, 2026 compliance deadline for existing contracts. The Digital Personal Data Protection Act, meanwhile, takes a lighter, more permissive stance on cross-border data transfer than most procurement teams assume. The gap between those two positions is exactly where a document AI vendor evaluation goes wrong: a vendor can point to DPDP's general permissiveness and sound compliant, while still failing the narrower, older, sector-specific rule RBI actually enforces. This guide walks through both frameworks and what a procurement team needs to verify before a KYC packet, loan file, or claims bundle ever reaches the model.
+
+## What Is RBI's IT-Outsourcing Framework, and Why Does It Cover Document AI Vendors?
+
+The Reserve Bank of India's [Master Direction on Outsourcing of Information Technology Services](https://rbidocs.rbi.org.in/rdocs/notification/PDFs/102MDITSERVICES56B33FD530B1433187D75CB7C06C8F70.PDF), issued April 10, 2023 and effective October 1, 2023, applies to scheduled commercial banks, small finance banks, payments banks, primary (urban) co-operative banks, credit information companies, NBFCs, and All India Financial Institutions. Its core principle is blunt: outsourcing a function doesn't reduce a regulated entity's liability to its customers, and it can't limit RBI's own ability to supervise. A document AI platform that classifies, extracts, or reads a KYC packet, loan file, or claims document on a regulated entity's behalf is an IT outsourcing arrangement under this Direction — there's no exemption for "it's just AI."
+
+## What Does RBI's 2025 Outsourcing Directions Actually Require in a Contract?
+
+In late 2025, RBI issued sector-specific successors to the 2023 baseline — including the [Non-Banking Financial Companies (Managing Risks in Outsourcing) Directions, 2025](https://taxguru.in/rbi/rbi-non-banking-financial-companies-managing-risks-outsourcing-directions-2025.html) (RBI/DOR/2025-26/363, dated November 28, 2025) — that carry the same core obligations forward with sharper enforcement mechanics.
+
+### Sub-Contracting Needs the Regulated Entity's Prior Approval
+
+Where a document AI vendor sub-contracts any part of the arrangement — most often, licensing a general-purpose frontier model from a separate provider and reselling that inference as its own product — the regulated entity's prior approval is required, and the vendor must disclose the full chain of sub-contractors relevant to the arrangement. A one-line "powered by leading AI models" disclosure in a sales deck doesn't satisfy this; the regulated entity needs to know, and approve, exactly whose infrastructure the document passes through.
+
+### Offshore Outsourcing Can't Diminish RBI's Audit Rights
+
+Where a document AI vendor's processing happens outside India, the regulated entity must assess country-level risk and confirm the offshore arrangement doesn't reduce either the regulated entity's or RBI's own right to audit and inspect the vendor's facilities, records, and logs — extending through to sub-contractors. A vendor that can't extend audit access into infrastructure it doesn't itself operate hasn't met this bar, no matter how strong its own SOC 2 report looks in isolation.
+
+### The April 10, 2026 Compliance Deadline
+
+Existing IT outsourcing agreements for NBFCs must comply with the 2025 Directions by April 10, 2026, or at renewal, whichever comes first — new agreements are already expected to comply from inception. For a document AI vendor already under contract with an Indian NBFC, that deadline turns a future renewal conversation into a live compliance gap today.
+
+## Where Does the DPDP Act Fit Alongside RBI's Outsourcing Rules?
+
+The [Digital Personal Data Protection Act, 2023](https://www.meity.gov.in/static/uploads/2024/06/2bf1f0e9f04e6fb4f8fef35e82c42aa5.pdf) governs how personal data is collected, processed, and moved, independent of RBI's outsourcing framework. Its cross-border transfer provision, Section 16, uses a "negative list" model — the central government can restrict transfer to specific countries or territories by notification, but the default is permissive until a country is actually named. The [DPDP Rules, 2025](https://www.pib.gov.in/PressReleasePage.aspx?PRID=2190655&reg=48&lang=2), notified November 13, 2025, bring the Act's machinery into force in phases: governance provisions (the Data Protection Board's setup) took effect immediately, consent-manager provisions phase in by November 13, 2026, and the substantive data-fiduciary obligations — consent notices, data principal rights, breach reporting — phase in by May 2027. Rule 13 adds extra duties for entities the government designates as Significant Data Fiduciaries, including restrictions on transferring specified categories of data outside India once those categories are notified.
+
+## Why Doesn't DPDP's Permissive Cross-Border Default Cover a Document AI Vendor?
+
+Because DPDP's permissiveness is a floor, not a ceiling — and sector regulators build well above it. RBI has required strict data localization for a much narrower category of information since 2018: its [circular on Storage of Payment System Data](https://www.rbi.org.in/commonman/english/scripts/FAQs.aspx?Id=2995) (DPSS.CO.OD.No.2785/06.08.005/2017-18) required every authorized payment system provider to store the full end-to-end transaction data for a payment only in India, six years before DPDP existed. A 2019 clarification confirmed processing can happen offshore, but the underlying payments data still has to be deleted from the overseas system and brought back within the prescribed window. That rule illustrates the pattern a procurement team has to watch for: DPDP not restricting a transfer today doesn't mean a narrower, older, RBI-specific rule doesn't already restrict it for the document category actually in front of you. A vendor's "DPDP-compliant" claim answers the general question; it doesn't answer the specific one RBI is actually going to ask about a KYC packet or a loan file with payment details embedded in it.
+
+## How Does RBI and DPDP Compliance for Document AI Actually Work Together?
+
+In practice, a procurement team has to clear both bars at once, because they test different things. RBI's outsourcing rules test whether the *arrangement* — the contract, the audit rights, the sub-processor chain, the processing location — is properly governed. DPDP tests whether *personal data* is lawfully collected, processed, and (where restricted) kept in-country. A vendor that satisfies one and not the other still leaves a gap: a DPDP-compliant privacy notice sitting on top of an unapproved frontier-model sub-processor, or an RBI-compliant outsourcing contract that can't show which fields in a document actually count as personal data under DPDP's own definition.
+
+Proof Perimeter's fine-tuned document AI models are built so that gap doesn't open in the first place: inference runs inside the bank, NBFC, or insurer's own environment — cloud-hosted, within the customer's infrastructure, or fully on-premise — so there's no undisclosed frontier-model sub-processor for RBI's sub-contracting-approval rule to catch, and no offshore transfer for DPDP's Section 16 question to even apply to. On Proof Perimeter's internal benchmarks, the fine-tuned model delivers 20% higher accuracy and 50% lower token consumption than general-purpose frontier models on the same document-extraction tasks, and every extracted field carries [field-level provenance](/glossary/data-lineage-in-document-processing) — what the model saw, what it decided, and why — which is the same underlying record that answers RBI's audit-and-inspection rights and demonstrates DPDP-relevant data handling, instead of building separate evidence for each regulator.
+
+## A Practical RBI and DPDP Readiness Checklist for Document AI Procurement
+
+- **Ask for the full sub-processor chain in writing**, including any underlying frontier model, before it goes anywhere near the arrangement — not after RBI asks.
+- **Confirm audit and inspection rights actually reach where inference happens**, not just the layer the vendor directly controls.
+- **Check the April 10, 2026 deadline against your existing contracts** — an NBFC outsourcing relationship signed before the 2025 Directions still needs to comply by that date or at renewal.
+- **Don't treat "DPDP-compliant" as a complete answer.** Ask separately whether RBI's narrower, sector-specific data-processing-location rules apply to the specific document type in question.
+- **Verify [SOC 2 controls](/glossary/soc-2-document-controls) and [data residency](/glossary/data-residency-in-document-ai) commitments cover inference, not just storage** — both frameworks reach further than either document typically shows on its own.
+
+A [demo call](/book-demo) is a faster way to pressure-test these answers than a compliance questionnaire — bring a KYC document and ask, specifically, where the model runs and who approved every party that touches it. [Our DORA compliance guide](/blog/dora-compliance-document-ai) and [MAS compliance guide](/blog/mas-compliance-document-ai) cover the same underlying question — where inference happens, not just where data sits — across other regulatory regimes, and [our broader look at cloud document AI compliance risk](/blog/cloud-document-ai-compliance-risk) ties the pattern together across regions.
+
+## Frequently Asked Questions
+
+### Does RBI's outsourcing framework apply if the document AI vendor isn't itself an RBI-regulated entity?
+
+Yes. RBI regulates the bank, NBFC, or payments bank directly, but its Master Direction and the 2025 sector-specific Directions require that regulated entity to impose specific contractual, audit, and sub-contracting-approval obligations on every IT outsourcing vendor it uses — a document AI vendor included, regardless of the vendor's own regulatory status.
+
+### Does the DPDP Act override RBI's stricter, sector-specific data rules?
+
+No. DPDP sets a general floor for personal data processing and cross-border transfer; it doesn't replace narrower rules a sector regulator already has in force, such as RBI's payment-data localization requirement. A document AI vendor can be broadly DPDP-compliant and still fail a specific RBI requirement that applies to the document type in front of it.
+
+### Is the April 10, 2026 deadline final, or could it move?
+
+As of this writing, April 10, 2026 (or contract renewal, whichever is earlier) is the compliance date RBI has set for NBFCs' existing IT outsourcing agreements under the 2025 Directions. Procurement teams should treat it as fixed and plan accordingly rather than assume a further extension.
+
+## The Takeaway
+
+RBI and DPDP compliance for document AI means clearing two different bars, not one certification. RBI's outsourcing rules test the arrangement — sub-processor approval, audit rights, processing location, a hard deadline for existing contracts. DPDP tests the data itself, and its general permissiveness on cross-border transfer doesn't excuse a vendor from the narrower, sector-specific rules RBI already enforces. A platform that runs inference inside the institution's own perimeter answers both questions with the same architecture, rather than assembling separate evidence for each regulator after the fact.
