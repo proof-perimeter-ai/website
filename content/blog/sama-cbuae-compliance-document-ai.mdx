@@ -1,0 +1,84 @@
+---
+title: "SAMA and CBUAE Compliance for Document AI: Two Gulf Regulators, Two Different Bars"
+slug: "sama-cbuae-compliance-document-ai"
+description: "SAMA defaults to in-Kingdom hosting for Saudi banks, while CBUAE's Feb 2026 AI guidance governs UAE model oversight — GCC compliant isn't one checkbox."
+banner:
+  src: "/assets/blog/sama-cbuae-compliance-document-ai/banner.png"
+  alt: "Shield outline representing SAMA and CBUAE regulatory compliance requirements for a document AI vendor operating in the Gulf"
+  width: 1600
+  height: 900
+category: "Compliance"
+tags: ["SAMA", "CBUAE", "Gulf financial regulation", "document AI compliance", "AI governance"]
+authorId: "gaurav"
+createdAt: "2026-08-24"
+updatedAt: "2026-08-24"
+relatedPosts: ["dora-compliance-document-ai", "mas-compliance-document-ai", "rbi-dpdp-compliance-document-ai"]
+status: "published"
+primaryKeyword: "SAMA and CBUAE compliance for document AI"
+cluster: "E"
+---
+
+SAMA and CBUAE compliance for document AI gets treated, in a lot of vendor procurement conversations, as one line item: "we're GCC compliant." That framing hides a real problem. The Saudi Central Bank (SAMA) and the Central Bank of the UAE (CBUAE) are two separate regulators, in two separate countries, enforcing two frameworks that don't ask the same question. SAMA's Cloud Computing Framework governs where a bank's infrastructure and data physically sit. CBUAE's guidance note on AI and machine learning, issued February 23, 2026, governs how the AI model itself is built, overseen, and held accountable — an entirely different axis. A document AI vendor can satisfy one and say nothing meaningful about the other. This guide walks through both frameworks separately, then through what actually changes when a KYC packet or loan file has to clear both bars at once.
+
+## What Is SAMA's Cloud Computing Framework, and Why Does It Cover Document AI Vendors?
+
+The first half of SAMA and CBUAE compliance for document AI starts here: SAMA's Cloud Computing Framework applies to every entity it supervises — commercial banks, insurance companies, finance companies, payment service providers, credit bureaus, and fintechs — and it treats cloud-hosted AI inference the same way it treats any other cloud-hosted workload: as something SAMA has to approve and monitor, not something a vendor's own compliance page can pre-clear. A document AI platform that classifies or extracts data from a Saudi bank's loan file over a cloud API is unambiguously in scope, whether or not the vendor thinks of itself as a "cloud provider" in the traditional sense.
+
+### In-Kingdom Hosting Is the Default, Not the Exception
+
+Under the framework, sensitive customer data, transaction records, and business-continuity backups are expected to stay on infrastructure physically located inside Saudi Arabia. Cross-border processing isn't prohibited outright, but it isn't the assumed baseline either — an institution has to demonstrate operational necessity and document the transfer in a risk register reviewed during regulatory examinations, per a [compliance analysis of the framework's in-Kingdom hosting requirements](https://www.kiteworks.com/regulatory-compliance/sama-data-sovereignty-hosting-compliance/). A cloud document AI vendor routing a Saudi bank's KYC packet to an offshore inference endpoint isn't operating in a gray area here — it's the exception the institution has to justify in writing, not the default it can quietly assume.
+
+### SAMA Approval Comes Before the Contract, Not After
+
+SAMA's own rulebook sets out cloud computing as a distinct supervisory topic, and in practice that means an institution needs SAMA's sign-off before it signs a cloud services contract, not as a retroactive notification once the vendor is already live. For a document AI evaluation, that turns "does this vendor process data in-Kingdom" from a nice-to-have answer into a gating question that has to be resolved before procurement can close, not during onboarding.
+
+## What Is CBUAE's February 2026 AI Guidance Note, and Who Does It Cover?
+
+The second half is where CBUAE comes in. Its [Guidance Note on the Consumer Protection and Responsible Adoption and Use of Artificial Intelligence and Machine Learning by Licensed Financial Institutions](https://rulebook.centralbank.ae/en/rulebook/guidance-note-consumer-protection-and-responsible-adoption-and-use-artificial-intelligence), published February 23, 2026, applies to onshore UAE-licensed financial institutions and sets out how they're expected to govern AI and ML systems that can affect consumers — board accountability, model governance, fairness, transparency, and human oversight. It isn't formally binding the way a regulation is, but CBUAE has made clear it will factor into supervisory dialogue and examinations going forward, which is functionally the same pressure as a hard requirement for any institution that wants a clean regulatory relationship.
+
+### An AI Model Inventory and Board-Level Accountability Are the Starting Point
+
+The guidance requires a documented AI governance framework, a maintained inventory of every AI model in use, board-level accountability for AI outcomes, security-by-design controls, and annual bias testing, according to the [guidance note itself](https://www.centralbank.ae/media/mykn5fue/cbuae-issues-guidance-note-to-protect-consumers-and-ensure-responsible-use-of-artificial-intelligence-in-the-financial-sector-en.pdf). A document AI vendor that can't be named, described, and risk-rated inside that inventory is a gap the institution's own board is now on the hook for, regardless of how the vendor's contract is worded.
+
+### Outsourced and Third-Party Models Don't Get a Pass on Accountability
+
+This is the section that matters most for document AI specifically: where an institution relies on a third-party or outsourced AI model, CBUAE expects due diligence on the provider's governance, security, and data-protection practices, contractual audit rights, and confirmation that the third-party model meets the same fairness, explainability, and robustness standards as an in-house one. Blind reliance on a vendor's own claims isn't sufficient — and critically, outsourcing the function doesn't outsource the accountability. If a document AI vendor can't produce documentation explaining how a specific field was extracted, the licensed institution — not the vendor — is the one CBUAE holds responsible.
+
+### Human Oversight Isn't Optional for Consumer-Affecting Decisions
+
+Where an AI system's output materially affects a consumer — a loan decision informed by extracted income data, for instance — the guidance expects meaningful human oversight and a mechanism for the customer to request review. A document AI system that extracts a field with no confidence signal, and no route to a human reviewer before that field feeds a downstream decision, doesn't meet this expectation on its own; the extraction layer has to hand off a genuinely reviewable record, not just a final number.
+
+## How Does SAMA and CBUAE Compliance for Document AI Actually Work Together?
+
+In practice, "GCC compliant" isn't one checkbox — the two frameworks test different things, in different countries, and satisfying one says nothing about the other. SAMA is testing infrastructure: is this data, and this processing, physically and contractually inside Saudi Arabia's jurisdiction? CBUAE is testing the model itself: is this AI system governed, explainable, and accountable to a human, regardless of where it happens to run? A document AI vendor that can prove in-Kingdom hosting for a Saudi bank has answered SAMA's question and not CBUAE's — and a vendor with a polished AI governance framework for a UAE institution has answered CBUAE's question without saying anything about whether its infrastructure would even pass SAMA's in-Kingdom default for a Saudi customer. Treating "Gulf compliance" as a single checkbox is exactly how a procurement team ends up with a vendor that's genuinely strong on one bar and untested on the other.
+
+Proof Perimeter's fine-tuned document AI models are built so that gap doesn't have to be closed after the fact: inference runs inside the bank, insurer, or finance company's own environment — cloud-hosted, within the customer's infrastructure, or fully on-premise — which answers SAMA's in-Kingdom hosting question directly rather than through a documented exception. On Proof Perimeter's internal benchmarks, the fine-tuned model delivers 20% higher accuracy and 50% lower token consumption than general-purpose frontier models on the same document-extraction tasks, and every extracted field carries [field-level provenance](/glossary/data-lineage-in-document-processing) — what the model saw, what it decided, and why — which is the same underlying record that satisfies CBUAE's model-inventory and human-oversight expectations, instead of a separate governance exercise built on top of a cloud API's black-box output.
+
+## A Practical Readiness Checklist for Gulf Document AI Procurement
+
+- **Ask which regulator applies, not just which region.** A vendor with a UAE-focused AI governance story hasn't automatically answered SAMA's in-Kingdom hosting question for a Saudi entity, and vice versa.
+- **For Saudi entities, confirm SAMA sign-off happens before contract signature**, not as a post-deployment notification — and get the in-Kingdom hosting commitment in writing, not implied by a regional data center name.
+- **For UAE entities, ask for the AI model inventory entry directly** — name, purpose, risk rating — rather than a general security questionnaire response.
+- **Verify contractual audit rights actually reach the model's decision logic**, not just the vendor's infrastructure layer — CBUAE's guidance explicitly rejects blind reliance on vendor claims.
+- **Check that low-confidence extractions route to a human reviewer**, with a record a consumer-facing team can point to if a customer disputes an AI-informed decision.
+- **Confirm [SOC 2 controls](/glossary/soc-2-document-controls) and [data residency](/glossary/data-residency-in-document-ai) commitments cover inference itself**, not just document storage — both frameworks reach further than either document typically shows on its own.
+
+A [demo call](/book-demo) is a faster way to pressure-test both answers than two separate compliance questionnaires — bring a real KYC packet and ask, specifically, where the model runs and what record it leaves behind. [Our DORA](/blog/dora-compliance-document-ai), [MAS](/blog/mas-compliance-document-ai), and [RBI and DPDP](/blog/rbi-dpdp-compliance-document-ai) compliance guides cover the same underlying question — where inference happens, and who's accountable for it — across other regulatory regimes, and [our broader look at cloud document AI compliance risk](/blog/cloud-document-ai-compliance-risk) ties the pattern together across all four.
+
+## Frequently Asked Questions
+
+### Does SAMA's Cloud Computing Framework apply to UAE-based document AI vendors serving Saudi banks?
+
+Yes. SAMA's framework applies based on which institution it's regulating — a Saudi bank, insurer, or finance company — not on where the vendor itself is headquartered. A vendor based in the UAE, or anywhere else, still has to meet SAMA's in-Kingdom hosting expectations when serving a SAMA-supervised entity.
+
+### Is CBUAE's AI guidance note legally binding?
+
+Not in the way a regulation is — CBUAE describes it as guidance rather than a binding rule. But CBUAE has indicated it will factor into supervisory dialogue and examinations, which means a licensed institution that ignores it is accepting real regulatory risk even without a formal penalty clause attached to the document itself.
+
+### Can one document AI deployment satisfy both SAMA and CBUAE at once?
+
+Yes, if the underlying architecture is built for it: in-Kingdom or in-region hosting that satisfies SAMA's default, paired with a documented AI model inventory entry, contractual audit rights into the model's decision logic, and field-level provenance that satisfies CBUAE's governance and human-oversight expectations. The two frameworks test different things, but neither requires an architecture that contradicts the other.
+
+## The Takeaway
+
+SAMA and CBUAE compliance for document AI means clearing two separate regulators' separate questions, not one regional checkbox. SAMA tests infrastructure — is the data, and the processing, physically inside Saudi Arabia by default. CBUAE tests the model — is it governed, explainable, and accountable to a human, with no blind reliance on a vendor's claims. A platform that runs inference inside the institution's own perimeter and attaches provenance to every extracted field answers both questions with the same architecture, instead of assembling separate evidence for each regulator after the fact.
