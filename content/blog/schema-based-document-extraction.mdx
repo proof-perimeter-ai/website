@@ -12,7 +12,7 @@ tags: ["schema-based extraction", "document extraction ai", "structured data out
 authorId: "gaurav"
 createdAt: "2026-07-29"
 updatedAt: "2026-07-29"
-relatedPosts: ["document-classification-ai", "agentic-document-extraction", "sovereign-ai-gap"]
+relatedPosts: ["document-classification-ai", "vendor-invoice-processing-at-scale", "sovereign-ai-gap"]
 status: "published"
 primaryKeyword: "schema-based extraction"
 cluster: "C"
@@ -38,7 +38,7 @@ What comes back isn't a text dump to be re-parsed — it's a JSON object a downs
 
 ### Nested Objects and Repeating Line Items
 
-Financial documents are rarely flat key-value pairs. A loan file's income section, a claims schedule's per-coverage line items, an invoice's itemized rows — all of these need a schema that supports repeating groups and nested objects, not just a flat list of fields. As [our comparison of deep extraction and shallow OCR](/blog/deep-extraction-vs-shallow-ocr) covers, a model that can't reconstruct which row belongs to which section will flatten a nested table into an undifferentiated stream regardless of how well the schema was written — schema design and extraction depth are two separate requirements that both have to hold for the output to actually be usable.
+Financial documents are rarely flat key-value pairs. A loan file's income section, a claims schedule's per-coverage line items, [a vendor invoice's itemized rows](/blog/vendor-invoice-processing-at-scale) — all of these need a schema that supports repeating groups and nested objects, not just a flat list of fields. As [our comparison of deep extraction and shallow OCR](/blog/deep-extraction-vs-shallow-ocr) covers, a model that can't reconstruct which row belongs to which section will flatten a nested table into an undifferentiated stream regardless of how well the schema was written — schema design and extraction depth are two separate requirements that both have to hold for the output to actually be usable.
 
 ### Schema Drift: What Breaks When the Output Format Changes
 
