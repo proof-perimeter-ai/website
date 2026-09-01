@@ -18,11 +18,29 @@ export function generateStaticParams() {
   return getAllPosts().map((post) => ({ slug: post.slug }));
 }
 
+const TITLE_SUFFIX_LENGTH = " | Proof Perimeter".length;
+
+/**
+ * Post titles are written for the H1 and can run long (a headline plus a
+ * descriptive subtitle after a colon). Once " | Proof Perimeter" is appended,
+ * that overshoots the ~60-char <title> budget — this derives a shorter SEO
+ * title from the same string without touching the visible H1, mirroring
+ * metaTitleFor() in app/glossary/[slug]/page.tsx.
+ */
+function metaTitleFor(post: { title: string }): string {
+  let title = post.title;
+  if (title.length + TITLE_SUFFIX_LENGTH > 60) {
+    const colonIdx = title.indexOf(":");
+    if (colonIdx !== -1) title = title.slice(0, colonIdx).trim();
+  }
+  return title;
+}
+
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
   const post = getPostBySlug(slug)!;
   return {
-    title: post.title,
+    title: metaTitleFor(post),
     description: post.description,
     alternates: { canonical: `/blog/${post.slug}` },
     openGraph: {
